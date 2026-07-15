@@ -35,12 +35,6 @@ const defaultMedia = {
   ],
 };
 const themeMedia: Record<string, ThemeMedia> = {
-  masar: {
-    hero: "/themes/masar/hero.webp",
-    statement: "/themes/masar/editorial.webp",
-    contact: "/themes/masar/hero.webp",
-    services: [1, 2, 3, 4].map((n) => `/themes/masar/service-${n}.webp`),
-  },
   midnight: {
     hero: "/themes/midnight/hero.webp",
     statement: "/themes/midnight/editorial.webp",
@@ -72,8 +66,8 @@ const themeNames: Record<
 > = {
   masar: {
     name: "Masar Signature",
-    note: "مرن، إنساني، ومستقبلي",
-    identity: "Fluid Intelligence",
+    note: "الهوية الأصلية — محفوظة كما هي",
+    identity: "Original Signature",
     vars: {
       "--ice": "#b8ccd5",
       "--blue": "#071bda",
@@ -893,15 +887,21 @@ function AdminPanel({
     contentSections[0];
   const activeThemeKey = themeNames[config.theme] ? config.theme : "masar";
   const activeThemeMedia =
-    config.mediaByTheme?.[activeThemeKey] ||
-    themeMedia[activeThemeKey] ||
-    config.media ||
-    defaultMedia;
-  const setActiveThemeMedia = (next: ThemeMedia) =>
+    activeThemeKey === "masar"
+      ? config.media || defaultMedia
+      : config.mediaByTheme?.[activeThemeKey] ||
+        themeMedia[activeThemeKey] ||
+        defaultMedia;
+  const setActiveThemeMedia = (next: ThemeMedia) => {
+    if (activeThemeKey === "masar") {
+      setConfig({ ...config, media: next });
+      return;
+    }
     setConfig({
       ...config,
       mediaByTheme: { ...config.mediaByTheme, [activeThemeKey]: next },
     });
+  };
   return (
     <div className="admin-shell">
       <div className="admin-panel">
@@ -1144,10 +1144,11 @@ export default function Home() {
   const t = siteContent[lang];
   const activeTheme = themeNames[config.theme] ? config.theme : "masar";
   const media =
-    config.mediaByTheme?.[activeTheme] ||
-    themeMedia[activeTheme] ||
-    config.media ||
-    defaultMedia;
+    activeTheme === "masar"
+      ? config.media || defaultMedia
+      : config.mediaByTheme?.[activeTheme] ||
+        themeMedia[activeTheme] ||
+        defaultMedia;
   const go = (id: string) =>
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   const submit = async (e: FormEvent<HTMLFormElement>) => {
@@ -1259,8 +1260,12 @@ export default function Home() {
         onPointerMove={move}
         onPointerLeave={() => setPointer({ x: 0, y: 0 })}
       >
-        <div className="theme-grid-lines" aria-hidden="true" />
-        <div className="theme-orbit" aria-hidden="true" />
+        {activeTheme !== "masar" && (
+          <>
+            <div className="theme-grid-lines" aria-hidden="true" />
+            <div className="theme-orbit" aria-hidden="true" />
+          </>
+        )}
         <div
           className="cx-art hero-art"
           style={{ backgroundImage: `url(${media.hero})` }}
@@ -1304,10 +1309,12 @@ export default function Home() {
           <i>{t.statSource}</i>
         </div>
         <div className="hero-dots">••••••</div>
-        <div className="hero-identity" aria-hidden="true">
-          <span>MASAR / 0{Object.keys(themeNames).indexOf(activeTheme) + 1}</span>
-          <b>{themeNames[activeTheme].identity}</b>
-        </div>
+        {activeTheme !== "masar" && (
+          <div className="hero-identity" aria-hidden="true">
+            <span>MASAR / 0{Object.keys(themeNames).indexOf(activeTheme) + 1}</span>
+            <b>{themeNames[activeTheme].identity}</b>
+          </div>
+        )}
       </section>
       <section id="about" className="cx-intro reveal">
         <div>
@@ -1339,7 +1346,7 @@ export default function Home() {
           <span className="outline-number">04</span>
         </div>
         <div className="service-grid">
-          {t.services.map((x, serviceIndex) => (
+          {t.services.map((x) => (
             <article
               key={x[0]}
               className={activeService === x[0] ? "active" : ""}
@@ -1348,16 +1355,7 @@ export default function Home() {
               tabIndex={0}
             >
               <div className="service-visual">
-                <img
-                  src={media.services[Number(x[0]) - 1]}
-                  alt=""
-                  className="theme-service-image"
-                  style={
-                    media.services.every((src) => src === media.services[0])
-                      ? ({ "--service-index": serviceIndex } as CSSProperties)
-                      : undefined
-                  }
-                />
+                <img src={media.services[Number(x[0]) - 1]} alt="" />
                 <span>{x[0]}</span>
                 <div className="service-orb">↗</div>
               </div>
