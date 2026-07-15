@@ -1,0 +1,206 @@
+/* Obsidian Atelier — complete executive identity */
+.theme-obsidian {
+  --ink: #f3eee3;
+  --line: #c7a76b42;
+  background: #080d14;
+  color: #f3eee3;
+  font-family: "DM Sans", "Cairo", Arial, sans-serif;
+  padding: 0;
+}
+.theme-obsidian .cx-hero {
+  height: 100vh;
+  min-height: 720px;
+  border-radius: 0;
+  background: #080d14;
+  box-shadow: none;
+  border-bottom: 1px solid #c7a76b66;
+}
+.theme-obsidian .hero-art {
+  filter: saturate(.5) contrast(1.08) brightness(.68);
+  transform: translate3d(calc(var(--px, 0px) * .018), calc(var(--py, 0px) * .018), 0) scale(1.035);
+}
+.theme-obsidian .hero-art:after {
+  background: linear-gradient(90deg, rgba(5,8,13,.18), rgba(5,8,13,.72) 58%, rgba(5,8,13,.96)), linear-gradient(180deg, rgba(5,8,13,.82), transparent 32%, rgba(5,8,13,.46));
+}
+.theme-obsidian .cx-hero:before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(#c7a76b12 1px, transparent 1px), linear-gradient(90deg, #c7a76b12 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: linear-gradient(to bottom, #000, transparent 72%);
+}
+.theme-obsidian .cx-hero header {
+  max-width: 1180px;
+  height: 96px;
+  padding: 0 35px;
+  background: #080d14b8;
+  border-bottom: 1px solid #c7a76b55;
+  backdrop-filter: blur(16px);
+}
+.theme-obsidian .cx-logo { color: #e7c98f; }
+.theme-obsidian .logo-word b {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 500;
+  letter-spacing: .2em;
+}
+.theme-obsidian .logo-word small { color: #c7a76b; }
+.theme-obsidian .cx-hero nav { gap: 42px; text-transform: uppercase; letter-spacing: .08em; }
+.theme-obsidian .cx-hero nav a,
+.theme-obsidian .cx-actions button { color: #e8dfce; }
+.theme-obsidian .contact-chip,
+.theme-obsidian .cx-button {
+  border: 1px solid #c7a76b;
+  background: #c7a76b;
+  color: #080d14 !important;
+  border-radius: 0;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+.theme-obsidian .contact-chip:hover,
+.theme-obsidian .cx-button:hover { background: #f0d9aa; }
+.theme-obsidian .hero-copy { right: 11%; top: 29%; max-width: 600px; }
+.theme-obsidian.en .hero-copy { left: 11%; right: auto; }
+.theme-obsidian .hero-copy h1,
+.theme-obsidian.en .hero-copy h1,
+.theme-obsidian .cx-intro h2,
+.theme-obsidian .section-title h2,
+.theme-obsidian .cx-statement h2,
+.theme-obsidian .cx-roadmap h2,
+.theme-obsidian .cx-faq h2,
+.theme-obsidian .contact-content h2 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  letter-spacing: -.045em;
+}
+.theme-obsidian .hero-copy h1 { font-size: clamp(56px, 6.4vw, 96px); line-height: .96; }
+.theme-obsidian .hero-copy h1 strong { color: #e7c98f; font-weight: 400; font-style: italic; }
+.theme-obsidian .hero-copy p { color: #d5cbbc; max-width: 520px; }
+.theme-obsidian .cx-time { right: 11%; top: 18%; color: #c7a76b; text-transform: uppercase; letter-spacing: .08em; }
+.theme-obsidian.en .cx-time { right: auto; left: 11%; }
+.theme-obsidian .stat-card {
+  left: 9%;
+  top: auto;
+  bottom: 12%;
+  width: 250px;
+  min-height: 260px;
+  background: #0e151f;
+  color: #f3eee3;
+  border: 1px solid #c7a76b77;
+  border-radius: 0;
+  box-shadow: 14px 14px 0 #c7a76b18;
+  transform: none;
+}
+.theme-obsidian.en .stat-card { right: 9%; left: auto; }
+.theme-obsidian .stat-card strong { font-family: Georgia, serif; color: #e7c98f; }
+.theme-obsidian .stat-card i { color: #9eacb5; }
+.theme-obsidian .hero-dots { color: #c7a76b; opacity: .6; }
+.theme-obsidian .cx-intro,
+.theme-obsidian .cx-roadmap,
+.theme-obsidian .cx-faq,
+.theme-obsidian footer {
+  color: #f3eee3;
+  background: #080d14;
+  max-width: none;
+  padding-inline: max(7vw, calc((100vw - 1120px) / 2));
+}
+.theme-obsidian .cx-intro { padding-top: 160px; padding-bottom: 130px; }
+.theme-obsidian .kicker { color: #c7a76b; text-transform: uppercase; letter-spacing: .12em; }
+.theme-obsidian .kicker:before { color: #c7a76b; }
+.theme-obsidian .cx-intro h2,
+.theme-obsidian .cx-statement h2 strong,
+.theme-obsidian .section-title h2 strong,
+.theme-obsidian .contact-content h2 strong { color: #e7c98f; }
+.theme-obsidian .body-copy,
+.theme-obsidian .cx-statement p:not(.kicker),
+.theme-obsidian .service-copy p,
+.theme-obsidian .method-grid p,
+.theme-obsidian .cx-faq details p { color: #9ca8b0; }
+.theme-obsidian .under-link,
+.theme-obsidian .service-copy a { color: #e7c98f; border-color: #c7a76b; }
+.theme-obsidian .cx-highlights {
+  max-width: 1120px;
+  background: #0b1119;
+  border-color: #c7a76b55;
+  box-shadow: none;
+}
+.theme-obsidian .cx-highlights article + article { border-color: #c7a76b3d; }
+.theme-obsidian .cx-highlights h3 { font-family: Georgia, serif; color: #f3eee3; font-size: 19px; }
+.theme-obsidian .cx-highlights p { color: #84939c; }
+.theme-obsidian .cx-services,
+.theme-obsidian .cx-method {
+  background: linear-gradient(180deg, #0d141e, #090e15);
+  border-block: 1px solid #c7a76b3b;
+}
+.theme-obsidian .section-title,
+.theme-obsidian .service-grid,
+.theme-obsidian .method-grid,
+.theme-obsidian .sector-note { max-width: 1120px; }
+.theme-obsidian .section-title .outline-number { color: #c7a76b08; -webkit-text-stroke-color: #c7a76b33; }
+.theme-obsidian .service-grid { gap: 1px; background: #c7a76b55; border: 1px solid #c7a76b55; }
+.theme-obsidian .service-grid article,
+.theme-obsidian .service-grid article.active,
+.theme-obsidian .service-grid article:hover {
+  background: #0f1721;
+  border-radius: 0;
+  box-shadow: none;
+}
+.theme-obsidian .service-grid article:hover,
+.theme-obsidian .service-grid article.active { transform: translateY(-5px); background: #141e29; }
+.theme-obsidian .service-visual { height: 235px; }
+.theme-obsidian .service-visual img { filter: grayscale(.35) sepia(.15); }
+.theme-obsidian .service-visual span,
+.theme-obsidian .service-orb { background: #c7a76b; color: #080d14; border-radius: 0; }
+.theme-obsidian .service-copy { padding: 30px; }
+.theme-obsidian .service-copy small { color: #c7a76b; }
+.theme-obsidian .service-copy h3,
+.theme-obsidian .method-grid h3 { font-family: Georgia, serif; color: #f3eee3; font-weight: 400; }
+.theme-obsidian .cx-statement { max-width: 1120px; }
+.theme-obsidian .statement-art { border-radius: 0; border: 1px solid #c7a76b55; filter: grayscale(.35) contrast(1.05); }
+.theme-obsidian .method-grid { border-color: #c7a76b55; }
+.theme-obsidian .method-grid article { border-color: #c7a76b55; }
+.theme-obsidian .method-grid article:hover { background: #121c27; }
+.theme-obsidian .method-grid b { background: transparent; color: #e7c98f; border: 1px solid #c7a76b; border-radius: 0; }
+.theme-obsidian .sector-note { border-color: #c7a76b55; color: #d8cfbf; }
+.theme-obsidian .roadmap-row article,
+.theme-obsidian .cx-faq details { border-color: #c7a76b55; }
+.theme-obsidian .roadmap-row b { font-family: Georgia, serif; color: #e7c98f; font-weight: 400; }
+.theme-obsidian .cx-faq summary { color: #e9e0d2; }
+.theme-obsidian .cx-faq summary span { color: #c7a76b; }
+.theme-obsidian .cx-contact {
+  max-width: none;
+  margin: 0;
+  min-height: 680px;
+  border-radius: 0;
+  border-block: 1px solid #c7a76b55;
+  background: #0a1018;
+  padding-inline: max(8vw, calc((100vw - 1120px) / 2));
+  box-shadow: none;
+}
+.theme-obsidian .contact-art { filter: grayscale(.6) sepia(.15); opacity: .32; }
+.theme-obsidian .contact-content input,
+.theme-obsidian .contact-content textarea { border-color: #c7a76b66; background: #080d1499; }
+.theme-obsidian footer { padding-top: 80px; }
+.theme-obsidian footer > div:last-child { border-color: #c7a76b55; }
+.theme-obsidian footer a { color: #e7c98f; }
+
+@media (max-width: 800px) {
+  .theme-obsidian .cx-hero { min-height: 850px; }
+  .theme-obsidian .cx-hero header { padding: 0 20px; }
+  .theme-obsidian .hero-copy,
+  .theme-obsidian.en .hero-copy { left: 7%; right: 7%; top: 25%; }
+  .theme-obsidian .hero-copy h1,
+  .theme-obsidian.en .hero-copy h1 { font-size: clamp(45px, 13vw, 62px); }
+  .theme-obsidian .cx-time,
+  .theme-obsidian.en .cx-time { left: 7%; right: 7%; top: 15%; }
+  .theme-obsidian .stat-card,
+  .theme-obsidian.en .stat-card { left: 7%; right: auto; bottom: 8%; width: 190px; min-height: 205px; }
+  .theme-obsidian .cx-intro,
+  .theme-obsidian .cx-roadmap,
+  .theme-obsidian .cx-faq,
+  .theme-obsidian footer { padding-inline: 24px; }
+  .theme-obsidian .cx-statement { padding-inline: 24px; }
+  .theme-obsidian .cx-contact { padding-inline: 24px; }
+}
