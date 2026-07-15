@@ -76,6 +76,16 @@ const themeNames: Record<
       "--peach": "#e2a77e",
     },
   },
+  obsidian: {
+    name: "Obsidian Atelier",
+    note: "هوية سوداء وذهبية متكاملة",
+    vars: {
+      "--ice": "#080d14",
+      "--blue": "#c7a76b",
+      "--aqua": "#70d5c3",
+      "--peach": "#e7c98f",
+    },
+  },
 };
 const content = {
   ar: {
