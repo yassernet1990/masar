@@ -780,23 +780,29 @@ function AdminPanel({
   const login = async (e: FormEvent) => {
     e.preventDefault();
     setError("");
-    const r = await fetch("/api/admin/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password }),
-    });
-    if (!r.ok) {
-      setError("البريد الإلكتروني أو كلمة المرور غير صحيحة");
-      return;
+    try {
+      const r = await fetch("/api/admin/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
+      if (!r.ok) {
+        setError("البريد الإلكتروني أو كلمة المرور غير صحيحة");
+        return;
+      }
+      const c = await fetch("/api/site-config", { cache: "no-store" }).then(
+        (x) => x.json(),
+      );
+      if (c.config) {
+        const merged = mergeEditable(content, c.config.content || {});
+        setSiteContent(merged as typeof content);
+        setConfig({ ...config, ...c.config });
+        setDraft(editableContent(merged));
+      }
+      setLogged(true);
+    } catch {
+      setError("تعذر الاتصال بالخادم. أعد تحميل الصفحة وحاول مجددًا.");
     }
-    const c = await fetch("/api/site-config").then((x) => x.json());
-    if (c.config) {
-      const merged = mergeEditable(content, c.config.content || {});
-      setSiteContent(merged as typeof content);
-      setConfig({ ...config, ...c.config });
-      setDraft(editableContent(merged));
-    }
-    setLogged(true);
   };
   const save = async () => {
     if (saving) return;
@@ -1130,11 +1136,7 @@ export default function Home() {
   const [clock, setClock] = useState("");
   const [activeService, setActiveService] = useState("01");
   const [pointer, setPointer] = useState({ x: 0, y: 0 });
-  const [admin, setAdmin] = useState(
-    () =>
-      typeof window !== "undefined" &&
-      new URLSearchParams(window.location.search).get("admin") === "1",
-  );
+  const [admin, setAdmin] = useState(false);
   const [siteContent, setSiteContent] = useState(content);
   const [config, setConfig] = useState<SiteConfig>({
     content,
@@ -1177,6 +1179,14 @@ export default function Home() {
       setSending(false);
     }
   };
+  useEffect(() => {
+    const syncAdminRoute = () =>
+      setAdmin(new URLSearchParams(window.location.search).get("admin") === "1");
+
+    syncAdminRoute();
+    window.addEventListener("popstate", syncAdminRoute);
+    return () => window.removeEventListener("popstate", syncAdminRoute);
+  }, []);
   useEffect(() => {
     fetch("/api/site-config")
       .then((r) => (r.ok ? r.json() : null))
@@ -1506,7 +1516,7 @@ export default function Home() {
         <div>
           <a href="mailto:info@masarps.com">info@masarps.com</a>
           <a href="tel:+966505476689">+966 50 547 6689</a>
-          <a className="admin-entry" href="?admin=1">
+          <a className="admin-entry" href="/admin">
             Admin
           </a>
           <span>© 2026 MASAR. {t.rights}</span>
