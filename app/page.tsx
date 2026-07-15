@@ -123,7 +123,7 @@ const themeNames: Record<
 const content = {
   ar: {
     nav: ["عن مسار", "خدماتنا", "منهجيتنا", "الأسئلة"],
-    lang: "English",
+    lang: "EN",
     contact: "تواصل",
     time: "2:55:04 م",
     place: "جدة، السعودية",
@@ -279,7 +279,7 @@ const content = {
   },
   en: {
     nav: ["About Masar", "Services", "Method", "FAQ"],
-    lang: "عربي",
+    lang: "AR",
     contact: "Contact",
     time: "2:55:04 PM",
     place: "Jeddah, Saudi Arabia",
@@ -1129,7 +1129,7 @@ function AdminPanel({
 }
 
 export default function Home() {
-  const [lang, setLang] = useState<Lang>("ar");
+  const [lang, setLang] = useState<Lang>("en");
   const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
   const [contactError, setContactError] = useState("");
