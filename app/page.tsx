@@ -3,15 +3,17 @@ import { FormEvent, useEffect, useState } from "react";
 import type { CSSProperties, PointerEvent } from "react";
 
 type Lang = "ar" | "en";
+type ThemeMedia = {
+  hero: string;
+  statement: string;
+  contact: string;
+  services: string[];
+};
 type SiteConfig = {
   content: typeof content;
   theme: string;
-  media: {
-    hero: string;
-    statement: string;
-    contact: string;
-    services: string[];
-  };
+  media: ThemeMedia;
+  mediaByTheme?: Record<string, ThemeMedia>;
 };
 type Inquiry = {
   id: string;
@@ -32,13 +34,46 @@ const defaultMedia = {
     "/images/warehouse.webp",
   ],
 };
+const themeMedia: Record<string, ThemeMedia> = {
+  masar: {
+    hero: "/themes/masar/hero.webp",
+    statement: "/themes/masar/editorial.webp",
+    contact: "/themes/masar/hero.webp",
+    services: [1, 2, 3, 4].map((n) => `/themes/masar/service-${n}.webp`),
+  },
+  midnight: {
+    hero: "/themes/midnight/hero.webp",
+    statement: "/themes/midnight/editorial.webp",
+    contact: "/themes/midnight/hero.webp",
+    services: [1, 2, 3, 4].map((n) => `/themes/midnight/service-${n}.webp`),
+  },
+  sand: {
+    hero: "/themes/sand/hero.webp",
+    statement: "/themes/sand/editorial.webp",
+    contact: "/themes/sand/hero.webp",
+    services: [1, 2, 3, 4].map((n) => `/themes/sand/service-${n}.webp`),
+  },
+  emerald: {
+    hero: "/themes/emerald/hero.webp",
+    statement: "/themes/emerald/editorial.webp",
+    contact: "/themes/emerald/hero.webp",
+    services: [1, 2, 3, 4].map((n) => `/themes/emerald/service-${n}.webp`),
+  },
+  obsidian: {
+    hero: "/themes/obsidian/hero.webp",
+    statement: "/themes/obsidian/editorial.webp",
+    contact: "/themes/obsidian/hero.webp",
+    services: [1, 2, 3, 4].map((n) => `/themes/obsidian/service-${n}.webp`),
+  },
+};
 const themeNames: Record<
   string,
-  { name: string; note: string; vars: Record<string, string> }
+  { name: string; note: string; identity: string; vars: Record<string, string> }
 > = {
   masar: {
     name: "Masar Signature",
-    note: "الهوية الحالية",
+    note: "مرن، إنساني، ومستقبلي",
+    identity: "Fluid Intelligence",
     vars: {
       "--ice": "#b8ccd5",
       "--blue": "#071bda",
@@ -48,7 +83,8 @@ const themeNames: Record<
   },
   midnight: {
     name: "Midnight Executive",
-    note: "داكن وفخم",
+    note: "مركز قيادة رقمي لسلاسل الإمداد",
+    identity: "Digital Command",
     vars: {
       "--ice": "#172536",
       "--blue": "#147dff",
@@ -58,7 +94,8 @@ const themeNames: Record<
   },
   sand: {
     name: "Sand & Copper",
-    note: "دافئ واستشاري",
+    note: "حداثة سعودية بطابع تحريري دافئ",
+    identity: "Desert Modernism",
     vars: {
       "--ice": "#dfd5c4",
       "--blue": "#173d64",
@@ -68,7 +105,8 @@ const themeNames: Record<
   },
   emerald: {
     name: "Emerald Flow",
-    note: "حديث وحيوي",
+    note: "مشتريات مستدامة وشبكات متجددة",
+    identity: "Regenerative Network",
     vars: {
       "--ice": "#cbded8",
       "--blue": "#075d68",
@@ -78,7 +116,8 @@ const themeNames: Record<
   },
   obsidian: {
     name: "Obsidian Atelier",
-    note: "هوية سوداء وذهبية متكاملة",
+    note: "دقة تنفيذية سوداء وذهبية",
+    identity: "Executive Atelier",
     vars: {
       "--ice": "#080d14",
       "--blue": "#c7a76b",
@@ -852,6 +891,17 @@ function AdminPanel({
   const selectedSection =
     contentSections.find((section) => section.id === contentSection) ||
     contentSections[0];
+  const activeThemeKey = themeNames[config.theme] ? config.theme : "masar";
+  const activeThemeMedia =
+    config.mediaByTheme?.[activeThemeKey] ||
+    themeMedia[activeThemeKey] ||
+    config.media ||
+    defaultMedia;
+  const setActiveThemeMedia = (next: ThemeMedia) =>
+    setConfig({
+      ...config,
+      mediaByTheme: { ...config.mediaByTheme, [activeThemeKey]: next },
+    });
   return (
     <div className="admin-shell">
       <div className="admin-panel">
@@ -971,10 +1021,13 @@ function AdminPanel({
           )}
           {tab === "visuals" && (
             <div className="admin-card media-card">
-              <h3>مكتبة الصور</h3>
+              <span className="admin-eyebrow">
+                {themeNames[activeThemeKey].identity}
+              </span>
+              <h3>صور ثيم {themeNames[activeThemeKey].name}</h3>
               <p>
-                ضع رابط الصورة الجديدة، أو رابط صورة مستضافة على موقعك. سيظهر
-                التغيير مباشرة بعد الحفظ.
+                لكل ثيم مكتبته المستقلة. غيّر الصورة هنا ولن تتأثر صور الثيمات
+                الأخرى.
               </p>
               {(
                 [
@@ -986,30 +1039,27 @@ function AdminPanel({
                 <label key={key}>
                   {label}
                   <input
-                    value={config.media[key]}
+                    value={activeThemeMedia[key]}
                     onChange={(e) =>
-                      setConfig({
-                        ...config,
-                        media: { ...config.media, [key]: e.target.value },
+                      setActiveThemeMedia({
+                        ...activeThemeMedia,
+                        [key]: e.target.value,
                       })
                     }
                   />
-                  <img src={config.media[key]} alt="" />
+                  <img src={activeThemeMedia[key]} alt="" />
                 </label>
               ))}
               <h3>صور الخدمات</h3>
-              {config.media.services.map((src, i) => (
+              {activeThemeMedia.services.map((src, i) => (
                 <label key={i}>
                   الخدمة {String(i + 1).padStart(2, "0")}
                   <input
                     value={src}
                     onChange={(e) => {
-                      const services = [...config.media.services];
+                      const services = [...activeThemeMedia.services];
                       services[i] = e.target.value;
-                      setConfig({
-                        ...config,
-                        media: { ...config.media, services },
-                      });
+                      setActiveThemeMedia({ ...activeThemeMedia, services });
                     }}
                   />
                 </label>
@@ -1025,7 +1075,7 @@ function AdminPanel({
                   onClick={() => setConfig({ ...config, theme: key })}
                 >
                   <span
-                    className="theme-preview"
+                    className={`theme-preview preview-${key}`}
                     style={item.vars as CSSProperties}
                   >
                     <i />
@@ -1033,6 +1083,7 @@ function AdminPanel({
                     <i />
                   </span>
                   <b>{item.name}</b>
+                  <span className="theme-identity">{item.identity}</span>
                   <small>{item.note}</small>
                   {config.theme === key && <em>مفعّل</em>}
                 </button>
@@ -1091,7 +1142,12 @@ export default function Home() {
     media: defaultMedia,
   });
   const t = siteContent[lang];
-  const media = config.media || defaultMedia;
+  const activeTheme = themeNames[config.theme] ? config.theme : "masar";
+  const media =
+    config.mediaByTheme?.[activeTheme] ||
+    themeMedia[activeTheme] ||
+    config.media ||
+    defaultMedia;
   const go = (id: string) =>
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   const submit = async (e: FormEvent<HTMLFormElement>) => {
@@ -1184,12 +1240,12 @@ export default function Home() {
         }}
       />
     );
-  const themeVars = themeNames[config.theme]?.vars || themeNames.masar.vars;
+  const themeVars = themeNames[activeTheme]?.vars || themeNames.masar.vars;
   return (
     <main
       id="top"
       dir={lang === "ar" ? "rtl" : "ltr"}
-      className={`cx-page ${lang} theme-${config.theme}`}
+      className={`cx-page ${lang} theme-${activeTheme}`}
       style={
         {
           ...themeVars,
@@ -1203,6 +1259,8 @@ export default function Home() {
         onPointerMove={move}
         onPointerLeave={() => setPointer({ x: 0, y: 0 })}
       >
+        <div className="theme-grid-lines" aria-hidden="true" />
+        <div className="theme-orbit" aria-hidden="true" />
         <div
           className="cx-art hero-art"
           style={{ backgroundImage: `url(${media.hero})` }}
@@ -1246,6 +1304,10 @@ export default function Home() {
           <i>{t.statSource}</i>
         </div>
         <div className="hero-dots">••••••</div>
+        <div className="hero-identity" aria-hidden="true">
+          <span>MASAR / 0{Object.keys(themeNames).indexOf(activeTheme) + 1}</span>
+          <b>{themeNames[activeTheme].identity}</b>
+        </div>
       </section>
       <section id="about" className="cx-intro reveal">
         <div>
@@ -1277,7 +1339,7 @@ export default function Home() {
           <span className="outline-number">04</span>
         </div>
         <div className="service-grid">
-          {t.services.map((x) => (
+          {t.services.map((x, serviceIndex) => (
             <article
               key={x[0]}
               className={activeService === x[0] ? "active" : ""}
@@ -1286,7 +1348,16 @@ export default function Home() {
               tabIndex={0}
             >
               <div className="service-visual">
-                <img src={media.services[Number(x[0]) - 1]} alt="" />
+                <img
+                  src={media.services[Number(x[0]) - 1]}
+                  alt=""
+                  className="theme-service-image"
+                  style={
+                    media.services.every((src) => src === media.services[0])
+                      ? ({ "--service-index": serviceIndex } as CSSProperties)
+                      : undefined
+                  }
+                />
                 <span>{x[0]}</span>
                 <div className="service-orb">↗</div>
               </div>
