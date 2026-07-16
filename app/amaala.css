@@ -1,0 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Noto+Kufi+Arabic:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap');
+
+/* AMAALA-inspired light editorial theme for MASAR */
+body[data-masar-theme="amaala"]{background:#f4f0e8}
+body[data-masar-theme="amaala"] .cx-page{--ice:#f4f0e8;--ink:#302f2b;--blue:#8b5545;--blue2:#694034;--aqua:#b9c7b7;--mint:#dfe7d7;--peach:#d6b18a;--line:#d8d0c3;background:#f4f0e8;color:#302
