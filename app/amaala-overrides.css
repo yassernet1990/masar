@@ -1,11 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&family=Noto+Serif+Arabic:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&family=Noto+Serif+Arabic:wght@400;500;600;700&display=swap');
 
-.theme-amaala{width:min(1240px,calc(100% - 40px));margin:20px auto;padding:0;border-radius:18px;overflow:hidden;box-shadow:0 18px 70px rgba(48,47,43,.08)}
-.theme-amaala:not(.en),.theme-amaala:not(.en) *{font-family:"IBM Plex Sans Arabic","Cairo",sans-serif!important}
-.theme-amaala:not(.en) h1,.theme-amaala:not(.en) h2,.theme-amaala:not(.en) h3,.theme-amaala:not(.en) h4,.theme-amaala:not(.en) strong,.theme-amaala:not(.en) .stat-card strong,.theme-amaala:not(.en) .roadmap-row b{font-family:"Noto Serif Arabic",serif!important}
-.theme-amaala .cx-hero{height:calc(100vh - 40px);min-height:700px;border-radius:18px}
-.theme-amaala .cx-services,.theme-amaala .cx-method{padding-left:40px;padding-right:40px}
-.theme-amaala .cx-contact{margin-left:20px;margin-right:20px;margin-bottom:20px}
-.theme-amaala footer{padding-left:40px;padding-right:40px}
-@media(max-width:900px){.theme-amaala{width:calc(100% - 20px);margin:10px auto;border-radius:14px}.theme-amaala .cx-hero{height:calc(100svh - 20px);border-radius:14px}.theme-amaala .cx-services,.theme-amaala .cx-method,.theme-amaala footer{padding-left:24px;padding-right:24px}.theme-amaala .cx-contact{margin-left:10px;margin-right:10px}}
-@media(max-width:600px){.theme-amaala{width:100%;margin:0;border-radius:0}.theme-amaala .cx-hero{height:100svh;border-radius:0}.theme-amaala .cx-contact{margin-left:0;margin-right:0;margin-bottom:0}}
+html:has(body.theme-amaala),body.theme-amaala{background:#f4f0e8!important}
+body.theme-amaala{width:auto!important;max-width:none!important;margin:0!important;padding:0!important;border-radius:0!important;box-shadow:none!important;overflow-x:hidden}
