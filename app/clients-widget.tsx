@@ -35,14 +35,9 @@ function normalize(value: unknown): ClientsConfig {
     ...defaults,
     ...input,
     items: Array.isArray(input.items) && input.items.length
-      ? input.items.map((item) => ({
-          name: String(item?.name || "Client"),
-          logo: item?.logo ? String(item.logo) : "",
-        }))
+      ? input.items.map((item) => ({ name: String(item?.name || "Client"), logo: item?.logo ? String(item.logo) : "" }))
       : defaults.items,
   };
 }
 
 export default function ClientsWidget() {
-  const [config, setConfig] = useState<ClientsConfig>(defaults);
-  const [siteConfig,
