@@ -222,6 +222,7 @@ export default function ClientsWidget() {
   const [adminOpen, setAdminOpen] = useState(false);
   const [adminAvailable, setAdminAvailable] = useState(false);
   const [portalTarget, setPortalTarget] = useState<HTMLElement | null>(null);
+  const [adminNavTarget, setAdminNavTarget] = useState<HTMLElement | null>(null);
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState("");
 
@@ -232,6 +233,8 @@ export default function ClientsWidget() {
       const page = document.querySelector(".cx-page");
       setLang(page?.classList.contains("ar") ? "ar" : "en");
       setAdminAvailable(Boolean(document.querySelector(".admin-panel")));
+      const adminAside = document.querySelector<HTMLElement>(".admin-panel aside");
+      setAdminNavTarget(adminAside);
       const hero = document.querySelector(".cx-hero");
       if (hero) {
         let target = document.getElementById("masar-clients-portal");
@@ -293,15 +296,18 @@ export default function ClientsWidget() {
           <ClientsSection clients={normalizedClients} lang={lang} />,
           portalTarget,
         )}
-      {adminAvailable && (
-        <button
-          type="button"
-          className="clients-admin-trigger"
-          onClick={() => setAdminOpen(true)}
-        >
-          العملاء
-        </button>
-      )}
+      {adminAvailable &&
+        adminNavTarget &&
+        createPortal(
+          <button
+            type="button"
+            className={`clients-admin-trigger ${adminOpen ? "active" : ""}`}
+            onClick={() => setAdminOpen(true)}
+          >
+            العملاء
+          </button>,
+          adminNavTarget,
+        )}
       {adminOpen && (
         <div className="clients-admin-overlay" role="dialog" aria-modal="true">
           <div className="admin-card clients-admin-modal">
