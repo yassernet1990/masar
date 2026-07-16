@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import "./amaala.css";
+import ThemeBridge from "./theme-bridge";
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://masar-procurement.yasserkadir-3919.chatgpt.site"),
@@ -22,8 +24,8 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image", title: "MASAR Procurement Solutions", images: ["/images/masar-hero.png"] },
 };
 
-export const viewport: Viewport = { width: "device-width", initialScale: 1, themeColor: "#071bda" };
+export const viewport: Viewport = { width: "device-width", initialScale: 1, themeColor: "#f4f0e8" };
 
 export default function RootLayout({children}:{children:React.ReactNode}) {
-  return <html lang="ar" suppressHydrationWarning><body>{children}</body></html>;
+  return <html lang="ar" suppressHydrationWarning><body><ThemeBridge />{children}</body></html>;
 }
