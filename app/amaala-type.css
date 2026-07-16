@@ -1,0 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&family=Noto+Serif+Arabic:wght@400;500;600;700&display=swap');
+main.cx-page.theme-amaala[dir='rtl'],main.cx-page.theme-amaala[dir='rtl'] *{font-family:'IBM Plex Sans Arabic',sans-serif!important}
+main.cx-page.theme-amaala[dir='rtl'] .hero-copy h1,main.cx-page.theme-amaala[dir='rtl'] .hero-copy h1 *,main.cx-page.theme-amaala[dir='rtl'] h2,main.cx-page.theme-amaala[dir='rtl'] h2 *,main.cx-page.theme-amaala[dir='rtl'] h3,main.cx-page.theme-amaala[dir='rtl'] h3 *,main.cx-page.theme-amaala[dir='rtl'] h4,main.cx-page.theme-amaala[dir='rtl'] h4 *,main.cx-page.theme-amaala[dir='rtl'] .stat-card strong,main.cx-page.theme-amaala[dir='rtl'] .roadmap-row b{font-family:'Noto Serif Arabic',serif!important}
+main.cx-page.theme-amaala[dir='rtl'] .hero-copy h1{font-weight:500!important;letter-spacing:0!important;line-height:1.12!important}
