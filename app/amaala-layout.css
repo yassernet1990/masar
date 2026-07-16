@@ -1,0 +1,5 @@
+html,body{margin:0;min-width:100%;background:#f4f0e8!important;overflow-x:hidden}
+main.cx-page.theme-amaala{display:block!important;width:calc(100% - 48px)!important;max-width:1240px!important;margin:24px auto!important;padding:0!important;border-radius:18px!important;overflow:hidden!important;background:#f4f0e8!important;box-shadow:0 18px 70px rgba(48,47,43,.08)!important}
+main.cx-page.theme-amaala .cx-hero{height:calc(100vh - 48px)!important;min-height:700px!important;border-radius:18px!important}
+@media(max-width:900px){main.cx-page.theme-amaala{width:calc(100% - 20px)!important;margin:10px auto!important;border-radius:14px!important}main.cx-page.theme-amaala .cx-hero{height:calc(100svh - 20px)!important;border-radius:14px!important}}
+@media(max-width:600px){main.cx-page.theme-amaala{width:100%!important;margin:0!important;border-radius:0!important}main.cx-page.theme-amaala .cx-hero{height:100svh!important;border-radius:0!important}}
