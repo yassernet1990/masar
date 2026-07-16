@@ -1,4 +1,69 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&family=Manrope:wght@300;400;500;600&family=Noto+Serif+Arabic:wght@400;500;600&display=swap');
-
-/* AMAALA-inspired light editorial theme for MASAR */
-.theme-amaala{--ice:#f4f0e8;--ink:#302f2b;--blue:#8b5545;--blue2:#694034;--aqua:#b9c7b7;--mint:#dfe7
+.theme-amaala{--ice:#f4f0e8;--ink:#302f2b;--blue:#8b5545;--blue2:#694034;--aqua:#b9c7b7;--mint:#dfe7d7;--peach:#d6b18a;--line:#d8d0c3;background:#f4f0e8;color:#302f2b;padding:0;font-family:"IBM Plex Sans Arabic","Cairo",sans-serif;font-weight:400}
+.theme-amaala.en{font-family:"Manrope","DM Sans",sans-serif}
+.theme-amaala .cx-hero{height:100vh;min-height:720px;border-radius:0;background:#efe9df;color:#302f2b;box-shadow:none}
+.theme-amaala .hero-art{inset:0 0 0 49%;filter:saturate(.72) contrast(.94) brightness(1.03);transform:scale(1.01)}
+.theme-amaala.en .hero-art{inset:0 49% 0 0}
+.theme-amaala .hero-art:after{background:linear-gradient(90deg,#f4f0e8 0%,#f4f0e8ee 35%,#f4f0e822 70%,transparent 100%)}
+.theme-amaala.en .hero-art:after{background:linear-gradient(270deg,#f4f0e8 0%,#f4f0e8ee 35%,#f4f0e822 70%,transparent 100%)}
+.theme-amaala .hero-light{position:absolute;inset:0;z-index:1;background:radial-gradient(circle at 20% 18%,#fff8,transparent 34%);pointer-events:none}
+.theme-amaala .cx-hero header{height:98px;max-width:none;margin:0;padding:0 5vw;border-bottom:1px solid #cfc5b7;background:#f4f0e8e8;backdrop-filter:blur(18px)}
+.theme-amaala .cx-logo,.theme-amaala .cx-hero nav a,.theme-amaala .cx-actions button{color:#302f2b}
+.theme-amaala .logo-word b{font-family:"Manrope",sans-serif;letter-spacing:.18em;font-weight:500}
+.theme-amaala .logo-word small{font-family:"Manrope",sans-serif;letter-spacing:.18em;color:#7c756c}
+.theme-amaala .cx-hero nav{gap:40px;font-size:11px;letter-spacing:.04em}
+.theme-amaala .contact-chip,.theme-amaala .cx-button{background:#8b5545;color:#fff!important;border-radius:0;padding:14px 23px;box-shadow:none;font-weight:500}
+.theme-amaala .contact-chip:hover,.theme-amaala .cx-button:hover{background:#694034;transform:none}
+.theme-amaala .cx-time{right:7%;top:18%;color:#6f685f;font-size:10px;letter-spacing:.06em}
+.theme-amaala.en .cx-time{left:7%;right:auto}
+.theme-amaala .hero-copy{right:7%;top:27%;max-width:570px}
+.theme-amaala.en .hero-copy{left:7%;right:auto}
+.theme-amaala .hero-copy h1,.theme-amaala .cx-intro h2,.theme-amaala .section-title h2,.theme-amaala .cx-statement h2,.theme-amaala .cx-roadmap h2,.theme-amaala .cx-faq h2,.theme-amaala .contact-content h2{font-family:"Noto Serif Arabic",serif;font-weight:500;letter-spacing:-.025em}
+.theme-amaala.en .hero-copy h1,.theme-amaala.en .cx-intro h2,.theme-amaala.en .section-title h2,.theme-amaala.en .cx-statement h2,.theme-amaala.en .cx-roadmap h2,.theme-amaala.en .cx-faq h2,.theme-amaala.en .contact-content h2{font-family:"Cormorant Garamond",Georgia,serif;letter-spacing:-.035em}
+.theme-amaala .hero-copy h1{font-size:clamp(58px,7vw,108px);line-height:1.08;color:#302f2b}
+.theme-amaala.en .hero-copy h1{line-height:.91}
+.theme-amaala .hero-copy h1 strong{color:#8b5545;font-weight:500}
+.theme-amaala.en .hero-copy h1 strong{font-style:italic}
+.theme-amaala .hero-copy p{max-width:470px;color:#655f57;font-size:13px;line-height:2}
+.theme-amaala .stat-card{left:7%;right:auto;top:auto;bottom:8%;width:270px;min-height:205px;padding:32px;background:#fffaf2dd;color:#302f2b;border:1px solid #d6ccbd;border-radius:0;box-shadow:18px 18px 0 #d9c7b2;transform:none}
+.theme-amaala.en .stat-card{right:7%;left:auto}
+.theme-amaala .stat-card strong{font-family:"Cormorant Garamond",serif;font-size:72px;font-weight:500;color:#8b5545}
+.theme-amaala .hero-dots{display:none}
+.theme-amaala .cx-intro,.theme-amaala .cx-statement,.theme-amaala .cx-roadmap,.theme-amaala .cx-faq,.theme-amaala footer{max-width:1240px}
+.theme-amaala .cx-intro{padding:180px 5vw 125px;grid-template-columns:.9fr 1.1fr}
+.theme-amaala .cx-intro h2,.theme-amaala .section-title h2 strong,.theme-amaala .cx-statement h2 strong{color:#8b5545;font-weight:500}
+.theme-amaala .kicker{color:#8b5545;text-transform:uppercase;letter-spacing:.14em;font-size:10px}
+.theme-amaala .kicker:before{content:"—";color:#8b5545}
+.theme-amaala .body-copy,.theme-amaala .service-copy p,.theme-amaala .method-grid p,.theme-amaala .cx-faq details p,.theme-amaala .cx-statement p:not(.kicker){color:#6f685f}
+.theme-amaala .under-link,.theme-amaala .service-copy a{color:#8b5545;border-color:#bda895}
+.theme-amaala .cx-highlights{max-width:1240px;background:transparent;border-color:#d1c7b9;margin-bottom:150px}
+.theme-amaala .cx-highlights article{min-height:185px;padding:45px 35px}
+.theme-amaala .cx-highlights article:nth-child(2){background:#ebe3d7}
+.theme-amaala .cx-services{background:#e8e1d6;padding:145px 5vw 165px}
+.theme-amaala .section-title,.theme-amaala .service-grid,.theme-amaala .method-grid,.theme-amaala .sector-note{max-width:1240px}
+.theme-amaala .service-grid{grid-template-columns:repeat(2,1fr);gap:58px 36px}
+.theme-amaala .service-grid article{background:transparent;border-radius:0;box-shadow:none;overflow:visible}
+.theme-amaala .service-grid article:nth-child(even){margin-top:80px}
+.theme-amaala .service-grid article:hover{transform:none}
+.theme-amaala .service-visual{height:390px;overflow:hidden}
+.theme-amaala .service-visual img{filter:saturate(.7);transition:transform .8s ease}
+.theme-amaala .service-grid article:hover img{transform:scale(1.035)}
+.theme-amaala .service-visual span{width:48px;height:48px;border-radius:0;background:#f4f0e8;color:#8b5545}
+.theme-amaala .service-copy{padding:28px 0 0}
+.theme-amaala .service-copy h3,.theme-amaala .method-grid h3{font-family:"Noto Serif Arabic",serif;font-weight:500;font-size:30px}
+.theme-amaala.en .service-copy h3,.theme-amaala.en .method-grid h3{font-family:"Cormorant Garamond",Georgia,serif}
+.theme-amaala .cx-statement{padding:170px 0;gap:10vw}
+.theme-amaala .statement-art{height:620px;border-radius:0;box-shadow:32px 32px 0 #d8c8b4}
+.theme-amaala .cx-method{background:#f4f0e8;padding:145px 5vw 0}
+.theme-amaala .method-grid,.theme-amaala .method-grid article,.theme-amaala .sector-note,.theme-amaala .roadmap-row article,.theme-amaala .cx-faq details{border-color:#d1c7b9}
+.theme-amaala .method-grid article{padding:48px 34px 70px}
+.theme-amaala .method-grid b{background:transparent;color:#8b5545;border:1px solid #8b5545}
+.theme-amaala .roadmap-row b{font-family:"Cormorant Garamond",serif;font-weight:500;color:#8b5545}
+.theme-amaala .cx-contact{max-width:1240px;border-radius:0;background:#6f594f;padding:95px;color:#fff}
+.theme-amaala .contact-art{filter:saturate(.55) sepia(.12) brightness(.58);opacity:.42}
+.theme-amaala .contact-content h2 strong{color:#ead7bc}
+.theme-amaala footer{color:#665f57;padding-top:85px}
+.theme-amaala footer .cx-logo{color:#302f2b}
+.preview-amaala{background:linear-gradient(115deg,#f4f0e8 0 58%,#b58b72 58% 100%)!important;border-radius:0!important}
+.preview-amaala i:first-child{background:#8b5545!important}.preview-amaala i:nth-child(2){background:#d6b18a!important}.preview-amaala i:nth-child(3){background:#b9c7b7!important}
+@media(max-width:800px){.theme-amaala .cx-hero{min-height:850px;height:100svh}.theme-amaala .cx-hero header{height:76px;padding:0 20px}.theme-amaala .hero-art,.theme-amaala.en .hero-art{inset:46% 0 0}.theme-amaala .hero-art:after,.theme-amaala.en .hero-art:after{background:linear-gradient(180deg,#f4f0e8 0%,#f4f0e8dd 22%,transparent 70%)}.theme-amaala .hero-copy,.theme-amaala.en .hero-copy{left:24px;right:24px;top:19%}.theme-amaala .hero-copy h1{font-size:50px}.theme-amaala .cx-time{display:none}.theme-amaala .stat-card,.theme-amaala.en .stat-card{left:24px;right:auto;bottom:5%;width:190px;min-height:165px;padding:22px;box-shadow:10px 10px 0 #d9c7b2}.theme-amaala .stat-card strong{font-size:52px}.theme-amaala .cx-intro,.theme-amaala .cx-statement,.theme-amaala .cx-faq{padding:95px 24px}.theme-amaala .cx-highlights{margin:0 24px 95px}.theme-amaala .cx-services,.theme-amaala .cx-method{padding:95px 24px}.theme-amaala .service-grid{grid-template-columns:1fr;gap:60px}.theme-amaala .service-grid article:nth-child(even){margin-top:0}.theme-amaala .service-visual{height:310px}.theme-amaala .statement-art{height:360px;box-shadow:14px 14px 0 #d8c8b4}.theme-amaala .cx-contact{margin:0;padding:65px 25px}.theme-amaala footer{padding-inline:24px}}
