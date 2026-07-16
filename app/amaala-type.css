@@ -1,4 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&family=Noto+Serif+Arabic:wght@400;500;600;700&display=swap');
-main.cx-page.theme-amaala[dir='rtl'],main.cx-page.theme-amaala[dir='rtl'] *{font-family:'IBM Plex Sans Arabic',sans-serif!important}
-main.cx-page.theme-amaala[dir='rtl'] .hero-copy h1,main.cx-page.theme-amaala[dir='rtl'] .hero-copy h1 *,main.cx-page.theme-amaala[dir='rtl'] h2,main.cx-page.theme-amaala[dir='rtl'] h2 *,main.cx-page.theme-amaala[dir='rtl'] h3,main.cx-page.theme-amaala[dir='rtl'] h3 *,main.cx-page.theme-amaala[dir='rtl'] h4,main.cx-page.theme-amaala[dir='rtl'] h4 *,main.cx-page.theme-amaala[dir='rtl'] .stat-card strong,main.cx-page.theme-amaala[dir='rtl'] .roadmap-row b{font-family:'Noto Serif Arabic',serif!important}
-main.cx-page.theme-amaala[dir='rtl'] .hero-copy h1{font-weight:500!important;letter-spacing:0!important;line-height:1.12!important}
+/* Exact Masar Signature typography for Amaala */
+main.cx-page.theme-amaala{font-family:"Cairo","DejaVu Sans",Arial,sans-serif!important}
+main.cx-page.theme-amaala *,main.cx-page.theme-amaala *::before,main.cx-page.theme-amaala *::after{font-family:inherit!important}
+main.cx-page.theme-amaala.en,main.cx-page.theme-amaala.en *{font-family:"DM Sans","DejaVu Sans",Arial,sans-serif!important}
+main.cx-page.theme-amaala button,main.cx-page.theme-amaala input,main.cx-page.theme-amaala textarea,main.cx-page.theme-amaala select{font-family:inherit!important}
+main.cx-page.theme-amaala .cx-logo b{font-family:"DM Sans",Arial,sans-serif!important;font-weight:700!important;letter-spacing:.04em!important}
+main.cx-page.theme-amaala .cx-logo small{font-family:Arial,sans-serif!important;font-weight:600!important;letter-spacing:.13em!important}
+main.cx-page.theme-amaala .stat-card strong,main.cx-page.theme-amaala .cx-highlights span,main.cx-page.theme-amaala .section-title .outline-number,main.cx-page.theme-amaala .service-visual span,main.cx-page.theme-amaala .service-copy small,main.cx-page.theme-amaala .method-grid b,main.cx-page.theme-amaala .roadmap-row b,main.cx-page.theme-amaala .cx-faq summary span{font-family:"DM Sans",Arial,sans-serif!important}
+main.cx-page.theme-amaala .hero-copy h1{font-weight:700!important;letter-spacing:-.065em!important;line-height:1.08!important}
+main.cx-page.theme-amaala .hero-copy h1 strong{font-weight:800!important}
+main.cx-page.theme-amaala.en .hero-copy h1{font-family:"DM Sans",Arial,sans-serif!important;font-weight:700!important;letter-spacing:-.07em!important;line-height:.98!important}
