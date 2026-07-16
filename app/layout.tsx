@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import "./amaala.css";
+import "./amaala-overrides.css";
 import ThemeBridge from "./theme-bridge";
 
 export const metadata: Metadata = {
