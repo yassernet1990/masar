@@ -1,6 +1,2 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&family=Noto+Serif+Arabic:wght@400;500;600;700&display=swap');
-
-html,body{min-width:100%;margin:0}
-body:has(>main.theme-amaala){background:#f4f0e8!important;overflow-x:hidden}
-
-body>main.cx-page.theme-amaala{display:block!important;width:calc(100% - 48px)!important;max-width:1240px!important;margin:24px auto!important;padding:0!important;border-radius:18px!important;overflow:hidden!important
+@import "./amaala-layout.css";
+@import "./amaala-type.css";
