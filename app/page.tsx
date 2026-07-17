@@ -1135,6 +1135,7 @@ export default function Home() {
   const [contactError, setContactError] = useState("");
   const [clock, setClock] = useState("");
   const [activeService, setActiveService] = useState("01");
+  const [activeHeroSlide, setActiveHeroSlide] = useState(0);
   const [pointer, setPointer] = useState({ x: 0, y: 0 });
   const [admin, setAdmin] = useState(false);
   const [siteContent, setSiteContent] = useState(content);
@@ -1144,6 +1145,22 @@ export default function Home() {
     media: defaultMedia,
   });
   const t = siteContent[lang];
+  const heroSlides =
+    lang === "ar"
+      ? [
+          ["360°", "تغطية متكاملة", "من تحديد الاحتياج والتوريد إلى التعاقد والخدمات اللوجستية والتسليم."],
+          ["100%", "وضوح كامل", "مقارنات واضحة وقرارات موثقة وتقارير شفافة في كل مرحلة."],
+          ["3×", "منافسة الموردين", "خيارات مؤهلة تعزز التفاوض وتحقق قيمة تجارية أفضل."],
+          ["24/7", "متابعة مستمرة", "تنسيق متواصل مع الموردين والشحن والتسليم."],
+          ["4", "ركائز الخدمة", "التوريد والتعاقد والخدمات اللوجستية وإدارة الموردين."],
+        ]
+      : [
+          ["360°", "Full-cycle coverage", "From need definition and sourcing to contracting, logistics and delivery."],
+          ["100%", "Process visibility", "Clear comparisons, documented decisions and transparent reporting."],
+          ["3×", "Supplier competition", "Qualified options that strengthen negotiation and commercial value."],
+          ["24/7", "Active follow-up", "Continuous coordination across suppliers, shipping and delivery."],
+          ["4", "Core service pillars", "Sourcing, contracting, logistics and vendor management."],
+        ];
   const activeTheme = themeNames[config.theme] ? config.theme : "masar";
   const media =
     activeTheme === "masar"
@@ -1231,6 +1248,13 @@ export default function Home() {
     els.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
   }, [lang]);
+  useEffect(() => {
+    const timer = window.setInterval(
+      () => setActiveHeroSlide((index) => (index + 1) % 5),
+      5000,
+    );
+    return () => window.clearInterval(timer);
+  }, []);
   const move = (e: PointerEvent<HTMLElement>) => {
     const r = e.currentTarget.getBoundingClientRect();
     setPointer({
@@ -1313,10 +1337,33 @@ export default function Home() {
             {t.heroCta} ↓
           </button>
         </div>
-        <div className="stat-card">
-          <strong>{t.stat}</strong>
-          <p>{t.statText}</p>
-          <i>{t.statSource}</i>
+        <div className="hero-card">
+          <div className="hero-slides" aria-live="polite">
+            {heroSlides.map((slide, index) => (
+              <article
+                key={slide[1]}
+                className={activeHeroSlide === index ? "active" : ""}
+                aria-hidden={activeHeroSlide !== index}
+              >
+                <strong>{slide[0]}</strong>
+                <h3>{slide[1]}</h3>
+                <p>{slide[2]}</p>
+                <b>MASAR PROCUREMENT</b>
+              </article>
+            ))}
+          </div>
+          <div className="hero-card-dots" aria-label={lang === "ar" ? "شرائح الواجهة" : "Hero slides"}>
+            {heroSlides.map((slide, index) => (
+              <button
+                key={slide[1]}
+                type="button"
+                className={activeHeroSlide === index ? "active" : ""}
+                aria-label={slide[1]}
+                aria-pressed={activeHeroSlide === index}
+                onClick={() => setActiveHeroSlide(index)}
+              />
+            ))}
+          </div>
         </div>
         <div className="hero-dots">••••••</div>
         {activeTheme !== "masar" && (
