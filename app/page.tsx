@@ -29,7 +29,7 @@ const defaultMedia = {
   contact: "/images/delivery.webp",
   services: [
     "/images/sourcing.webp",
-    "/images/network.webp",
+    "https://images.pexels.com/photos/2804929/pexels-photo-2804929.jpeg?auto=compress&cs=tinysrgb&w=1200",
     "/images/trade.webp",
     "/images/warehouse.webp",
   ],
@@ -1168,6 +1168,13 @@ export default function Home() {
       : config.mediaByTheme?.[activeTheme] ||
         themeMedia[activeTheme] ||
         defaultMedia;
+  const serviceMedia = [...media.services];
+  if (
+    activeTheme === "masar" &&
+    serviceMedia[1] === "/images/network.webp"
+  ) {
+    serviceMedia[1] = "https://images.pexels.com/photos/2804929/pexels-photo-2804929.jpeg?auto=compress&cs=tinysrgb&w=1200";
+  }
   const go = (id: string) =>
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   const submit = async (e: FormEvent<HTMLFormElement>) => {
@@ -1412,7 +1419,7 @@ export default function Home() {
               tabIndex={0}
             >
               <div className="service-visual">
-                <img src={media.services[Number(x[0]) - 1]} alt="" />
+                <img src={serviceMedia[Number(x[0]) - 1]} alt="" />
                 <span>{x[0]}</span>
                 <div className="service-orb">↗</div>
               </div>
