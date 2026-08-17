@@ -1,0 +1,3 @@
+MASAR deploy trigger
+2026-08-17T17:30:00Z
+Purpose: force Hostinger to redeploy current GitHub main with updated MASAR services and images.
