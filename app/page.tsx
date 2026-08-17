@@ -156,7 +156,7 @@ const content = {
       </>
     ),
     introText:
-      "مسار لحلول المشتريات شركة متخصصة في الاستشارات، التوريد الاستراتيجي، إدارة الموردين، التجارة، الاستيراد، التخزين والتسليم. نعمل كامتداد لفريقك لنحمي التكلفة والجودة والوقت.",
+      "مسار لحلول المشتريات شركة متخصصة في الاستشارات، التوريد الاستراتيجي، إدارة الموردين، تأسيس الأعمال، بناء الأنظمة التشغيلية، وتطوير الهوية والحضور في السوق. نعمل كامتداد لفريقك لنحمي التكلفة والجودة والوقت.",
     highlight: [
       ["01", "خبرة عملية", "قرارات شراء مبنية على السوق، لا على التخمين."],
       [
@@ -194,15 +194,15 @@ const content = {
       ],
       [
         "03",
-        "التجارة والتوريد والاستيراد",
-        "تأمين السلع والخدمات، الشحن، الجمارك والامتثال في أسواق المنطقة.",
-        "/images/cx-network.png",
+        "تأسيس الأعمال والأنظمة التشغيلية",
+        "نموذج العمل، تصميم الخدمات، الهيكل التنظيمي، الوصف الوظيفي، السياسات والإجراءات والنماذج.",
+        "/images/cx-method.png",
       ],
       [
         "04",
-        "التخزين والمخزون والتسليم",
-        "تخزين منظم، تتبع لحظي للمخزون، وتنسيق تسليم موثوق.",
-        "/images/cx-method.png",
+        "الهوية والحضور في السوق",
+        "الاسم والهوية البصرية، الملف التعريفي، الموقع، لينكدإن وأصول الإطلاق التسويقي.",
+        "/images/cx-network.png",
       ],
     ],
     whyK: "لماذا مسار؟",
@@ -247,11 +247,11 @@ const content = {
       ],
       [
         "هل تعملون مع موردين خارج السعودية؟",
-        "نعم، نربط عملاءنا بموردين محليين وإقليميين ودوليين مع تنسيق الاستيراد والامتثال.",
+        "نعم، نربط عملاءنا بموردين محليين وإقليميين ودوليين وندعم دراسة الأسواق وتأهيل الخيارات المناسبة.",
       ],
       [
         "هل يمكن طلب خدمة واحدة فقط؟",
-        "نعم. يمكننا تنفيذ دراسة سوق أو RFQ/RFP أو تفاوض عقد أو توريد محدد.",
+        "نعم. يمكننا تنفيذ دراسة سوق أو RFQ/RFP أو تفاوض عقد، أو تطوير خدمة تأسيس أو هوية محددة.",
       ],
       [
         "كيف تضمنون الشفافية؟",
@@ -316,7 +316,7 @@ const content = {
       </>
     ),
     introText:
-      "Masar Procurement Solutions specializes in consulting, strategic sourcing, vendor management, trading, import, warehousing and delivery. We work as an extension of your team to protect cost, quality and time.",
+      "Masar Procurement Solutions specializes in consulting, strategic sourcing, vendor management, business setup, operational systems, and brand and market presence. We work as an extension of your team to protect cost, quality and time.",
     highlight: [
       [
         "01",
@@ -358,15 +358,15 @@ const content = {
       ],
       [
         "03",
-        "Trading, supply & import",
-        "Goods and services supply, shipping, customs and compliance across MENA.",
-        "/images/cx-network.png",
+        "Business setup & operational systems",
+        "Business models, service design, organization structures, job descriptions, policies, procedures and templates.",
+        "/images/cx-method.png",
       ],
       [
         "04",
-        "Warehousing, inventory & delivery",
-        "Organized storage, real-time inventory and reliable delivery coordination.",
-        "/images/cx-method.png",
+        "Brand identity & market presence",
+        "Naming, visual identity, company profiles, websites, LinkedIn and launch-ready marketing assets.",
+        "/images/cx-network.png",
       ],
     ],
     whyK: "Why Masar",
@@ -419,11 +419,11 @@ const content = {
       ],
       [
         "Do you source beyond Saudi Arabia?",
-        "Yes, we connect clients with local, regional and international suppliers with import and compliance coordination.",
+        "Yes, we connect clients with local, regional and international suppliers and support market research and supplier qualification.",
       ],
       [
         "Can we engage Masar for one service only?",
-        "Yes. Engage us for a market study, RFQ/RFP, contract negotiation or a specific supply.",
+        "Yes. Engage us for a market study, RFQ/RFP, contract negotiation, or a specific business setup or brand deliverable.",
       ],
       [
         "How do you ensure transparency?",
