@@ -17,13 +17,13 @@ const currentServiceContent = {
         "03",
         "تأسيس الأعمال والأنظمة التشغيلية",
         "نموذج العمل، تصميم الخدمات، الهيكل التنظيمي، الوصف الوظيفي، السياسات والإجراءات والنماذج.",
-        "/images/cx-method.png",
+        "/images/operations-systems.webp",
       ],
       [
         "04",
         "الهوية والحضور في السوق",
         "الاسم والهوية البصرية، الملف التعريفي، الموقع، لينكدإن وأصول الإطلاق التسويقي.",
-        "/images/cx-network.png",
+        "/images/brand-presence.webp",
       ],
     ],
     faqs: [
@@ -45,13 +45,13 @@ const currentServiceContent = {
         "03",
         "Business setup & operational systems",
         "Business models, service design, organization structures, job descriptions, policies, procedures and templates.",
-        "/images/cx-method.png",
+        "/images/operations-systems.webp",
       ],
       [
         "04",
         "Brand identity & market presence",
         "Naming, visual identity, company profiles, websites, LinkedIn and launch-ready marketing assets.",
-        "/images/cx-network.png",
+        "/images/brand-presence.webp",
       ],
     ],
     faqs: [
@@ -84,6 +84,23 @@ function sanitizeStoredConfig(config: unknown) {
   if (!isRecord(config)) return config;
   const next = structuredClone(config);
   const content = next.content;
+  const media = next.media;
+
+  if (isRecord(media) && Array.isArray(media.services)) {
+    if (
+      media.services[2] === "/images/trade.webp" ||
+      media.services[2] === "/images/cx-method.png"
+    ) {
+      media.services[2] = "/images/operations-systems.webp";
+    }
+    if (
+      media.services[3] === "/images/warehouse.webp" ||
+      media.services[3] === "/images/cx-network.png"
+    ) {
+      media.services[3] = "/images/brand-presence.webp";
+    }
+  }
+
   if (!isRecord(content)) return next;
 
   (["ar", "en"] as const).forEach((lang) => {

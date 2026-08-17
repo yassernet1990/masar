@@ -30,8 +30,8 @@ const defaultMedia = {
   services: [
     "/images/sourcing.webp",
     "https://images.pexels.com/photos/2804929/pexels-photo-2804929.jpeg?auto=compress&cs=tinysrgb&w=1200",
-    "/images/trade.webp",
-    "/images/warehouse.webp",
+    "/images/operations-systems.webp",
+    "/images/brand-presence.webp",
   ],
 };
 const themeMedia: Record<string, ThemeMedia> = {
@@ -196,13 +196,13 @@ const content = {
         "03",
         "تأسيس الأعمال والأنظمة التشغيلية",
         "نموذج العمل، تصميم الخدمات، الهيكل التنظيمي، الوصف الوظيفي، السياسات والإجراءات والنماذج.",
-        "/images/cx-method.png",
+        "/images/operations-systems.webp",
       ],
       [
         "04",
         "الهوية والحضور في السوق",
         "الاسم والهوية البصرية، الملف التعريفي، الموقع، لينكدإن وأصول الإطلاق التسويقي.",
-        "/images/cx-network.png",
+        "/images/brand-presence.webp",
       ],
     ],
     whyK: "لماذا مسار؟",
@@ -360,13 +360,13 @@ const content = {
         "03",
         "Business setup & operational systems",
         "Business models, service design, organization structures, job descriptions, policies, procedures and templates.",
-        "/images/cx-method.png",
+        "/images/operations-systems.webp",
       ],
       [
         "04",
         "Brand identity & market presence",
         "Naming, visual identity, company profiles, websites, LinkedIn and launch-ready marketing assets.",
-        "/images/cx-network.png",
+        "/images/brand-presence.webp",
       ],
     ],
     whyK: "Why Masar",
@@ -510,6 +510,50 @@ function mergeEditable(base: unknown, saved: unknown): unknown {
     );
   }
   return saved;
+}
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return Boolean(value && typeof value === "object" && !Array.isArray(value));
+}
+function includesLegacyServiceText(value: unknown) {
+  return (
+    typeof value === "string" &&
+    /trading|import|warehousing|delivery coordination|التجارة|الاستيراد|التخزين|المخزون|التسليم/i.test(
+      value,
+    )
+  );
+}
+function sanitizeStoredConfig(config: unknown): unknown {
+  if (!isRecord(config)) return config;
+  const next = structuredClone(config);
+  const storedContent = next.content;
+  if (!isRecord(storedContent)) return next;
+
+  const defaultContent = editorContent(content) as EditableContent;
+  (["ar", "en"] as const).forEach((lang) => {
+    const savedLang = storedContent[lang];
+    if (!isRecord(savedLang)) return;
+    const defaults = defaultContent[lang];
+
+    if (includesLegacyServiceText(savedLang.introText))
+      savedLang.introText = defaults.introText;
+
+    const defaultServices = defaults.services;
+    if (Array.isArray(savedLang.services) && Array.isArray(defaultServices)) {
+      savedLang.services[2] = defaultServices[2];
+      savedLang.services[3] = defaultServices[3];
+    }
+
+    const defaultFaqs = defaults.faqs;
+    if (Array.isArray(savedLang.faqs) && Array.isArray(defaultFaqs)) {
+      savedLang.faqs = savedLang.faqs.map((item, index) => {
+        if (!Array.isArray(item) || !includesLegacyServiceText(item[1]))
+          return item;
+        return defaultFaqs[index] ?? item;
+      });
+    }
+  });
+
+  return next;
 }
 
 type EditableContent = Record<Lang, Record<string, unknown>>;
@@ -794,9 +838,10 @@ function AdminPanel({
         (x) => x.json(),
       );
       if (c.config) {
-        const merged = mergeEditable(content, c.config.content || {});
+        const nextConfig = sanitizeStoredConfig(c.config) as SiteConfig;
+        const merged = mergeEditable(content, nextConfig.content || {});
         setSiteContent(merged as typeof content);
-        setConfig({ ...config, ...c.config });
+        setConfig({ ...config, ...nextConfig });
         setDraft(editableContent(merged));
       }
       setLogged(true);
@@ -1216,14 +1261,15 @@ export default function Home() {
       .then((r) => (r.ok ? r.json() : null))
       .then((c) => {
         if (c?.config) {
+          const nextConfig = sanitizeStoredConfig(c.config) as SiteConfig;
           setSiteContent(
-            mergeEditable(content, c.config.content || {}) as typeof content,
+            mergeEditable(content, nextConfig.content || {}) as typeof content,
           );
           setConfig((old) => ({
             ...old,
-            ...c.config,
-            content: c.config.content || old.content,
-            media: c.config.media || old.media,
+            ...nextConfig,
+            content: nextConfig.content || old.content,
+            media: nextConfig.media || old.media,
           }));
         }
       })
