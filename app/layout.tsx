@@ -6,7 +6,7 @@ import "./clients-widget.css";
 import ClientsWidget from "./clients-widget";
 import ThemeBridge from "./theme-bridge";
 
-export const metadata: Metadata = { title: "MASAR Procurement Solutions | حلول مسار للمشتريات", description: "Integrated procurement consulting and sourcing solutions across MENA.", icons: { icon: "/favicon.svg" } };
+export const metadata: Metadata = { title: "MASAR Procurement Solutions | حلول مسار للمشتريات", description: "Integrated procurement consulting and sourcing solutions across MENA.", icons: { icon: [{ url: "/favicon.png", type: "image/png", sizes: "512x512" }], shortcut: "/favicon.png", apple: "/favicon.png" } };
 export const viewport: Viewport = { width: "device-width", initialScale: 1, themeColor: "#f4f0e8" };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
