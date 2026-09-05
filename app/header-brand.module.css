@@ -1,0 +1,53 @@
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding-block: 10px;
+  flex: 0 0 auto;
+  color: #eef2ff;
+  background: transparent;
+  text-decoration: none;
+}
+.symbol { position: relative; display: block; width: 59px; aspect-ratio: 1140 / 564; flex-shrink: 0; }
+.symbol img { display: block; width: 100%; height: auto; }
+.mask {
+  position: absolute;
+  inset: 0;
+  mask: url('/images/masar-header-symbol.svg') center / contain no-repeat;
+  -webkit-mask: url('/images/masar-header-symbol.svg') center / contain no-repeat;
+  pointer-events: none;
+}
+.shine {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 35%, #baf7ff55 44%, #fff 50%, #baf7ff55 56%, transparent 65%);
+  background-size: 350% 100%;
+  animation: shimmer 7s ease-in-out infinite;
+}
+.divider { display: block; width: 1px; height: 39px; background: #b9cef05e; flex-shrink: 0; }
+.lettering { display: flex; flex-direction: column; align-items: stretch; width: 116px; gap: 5px; }
+.wordmark { display: block; width: 116px; height: auto; aspect-ratio: 308 / 45; max-width: none; object-fit: contain; }
+.descriptor {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  color: #96bde9;
+  font: 500 5.8px / 1.1 Arial, Helvetica, sans-serif;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+@keyframes shimmer {
+  0%, 4% { background-position: 145% 0; }
+  24%, 100% { background-position: -45% 0; }
+}
+@media (max-width: 400px) {
+  .brand { gap: 9px; }
+  .symbol { width: 48px; }
+  .divider { height: 33px; }
+  .lettering, .wordmark { width: 96px; }
+  .descriptor { font-size: 4.75px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .shine { display: none; animation: none; }
+}

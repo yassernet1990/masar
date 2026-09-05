@@ -3,6 +3,7 @@ import { FormEvent, useEffect, useState } from "react";
 import type { CSSProperties, PointerEvent } from "react";
 import UKCompanyBadge from "./uk-company-badge";
 import "./footer-identity.css";
+import HeaderBrand from "./header-brand";
 
 type Lang = "ar" | "en";
 type ThemeMedia = {
@@ -1361,7 +1362,7 @@ export default function Home() {
         />
         <div className="hero-light" />
         <header>
-          <Logo />
+          <HeaderBrand />
           <nav>
             {t.nav.map((n, i) => (
               <a
