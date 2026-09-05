@@ -1,0 +1,31 @@
+/* Transparent company identity; inherit the active site's text color. */
+.masar-footer .footer-brand { min-width: 0; }
+.masar-footer .footer-company { min-width: 0; }
+.masar-footer .footer-company p { font-size: 12px; line-height: 1.8; max-width: 340px; margin: 0; }
+.masar-footer address { font-style: normal; font-size: 12px; line-height: 1.85; margin-top: 24px; }
+.masar-footer address strong { display: block; font-weight: 600; margin-bottom: 4px; }
+.masar-footer address span { display: inline-block; text-align: left; }
+.masar-footer .uk-company-badge { display: inline-block; margin-top: 28px; padding-block: 4px; color: inherit; background: transparent; transition: transform .35s ease; transform-origin: center; }
+.masar-footer .uk-company-art { display: flex; align-items: center; gap: 12px; }
+.masar-footer .uk-company-flag { display: block; position: relative; width: 66px; height: 44px; border-radius: 7px; overflow: hidden; flex-shrink: 0; transition: filter .35s ease; }
+.masar-footer .uk-company-flag svg { display: block; width: 100%; height: 100%; }
+.masar-footer .uk-company-flag::after { content: ""; position: absolute; inset: 0; background: linear-gradient(115deg, transparent 30%, #ffffff95 48%, transparent 64%); background-size: 300% 100%; animation: masarUKShine 7s ease-in-out infinite; pointer-events: none; }
+.masar-footer .uk-company-text { display: block; }
+.masar-footer .uk-company-text b { display: block; font-size: 27px; line-height: 1.05; font-weight: 750; letter-spacing: -.5px; background: linear-gradient(115deg, currentColor 30%, #d5e5f5 48%, currentColor 64%); background-size: 300% 100%; background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: masarUKShine 7s ease-in-out infinite; }
+.masar-footer .uk-company-text small { display: block; font-size: 12px; line-height: 1.4; white-space: nowrap; }
+.masar-footer .footer-bottom { position: relative; margin-top: 14px; }
+.masar-footer .footer-light { position: absolute; top: -6px; inset-inline: 0; height: 12px; overflow: hidden; pointer-events: none; }
+.masar-footer .footer-light::after { content: ""; position: absolute; top: 4px; left: 0; width: 24%; height: 3px; border-radius: 100%; background: linear-gradient(90deg, transparent, #8e79dc, #f0dcff, #8e79dc, transparent); box-shadow: 0 0 9px #a285e566; animation: masarFooterLight 7s ease-in-out infinite; }
+@media (hover: hover) {
+  .masar-footer .uk-company-badge:hover { transform: translateY(-2px) scale(1.03); }
+  .masar-footer .uk-company-badge:hover .uk-company-flag { filter: drop-shadow(0 2px 6px #06264c42); }
+}
+@keyframes masarUKShine { 0%, 3% { background-position: 150% 0; } 22%, 100% { background-position: -50% 0; } }
+@keyframes masarFooterLight { 0% { transform: translateX(-110%); opacity: 0; } 5% { opacity: 1; } 38%, 100% { transform: translateX(425%); opacity: 0; } }
+@media (max-width: 700px) { .masar-footer .footer-company { margin-block: 26px; } }
+@media (prefers-reduced-motion: reduce) {
+  .masar-footer .uk-company-badge, .masar-footer .uk-company-flag { transition: none; }
+  .masar-footer .uk-company-badge:hover { transform: none; }
+  .masar-footer .uk-company-flag::after, .masar-footer .footer-light::after { display: none; animation: none; }
+  .masar-footer .uk-company-text b { animation: none; background: none; -webkit-text-fill-color: currentColor; }
+}

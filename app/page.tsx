@@ -1,6 +1,8 @@
 "use client";
 import { FormEvent, useEffect, useState } from "react";
 import type { CSSProperties, PointerEvent } from "react";
+import UKCompanyBadge from "./uk-company-badge";
+import "./footer-identity.css";
 
 type Lang = "ar" | "en";
 type ThemeMedia = {
@@ -1610,10 +1612,20 @@ export default function Home() {
           )}
         </div>
       </section>
-      <footer>
-        <Logo />
-        <p>{t.footer}</p>
-        <div>
+      <footer className="masar-footer">
+        <div className="footer-brand">
+          <Logo />
+          <UKCompanyBadge />
+        </div>
+        <div className="footer-company">
+          <p>{t.footer}</p>
+          <address>
+            <strong>{lang === "ar" ? "عنوان المكتب المسجّل" : "Registered Office Address"}</strong>
+            <span dir="ltr">71-75, Shelton Street, Covent Garden<br />London, WC2H 9JQ, United Kingdom</span>
+          </address>
+        </div>
+        <div className="footer-bottom">
+          <i className="footer-light" aria-hidden="true" />
           <a href="mailto:info@masarps.com">info@masarps.com</a>
           <a href="tel:+966505476689">+966 50 547 6689</a>
           <a className="admin-entry" href="/admin">
