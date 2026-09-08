@@ -111,6 +111,13 @@ export default function Packages({ lang, backgroundImage }: { lang: Lang; backgr
       dir={ar ? "rtl" : "ltr"}
     >
       <div className="mp-scene" aria-hidden="true" style={{ backgroundImage: `url(${backgroundImage})` }} />
+      <div className="mp-atmosphere" aria-hidden="true">
+        <span className="mp-aurora mp-aurora-one" />
+        <span className="mp-aurora mp-aurora-two" />
+        <span className="mp-aurora mp-aurora-three" />
+        <span className="mp-orbit mp-orbit-one"><i /><i /><i /></span>
+        <span className="mp-orbit mp-orbit-two"><i /><i /></span>
+      </div>
       <div className="mp-heading">
         <div>
           <p>
@@ -126,6 +133,12 @@ export default function Packages({ lang, backgroundImage }: { lang: Lang; backgr
         </div>
       </div>
       <div className="mp-proof"><span>{t("Clear scope", "نطاق عمل واضح")}</span><span>{t("One-time project pricing", "رسوم مشروع لمرة واحدة")}</span><span>{t("Structured reviews", "مراجعات واعتمادات منظمة")}</span><span>{t("Optional ongoing support", "دعم مستمر اختياري")}</span></div>
+      <div className="mp-kinetic" aria-hidden="true">
+        <div className="mp-kinetic-track">
+          <span>MASAR</span><b>•</b><span>BRAND</span><b>•</b><span>DIGITAL</span><b>•</b><span>PROCUREMENT</span><b>•</b><span>MARKET PRESENCE</span><b>•</b>
+          <span>MASAR</span><b>•</b><span>BRAND</span><b>•</b><span>DIGITAL</span><b>•</b><span>PROCUREMENT</span><b>•</b><span>MARKET PRESENCE</span><b>•</b>
+        </div>
+      </div>
       <div className="mp-controls"><p>{t("Five packages. Find your fit.", "خمس باقات. اختر الأنسب لشركتك.")}</p><div className="mp-currencies" role="group" aria-label={t("Currency", "العملة")}>{["sar","usd","gbp"].map(c=><button key={c} type="button" aria-pressed={currency===c} disabled={c!=="sar"&&!quote?.prices[c]} onClick={()=>setCurrency(c)}>{c.toUpperCase()}</button>)}</div></div>
       <p className="mp-note">
         {t(
