@@ -4,6 +4,7 @@ import type { CSSProperties, PointerEvent } from "react";
 import UKCompanyBadge from "./uk-company-badge";
 import "./footer-identity.css";
 import HeaderBrand from "./header-brand";
+import Packages from "./commerce/packages";
 
 type Lang = "ar" | "en";
 type ThemeMedia = {
@@ -1476,12 +1477,13 @@ export default function Home() {
                 <small>{x[0]} / 04</small>
                 <h3>{x[1]}</h3>
                 <p>{x[2]}</p>
-                <a>{t.serviceMore} ↗</a>
+                <a href={x[0] === "04" ? "#brand-packages" : "#contact"}>{t.serviceMore} ↗</a>
               </div>
             </article>
           ))}
         </div>
       </section>
+      <Packages lang={lang} />
       <section className="cx-statement reveal">
         <div
           className="cx-art statement-art"
