@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { packages, addons, refund, type Item, type Lang } from "./catalog";
 import "./packages.css";
@@ -19,8 +20,11 @@ export default function Packages({ lang, backgroundImage }: { lang: Lang; backgr
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
   const [details, setDetails] = useState<Item | null>(null);
+  const [bankOpen, setBankOpen] = useState(false);
+  const [copied, setCopied] = useState("");
   const [result, setResult] = useState("");
   const dialog = useRef<HTMLDialogElement>(null);
+  const bankDialog = useRef<HTMLDialogElement>(null);
   const requestId = useRef("");
   useEffect(() => {
     requestId.current = crypto.randomUUID();
@@ -60,6 +64,15 @@ export default function Packages({ lang, backgroundImage }: { lang: Lang; backgr
     if (details) dialog.current?.showModal();
     else dialog.current?.close();
   }, [details]);
+  useEffect(() => {
+    if (bankOpen) bankDialog.current?.showModal();
+    else bankDialog.current?.close();
+  }, [bankOpen]);
+  const copyBankDetail = async (label: string, value: string) => {
+    await navigator.clipboard.writeText(value);
+    setCopied(label);
+    window.setTimeout(() => setCopied(""), 1800);
+  };
   const money = (id: string) =>
     new Intl.NumberFormat(ar ? "ar-SA" : "en-GB", {
       style: "currency",
@@ -120,6 +133,21 @@ export default function Packages({ lang, backgroundImage }: { lang: Lang; backgr
           "دفع 100% مقدمًا · رسوم مشروع لمرة واحدة · طلب الاسترداد خلال 72 ساعة مع خصم الرسوم الإدارية ورسوم التحويل.",
         )}
       </p>
+      <div className="mp-payment-strip" aria-label={t("Payment methods", "طرق الدفع")}>
+        <div className="mp-payment-intro">
+          <span>{t("FLEXIBLE PAYMENT", "خيارات دفع مرنة")}</span>
+          <strong>{t("Pay online or by UK bank transfer", "ادفع إلكترونيًا أو عبر حساب الشركة في بريطانيا")}</strong>
+          <p>{t("Secure card checkout through Stripe, or GBP and USD payment through Wise.", "دفع آمن بالبطاقة عبر Stripe، أو الدفع بالجنيه الإسترليني والدولار عبر Wise.")}</p>
+        </div>
+        <div className="mp-payment-brand">
+          <span className="mp-logo-box mp-stripe-logo"><Image src="/images/stripe.svg" width={27} height={27} alt="" /><b>stripe</b></span>
+          <small>{t("Secure online checkout", "دفع إلكتروني آمن")}</small>
+        </div>
+        <div className="mp-payment-brand">
+          <span className="mp-logo-box mp-wise-logo"><Image src="/images/wise.svg" width={27} height={27} alt="" /><b>WISE</b></span>
+          <button type="button" onClick={() => setBankOpen(true)}>{t("View bank details", "عرض بيانات الحساب")}</button>
+        </div>
+      </div>
       {result && (
         <p role="status" className="mp-message">
           {result === "cancelled"
@@ -291,6 +319,17 @@ export default function Packages({ lang, backgroundImage }: { lang: Lang; backgr
                 }).format(total / 100)}
               </strong>
             </div>
+            <div className="mp-payment-choices">
+              <div className="mp-payment-choice mp-payment-choice-active">
+                <span className="mp-logo-box mp-stripe-logo"><Image src="/images/stripe.svg" width={24} height={24} alt="" /><b>stripe</b></span>
+                <div><strong>{t("Card payment", "الدفع بالبطاقة")}</strong><small>{t("Continue to secure Stripe Checkout below.", "تابع إلى صفحة Stripe الآمنة أدناه.")}</small></div>
+              </div>
+              <div className="mp-payment-choice">
+                <span className="mp-logo-box mp-wise-logo"><Image src="/images/wise.svg" width={24} height={24} alt="" /><b>WISE</b></span>
+                <div><strong>{t("UK bank transfer", "تحويل إلى حساب الشركة في بريطانيا")}</strong><small>{t("GBP by bank details, or USD through the Wise payment page.", "بالجنيه عبر بيانات الحساب، أو بالدولار عبر صفحة Wise.")}</small></div>
+                <button type="button" onClick={() => setBankOpen(true)}>{t("Bank details", "بيانات الحساب")}</button>
+              </div>
+            </div>
             <label>
               {t("Full name", "الاسم الكامل")}
               <input name="name" autoComplete="name" maxLength={120} required />
@@ -403,6 +442,46 @@ export default function Packages({ lang, backgroundImage }: { lang: Lang; backgr
             </button>
           </>
         )}
+      </dialog>
+      <dialog
+        ref={bankDialog}
+        className="mp-bank-dialog"
+        onCancel={() => setBankOpen(false)}
+        onClick={(e) => {
+          if (e.target === e.currentTarget) setBankOpen(false);
+        }}
+      >
+        <button className="mp-close" type="button" aria-label={t("Close", "إغلاق")} onClick={() => setBankOpen(false)}>×</button>
+        <div className="mp-bank-head">
+          <span className="mp-logo-box mp-wise-logo"><Image src="/images/wise.svg" width={30} height={30} alt="" /><b>WISE</b></span>
+          <p className="mp-dialog-eyebrow">{t("UK COMPANY ACCOUNT", "حساب الشركة في بريطانيا")}</p>
+          <h2>{t("Bank transfer details", "بيانات التحويل البنكي")}</h2>
+          <p>{t("Use the UK details below for GBP transfers. For USD, open the company’s Wise payment page.", "استخدم البيانات البريطانية أدناه للتحويل بالجنيه الإسترليني. للدفع بالدولار، افتح صفحة Wise الرسمية للشركة.")}</p>
+        </div>
+        <div className="mp-bank-fields">
+          {[
+            [t("Account holder", "اسم صاحب الحساب"), "Masar Procurement & Solutions Ltd"],
+            [t("Account number", "رقم الحساب"), "91726749"],
+            [t("Sort code", "رمز الفرع"), "60-84-64"],
+            ["IBAN", "GB65 TRWI 6084 6491 7267 49"],
+            ["SWIFT / BIC", "TRWIGB2LXXX"],
+          ].map(([label, value]) => (
+            <div className="mp-bank-field" key={label}>
+              <span>{label}</span>
+              <strong dir="ltr">{value}</strong>
+              <button type="button" onClick={() => copyBankDetail(label, value)}>{copied === label ? t("Copied ✓", "تم النسخ ✓") : t("Copy", "نسخ")}</button>
+            </div>
+          ))}
+        </div>
+        <div className="mp-bank-address">
+          <strong>{t("Bank name and address", "اسم البنك وعنوانه")}</strong>
+          <p dir="ltr">Wise Payments Limited<br />Worship Square, 65 Clifton Street<br />London, EC2A 4JE, United Kingdom</p>
+        </div>
+        <p className="mp-bank-note">{t("Add your company name and selected package to the transfer reference, then email the receipt to info@masarps.com. Bank transfers are confirmed manually.", "اكتب اسم شركتك واسم الباقة في مرجع التحويل، ثم أرسل إيصال الدفع إلى info@masarps.com. يتم تأكيد التحويلات البنكية يدويًا.")}</p>
+        <div className="mp-bank-actions">
+          <a href="https://wise.com/pay/business/masarprocurementsolutionsltd" target="_blank" rel="noreferrer">{t("Pay in USD through Wise", "الدفع بالدولار عبر Wise")}</a>
+          <button type="button" onClick={() => setBankOpen(false)}>{t("Close", "إغلاق")}</button>
+        </div>
       </dialog>
     </section>
   );
