@@ -127,9 +127,11 @@ export async function POST(request: Request) {
         { status: 502 },
       );
     return Response.json({ url: session.url });
-  } catch {
+  } catch (error) {
+    const failure = error as { type?: string; code?: string; param?: string; message?: string };
+    const permissions = (failure.message || "").match(/(?:rak_[a-z_]+|[a-z_]+_write|[a-z_]+_read)/g) || [];
     return Response.json(
-      { error: "Unable to start payment. Please try again." },
+      { error: "Unable to start payment. Please contact info@masarps.com.", supportCode: failure.code || failure.type || "payment_unavailable", parameter: failure.param || null, permissions: [...new Set(permissions)] },
       { status: 502 },
     );
   }
