@@ -64,6 +64,8 @@ export default function Packages({ lang, backgroundImage }: { lang: Lang; backgr
     new Intl.NumberFormat(ar ? "ar-SA" : "en-GB", {
       style: "currency",
       currency: currency.toUpperCase(),
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 2,
     }).format(
       (quote?.prices[currency]?.[id] ??
         Math.round(
@@ -155,6 +157,8 @@ export default function Packages({ lang, backgroundImage }: { lang: Lang; backgr
               {new Intl.NumberFormat(ar ? "ar-SA" : "en-GB", {
                 style: "currency",
                 currency: currency.toUpperCase(),
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 2,
               }).format(
                 p.original! *
                   ((quote?.prices[currency]?.[p.id] ?? p.sar * 100) /
@@ -281,6 +285,8 @@ export default function Packages({ lang, backgroundImage }: { lang: Lang; backgr
                 {new Intl.NumberFormat(ar ? "ar-SA" : "en-GB", {
                   style: "currency",
                   currency: currency.toUpperCase(),
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 2,
                 }).format(total / 100)}
               </strong>
             </div>
