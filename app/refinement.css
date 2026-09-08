@@ -1,0 +1,57 @@
+/* Consistent typography and rhythm across MASAR's public pages. */
+main.cx-page{font-family:"IBM Plex Sans Arabic",sans-serif!important;font-size:16px;line-height:1.75}
+main.cx-page.en{font-family:"Manrope",sans-serif!important}
+main.cx-page *,main.cx-page *::before,main.cx-page *::after{font-family:inherit!important}
+main.cx-page h1,main.cx-page h2,main.cx-page h3{font-weight:600!important;text-wrap:balance}
+main.cx-page.ar h1,main.cx-page.ar h2,main.cx-page.ar h3{letter-spacing:0!important;line-height:1.45!important}
+main.cx-page.en h1,main.cx-page.en h2{letter-spacing:-.045em!important}
+main.cx-page .hero-copy h1{font-size:clamp(44px,6.5vw,88px)!important;line-height:1.08!important;font-weight:600!important}
+main.cx-page .hero-copy h1 strong{font-weight:650!important}
+main.cx-page .hero-copy p,main.cx-page .body-copy,main.cx-page .service-copy p,main.cx-page .method-grid p,main.cx-page .cx-faq details p{font-size:16px!important;line-height:1.85!important;max-width:62ch}
+main.cx-page .cx-hero nav{font-size:14px!important;gap:28px!important}
+main.cx-page .kicker{font-size:13px!important;letter-spacing:.08em}
+main.cx-page.ar .kicker{letter-spacing:0}
+main.cx-page .cx-intro h2,main.cx-page .section-title h2,main.cx-page .cx-statement h2,main.cx-page .cx-faq h2{font-size:clamp(30px,4vw,52px)!important;line-height:1.2}
+main.cx-page .service-copy h3{font-size:clamp(24px,2.6vw,34px)!important;line-height:1.35}
+main.cx-page .service-grid{gap:42px!important}
+main.cx-page .service-visual{border-radius:14px!important;overflow:hidden}
+main.cx-page .service-copy{padding-top:24px!important}
+main.cx-page .service-copy a{display:inline-flex;align-items:center;gap:10px;padding:10px 0;font-size:15px;cursor:pointer;text-decoration:none;border-bottom:1px solid currentColor}
+main.cx-page .cx-intro,main.cx-page .cx-services,main.cx-page .cx-method,main.cx-page .cx-faq{padding-top:90px!important;padding-bottom:90px!important}
+main.cx-page button,main.cx-page input,main.cx-page textarea{font-size:16px}
+main.cx-page button,main.cx-page .contact-chip{border-radius:8px!important}
+main.cx-page .masar-footer{font-size:14px!important;line-height:1.8}
+main.cx-page.packages-page .cx-hero{height:auto!important;min-height:0!important;overflow:visible!important;background:transparent!important;border-radius:0!important}
+main.cx-page.packages-page .cx-hero>div{display:none!important}
+main.cx-page.packages-page .cx-hero header{position:relative!important;height:96px!important;inset:auto!important;background:var(--ice)!important;border-bottom:1px solid var(--line,#ccc)}
+main.cx-page.packages-page .masar-packages{padding:64px 4vw 80px}
+main.cx-page .mp-heading{align-items:end;padding-bottom:30px;border-bottom:1px solid var(--line,#ccc)}
+main.cx-page .mp-heading h2{font-size:clamp(34px,4vw,58px)!important;max-width:800px;margin-block:14px 18px}
+main.cx-page .mp-heading label{font-size:14px;flex-shrink:0}
+main.cx-page .mp-heading select{border-radius:8px;padding:10px 12px}
+main.cx-page .mp-grid{grid-template-columns:repeat(6,minmax(0,1fr));gap:22px;align-items:stretch}
+main.cx-page .mp-card{grid-column:span 2;border-radius:16px;padding:28px;background:color-mix(in srgb,var(--ice) 35%,white);box-shadow:0 8px 28px #00000005;transition:transform .2s,box-shadow .2s}
+main.cx-page .mp-card:nth-last-child(-n+2){grid-column:span 3}
+main.cx-page .mp-card:hover{transform:translateY(-4px);box-shadow:0 16px 32px #0000000b}
+main.cx-page .mp-featured{border:2px solid var(--blue);box-shadow:0 12px 30px #0000000c}
+main.cx-page .mp-badge{font-size:12px;font-weight:700;letter-spacing:.1em}
+main.cx-page.ar .mp-badge{letter-spacing:0}
+main.cx-page .mp-card h3{font-size:22px!important;min-height:34px;margin:18px 0 12px;letter-spacing:-.02em}
+main.cx-page .mp-card del{font-size:15px;opacity:.6;font-variant-numeric:tabular-nums}
+main.cx-page .mp-price{font-size:36px!important;font-weight:650;letter-spacing:-.04em;font-variant-numeric:tabular-nums;margin-top:4px}
+main.cx-page .mp-card ul{font-size:15px;line-height:1.8;padding-inline-start:20px;margin-bottom:0}
+main.cx-page .mp-card li::marker{color:var(--blue)}
+main.cx-page .mp-order{border-top:1px solid var(--line,#ccc);gap:36px;align-items:start}
+main.cx-page .mp-addons label{padding:20px;border:1px solid var(--line,#ccc);border-radius:10px;margin-bottom:12px;font-size:15px;cursor:pointer;transition:background .2s}
+main.cx-page .mp-addons label:has(input:checked){border-color:var(--blue);background:color-mix(in srgb,var(--blue) 5%,var(--ice))}
+main.cx-page .mp-summary{border-radius:16px;background:color-mix(in srgb,var(--ice) 25%,white);box-shadow:0 12px 40px #00000006}
+main.cx-page .mp-summary input:not([type=checkbox]){border-radius:8px;background:#ffffff40;min-height:46px}
+main.cx-page .mp-refund{padding:18px;border-radius:10px;background:color-mix(in srgb,var(--blue) 5%,var(--ice));line-height:1.8}
+main.cx-page .mp-dialog{border-radius:16px;box-shadow:0 25px 100px #0003}
+@media(max-width:800px){main.cx-page .mp-grid{grid-template-columns:repeat(2,minmax(0,1fr))}main.cx-page .mp-card,main.cx-page .mp-card:nth-last-child(-n+2){grid-column:span 1}main.cx-page .mp-card:last-child{grid-column:1/-1}main.cx-page .mp-order{grid-template-columns:1fr}main.cx-page .cx-hero nav{gap:14px!important}}
+@media(max-width:560px){main.cx-page .mp-grid{grid-template-columns:1fr}main.cx-page .mp-card{padding:24px}main.cx-page .mp-heading{display:block}main.cx-page .mp-heading h2{font-size:34px!important}main.cx-page .mp-price{font-size:32px!important}main.cx-page.packages-page .cx-hero header{height:84px!important}main.cx-page .cx-intro,main.cx-page .cx-services,main.cx-page .cx-method,main.cx-page .cx-faq{padding-block:60px!important}}
+@media(prefers-reduced-motion:reduce){main.cx-page .mp-card{transition:none}main.cx-page .mp-card:hover{transform:none}}
+main.cx-page.theme-amaala,main.cx-page.theme-amaala.ar{font-family:"IBM Plex Sans Arabic",sans-serif!important}
+main.cx-page.theme-amaala.en,main.cx-page.theme-amaala.en *{font-family:"Manrope",sans-serif!important}
+main.cx-page.theme-amaala.ar *,main.cx-page.theme-amaala.ar .hero-copy h1{font-family:"IBM Plex Sans Arabic",sans-serif!important;letter-spacing:0!important}
+main.cx-page.theme-amaala.en .hero-copy h1{font-family:"Manrope",sans-serif!important;letter-spacing:-.045em!important;font-weight:600!important;line-height:1.08!important}

@@ -5,12 +5,12 @@ import styles from "./header-brand.module.css";
 
 const descriptor = "PROCUREMENT / SOLUTIONS";
 
-export default function HeaderBrand() {
+export default function HeaderBrand({ href = "#top" }: { href?: string }) {
   const [replay, setReplay] = useState(0);
   const replayShimmer = () => setReplay((value) => value + 1);
 
   return (
-    <a className={styles.brand} href="#top" dir="ltr" lang="en"
+    <a className={styles.brand} href={href} dir="ltr" lang="en"
       aria-label="MASAR Procurement / Solutions — home"
       onPointerEnter={replayShimmer} onFocus={replayShimmer} onPointerDown={replayShimmer}>
       <span className={styles.symbol} aria-hidden="true">

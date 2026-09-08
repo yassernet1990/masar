@@ -126,7 +126,7 @@ test('checkout charges the complete server quote, ignores client amounts, and re
   const server = require('../app/commerce/server.ts');
   const savedQuote = server.quote, savedStripe = server.stripe;
   let sent;
-  server.quote = async () => ({ ready:true,version:'current',fee:{en:'Approved fee',ar:'رسوم معتمدة'},prices:{sar:{start:225000,documents:55875}} });
+  server.quote = async () => ({ ready:true,version:'current',fee:null,prices:{sar:{start:225000,documents:55875}} });
   server.stripe = () => ({checkout:{sessions:{create:async value=>{sent=value;return {url:'https://checkout.stripe.com/example'};}}}});
   try {
     assert.equal((await checkout.POST(request({...valid,version:'stale'}))).status,409);
@@ -137,4 +137,13 @@ test('checkout charges the complete server quote, ignores client amounts, and re
     assert.equal(sent.line_items[0].price_data.product,'masar_start_202609');
     assert.equal(sent.metadata.payment_terms,'100% upfront');
   } finally {server.quote=savedQuote;server.stripe=savedStripe;}
+});
+
+test('checkout enabled with both secrets while optional fee details are deferred', async () => {
+  process.env.STRIPE_RESTRICTED_KEY='rk_test_dummy';
+  process.env.STRIPE_WEBHOOK_SECRET='whsec_dummy';
+  delete process.env.MASAR_REFUND_FEE_EN;
+  delete process.env.MASAR_REFUND_FEE_AR;
+  const q=await require('../app/commerce/server.ts').quote();
+  assert.equal(q.ready,true); assert.equal(q.fee,null);
 });

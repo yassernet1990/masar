@@ -10,7 +10,7 @@ Set these in the hosting control panel, not in source control or chat:
 - `STRIPE_WEBHOOK_SECRET`: signing secret of the endpoint `https://masarps.com/api/stripe/webhook`.
 - `MASAR_SITE_URL=https://masarps.com` (must match the actual canonical origin).
 - `MASAR_DATA_DIR`: persistent writable storage directory, outside the public web root. Orders contain personal information; retain with owner-only access and back up appropriately. This matches the existing application's filesystem storage model; use shared storage before scaling to multiple instances.
-- `MASAR_REFUND_FEE_EN` and `MASAR_REFUND_FEE_AR`: owner-approved exact fee amount/formula and transfer-fee explanation. Intentionally unset; checkout fails closed until both are supplied. The 72-hour request window is implemented in both languages.
+- `MASAR_REFUND_FEE_EN` and `MASAR_REFUND_FEE_AR`: optional owner-approved exact fee amount/formula and transfer-fee explanation. The owner explicitly authorized checkout activation while deferring these details. Checkout requires both Stripe secrets; fee details remain unset. The 72-hour request window is implemented in both languages.
 
 ## Stripe products
 

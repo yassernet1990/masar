@@ -58,8 +58,7 @@ export async function quote() {
     fee,
     ready: !!(
       process.env.STRIPE_RESTRICTED_KEY &&
-      process.env.STRIPE_WEBHOOK_SECRET &&
-      fee
+      process.env.STRIPE_WEBHOOK_SECRET
     ),
     version: createHash("sha256")
       .update(JSON.stringify({ prices, fee }))

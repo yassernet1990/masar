@@ -3,6 +3,7 @@ import "./globals.css";
 import "./amaala.css";
 import "./amaala-overrides.css";
 import "./clients-widget.css";
+import "./refinement.css";
 import ClientsWidget from "./clients-widget";
 import ThemeBridge from "./theme-bridge";
 
