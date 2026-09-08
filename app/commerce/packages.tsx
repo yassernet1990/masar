@@ -133,21 +133,6 @@ export default function Packages({ lang, backgroundImage }: { lang: Lang; backgr
           "دفع 100% مقدمًا · رسوم مشروع لمرة واحدة · طلب الاسترداد خلال 72 ساعة مع خصم الرسوم الإدارية ورسوم التحويل.",
         )}
       </p>
-      <div className="mp-payment-strip" aria-label={t("Payment methods", "طرق الدفع")}>
-        <div className="mp-payment-intro">
-          <span>{t("FLEXIBLE PAYMENT", "خيارات دفع مرنة")}</span>
-          <strong>{t("Pay online or by UK bank transfer", "ادفع إلكترونيًا أو عبر حساب الشركة في بريطانيا")}</strong>
-          <p>{t("Secure card checkout through Stripe, or GBP and USD payment through Wise.", "دفع آمن بالبطاقة عبر Stripe، أو الدفع بالجنيه الإسترليني والدولار عبر Wise.")}</p>
-        </div>
-        <div className="mp-payment-brand">
-          <span className="mp-logo-box mp-stripe-logo"><Image src="/images/stripe.svg" width={27} height={27} alt="" /><b>stripe</b></span>
-          <small>{t("Secure online checkout", "دفع إلكتروني آمن")}</small>
-        </div>
-        <div className="mp-payment-brand">
-          <span className="mp-logo-box mp-wise-logo"><Image src="/images/wise.svg" width={27} height={27} alt="" /><b>WISE</b></span>
-          <button type="button" onClick={() => setBankOpen(true)}>{t("View bank details", "عرض بيانات الحساب")}</button>
-        </div>
-      </div>
       {result && (
         <p role="status" className="mp-message">
           {result === "cancelled"
@@ -205,6 +190,21 @@ export default function Packages({ lang, backgroundImage }: { lang: Lang; backgr
             <button type="button" className="mp-link" onClick={()=>setDetails(p)}>{t("View full details", "عرض التفاصيل كاملة")} <span aria-hidden="true">{ar?"←":"→"}</span></button>
           </article>
         ))}
+      </div>
+      <div className="mp-payment-strip" aria-label={t("Payment methods", "طرق الدفع")}>
+        <div className="mp-payment-intro">
+          <span>{t("FLEXIBLE PAYMENT", "خيارات دفع مرنة")}</span>
+          <strong>{t("Pay online or by UK bank transfer", "ادفع إلكترونيًا أو عبر حساب الشركة في بريطانيا")}</strong>
+          <p>{t("Secure card checkout through Stripe, or GBP and USD payment through Wise.", "دفع آمن بالبطاقة عبر Stripe، أو الدفع بالجنيه الإسترليني والدولار عبر Wise.")}</p>
+        </div>
+        <div className="mp-payment-brand">
+          <span className="mp-logo-box mp-stripe-logo"><Image src="/images/stripe.svg" width={27} height={27} alt="" /><b>stripe</b></span>
+          <small>{t("Secure online checkout", "دفع إلكتروني آمن")}</small>
+        </div>
+        <div className="mp-payment-brand">
+          <span className="mp-logo-box mp-wise-logo"><Image src="/images/wise.svg" width={27} height={27} alt="" /><b>WISE</b></span>
+          <button type="button" onClick={() => setBankOpen(true)}>{t("View bank details", "عرض بيانات الحساب")}</button>
+        </div>
       </div>
       <p className="mp-note">
         {t(
