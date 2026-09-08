@@ -172,8 +172,8 @@ export default function Packages({ lang, backgroundImage }: { lang: Lang; backgr
             </button>
             <p className="mp-card-micro">{t("100% upfront · One-time fee", "دفع كامل مقدمًا · لمرة واحدة")}</p>
             <div className="mp-included">{t("WHAT’S INCLUDED", "المشمول في الباقة")}</div>
-            <ul>{planCopy[p.id].features[lang].slice(0,5).map(feature=><li key={feature}>{feature}</li>)}</ul>
-            <p className="mp-more-count">{t(`+${Math.max(0, planCopy[p.id].features.en.length-5)} more included`, `+${Math.max(0, planCopy[p.id].features.ar.length-5)} مزايا إضافية`)}</p>
+            <ul>{planCopy[p.id].features[lang].slice(0,7).map(feature=><li key={feature}>{feature}</li>)}</ul>
+            <p className="mp-more-count">{t(`+${Math.max(0, planCopy[p.id].features.en.length-7)} more included`, `+${Math.max(0, planCopy[p.id].features.ar.length-7)} مزايا إضافية`)}</p>
             <button type="button" className="mp-link" onClick={()=>setDetails(p)}>{t("View full details", "عرض التفاصيل كاملة")} <span aria-hidden="true">{ar?"←":"→"}</span></button>
           </article>
         ))}
