@@ -133,3 +133,28 @@ main.cx-page.packages-page .mp-process h2,main.cx-page.packages-page .mp-extras-
 @media(min-width:1280px) and (min-height:760px){.packages-page .mp-grid{min-height:min(545px,calc(100vh - 315px))}.packages-page .mp-card{height:100%}}
 @media(max-width:999px){.packages-page .mp-description{min-height:62px}.mp-dialog{max-height:86vh}.mp-dialog ul{grid-template-columns:1fr}}
 @media(max-width:560px){.mp-dialog>p,.mp-dialog>h2,.mp-dialog>h3,.mp-dialog>strong,.mp-dialog>ul,.mp-dialog>button:last-child{margin-inline:22px}.mp-dialog>button:last-child{width:calc(100% - 44px)!important}.mp-dialog h2{font-size:26px!important}}
+
+/* Final density and footer readability pass. */
+@media(min-width:1000px){
+  .packages-page .mp-grid{align-items:stretch}
+  .packages-page .mp-card{height:min(720px,calc(100svh - 32px));max-height:calc(100svh - 32px);overflow:hidden;padding-bottom:16px}
+  .packages-page .mp-card ul{min-height:0;overflow:hidden;align-content:start}
+  .packages-page .mp-link{margin-top:auto;flex-shrink:0;background:linear-gradient(180deg,transparent,#fbfcff 35%)!important}
+  .packages-page .mp-featured .mp-link{background:linear-gradient(180deg,transparent,#171426 35%)!important}
+}
+.packages-page .mp-card{border-top-width:3px;border-top-color:#abb7cd}
+.packages-page .mp-card.mp-featured{border-top-color:#b7a2ff}
+.packages-page .mp-card:nth-child(2){border-top-color:#76cfc0}
+.packages-page .mp-card:nth-child(4){border-top-color:#82a6e9}
+.packages-page .mp-card:nth-child(5){border-top-color:#d2a96f}
+.packages-page .mp-card ul{gap:8px}
+.mp-more-count{padding-top:9px;border-top:1px dashed #dcd4e8}
+.packages-page .mp-featured .mp-more-count{border-top-color:#ffffff24}
+main.cx-page.packages-page .masar-footer{max-width:none!important;margin:0!important;padding:62px 5% 34px!important;background:#050e1d!important;color:#dfe8f5!important;border-top:1px solid #ffffff16}
+main.cx-page.packages-page .masar-footer,main.cx-page.packages-page .masar-footer p,main.cx-page.packages-page .masar-footer address,main.cx-page.packages-page .masar-footer address strong,main.cx-page.packages-page .masar-footer address span,main.cx-page.packages-page .masar-footer a,main.cx-page.packages-page .masar-footer .uk-company-badge,main.cx-page.packages-page .masar-footer .uk-company-text,main.cx-page.packages-page .masar-footer .uk-company-text small{color:#dfe8f5!important;opacity:1!important}
+main.cx-page.packages-page .masar-footer .footer-company p{color:#b8c5d7!important}
+main.cx-page.packages-page .masar-footer .footer-bottom{border-top-color:#ffffff22!important;color:#dfe8f5!important}
+main.cx-page.packages-page .masar-footer .footer-bottom span{color:#aebdd1!important}
+main.cx-page.packages-page .masar-footer .admin-entry{color:#9aacc3!important;opacity:.75!important}
+main.cx-page.packages-page .masar-footer .footer-light::after{background:linear-gradient(90deg,transparent,#76cfc0,#dcefff,#76cfc0,transparent);box-shadow:0 0 12px #76cfc088}
+@media(max-width:999px){.packages-page .mp-card{max-height:none}.packages-page .mp-link{margin-top:auto}}
