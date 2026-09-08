@@ -112,6 +112,7 @@ export async function POST(request: Request) {
         metadata,
         payment_intent_data: { metadata },
         invoice_creation: { enabled: true, invoice_data: { metadata } },
+        managed_payments: { enabled: false },
         custom_text: {
           submit: { message: [refund[lang], current.fee?.[lang]].filter(Boolean).join(" ") },
         },

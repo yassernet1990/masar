@@ -172,7 +172,8 @@ export default function Packages({ lang, backgroundImage }: { lang: Lang; backgr
             </button>
             <p className="mp-card-micro">{t("100% upfront · One-time fee", "دفع كامل مقدمًا · لمرة واحدة")}</p>
             <div className="mp-included">{t("WHAT’S INCLUDED", "المشمول في الباقة")}</div>
-            <ul>{planCopy[p.id].features[lang].map(feature=><li key={feature}>{feature}</li>)}</ul>
+            <ul>{planCopy[p.id].features[lang].slice(0,5).map(feature=><li key={feature}>{feature}</li>)}</ul>
+            <p className="mp-more-count">{t(`+${Math.max(0, planCopy[p.id].features.en.length-5)} more included`, `+${Math.max(0, planCopy[p.id].features.ar.length-5)} مزايا إضافية`)}</p>
             <button type="button" className="mp-link" onClick={()=>setDetails(p)}>{t("View full details", "عرض التفاصيل كاملة")} <span aria-hidden="true">{ar?"←":"→"}</span></button>
           </article>
         ))}
@@ -380,11 +381,14 @@ export default function Packages({ lang, backgroundImage }: { lang: Lang; backgr
         </button>
         {details && (
           <>
+            <p className="mp-dialog-eyebrow">{t("PACKAGE DETAILS", "تفاصيل الباقة")}</p>
             <h2>{details.name}</h2>
-            <strong>{money(details.id)}</strong>
+            <p className="mp-dialog-description">{planCopy[details.id].description[lang]}</p>
+            <strong className="mp-dialog-price">{money(details.id)}</strong>
+            <h3>{t("Everything included", "كل ما تشمله الباقة")}</h3>
             <ul>
-              {details.features?.map(([en, arabic]) => (
-                <li key={en}>{ar ? arabic : en}</li>
+              {planCopy[details.id].features[lang].map((feature) => (
+                <li key={feature}>{feature}</li>
               ))}
             </ul>
             <p>{t("Final deliverables, review rounds and timeline are confirmed before kickoff. Hosting and mailbox allowances cover the first year.", "يُعتمد نطاق العمل وجولات المراجعة والجدول الزمني قبل بدء التنفيذ. الاستضافة والبريد الإلكتروني للسنة الأولى.")}</p>

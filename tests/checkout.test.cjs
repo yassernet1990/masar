@@ -133,6 +133,7 @@ test('checkout charges the complete server quote, ignores client amounts, and re
     const response = await checkout.POST(request({...valid,version:'current',addons:['documents'],amount:1,paymentPercent:60}));
     assert.equal(response.status,200);
     assert.equal(sent.mode,'payment');
+    assert.equal(sent.managed_payments.enabled,false);
     assert.equal(sent.line_items.reduce((sum,item)=>sum+item.price_data.unit_amount*item.quantity,0),280875);
     assert.equal(sent.line_items[0].price_data.product,'masar_start_202609');
     assert.equal(sent.metadata.payment_terms,'100% upfront');
