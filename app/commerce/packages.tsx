@@ -2,13 +2,14 @@
 import { useEffect, useRef, useState } from "react";
 import { packages, addons, refund, type Item, type Lang } from "./catalog";
 import "./packages.css";
+import { planCopy, packageFaqs } from "./reference-content";
 type Quote = {
   prices: Record<string, Record<string, number>>;
   fee: { ar: string; en: string } | null;
   ready: boolean;
   version: string;
 };
-export default function Packages({ lang }: { lang: Lang }) {
+export default function Packages({ lang, backgroundImage }: { lang: Lang; backgroundImage: string }) {
   const ar = lang === "ar",
     t = (en: string, arabic: string) => (ar ? arabic : en);
   const [selected, setSelected] = useState("");
@@ -94,37 +95,23 @@ export default function Packages({ lang }: { lang: Lang }) {
       className="masar-packages"
       dir={ar ? "rtl" : "ltr"}
     >
+      <div className="mp-scene" aria-hidden="true" style={{ backgroundImage: `url(${backgroundImage})` }} />
       <div className="mp-heading">
         <div>
           <p>
             {t("BRAND IDENTITY & MARKET PRESENCE", "الهوية والحضور في السوق")}
           </p>
-          <h2>
-            {t("Ready for your next chapter.", "جاهز لفصل جديد في شركتك.")}
-          </h2>
+          <h1>{t("Everything you need to launch and grow.", "كل ما تحتاجه لإطلاق شركتك وتنميتها.")}</h1>
           <p>
             {t(
-              "One team. Your brand, website and commercial tools.",
-              "فريق واحد لهويتك وموقعك وأدواتك التجارية.",
+              "Choose the package that matches your stage — from your first launch to a complete corporate presence.",
+              "اختر الباقة التي تناسب مرحلتك، من الانطلاقة الأولى إلى حضور مؤسسي متكامل.",
             )}
           </p>
         </div>
-        <label>
-          {t("Currency", "العملة")}
-          <select
-            value={currency}
-            onChange={(e) => setCurrency(e.target.value)}
-          >
-            <option value="sar">SAR</option>
-            <option value="usd" disabled={!quote?.prices.usd}>
-              USD
-            </option>
-            <option value="gbp" disabled={!quote?.prices.gbp}>
-              GBP
-            </option>
-          </select>
-        </label>
       </div>
+      <div className="mp-proof"><span>{t("Clear scope", "نطاق عمل واضح")}</span><span>{t("One-time project pricing", "رسوم مشروع لمرة واحدة")}</span><span>{t("Structured reviews", "مراجعات واعتمادات منظمة")}</span><span>{t("Optional ongoing support", "دعم مستمر اختياري")}</span></div>
+      <div className="mp-controls"><p>{t("Five packages. Find your fit.", "خمس باقات. اختر الأنسب لشركتك.")}</p><div className="mp-currencies" role="group" aria-label={t("Currency", "العملة")}>{["sar","usd","gbp"].map(c=><button key={c} type="button" aria-pressed={currency===c} disabled={c!=="sar"&&!quote?.prices[c]} onClick={()=>setCurrency(c)}>{c.toUpperCase()}</button>)}</div></div>
       <p className="mp-note">
         {t(
           "100% upfront · One-time project fee · Refund requests within 72 hours, less administrative and transfer fees.",
@@ -153,17 +140,17 @@ export default function Packages({ lang }: { lang: Lang }) {
         {packages.map((p) => (
           <article
             key={p.id}
-            className={`mp-card ${p.id === "grow" ? "mp-featured" : ""}`}
+            className={`mp-card ${p.id === "grow" ? "mp-featured" : ""} ${selected===p.id ? "mp-selected" : ""}`}
           >
             <span className="mp-badge">
               {p.id === "grow"
                 ? t("MOST POPULAR", "الأكثر طلبًا")
                 : p.id === "grow-procure"
                   ? t("FOR B2B", "للشركات")
-                  : "MASAR"}
+                  : t(`SAVE ${Math.round((1-p.sar/p.original!)*100)}%`, `وفر ${Math.round((1-p.sar/p.original!)*100)}٪`)}
             </span>
             <h3>{p.name}</h3>
-            {ar && <p>{p.ar}</p>}
+            <p className="mp-description">{planCopy[p.id].description[lang]}</p>
             <del>
               {new Intl.NumberFormat(ar ? "ar-SA" : "en-GB", {
                 style: "currency",
@@ -176,21 +163,13 @@ export default function Packages({ lang }: { lang: Lang }) {
             </del>
             <strong className="mp-price">{money(p.id)}</strong>
             <small>{t("One-time payment", "دفعة واحدة")}</small>
-            <button type="button" onClick={() => choose(p.id)}>
-              {t("Choose package", "اختيار الباقة")}
+            <button type="button" className="mp-choose" onClick={() => choose(p.id)}>
+              {selected===p.id?t("Selected ✓", "تم الاختيار ✓"):t("Choose package", "اختيار الباقة")}
             </button>
-            <button
-              type="button"
-              className="mp-link"
-              onClick={() => setDetails(p)}
-            >
-              {t("View full details", "عرض التفاصيل كاملة")}
-            </button>
-            <ul>
-              {p.features?.slice(0, 5).map(([en, arabic]) => (
-                <li key={en}>{ar ? arabic : en}</li>
-              ))}
-            </ul>
+            <p className="mp-card-micro">{t("100% upfront · One-time fee", "دفع كامل مقدمًا · لمرة واحدة")}</p>
+            <div className="mp-included">{t("WHAT’S INCLUDED", "المشمول في الباقة")}</div>
+            <ul>{planCopy[p.id].features[lang].map(feature=><li key={feature}>{feature}</li>)}</ul>
+            <button type="button" className="mp-link" onClick={()=>setDetails(p)}>{t("View full details", "عرض التفاصيل كاملة")} <span aria-hidden="true">{ar?"←":"→"}</span></button>
           </article>
         ))}
       </div>
@@ -361,6 +340,16 @@ export default function Packages({ lang }: { lang: Lang }) {
           </form>
         </div>
       )}
+      <div className="mp-trust"><div><b>{t("Clear pricing", "أسعار واضحة")}</b><p>{t("Your package and extras, item by item.", "باقتك وإضافاتك، مع توضيح كل مبلغ.")}</p></div><div><b>{t("Structured delivery", "تنفيذ منظم")}</b><p>{t("Clear stages, reviews and approvals.", "مراحل واضحة للمراجعة والاعتماد.")}</p></div><div><b>{t("Ongoing support", "دعم مستمر")}</b><p>{t("Optional care after your launch.", "خدمات دعم اختيارية بعد الإطلاق.")}</p></div><div><b>{t("Built for business", "مصمم للأعمال")}</b><p>{t("Brand, digital and commercial tools.", "هوية وحضور رقمي وأدوات تجارية.")}</p></div></div>
+      <section className="mp-process"><p className="mp-eyebrow">{t("HOW IT WORKS", "كيف نعمل")}</p><h2>{t("From selection to launch.", "من اختيار الباقة إلى الإطلاق.")}</h2><div className="mp-process-grid">{[
+        ["Choose your package","اختر الباقة","Select your package and any extra services.","حدد الباقة والخدمات الإضافية التي تحتاجها."],
+        ["Confirm the scope","اعتماد نطاق العمل","Align deliverables, inputs and timeline before kickoff.","نتفق على المخرجات والمدخلات والجدول الزمني قبل بدء التنفيذ."],
+        ["Design & build","التصميم والتنفيذ","Develop your project through clear review stages.","نطور مشروعك عبر مراحل مراجعة واعتماد واضحة."],
+        ["Launch & handover","الإطلاق والتسليم","Receive your approved assets and launch-ready setup.","تستلم المخرجات النهائية المعتمدة والجاهزة للإطلاق."]
+      ].map((step,i)=><article key={i}><span>0{i+1}</span><h3>{t(step[0],step[1])}</h3><p>{t(step[2],step[3])}</p></article>)}</div></section>
+      {!selected&&<section className="mp-extras-preview"><p className="mp-eyebrow">{t("ADD-ONS", "خدمات إضافية")}</p><h2>{t("Make the package yours.", "خصص الباقة لتناسب شركتك.")}</h2><p>{t("Choose a package above, then add only what you need.", "اختر باقتك أولًا، ثم أضف فقط ما تحتاجه.")}</p><div>{addons.map(a=><article key={a.id}><h3>{ar?a.ar:a.name}</h3><strong>{money(a.id)}</strong></article>)}</div></section>}
+      <div className="mp-faq-heading"><p className="mp-eyebrow">{t("GOOD TO KNOW", "معلومات مهمة")}</p><h2>{t("Before you choose.", "قبل اختيار الباقة.")}</h2></div>
+      {packageFaqs.map(f=><details className="mp-faq" key={f.q.en}><summary>{f.q[lang]}</summary><p>{f.a[lang]}</p></details>)}
       <details className="mp-faq">
         <summary>
           {t("How does the refund work?", "كيف يعمل الاسترداد؟")}
@@ -392,6 +381,7 @@ export default function Packages({ lang }: { lang: Lang }) {
                 <li key={en}>{ar ? arabic : en}</li>
               ))}
             </ul>
+            <p>{t("Final deliverables, review rounds and timeline are confirmed before kickoff. Hosting and mailbox allowances cover the first year.", "يُعتمد نطاق العمل وجولات المراجعة والجدول الزمني قبل بدء التنفيذ. الاستضافة والبريد الإلكتروني للسنة الأولى.")}</p>
             <p>{refund[lang]}</p>
             <button
               onClick={() => {

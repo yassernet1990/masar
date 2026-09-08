@@ -8,6 +8,7 @@ export type Item = {
   features?: [string, string][];
 };
 const start: [string, string][] = [
+  ["Contact and lead enquiry section", "قسم للتواصل واستقبال طلبات العملاء"],
   ["Landing page · 3 design directions", "صفحة هبوط · 3 توجهات تصميم"],
   ["Logo · 3 concepts + 3 revision rounds", "شعار · 3 أفكار و3 جولات تعديل"],
   ["One year hosting + 2 business emails", "استضافة سنة وبريدان رسميان"],
@@ -19,6 +20,7 @@ const start: [string, string][] = [
   ],
 ];
 const essential: [string, string][] = [
+  ["Vendor registration template and procurement document branding", "نموذج تسجيل الموردين وتنسيق هوية مستندات المشتريات"],
   [
     "RFQ, quotation and supplier comparison templates",
     "نماذج طلب تسعير وعرض سعر ومقارنة موردين",
@@ -102,6 +104,7 @@ export const packages: Item[] = [
     original: 17900,
     features: [
       ["Premium corporate website + CMS", "موقع احترافي متكامل ولوحة تحكم"],
+      ["Priority project support", "أولوية الدعم خلال المشروع"],
       ["3 premium creative directions", "3 توجهات تصميم احترافية"],
       [
         "One year hosting + 20 business emails",

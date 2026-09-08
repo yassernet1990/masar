@@ -5,6 +5,7 @@ import UKCompanyBadge from "./uk-company-badge";
 import "./footer-identity.css";
 import HeaderBrand from "./header-brand";
 import Packages from "./commerce/packages";
+import ClientsWidget from "./clients-widget";
 
 type Lang = "ar" | "en";
 type ThemeMedia = {
@@ -1442,7 +1443,8 @@ export default function Home({ packagesOnly = false }: { packagesOnly?: boolean 
         )}
         </>}
       </section>
-      {packagesOnly ? <Packages lang={lang} /> : <>
+      {!packagesOnly && <ClientsWidget />}
+      {packagesOnly ? <Packages lang={lang} backgroundImage={media.hero} /> : <>
       <section id="about" className="cx-intro reveal">
         <div>
           <p className="kicker">{t.intro}</p>

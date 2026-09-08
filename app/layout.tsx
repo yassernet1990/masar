@@ -4,7 +4,6 @@ import "./amaala.css";
 import "./amaala-overrides.css";
 import "./clients-widget.css";
 import "./refinement.css";
-import ClientsWidget from "./clients-widget";
 import ThemeBridge from "./theme-bridge";
 
 export const metadata: Metadata = { title: "MASAR Procurement Solutions | حلول مسار للمشتريات", description: "Integrated procurement consulting and sourcing solutions across MENA.", icons: { icon: [{ url: "/favicon.png", type: "image/png", sizes: "512x512" }], shortcut: "/favicon.png", apple: "/favicon.png" } };
@@ -18,7 +17,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet" />
       </head>
-      <body><ThemeBridge />{children}<ClientsWidget /></body>
+      <body><ThemeBridge />{children}</body>
     </html>
   );
 }
