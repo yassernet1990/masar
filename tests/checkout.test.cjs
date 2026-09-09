@@ -17,6 +17,7 @@ Module._extensions[".ts"] = (module, filename) =>
     filename,
   );
 const checkout = require("../app/api/checkout/route.ts");
+const serviceCheckout = require("../app/api/service-checkout/route.ts");
 const webhook = require("../app/api/stripe/webhook/route.ts");
 const Stripe = require("stripe");
 const directory = fs.mkdtempSync("/tmp/masar-order-tests-");
@@ -147,4 +148,50 @@ test('checkout enabled with both secrets while optional fee details are deferred
   delete process.env.MASAR_REFUND_FEE_AR;
   const q=await require('../app/commerce/server.ts').quote();
   assert.equal(q.ready,true); assert.equal(q.fee,null);
+});
+
+const serviceOrder = {
+  catalog: "procurement",
+  items: [{ id: "procurement-cost-optimization", amount: 10000 }],
+  paymentPercent: 60,
+  lang: "en",
+  accepted: true,
+  email: "buyer@example.com",
+  name: "Test Buyer",
+  company: "Example",
+  requestId: "11234567-1234-1234-1234-123456789012",
+};
+
+test("service checkout rejects unknown, duplicate, cross-catalog and out-of-range amounts", async () => {
+  for (const patch of [
+    { items: [{ id: "unknown", amount: 5000 }] },
+    { items: [{ id: "procurement-cost-optimization", amount: 4900 }] },
+    { items: [{ id: "procurement-cost-optimization", amount: 15100 }] },
+    { items: [{ id: "procurement-cost-optimization", amount: 5050 }] },
+    { items: [{ id: "contract-review", amount: 3000 }] },
+    { items: [{ id: "procurement-cost-optimization", amount: 5000 }, { id: "procurement-cost-optimization", amount: 6000 }] },
+    { paymentPercent: 40 },
+  ]) {
+    assert.equal((await serviceCheckout.POST(request({ ...serviceOrder, ...patch }))).status, 400);
+  }
+});
+
+test("service checkout validates on the server and charges 60 percent of the agreed fee", async () => {
+  const server = require("../app/commerce/server.ts");
+  const savedStripe = server.stripe;
+  let sent;
+  server.stripe = () => ({ checkout: { sessions: { create: async (value) => { sent = value; return { url: "https://checkout.stripe.com/service" }; } } } });
+  try {
+    const response = await serviceCheckout.POST(request(serviceOrder));
+    assert.equal(response.status, 200);
+    assert.equal(sent.currency, "sar");
+    assert.equal(sent.line_items[0].price_data.unit_amount, 600000);
+    assert.equal(sent.metadata.agreed_total_sar, "10000");
+    assert.equal(sent.metadata.payment_percent, "60");
+    assert.equal(sent.metadata.remaining_sar, "4000");
+    assert.equal(sent.metadata.catalog, "masar_services_procurement_202609");
+    assert.equal(JSON.stringify(sent).toLowerCase().includes("success fee"), false);
+  } finally {
+    server.stripe = savedStripe;
+  }
 });

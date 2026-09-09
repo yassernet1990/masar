@@ -5,6 +5,8 @@ import UKCompanyBadge from "./uk-company-badge";
 import "./footer-identity.css";
 import HeaderBrand from "./header-brand";
 import Packages from "./commerce/packages";
+import ServiceSelector from "./commerce/service-selector";
+import type { ServiceKind } from "./commerce/service-catalog";
 import ClientsWidget from "./clients-widget";
 
 type Lang = "ar" | "en";
@@ -1178,16 +1180,17 @@ function AdminPanel({
   );
 }
 
-export default function Home({ packagesOnly = false }: { packagesOnly?: boolean }) {
+export default function Home({ packagesOnly = false, servicePage }: { packagesOnly?: boolean; servicePage?: ServiceKind }) {
+  const innerPage = packagesOnly || Boolean(servicePage);
   const [lang, setLang] = useState<Lang>("en");
   useEffect(() => {
     const timer = window.setTimeout(() => {
       const value = new URLSearchParams(window.location.search).get("lang");
       if (value === "ar" || value === "en") setLang(value);
-      if (!packagesOnly && window.location.hash === "#brand-packages") window.location.replace("/packages");
+      if (!innerPage && window.location.hash === "#brand-packages") window.location.replace("/packages");
     }, 0);
     return () => window.clearTimeout(timer);
-  }, [packagesOnly]);
+  }, [innerPage]);
   const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
   const [contactError, setContactError] = useState("");
@@ -1234,7 +1237,7 @@ export default function Home({ packagesOnly = false }: { packagesOnly?: boolean 
     serviceMedia[1] = "https://images.pexels.com/photos/2804929/pexels-photo-2804929.jpeg?auto=compress&cs=tinysrgb&w=1200";
   }
   const go = (id: string) => {
-    if (packagesOnly) { window.location.assign(`/?lang=${lang}#${id}`); return; }
+    if (innerPage) { window.location.assign(`/?lang=${lang}#${id}`); return; }
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
   const submit = async (e: FormEvent<HTMLFormElement>) => {
@@ -1348,7 +1351,7 @@ export default function Home({ packagesOnly = false }: { packagesOnly?: boolean 
     <main
       id="top"
       dir={lang === "ar" ? "rtl" : "ltr"}
-      className={`cx-page ${lang} theme-${activeTheme} ${packagesOnly ? "packages-page" : "home-page"}`}
+      className={`cx-page ${lang} theme-${activeTheme} ${innerPage ? "packages-page" : "home-page"}`}
       style={
         {
           ...themeVars,
@@ -1374,18 +1377,18 @@ export default function Home({ packagesOnly = false }: { packagesOnly?: boolean 
         />
         <div className="hero-light" />
         <header>
-          <HeaderBrand href={packagesOnly ? `/?lang=${lang}` : "#top"} />
+          <HeaderBrand href={innerPage ? `/?lang=${lang}` : "#top"} />
           <nav>
             {t.nav.map((n, i) => (
               i === 4 ? (
                 <span key={n} className="nav-package-wrap">
                   <a className="nav-packages" href={`/packages?lang=${lang}`}>{n}</a>
                   <span className="nav-package-menu" role="menu">
-                    {t.services.map((service) => service[0] === "04" ? (
-                      <a key={service[0]} href={`/packages?lang=${lang}`} role="menuitem">{service[1]}</a>
-                    ) : (
-                      <span key={service[0]} role="menuitem" aria-disabled="true" title={lang === "ar" ? "سيتم تفعيل التسعير قريبًا" : "Pricing will be enabled soon"}>{service[1]} <small>{lang === "ar" ? "قريبًا" : "Soon"}</small></span>
-                    ))}
+                    <a href={`/services/procurement?lang=${lang}`} role="menuitem">{t.services[0][1]}</a>
+                    <span role="menuitem" aria-disabled="true" title={lang === "ar" ? "سيتم تفعيل التسعير قريبًا" : "Pricing will be enabled soon"}>{t.services[1][1]} <small>{lang === "ar" ? "قريبًا" : "Soon"}</small></span>
+                    <a href={`/services/business-setup?lang=${lang}`} role="menuitem">{t.services[2][1]}</a>
+                    <a href={`/services/commercial-contracts?lang=${lang}`} role="menuitem">{lang === "ar" ? "الاستشارات التجارية والتعاقدية" : "Commercial & contracts advisory"}</a>
+                    <a href={`/packages?lang=${lang}`} role="menuitem">{t.services[3][1]}</a>
                   </span>
                 </span>
               ) : (
@@ -1404,7 +1407,7 @@ export default function Home({ packagesOnly = false }: { packagesOnly?: boolean 
             </a>
           </div>
         </header>
-        {!packagesOnly && <>
+        {!innerPage && <>
         <div className="cx-time">
           <span>{clock || t.time}</span>
           <b>{t.place}</b>
@@ -1453,8 +1456,8 @@ export default function Home({ packagesOnly = false }: { packagesOnly?: boolean 
         )}
         </>}
       </section>
-      {!packagesOnly && <ClientsWidget />}
-      {packagesOnly ? <Packages lang={lang} backgroundImage={media.hero} /> : <>
+      {!innerPage && <ClientsWidget />}
+      {packagesOnly ? <Packages lang={lang} backgroundImage={media.hero} /> : servicePage ? <ServiceSelector kind={servicePage} lang={lang} /> : <>
       <section id="about" className="cx-intro reveal">
         <div>
           <p className="kicker">{t.intro}</p>
@@ -1502,7 +1505,11 @@ export default function Home({ packagesOnly = false }: { packagesOnly?: boolean 
                 <small>{x[0]} / 04</small>
                 <h3>{x[1]}</h3>
                 <p>{x[2]}</p>
-                {x[0] === "04" ? (
+                {x[0] === "01" ? (
+                  <a href={`/services/procurement?lang=${lang}`}>{t.serviceMore} ↗</a>
+                ) : x[0] === "03" ? (
+                  <a href={`/services/business-setup?lang=${lang}`}>{t.serviceMore} ↗</a>
+                ) : x[0] === "04" ? (
                   <a href={`/packages?lang=${lang}`}>{t.serviceMore} ↗</a>
                 ) : (
                   <span className="service-disabled" title={lang === "ar" ? "تسعير هذه الخدمة سيُعلن قريبًا." : "Pricing for this service is coming soon."} aria-disabled="true">

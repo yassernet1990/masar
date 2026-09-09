@@ -23,7 +23,8 @@ export async function POST(request: Request) {
       .object as import("stripe").default.Checkout.Session;
     if (
       session.payment_status === "paid" &&
-      session.metadata?.catalog === "masar_brand_202609"
+      (session.metadata?.catalog === "masar_brand_202609" ||
+        session.metadata?.catalog?.startsWith("masar_services_"))
     ) {
       try {
         await saveOrder(session.id, {
