@@ -24,7 +24,7 @@ function parseBackgroundPosition(value: string) {
 }
 
 function ensureRouteMarkup(svg: SVGSVGElement) {
-  if (svg.dataset.preciseSaudiHub === "2") return;
+  if (svg.dataset.preciseSaudiHub === "3") return;
   svg.innerHTML = `
     <defs>
       <linearGradient id="masarRouteGradientV16" x1="0" x2="1">
@@ -43,7 +43,7 @@ function ensureRouteMarkup(svg: SVGSVGElement) {
       <text class="route-hub-label">Saudi Arabia</text>
     </g>
   `;
-  svg.dataset.preciseSaudiHub = "2";
+  svg.dataset.preciseSaudiHub = "3";
 }
 
 function locateSaudiOnRenderedMap(hero: HTMLElement, art: HTMLElement) {
@@ -89,10 +89,11 @@ function positionSaudiRoutes() {
   const hx = Math.max(0, Math.min(VIEWBOX_W, x));
   const hy = Math.max(0, Math.min(VIEWBOX_H, y));
 
-  // Exactly three lines: two rise from Saudi Arabia, one travels to the right.
-  setPath(svg, ".route-up-a", `M ${hx} ${hy} C ${hx - 18} ${hy - 105}, ${hx - 64} ${hy - 198}, ${hx - 128} ${hy - 286}`);
-  setPath(svg, ".route-up-b", `M ${hx} ${hy} C ${hx + 46} ${hy - 110}, ${hx + 130} ${hy - 210}, ${hx + 238} ${hy - 292}`);
-  setPath(svg, ".route-right", `M ${hx} ${hy} C ${hx + 190} ${hy - 30}, ${hx + 392} ${hy - 22}, 1515 ${hy + 5}`);
+  // Exactly three lines: two rise upward from Saudi Arabia, with the second further left,
+  // and one line travels to the right on a slightly higher trajectory.
+  setPath(svg, ".route-up-a", `M ${hx} ${hy} C ${hx - 8} ${hy - 108}, ${hx - 42} ${hy - 214}, ${hx - 88} ${hy - 318}`);
+  setPath(svg, ".route-up-b", `M ${hx} ${hy} C ${hx - 48} ${hy - 112}, ${hx - 116} ${hy - 220}, ${hx - 202} ${hy - 322}`);
+  setPath(svg, ".route-right", `M ${hx} ${hy} C ${hx + 188} ${hy - 58}, ${hx + 390} ${hy - 50}, 1515 ${hy - 28}`);
 
   const ring = svg.querySelector<SVGCircleElement>(".route-hub-ring");
   const dot = svg.querySelector<SVGCircleElement>(".route-hub-dot");
