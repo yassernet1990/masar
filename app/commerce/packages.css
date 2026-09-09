@@ -201,3 +201,44 @@ main.cx-page.packages-page .mp-choose:hover{transform:translateY(-1px);box-shado
 @keyframes mp-scan{0%,100%{transform:translateY(-85%)}50%{transform:translateY(85%)}}
 @media(max-width:700px){.mp-aurora{filter:blur(65px);opacity:.2}.mp-orbit{opacity:.55}.mp-kinetic{margin-top:-12px}.packages-page .masar-packages:before{background-size:48px 48px}}
 @media(prefers-reduced-motion:reduce){.packages-page .masar-packages:before,.mp-aurora,.mp-orbit,.mp-scene,.mp-kinetic-track,.mp-payment-strip:before{animation:none!important}.mp-atmosphere{opacity:.65}.packages-page .mp-card:after{display:none}}
+
+/* Shared MASAR dark identity and navigation polish. */
+main.cx-page.packages-page{background:#061522!important;color:#eef5f8!important;font-family:"DM Sans","Cairo",sans-serif!important}
+main.cx-page.packages-page .cx-hero header{background:#071b2b!important;border-bottom:1px solid #ffffff1c!important}
+main.cx-page.packages-page .cx-logo,main.cx-page.packages-page .cx-hero nav a,main.cx-page.packages-page .cx-actions button{color:#f4f8fa!important}
+main.cx-page.packages-page .cx-hero nav a{font-size:13px!important;opacity:.82;transition:color .2s,opacity .2s}
+main.cx-page.packages-page .cx-hero nav a:hover,main.cx-page.packages-page .cx-hero nav a.nav-packages{color:#76cfc0!important;opacity:1}
+main.cx-page.packages-page .masar-packages{background:linear-gradient(180deg,#071b2b 0%,#061522 58%,#071b2b 100%)!important;color:#eef5f8!important;font-family:"DM Sans","Cairo",sans-serif!important}
+main.cx-page.packages-page .mp-heading p:last-child,main.cx-page.packages-page .mp-controls>p,main.cx-page.packages-page .mp-note{color:#b7c8d1!important}
+main.cx-page.packages-page .mp-heading p:first-child,main.cx-page.packages-page .mp-eyebrow{color:#76cfc0!important}
+main.cx-page.packages-page .mp-grid{gap:14px}
+main.cx-page.packages-page .mp-card{min-height:650px;height:auto;background:#f8fbfc;border-color:#ffffff25}
+main.cx-page.packages-page .mp-card.mp-featured{background:radial-gradient(ellipse at 100% 0%,#7040b155,transparent 65%),linear-gradient(160deg,#2c184c,#121c2b 78%)}
+main.cx-page.packages-page .mp-card ul{font-family:"DM Sans","Cairo",sans-serif}
+.service-disabled{display:inline-flex;align-items:center;gap:7px;color:currentColor;font-size:12px;font-weight:700;opacity:.58;cursor:not-allowed;border-bottom:1px dashed currentColor;padding-bottom:5px}
+.service-disabled:after{content:"ⓘ";font-size:11px}
+.nav-package-wrap{position:relative;display:inline-flex;align-items:center}
+.nav-package-menu{position:absolute;top:calc(100% + 16px);inset-inline-end:0;display:grid;gap:3px;min-width:260px;padding:10px;border:1px solid #ffffff22;border-radius:14px;background:#0c2537f5;box-shadow:0 18px 45px #0008;opacity:0;visibility:hidden;transform:translateY(-5px);transition:opacity .2s,transform .2s,visibility .2s;z-index:30;backdrop-filter:blur(16px)}
+.nav-package-wrap:hover .nav-package-menu,.nav-package-wrap:focus-within .nav-package-menu{opacity:1;visibility:visible;transform:none}
+.nav-package-menu a,.nav-package-menu>span{display:flex!important;justify-content:space-between;gap:12px;padding:10px 12px;border-radius:9px;color:#eaf5f5!important;text-decoration:none;font-size:12px!important;letter-spacing:0!important;white-space:nowrap}
+.nav-package-menu a:hover{background:#ffffff12;color:#76cfc0!important}.nav-package-menu>span{color:#9db1bd!important;cursor:help}.nav-package-menu small{color:#76cfc0;font-size:10px}
+.mp-comparison{margin:72px 0 66px;padding:34px;border:1px solid #ffffff1f;border-radius:22px;background:linear-gradient(145deg,#10283aeb,#0b2030d9);box-shadow:0 24px 70px #00000022}
+.mp-comparison h2{font-size:clamp(28px,3vw,42px)!important;line-height:1.2;margin:0 0 25px!important;color:#f3f8fa;letter-spacing:-.035em}
+.mp-comparison-scroll{overflow-x:auto;border:1px solid #ffffff1c;border-radius:14px}
+.mp-comparison table{width:100%;min-width:880px;border-collapse:collapse;color:#eaf3f5;font-size:14px}
+.mp-comparison th,.mp-comparison td{padding:15px 14px;border-bottom:1px solid #ffffff14;text-align:center;vertical-align:middle}
+.mp-comparison thead th{background:#163348;color:#9fe8de;font-size:12px;letter-spacing:.04em;white-space:nowrap}
+.mp-comparison thead th:first-child,.mp-comparison tbody th{text-align:start}
+.mp-comparison tbody th{font-weight:650;color:#dce9ed;min-width:210px}
+.mp-comparison tbody tr:last-child th,.mp-comparison tbody tr:last-child td{border-bottom:0}
+.mp-comparison tbody tr:hover{background:#ffffff08}
+.mp-dash{color:#6f8794}
+main.cx-page.packages-page .mp-payment-strip{border-color:#ffffff24!important;background:#102638!important}
+main.cx-page.packages-page .mp-payment-intro strong,main.cx-page.packages-page .mp-payment-brand small{color:#eef7f8!important}
+main.cx-page.packages-page .mp-payment-intro p{color:#afc2cc!important}
+main.cx-page.packages-page .mp-faq,main.cx-page.packages-page .mp-trust,main.cx-page.packages-page .mp-process-grid article,main.cx-page.packages-page .mp-extras-preview article{background:#102638e6;border-color:#ffffff1c;color:#eef5f8}
+main.cx-page.packages-page .mp-faq summary,main.cx-page.packages-page .mp-process-grid h3,main.cx-page.packages-page .mp-extras-preview h3{color:#eef5f8}
+main.cx-page.packages-page .mp-faq p,main.cx-page.packages-page .mp-process-grid p,main.cx-page.packages-page .mp-extras-preview>p:not(.mp-eyebrow){color:#b6c8d0}
+main.cx-page.packages-page footer{color:#c2d0d6}
+@media(max-width:1100px){main.cx-page.packages-page .cx-hero nav{gap:18px}.mp-comparison{margin-inline:0}}
+@media(max-width:700px){main.cx-page.packages-page .cx-hero nav{display:none}.mp-comparison{padding:22px 14px;margin-top:46px}.mp-comparison h2{font-size:29px!important}.mp-comparison table{font-size:13px}.mp-comparison th,.mp-comparison td{padding:13px 10px}}
