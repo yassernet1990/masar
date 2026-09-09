@@ -99,9 +99,8 @@ function renderRoutes() {
   setPath(svg, ".route-up-right", `M ${hx} ${hy} C ${hx + 18} ${hy - 95}, ${hx + 26} ${hy - 205}, ${hx + 34} ${hy - 345}`);
   setPath(svg, ".route-east", `M ${hx} ${hy} C ${hx + 172} ${hy - 78}, ${hx + 390} ${hy - 82}, 1518 ${hy - 52}`);
 
-  // New fourth route: Saudi Arabia -> Europe. A wider north-west arc,
-  // clearly separated from the existing upward lines from the first bend.
-  setPath(svg, ".route-europe", `M ${hx} ${hy} C ${hx - 95} ${hy - 72}, ${hx - 290} ${hy - 205}, ${hx - 520} ${hy - 390}`);
+  // Europe route begins exactly at the Saudi hub center, then bends north-west.
+  setPath(svg, ".route-europe", `M ${hx} ${hy} C ${hx - 42} ${hy - 30}, ${hx - 210} ${hy - 165}, ${hx - 520} ${hy - 390}`);
 
   const ring = svg.querySelector<SVGCircleElement>(".route-hub-ring");
   const dot = svg.querySelector<SVGCircleElement>(".route-hub-dot");
