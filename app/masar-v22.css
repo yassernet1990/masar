@@ -22,6 +22,12 @@ main.cx-page .masar-routes-v22 .route{
 main.cx-page .masar-routes-v22 .route-up-left{opacity:.48;stroke-width:.42;animation-duration:28s}
 main.cx-page .masar-routes-v22 .route-up-right{opacity:.70}
 main.cx-page .masar-routes-v22 .route-east{opacity:.78}
+main.cx-page .masar-routes-v22 .route-europe{
+  opacity:.66;
+  stroke-width:.50;
+  stroke-dasharray:10 17;
+  animation-duration:25s;
+}
 main.cx-page .masar-routes-v22 .route-hub-ring{
   fill:rgba(104,222,255,.05);
   stroke:rgba(109,225,255,.60);
