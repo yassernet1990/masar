@@ -127,7 +127,7 @@ const themeNames: Record<
 };
 const content = {
   ar: {
-    nav: ["عن مسار", "خدماتنا", "منهجيتنا", "الأسئلة"],
+    nav: ["عن مسار", "خدماتنا", "منهجيتنا", "الأسئلة", "الباقات والأسعار"],
     lang: "EN",
     contact: "تواصل",
     time: "2:55:04 م",
@@ -283,7 +283,7 @@ const content = {
     rights: "جميع الحقوق محفوظة",
   },
   en: {
-    nav: ["About Masar", "Services", "Method", "FAQ"],
+    nav: ["About Masar", "Services", "Method", "FAQ", "Packages & Pricing"],
     lang: "AR",
     contact: "Contact",
     time: "2:55:04 PM",
@@ -1377,12 +1377,22 @@ export default function Home({ packagesOnly = false }: { packagesOnly?: boolean 
           <HeaderBrand href={packagesOnly ? `/?lang=${lang}` : "#top"} />
           <nav>
             {t.nav.map((n, i) => (
-              <a
-                key={n}
-                onClick={() => go(["about", "services", "method", "faq"][i])}
-              >
-                {n}
-              </a>
+              i === 4 ? (
+                <span key={n} className="nav-package-wrap">
+                  <a className="nav-packages" href={`/packages?lang=${lang}`}>{n}</a>
+                  <span className="nav-package-menu" role="menu">
+                    {t.services.map((service) => service[0] === "04" ? (
+                      <a key={service[0]} href={`/packages?lang=${lang}`} role="menuitem">{service[1]}</a>
+                    ) : (
+                      <span key={service[0]} role="menuitem" aria-disabled="true" title={lang === "ar" ? "سيتم تفعيل التسعير قريبًا" : "Pricing will be enabled soon"}>{service[1]} <small>{lang === "ar" ? "قريبًا" : "Soon"}</small></span>
+                    ))}
+                  </span>
+                </span>
+              ) : (
+                <a key={n} href={`#${["about", "services", "method", "faq"][i]}`} onClick={(e) => { e.preventDefault(); go(["about", "services", "method", "faq"][i]); }}>
+                  {n}
+                </a>
+              )
             ))}
           </nav>
           <div className="cx-actions">
@@ -1492,7 +1502,13 @@ export default function Home({ packagesOnly = false }: { packagesOnly?: boolean 
                 <small>{x[0]} / 04</small>
                 <h3>{x[1]}</h3>
                 <p>{x[2]}</p>
-                <a href={x[0] === "04" ? `/packages?lang=${lang}` : "#contact"}>{t.serviceMore} ↗</a>
+                {x[0] === "04" ? (
+                  <a href={`/packages?lang=${lang}`}>{t.serviceMore} ↗</a>
+                ) : (
+                  <span className="service-disabled" title={lang === "ar" ? "تسعير هذه الخدمة سيُعلن قريبًا." : "Pricing for this service is coming soon."} aria-disabled="true">
+                    {lang === "ar" ? "قريبًا" : "Coming soon"}
+                  </span>
+                )}
               </div>
             </article>
           ))}
