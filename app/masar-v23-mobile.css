@@ -60,7 +60,7 @@
     right:auto!important;
   }
 
-  /* Copy gets its own zone and never shares space with the glass card. */
+  /* Title stays high while the supporting copy is anchored to the page bottom. */
   main.cx-page.theme-masar .hero-copy,
   main.cx-page.theme-masar.en .hero-copy{
     position:absolute!important;
@@ -69,7 +69,7 @@
     right:22px!important;
     width:auto!important;
     max-width:none!important;
-    bottom:auto!important;
+    bottom:0!important;
   }
   main.cx-page.theme-masar .hero-v16-eyebrow{
     margin-bottom:11px!important;
@@ -86,11 +86,17 @@
   main.cx-page.theme-masar .hero-v16-accent{
     margin-top:-4px!important;
   }
+
+  /* Strategy + intro now sit just above Discover MASAR at the very end of the hero. */
   main.cx-page.theme-masar .hero-copy>p{
-    position:static!important;
+    position:absolute!important;
+    left:0!important;
+    right:0!important;
+    top:auto!important;
+    bottom:88px!important;
     width:100%!important;
     max-width:100%!important;
-    margin:22px 0 16px!important;
+    margin:0!important;
   }
   main.cx-page.theme-masar .hero-v16-tagline{
     margin-bottom:9px!important;
@@ -104,20 +110,28 @@
     line-height:1.58!important;
   }
   main.cx-page.theme-masar .hero-copy .cx-button{
-    position:static!important;
-    margin-top:2px!important;
+    position:absolute!important;
+    left:0!important;
+    right:auto!important;
+    top:auto!important;
+    bottom:24px!important;
+    margin:0!important;
     padding:11px 18px!important;
     font-size:12px!important;
   }
+  main.cx-page.theme-masar.ar .hero-copy .cx-button{
+    right:0!important;
+    left:auto!important;
+  }
 
-  /* Move the glass information card BELOW the whole copy block. */
+  /* The glass information card sits above the bottom copy block, never over it. */
   main.cx-page.theme-masar .hero-card,
   main.cx-page.theme-masar.en .hero-card{
     position:absolute!important;
     top:auto!important;
     left:18px!important;
     right:18px!important;
-    bottom:34px!important;
+    bottom:300px!important;
     width:auto!important;
     max-width:none!important;
     min-height:286px!important;
@@ -334,5 +348,7 @@
   main.cx-page.theme-masar.en .hero-copy{left:18px!important;right:18px!important}
   main.cx-page.theme-masar .hero-copy h1{font-size:clamp(39px,12vw,52px)!important}
   main.cx-page.theme-masar .hero-v16-intro{font-size:12px!important}
+  main.cx-page.theme-masar .hero-card,
+  main.cx-page.theme-masar.en .hero-card{bottom:310px!important}
   .masar-mobile-drawer{width:88vw}
 }
