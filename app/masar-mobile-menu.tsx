@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const items = {
   en: [
@@ -20,6 +20,8 @@ const items = {
 } as const;
 
 export default function MasarMobileMenu() {
+  const drawer = useRef<HTMLElement>(null);
+  const trigger = useRef<HTMLButtonElement>(null);
   const [open, setOpen] = useState(false);
   const [lang, setLang] = useState<"en" | "ar">("en");
 
@@ -36,7 +38,25 @@ export default function MasarMobileMenu() {
 
   useEffect(() => {
     document.body.classList.toggle("masar-mobile-menu-open", open);
-    return () => document.body.classList.remove("masar-mobile-menu-open");
+    if (!open) return () => document.body.classList.remove("masar-mobile-menu-open");
+    const previous = document.activeElement as HTMLElement | null;
+    const first = drawer.current?.querySelector<HTMLButtonElement>("button");
+    first?.focus();
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") { event.preventDefault(); setOpen(false); }
+      if (event.key !== "Tab") return;
+      const controls = Array.from(drawer.current?.querySelectorAll<HTMLElement>("button, a[href]") || []);
+      const firstControl = controls[0];
+      const lastControl = controls[controls.length - 1];
+      if (event.shiftKey && document.activeElement === firstControl) { event.preventDefault(); lastControl?.focus(); }
+      else if (!event.shiftKey && document.activeElement === lastControl) { event.preventDefault(); firstControl?.focus(); }
+    };
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.body.classList.remove("masar-mobile-menu-open");
+      document.removeEventListener("keydown", onKey);
+      (previous || trigger.current)?.focus();
+    };
   }, [open]);
 
   const navigate = (id: string) => {
@@ -54,7 +74,9 @@ export default function MasarMobileMenu() {
   return (
     <>
       <button
+        ref={trigger}
         type="button"
+        aria-controls="masar-mobile-navigation"
         className={`masar-mobile-rail ${open ? "is-open" : ""}`}
         aria-label={lang === "ar" ? "فتح قائمة التنقل" : "Open navigation menu"}
         aria-expanded={open}
@@ -72,13 +94,19 @@ export default function MasarMobileMenu() {
       />
 
       <aside
+        ref={drawer}
+        id="masar-mobile-navigation"
+        role="dialog"
+        aria-modal={open ? true : undefined}
+        aria-label={lang === "ar" ? "قائمة التنقل" : "Navigation menu"}
+        inert={!open}
         className={`masar-mobile-drawer ${open ? "is-open" : ""}`}
         aria-hidden={!open}
         dir={lang === "ar" ? "rtl" : "ltr"}
       >
         <div className="masar-mobile-drawer-head">
           <span>MASAR</span>
-          <button type="button" onClick={() => setOpen(false)} aria-label="Close menu">×</button>
+          <button type="button" onClick={() => setOpen(false)} aria-label={lang === "ar" ? "إغلاق القائمة" : "Close menu"}>×</button>
         </div>
         <nav aria-label={lang === "ar" ? "تنقل الجوال" : "Mobile navigation"}>
           {items[lang].map(([label, id], index) => (

@@ -112,8 +112,9 @@ export const advisoryCatalogs: Record<ServiceKind, AdvisoryCatalog> = {
     intro: { en: "Select the required commercial support and enter the fee agreed with MASAR within each allowed range.", ar: "اختر الدعم التجاري المطلوب وأدخل الأتعاب المتفق عليها مع مسار ضمن النطاق المسموح." },
     journey: { en: "Review → Assess → Manage → Control", ar: "راجع ← قيّم ← أدر ← اضبط" },
     groups: [
-      { id: "contracts", title: { en: "Contract Review", ar: "مراجعة العقود" }, description: { en: "Understand obligations, exposure and commercial risk before commitment.", ar: "افهم الالتزامات والتعرض والمخاطر التجارية قبل الارتباط." }, services: [
+      { id: "contracts", title: { en: "Contract Review", ar: "مراجعة العقود" }, description: { en: "Understand obligations, exposure and commercial risk before commitment.", ar: "افهم الالتزامات والمخاطر التجارية قبل التعاقد." }, services: [
         service("contract-review", "Contract Review", "مراجعة العقد", "Commercial review of clauses, obligations, payment, liabilities and change mechanisms.", "مراجعة تجارية للبنود والالتزامات والدفع والمسؤوليات وآليات التغيير.", 2500, 6000),
+        service("contract-administration", "Contract Administration Setup", "إعداد نظام إدارة العقود", "Obligations register, notice templates and reporting workflow for one contract.", "سجل الالتزامات ونماذج الإشعارات وآلية التقارير لعقد واحد.", 4000, 8000),
         service("commercial-risk", "Commercial Risk Assessment", "تقييم المخاطر التجارية", "Structured assessment before contract award or signature.", "تقييم منظم قبل ترسية العقد أو توقيعه.", 3500, 7500),
       ]},
       { id: "variations", title: { en: "Variations & Change", ar: "التغييرات والأوامر التغييرية" }, description: { en: "Assess entitlement, value and supporting records for changes.", ar: "تقييم الاستحقاق والقيمة والمستندات الداعمة للتغييرات." }, services: [
@@ -123,7 +124,10 @@ export const advisoryCatalogs: Record<ServiceKind, AdvisoryCatalog> = {
         service("claims-strategy", "Claims Strategy Review", "مراجعة استراتيجية المطالبة", "Review structure, contractual basis, records, valuation and negotiation strategy. Commercial advisory, not legal advice.", "مراجعة الهيكل والأساس التعاقدي والسجلات والتقييم والتفاوض. استشارة تجارية وليست قانونية.", 5000, 15000),
       ]},
       { id: "controls", title: { en: "Commercial Controls", ar: "الضبط التجاري" }, description: { en: "Create visibility across contracts, payments, variations and commitments.", ar: "توفير رؤية واضحة للعقود والمدفوعات والتغييرات والالتزامات." }, services: [
-        service("commercial-dashboard", "Commercial Dashboard Setup", "إعداد لوحة المتابعة التجارية", "Dashboard for contracts, payments, variations, claims, commitments and exposure.", "لوحة للعقود والمدفوعات والتغييرات والمطالبات والالتزامات والتعرض.", 5000, 10000),
+        service("interim-payment-review", "Interim Payment Review", "مراجعة مستخلص مرحلي", "Review one payment application, supporting quantities, deductions and contractual payment terms.", "مراجعة مستخلص واحد والكميات الداعمة والحسميات وشروط الدفع التعاقدية.", 2000, 5000),
+        service("final-account-review", "Final Account Review", "مراجعة الحساب الختامي", "Review one contract final account, approved variations, payments and outstanding balances.", "مراجعة الحساب الختامي لعقد واحد والتغييرات المعتمدة والمدفوعات والأرصدة المستحقة.", 5000, 12000),
+        service("cost-control-setup", "Project Cost Control Setup", "إعداد نظام ضبط تكاليف المشروع", "Budget baseline, commitments register, forecast and cost report templates for one project.", "خط أساس للموازنة وسجل الالتزامات والتوقعات ونماذج تقارير التكاليف لمشروع واحد.", 5000, 10000),
+        service("commercial-dashboard", "Commercial Dashboard Setup", "إعداد لوحة المتابعة التجارية", "Dashboard for contracts, payments, variations, claims, commitments and exposure.", "لوحة للعقود والمدفوعات والتغييرات والمطالبات والالتزامات والمخاطر المالية.", 5000, 10000),
       ]},
     ],
   },

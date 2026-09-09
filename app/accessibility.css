@@ -1,0 +1,9 @@
+.cx-page :is(a, button, input, textarea):focus-visible,
+.masar-mobile-drawer button:focus-visible,
+.masar-mobile-rail:focus-visible {
+  outline: 3px solid #52cfff;
+  outline-offset: 4px;
+}
+/* Bridge the pointer gap to keep the existing hover navigation reachable. */
+.nav-package-menu::before { content: ""; position: absolute; inset-inline: 0; top: -18px; height: 18px; }
+.cx-page.ar .footer-bottom :is(a[href^="tel:"], a[href^="mailto:"]) { direction: ltr; unicode-bidi: isolate; }

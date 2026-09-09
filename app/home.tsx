@@ -202,7 +202,7 @@ const content = {
       [
         "03",
         "الهوية والحضور في السوق",
-        "الاسم والهوية البصرية، الملف التعريفي، الموقع، لينكدإن وأصول الإطلاق التسويقي.",
+        "دعم إطلاق الأعمال من خلال الهوية البصرية والملف التعريفي والموقع ولينكدإن ومواد الحضور في السوق.",
         "/images/brand-presence.webp",
       ],
       [
@@ -366,7 +366,7 @@ const content = {
       [
         "03",
         "Brand identity & market presence",
-        "Naming, visual identity, company profiles, websites, LinkedIn and launch-ready marketing assets.",
+        "Support your business launch with visual identity, company profiles, websites, LinkedIn and market presence assets.",
         "/images/brand-presence.webp",
       ],
       [
@@ -459,9 +459,9 @@ const content = {
   },
 };
 
-function Logo() {
+function Logo({ lang = "en" }: { lang?: Lang }) {
   return (
-    <a className="cx-logo" href="#top" aria-label="Masar home">
+    <a className="cx-logo" href={`/?lang=${lang}#top`} aria-label={lang === "ar" ? "مسار — الصفحة الرئيسية" : "Masar home"}>
       <span className="logo-word">
         <b>MASAR</b>
         <small>PROCUREMENT / SOLUTIONS</small>
@@ -1177,17 +1177,17 @@ function AdminPanel({
   );
 }
 
-export default function Home({ packagesOnly = false, servicePage }: { packagesOnly?: boolean; servicePage?: ServiceKind }) {
+export default function Home({ packagesOnly = false, servicePage, initialLang = "en" }: { packagesOnly?: boolean; servicePage?: ServiceKind; initialLang?: Lang }) {
   const innerPage = packagesOnly || Boolean(servicePage);
-  const [lang, setLang] = useState<Lang>("en");
+  const [lang, setLang] = useState<Lang>(initialLang);
   useEffect(() => {
     const timer = window.setTimeout(() => {
       const value = new URLSearchParams(window.location.search).get("lang");
       if (value === "ar" || value === "en") setLang(value);
-      if (!innerPage && window.location.hash === "#brand-packages") window.location.replace("/packages");
+      if (!innerPage && window.location.hash === "#brand-packages") window.location.replace(`/packages?lang=${initialLang}`);
     }, 0);
     return () => window.clearTimeout(timer);
-  }, [innerPage]);
+  }, [innerPage, initialLang]);
   const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
   const [contactError, setContactError] = useState("");
@@ -1203,6 +1203,15 @@ export default function Home({ packagesOnly = false, servicePage }: { packagesOn
     media: defaultMedia,
   });
   const t = siteContent[lang];
+  // Preserve service IDs/media while presenting the approved commercial priority.
+  const orderedServices = [t.services[0], t.services[3], t.services[1], t.services[2]];
+  const servicePaths: Record<string, string> = { "01": "/services/procurement", "02": "/services/business-setup", "03": "/packages", "04": "/services/commercial-contracts" };
+  const sectionHref = (id: string) => `/?lang=${lang}#${id}`;
+  const switchLanguage = () => {
+    const url = new URL(window.location.href);
+    url.searchParams.set("lang", lang === "ar" ? "en" : "ar");
+    window.location.assign(url.toString());
+  };
   const heroSlides =
     lang === "ar"
       ? [
@@ -1210,14 +1219,14 @@ export default function Home({ packagesOnly = false, servicePage }: { packagesOn
           ["100%", "وضوح كامل", "مقارنات واضحة وقرارات موثقة وتقارير شفافة في كل مرحلة."],
           ["3×", "منافسة الموردين", "خيارات مؤهلة تعزز التفاوض وتحقق قيمة تجارية أفضل."],
           ["24/7", "متابعة مستمرة", "تنسيق متواصل مع الموردين والشحن والتسليم."],
-          ["4", "ركائز الخدمة", "التوريد والتعاقد والخدمات اللوجستية وإدارة الموردين."],
+          ["4", "ركائز الخدمة", "المشتريات والعقود وتأسيس الأعمال والحضور في السوق."],
         ]
       : [
           ["360°", "Full-cycle coverage", "From need definition and sourcing to contracting, logistics and delivery."],
           ["100%", "Process visibility", "Clear comparisons, documented decisions and transparent reporting."],
           ["3×", "Supplier competition", "Qualified options that strengthen negotiation and commercial value."],
           ["24/7", "Active follow-up", "Continuous coordination across suppliers, shipping and delivery."],
-          ["4", "Core service pillars", "Sourcing, contracting, logistics and vendor management."],
+          ["4", "Core service pillars", "Procurement, contracts, business setup and market presence."],
         ];
   const activeTheme = themeNames[config.theme] ? config.theme : "masar";
   const media =
@@ -1374,25 +1383,22 @@ export default function Home({ packagesOnly = false, servicePage }: { packagesOn
               i === 4 ? (
                 <span key={n} className="nav-package-wrap">
                   <a className="nav-packages" href={`/?lang=${lang}#services`}>{n}</a>
-                  <span className="nav-package-menu" role="menu">
-                    <a href={`/services/procurement?lang=${lang}`} role="menuitem">{t.services[0][1]}</a>
-                    <a href={`/services/business-setup?lang=${lang}`} role="menuitem">{t.services[1][1]}</a>
-                    <a href={`/packages?lang=${lang}`} role="menuitem">{t.services[2][1]}</a>
-                    <a href={`/services/commercial-contracts?lang=${lang}`} role="menuitem">{t.services[3][1]}</a>
+                  <span className="nav-package-menu">
+                    {orderedServices.map((service) => <a key={service[0]} href={`${servicePaths[service[0]]}?lang=${lang}`}>{service[1]}</a>)}
                   </span>
                 </span>
               ) : (
-                <a key={n} href={`#${["about", "services", "method", "faq"][i]}`} onClick={(e) => { e.preventDefault(); go(["about", "services", "method", "faq"][i]); }}>
+                <a key={n} href={sectionHref(["about", "services", "method", "faq"][i])} onClick={(e) => { e.preventDefault(); go(["about", "services", "method", "faq"][i]); }}>
                   {n}
                 </a>
               )
             ))}
           </nav>
           <div className="cx-actions">
-            <button onClick={() => setLang(lang === "ar" ? "en" : "ar")}>
+            <button type="button" onClick={switchLanguage} aria-label={lang === "ar" ? "Switch to English" : "التبديل إلى العربية"}>
               {t.lang} ◉
             </button>
-            <a className="contact-chip" onClick={() => go("contact")}>
+            <a className="contact-chip" href={sectionHref("contact")} onClick={(e) => { e.preventDefault(); go("contact"); }}>
               {t.contact} ✉
             </a>
           </div>
@@ -1455,7 +1461,7 @@ export default function Home({ packagesOnly = false, servicePage }: { packagesOn
         </div>
         <div>
           <p className="body-copy">{t.introText}</p>
-          <a className="under-link" onClick={() => go("services")}>
+          <a className="under-link" href={sectionHref("services")} onClick={(e) => { e.preventDefault(); go("services"); }}>
             {t.serviceMore} ↓
           </a>
         </div>
@@ -1478,7 +1484,7 @@ export default function Home({ packagesOnly = false, servicePage }: { packagesOn
           <span className="outline-number">04</span>
         </div>
         <div className="service-grid">
-          {t.services.map((x) => (
+          {orderedServices.map((x, index) => (
             <article
               key={x[0]}
               className={activeService === x[0] ? "active" : ""}
@@ -1487,12 +1493,12 @@ export default function Home({ packagesOnly = false, servicePage }: { packagesOn
               tabIndex={0}
             >
               <div className="service-visual">
-                <img src={serviceMedia[Number(x[0]) - 1]} alt="" />
-                <span>{x[0]}</span>
+                <img src={serviceMedia[Number(x[0]) - 1]} alt="" loading="lazy" decoding="async" />
+                <span>{String(index + 1).padStart(2, "0")}</span>
                 <div className="service-orb">↗</div>
               </div>
               <div className="service-copy">
-                <small>{x[0]} / 04</small>
+                <small>{String(index + 1).padStart(2, "0")} / 04</small>
                 <h3>{x[1]}</h3>
                 <p>{x[2]}</p>
                 {x[0] === "01" ? (
@@ -1641,7 +1647,7 @@ export default function Home({ packagesOnly = false, servicePage }: { packagesOn
       </>}
       <footer className="masar-footer">
         <div className="footer-brand">
-          <Logo />
+          <Logo lang={lang} />
           <UKCompanyBadge />
         </div>
         <div className="footer-company">
@@ -1655,9 +1661,6 @@ export default function Home({ packagesOnly = false, servicePage }: { packagesOn
           <i className="footer-light" aria-hidden="true" />
           <a href="mailto:info@masarps.com">info@masarps.com</a>
           <a href="tel:+966505476689">+966 50 547 6689</a>
-          <a className="admin-entry" href="/admin">
-            Admin
-          </a>
           <span>© 2026 MASAR. {t.rights}</span>
         </div>
       </footer>

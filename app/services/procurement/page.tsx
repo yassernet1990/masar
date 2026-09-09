@@ -1,8 +1,11 @@
 import Home from "../../home";
+import SeoJsonLd from "../../seo-jsonld";
+import { pageLanguage, pageMetadata, type PublicPageProps } from "../../seo";
 
-export const metadata = {
-  title: "Procurement, Strategic Sourcing & Vendor Management | MASAR",
-  description: "Choose MASAR procurement strategy, strategic sourcing, tendering, supplier management and cost optimization services.",
-};
-
-export default function Page() { return <Home servicePage="procurement" />; }
+export async function generateMetadata({ searchParams }: PublicPageProps) {
+  return pageMetadata("procurement", await searchParams);
+}
+export default async function Page({ searchParams }: PublicPageProps) {
+  const lang = pageLanguage(await searchParams);
+  return <><SeoJsonLd pageKey="procurement" lang={lang} /><Home initialLang={lang} servicePage="procurement" /></>;
+}
