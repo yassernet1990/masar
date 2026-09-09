@@ -204,6 +204,23 @@ export default function Packages({ lang, backgroundImage }: { lang: Lang; backgr
           </article>
         ))}
       </div>
+      <section className="mp-comparison" aria-labelledby="comparison-title">
+        <p className="mp-eyebrow">{t("COMPARE PACKAGES", "قارن الباقات")}</p>
+        <h2 id="comparison-title">{t("See the difference at a glance.", "شاهد الفرق بين الباقات بسرعة.")}</h2>
+        <div className="mp-comparison-scroll">
+          <table>
+            <thead><tr><th>{t("Included", "المزايا")}</th>{packages.map(p=><th key={p.id}>{p.name}</th>)}</tr></thead>
+            <tbody>{[
+              ["Landing page / website", ["Landing page","Landing page","Corporate website","Corporate website","Premium website"]],
+              ["Business emails", ["2","2","10","10","20"]],
+              ["Company profile", ["—","—","10–12 pages","10–12 pages","10–15 pages"]],
+              ["Brand identity", ["—","—","Mini guidelines","Mini guidelines","Complete guidelines"]],
+              ["Procurement toolkit", ["—","Essential","—","Plus","—"]],
+              ["CMS / analytics / forms", ["—","—","—","—","Included"]],
+            ].map(([label, values])=><tr key={label as string}><th scope="row">{t(label as string, ({"Landing page / website":"الموقع / صفحة الهبوط","Business emails":"البريد الرسمي","Company profile":"بروفايل الشركة","Brand identity":"الهوية البصرية","Procurement toolkit":"أدوات المشتريات","CMS / analytics / forms":"لوحة التحكم والتحليلات والنماذج"} as Record<string,string>)[label as string])}</th>{(values as string[]).map((v,i)=><td key={i}>{v === "—" ? <span className="mp-dash">—</span> : v}</td>)}</tr>)}</tbody>
+          </table>
+        </div>
+      </section>
       <div className="mp-payment-strip" aria-label={t("Payment methods", "طرق الدفع")}>
         <div className="mp-payment-intro">
           <span>{t("FLEXIBLE PAYMENT", "خيارات دفع مرنة")}</span>
