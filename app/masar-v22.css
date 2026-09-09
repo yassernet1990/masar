@@ -50,14 +50,18 @@ main.cx-page .masar-routes-v22 .route-hub-label{
   stroke-width:2px;
 }
 
-/* Why MASAR is intentionally a light section. */
-main.cx-page.theme-masar.home-page .cx-statement{
-  background:#f4f8fc!important;
-  color:#0a1831!important;
+/* Isolated Arabic hero fix: spacing + prevent glyph clipping. */
+main.cx-page.theme-masar.ar .hero-copy h1{
+  line-height:1.28!important;
+  overflow:visible!important;
+  padding-bottom:.12em!important;
 }
-main.cx-page.theme-masar.home-page .cx-statement .kicker{color:#146edb!important}
-main.cx-page.theme-masar.home-page .cx-statement h2{color:#0a1831!important}
-main.cx-page.theme-masar.home-page .cx-statement p{color:#526174!important}
+main.cx-page.theme-masar.ar .hero-v16-accent{
+  margin-top:20px!important;
+  line-height:1.35!important;
+  padding-bottom:.16em!important;
+  overflow:visible!important;
+}
 
 @keyframes masarDashV22{to{stroke-dashoffset:-520}}
 @keyframes masarHubPulseV22{0%,100%{transform:scale(.86);opacity:.42}50%{transform:scale(1.42);opacity:1}}
