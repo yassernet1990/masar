@@ -7,6 +7,7 @@ import "./refinement.css";
 import "./masar-v15.css";
 import "./masar-v16.css";
 import "./masar-v17.css";
+import "./masar-v18.css";
 import ThemeBridge from "./theme-bridge";
 import MasarV17Bridge from "./masar-v17-bridge";
 
