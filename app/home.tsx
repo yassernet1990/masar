@@ -1373,7 +1373,7 @@ export default function Home({ packagesOnly = false, servicePage }: { packagesOn
             {t.nav.map((n, i) => (
               i === 4 ? (
                 <span key={n} className="nav-package-wrap">
-                  <a className="nav-packages" href={`/packages?lang=${lang}`}>{n}</a>
+                  <a className="nav-packages" href={`/?lang=${lang}#services`}>{n}</a>
                   <span className="nav-package-menu" role="menu">
                     <a href={`/services/procurement?lang=${lang}`} role="menuitem">{t.services[0][1]}</a>
                     <a href={`/services/business-setup?lang=${lang}`} role="menuitem">{t.services[1][1]}</a>
