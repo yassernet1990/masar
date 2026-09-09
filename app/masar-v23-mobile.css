@@ -1,0 +1,338 @@
+/* MASAR V23 — mobile-first repair + slide-out navigation */
+
+.masar-mobile-rail,
+.masar-mobile-backdrop,
+.masar-mobile-drawer{display:none}
+
+@media(max-width:800px){
+  html,body{overflow-x:hidden!important}
+
+  /* ---------------------------------------------------------------
+     HERO MOBILE REPAIR
+     --------------------------------------------------------------- */
+  main.cx-page.theme-masar{
+    padding:0!important;
+    overflow:clip!important;
+  }
+  main.cx-page.theme-masar .cx-hero{
+    height:auto!important;
+    min-height:1080px!important;
+    border-radius:0!important;
+    overflow:hidden!important;
+  }
+
+  /* Keep the top strip clean: brand + language only. */
+  main.cx-page.theme-masar .cx-hero header{
+    width:calc(100% - 32px)!important;
+    height:68px!important;
+    margin:0 auto!important;
+    padding:0!important;
+  }
+  main.cx-page.theme-masar .cx-hero header::before{
+    width:100vw!important;
+    backdrop-filter:blur(36px) saturate(160%)!important;
+    -webkit-backdrop-filter:blur(36px) saturate(160%)!important;
+  }
+  main.cx-page.theme-masar .cx-hero nav{display:none!important}
+  main.cx-page.theme-masar .cx-actions{
+    gap:0!important;
+    margin-inline-end:48px!important;
+  }
+  main.cx-page.theme-masar .contact-chip{display:none!important}
+  main.cx-page.theme-masar .cx-actions button{
+    padding:8px 10px!important;
+    font-size:11px!important;
+    background:rgba(255,255,255,.05)!important;
+    border:1px solid rgba(255,255,255,.08)!important;
+    border-radius:999px!important;
+  }
+
+  main.cx-page.theme-masar .cx-time{
+    top:88px!important;
+    right:22px!important;
+    left:auto!important;
+    gap:7px!important;
+    font-size:9.5px!important;
+    opacity:.72!important;
+  }
+  main.cx-page.theme-masar.en .cx-time{
+    left:22px!important;
+    right:auto!important;
+  }
+
+  /* Copy gets its own zone and never shares space with the glass card. */
+  main.cx-page.theme-masar .hero-copy,
+  main.cx-page.theme-masar.en .hero-copy{
+    position:absolute!important;
+    top:126px!important;
+    left:22px!important;
+    right:22px!important;
+    width:auto!important;
+    max-width:none!important;
+    bottom:auto!important;
+  }
+  main.cx-page.theme-masar .hero-v16-eyebrow{
+    margin-bottom:11px!important;
+    font-size:8.5px!important;
+  }
+  main.cx-page.theme-masar .hero-copy h1{
+    width:100%!important;
+    max-width:100%!important;
+    margin:0 0 18px!important;
+    font-size:clamp(42px,12.5vw,61px)!important;
+    line-height:.91!important;
+    letter-spacing:-.052em!important;
+  }
+  main.cx-page.theme-masar .hero-v16-accent{
+    margin-top:-4px!important;
+  }
+  main.cx-page.theme-masar .hero-copy>p{
+    position:static!important;
+    width:100%!important;
+    max-width:100%!important;
+    margin:22px 0 16px!important;
+  }
+  main.cx-page.theme-masar .hero-v16-tagline{
+    margin-bottom:9px!important;
+    font-size:15px!important;
+    line-height:1.35!important;
+  }
+  main.cx-page.theme-masar .hero-v16-intro{
+    max-width:100%!important;
+    padding-top:12px!important;
+    font-size:12.6px!important;
+    line-height:1.58!important;
+  }
+  main.cx-page.theme-masar .hero-copy .cx-button{
+    position:static!important;
+    margin-top:2px!important;
+    padding:11px 18px!important;
+    font-size:12px!important;
+  }
+
+  /* Move the glass information card BELOW the whole copy block. */
+  main.cx-page.theme-masar .hero-card,
+  main.cx-page.theme-masar.en .hero-card{
+    position:absolute!important;
+    top:auto!important;
+    left:18px!important;
+    right:18px!important;
+    bottom:34px!important;
+    width:auto!important;
+    max-width:none!important;
+    min-height:286px!important;
+    margin:0!important;
+    transform:none!important;
+    border-radius:22px!important;
+    z-index:6!important;
+  }
+  main.cx-page.theme-masar .hero-slides{
+    min-height:286px!important;
+  }
+  main.cx-page.theme-masar .hero-slides::before{
+    height:94px!important;
+  }
+  main.cx-page.theme-masar .hero-slides article{
+    padding:18px 20px 50px!important;
+  }
+  main.cx-page.theme-masar .hero-slides strong{
+    font-size:44px!important;
+  }
+  main.cx-page.theme-masar .hero-slides h3{
+    margin:39px 0 7px!important;
+    padding-inline-start:58px!important;
+    font-size:18px!important;
+  }
+  main.cx-page.theme-masar .hero-slides p{
+    padding-inline-start:58px!important;
+    font-size:11.5px!important;
+    line-height:1.55!important;
+  }
+  main.cx-page.theme-masar .hero-dots{display:none!important}
+
+  /* Reduce route noise on narrow screens while preserving the effect. */
+  main.cx-page.theme-masar .masar-routes-v22{
+    opacity:.62!important;
+  }
+  main.cx-page.theme-masar .masar-routes-v22 .route-hub-label{
+    font-size:7.5px!important;
+  }
+
+  /* ---------------------------------------------------------------
+     MOBILE SIDE RAIL + DRAWER
+     --------------------------------------------------------------- */
+  .masar-mobile-rail{
+    display:flex;
+    position:fixed;
+    z-index:10020;
+    top:18px;
+    right:11px;
+    width:40px;
+    height:40px;
+    padding:0;
+    border:1px solid rgba(255,255,255,.16);
+    border-radius:12px;
+    background:rgba(5,19,48,.52);
+    box-shadow:0 10px 30px rgba(0,0,0,.20);
+    backdrop-filter:blur(22px) saturate(150%);
+    -webkit-backdrop-filter:blur(22px) saturate(150%);
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    gap:4px;
+    color:#fff;
+  }
+  .masar-mobile-rail span{
+    display:block;
+    width:16px;
+    height:1.5px;
+    border-radius:3px;
+    background:#f6fbff;
+    transition:transform .25s ease,opacity .2s ease,width .25s ease;
+  }
+  .masar-mobile-rail.is-open span:nth-child(1){transform:translateY(5.5px) rotate(45deg)}
+  .masar-mobile-rail.is-open span:nth-child(2){opacity:0;width:8px}
+  .masar-mobile-rail.is-open span:nth-child(3){transform:translateY(-5.5px) rotate(-45deg)}
+
+  .masar-mobile-backdrop{
+    display:block;
+    position:fixed;
+    z-index:10000;
+    inset:0;
+    background:rgba(2,8,24,.48);
+    backdrop-filter:blur(5px);
+    -webkit-backdrop-filter:blur(5px);
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+    transition:opacity .28s ease,visibility .28s ease;
+  }
+  .masar-mobile-backdrop.is-open{
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+  }
+
+  .masar-mobile-drawer{
+    display:block;
+    position:fixed;
+    z-index:10010;
+    top:0;
+    right:0;
+    bottom:0;
+    width:min(84vw,340px);
+    padding:18px 18px 24px;
+    background:linear-gradient(180deg,rgba(5,20,49,.96),rgba(4,14,36,.985));
+    border-left:1px solid rgba(123,207,255,.14);
+    box-shadow:-28px 0 70px rgba(0,0,0,.34);
+    backdrop-filter:blur(34px) saturate(145%);
+    -webkit-backdrop-filter:blur(34px) saturate(145%);
+    transform:translateX(104%);
+    opacity:.4;
+    transition:transform .34s cubic-bezier(.22,.8,.22,1),opacity .24s ease;
+    color:#eef7ff;
+  }
+  .masar-mobile-drawer.is-open{
+    transform:translateX(0);
+    opacity:1;
+  }
+  .masar-mobile-drawer-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    min-height:48px;
+    padding:0 2px 16px;
+    border-bottom:1px solid rgba(255,255,255,.10);
+  }
+  .masar-mobile-drawer-head>span{
+    font:800 18px/1 "DM Sans",Arial,sans-serif;
+    letter-spacing:.12em;
+  }
+  .masar-mobile-drawer-head button{
+    width:36px;
+    height:36px;
+    border-radius:50%;
+    background:rgba(255,255,255,.055);
+    border:1px solid rgba(255,255,255,.09);
+    color:#fff;
+    font-size:25px;
+    line-height:1;
+  }
+  .masar-mobile-drawer nav{
+    display:grid;
+    margin-top:18px;
+  }
+  .masar-mobile-drawer nav button{
+    display:grid;
+    grid-template-columns:34px 1fr 22px;
+    align-items:center;
+    gap:9px;
+    width:100%;
+    padding:18px 4px;
+    border-bottom:1px solid rgba(255,255,255,.09);
+    background:transparent;
+    color:inherit;
+    text-align:start;
+  }
+  .masar-mobile-drawer nav button>span{
+    color:#69dfff;
+    font:700 9px/1 "DM Sans",Arial,sans-serif;
+    letter-spacing:.08em;
+  }
+  .masar-mobile-drawer nav button>b{
+    font-size:16px;
+    font-weight:600;
+  }
+  .masar-mobile-drawer nav button>i{
+    font-style:normal;
+    color:rgba(255,255,255,.52);
+    font-size:14px;
+  }
+
+  body.masar-mobile-menu-open{overflow:hidden!important}
+
+  /* ---------------------------------------------------------------
+     SECTIONS MOBILE CLEANUP
+     --------------------------------------------------------------- */
+  main.cx-page.theme-masar .clients-section{padding-inline:20px!important}
+  main.cx-page.theme-masar .cx-intro,
+  main.cx-page.theme-masar .cx-statement,
+  main.cx-page.theme-masar .cx-faq{
+    padding-inline:22px!important;
+  }
+  main.cx-page.theme-masar .cx-highlights{
+    margin-inline:0!important;
+    grid-template-columns:1fr!important;
+  }
+  main.cx-page.theme-masar .cx-highlights article{
+    min-height:auto!important;
+    padding:24px 22px!important;
+  }
+  main.cx-page.theme-masar .cx-highlights article+article{
+    border-inline-start:0!important;
+    border-top:1px solid #e2e9f2!important;
+  }
+  main.cx-page.theme-masar .cx-services,
+  main.cx-page.theme-masar .cx-method{
+    padding-inline:22px!important;
+  }
+  main.cx-page.theme-masar .service-grid,
+  main.cx-page.theme-masar .method-grid,
+  main.cx-page.theme-masar .roadmap-row{
+    grid-template-columns:1fr!important;
+  }
+  main.cx-page.theme-masar .cx-contact{
+    margin-inline:12px!important;
+    padding:42px 22px!important;
+    grid-template-columns:1fr!important;
+  }
+}
+
+@media(max-width:390px){
+  main.cx-page.theme-masar .cx-hero{min-height:1120px!important}
+  main.cx-page.theme-masar .hero-copy,
+  main.cx-page.theme-masar.en .hero-copy{left:18px!important;right:18px!important}
+  main.cx-page.theme-masar .hero-copy h1{font-size:clamp(39px,12vw,52px)!important}
+  main.cx-page.theme-masar .hero-v16-intro{font-size:12px!important}
+  .masar-mobile-drawer{width:88vw}
+}
