@@ -9,6 +9,7 @@ import "./masar-v16.css";
 import "./masar-v17.css";
 import "./masar-v18.css";
 import "./masar-v19.css";
+import "./masar-v20.css";
 import ThemeBridge from "./theme-bridge";
 import MasarV17Bridge from "./masar-v17-bridge";
 
