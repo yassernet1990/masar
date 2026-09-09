@@ -1,0 +1,239 @@
+/* MASAR V21 — robust hero anchoring, continuous white highlights, full-width frosted header */
+
+/* =====================================================================
+   HEADER — blur the WHOLE top strip, no box around nav links
+   ===================================================================== */
+main.cx-page.theme-masar .cx-hero header{
+  position:relative!important;
+  isolation:isolate!important;
+  height:74px!important;
+  background:transparent!important;
+  border-bottom:0!important;
+  box-shadow:none!important;
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+}
+
+/* Full viewport frosted strip behind logo + nav + actions. */
+main.cx-page.theme-masar .cx-hero header::before{
+  content:"";
+  position:absolute;
+  z-index:-2;
+  top:0;
+  bottom:0;
+  left:50%;
+  width:100vw;
+  transform:translateX(-50%);
+  background:linear-gradient(180deg,rgba(3,14,38,.68),rgba(3,14,38,.30));
+  backdrop-filter:blur(42px) saturate(160%);
+  -webkit-backdrop-filter:blur(42px) saturate(160%);
+  box-shadow:0 12px 34px rgba(0,0,0,.11);
+  pointer-events:none;
+}
+
+/* Raised separator line across the entire screen. */
+main.cx-page.theme-masar .cx-hero header::after{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  left:50%;
+  bottom:0;
+  width:100vw;
+  height:1px;
+  transform:translateX(-50%);
+  background:rgba(255,255,255,.14);
+  pointer-events:none;
+}
+
+/* Remove the frosted rectangle around About / Services / Method / FAQ / Packages. */
+main.cx-page.theme-masar .cx-hero nav{
+  gap:25px!important;
+  padding:0!important;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+}
+main.cx-page.theme-masar .cx-hero nav a{
+  padding:10px 0!important;
+}
+
+/* Actions sit on the same full-width frosted strip, without a separate surrounding box. */
+main.cx-page.theme-masar .cx-actions{
+  padding:0!important;
+  gap:10px!important;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+}
+
+/* =====================================================================
+   HERO — keep title high, anchor supporting content near bottom reliably
+   ===================================================================== */
+main.cx-page.theme-masar .hero-copy{
+  top:17.8%!important;
+  bottom:0!important;
+  max-width:720px!important;
+}
+main.cx-page.theme-masar .hero-copy h1{
+  margin-bottom:0!important;
+}
+
+/* Put tagline + intro near the bottom of the hero, independent of viewport height. */
+main.cx-page.theme-masar .hero-copy>p{
+  position:absolute!important;
+  top:auto!important;
+  bottom:112px!important;
+  left:0!important;
+  right:auto!important;
+  width:min(600px,80vw)!important;
+  max-width:600px!important;
+  margin:0!important;
+}
+main.cx-page.theme-masar.ar .hero-copy>p{
+  right:0!important;
+  left:auto!important;
+}
+main.cx-page.theme-masar .hero-v16-tagline{
+  margin:0 0 10px!important;
+  font-size:clamp(15px,1.14vw,18px)!important;
+  line-height:1.35!important;
+}
+main.cx-page.theme-masar .hero-v16-intro{
+  padding-top:12px!important;
+  max-width:590px!important;
+  font-size:13.5px!important;
+  line-height:1.58!important;
+}
+
+/* CTA just below the paragraph block, still before page end. */
+main.cx-page.theme-masar .hero-copy .cx-button{
+  position:absolute!important;
+  top:auto!important;
+  bottom:42px!important;
+  left:0!important;
+  right:auto!important;
+  margin:0!important;
+}
+main.cx-page.theme-masar.ar .hero-copy .cx-button{
+  right:0!important;
+  left:auto!important;
+}
+
+/* Slightly re-centre the glass card against the overall hero. */
+main.cx-page.theme-masar .hero-card{
+  top:26.2%!important;
+}
+
+/* =====================================================================
+   ABOUT + HIGHLIGHTS — one uninterrupted WHITE editorial zone
+   ===================================================================== */
+main.cx-page.theme-masar .clients-section,
+main.cx-page.theme-masar .cx-intro,
+main.cx-page.theme-masar .cx-highlights{
+  background:#fff!important;
+  color:#07152e!important;
+  box-shadow:0 0 0 100vmax #fff!important;
+  clip-path:inset(0 -100vmax)!important;
+}
+
+main.cx-page.theme-masar .cx-intro{
+  padding-top:76px!important;
+  padding-bottom:44px!important;
+}
+
+main.cx-page.theme-masar .cx-highlights{
+  position:relative!important;
+  margin-top:0!important;
+  margin-bottom:64px!important;
+  border-radius:0!important;
+  border-inline:0!important;
+  border-top:1px solid #e2e9f2!important;
+  border-bottom:1px solid #e2e9f2!important;
+  background:#fff!important;
+  box-shadow:0 0 0 100vmax #fff!important;
+  clip-path:inset(0 -100vmax)!important;
+}
+main.cx-page.theme-masar .cx-highlights article{
+  background:#fff!important;
+  color:#07152e!important;
+}
+main.cx-page.theme-masar .cx-highlights article+article{
+  border-color:#e2e9f2!important;
+}
+main.cx-page.theme-masar .cx-highlights span{
+  color:#0c67ef!important;
+}
+main.cx-page.theme-masar .cx-highlights h3{
+  color:#07152e!important;
+}
+main.cx-page.theme-masar .cx-highlights p{
+  color:#5f6f82!important;
+}
+
+/* Guarantee that the space AFTER 01/02/03 is also white before dark Services starts. */
+main.cx-page.theme-masar .cx-services{
+  position:relative!important;
+  margin-top:0!important;
+}
+main.cx-page.theme-masar .cx-services::before{
+  content:"";
+  position:absolute;
+  z-index:0;
+  left:-100vmax;
+  right:-100vmax;
+  top:-64px;
+  height:64px;
+  background:#fff;
+  pointer-events:none;
+}
+main.cx-page.theme-masar .cx-services>*{
+  position:relative;
+  z-index:1;
+}
+
+/* Keep service numerals visibly non-white. */
+main.cx-page.theme-masar .service-visual>span{
+  color:#075bf0!important;
+  background:#eaf4ff!important;
+  border:1px solid rgba(7,91,240,.18)!important;
+}
+main.cx-page.theme-masar .service-copy small{
+  color:#62dcff!important;
+}
+
+@media(max-height:780px) and (min-width:801px){
+  main.cx-page.theme-masar .cx-hero header{height:70px!important}
+  main.cx-page.theme-masar .hero-copy{top:16.2%!important}
+  main.cx-page.theme-masar .hero-copy>p{bottom:98px!important}
+  main.cx-page.theme-masar .hero-copy .cx-button{bottom:34px!important}
+  main.cx-page.theme-masar .hero-card{top:24.6%!important}
+}
+
+@media(max-width:800px){
+  main.cx-page.theme-masar .cx-hero header{height:72px!important}
+  main.cx-page.theme-masar .cx-hero header::before{
+    backdrop-filter:blur(32px) saturate(155%)!important;
+    -webkit-backdrop-filter:blur(32px) saturate(155%)!important;
+  }
+  main.cx-page.theme-masar .hero-copy{
+    top:16.5%!important;
+    bottom:auto!important;
+  }
+  main.cx-page.theme-masar .hero-copy>p{
+    position:static!important;
+    width:auto!important;
+    margin:18px 0 10px!important;
+  }
+  main.cx-page.theme-masar .hero-copy .cx-button{
+    position:static!important;
+    margin-top:0!important;
+  }
+  main.cx-page.theme-masar .cx-highlights{margin-bottom:48px!important}
+  main.cx-page.theme-masar .cx-services::before{top:-48px;height:48px}
+}
