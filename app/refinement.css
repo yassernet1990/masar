@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+
 /* Consistent typography and rhythm across MASAR's public pages. */
 main.cx-page{font-family:"IBM Plex Sans Arabic",sans-serif!important;font-size:16px;line-height:1.75}
 main.cx-page.en{font-family:"Manrope",sans-serif!important}
@@ -6,7 +8,7 @@ main.cx-page h1,main.cx-page h2,main.cx-page h3{font-weight:600!important;text-w
 main.cx-page.ar h1,main.cx-page.ar h2,main.cx-page.ar h3{letter-spacing:0!important;line-height:1.45!important}
 main.cx-page.en h1,main.cx-page.en h2{letter-spacing:-.045em!important}
 main.cx-page .hero-copy h1{font-size:clamp(44px,6.5vw,88px)!important;line-height:1.08!important;font-weight:600!important}
-main.cx-page .hero-copy h1 strong{font-weight:650!important}
+main.cx-page .hero-copy h1 strong{font-weight:700!important}
 main.cx-page .hero-copy p,main.cx-page .body-copy,main.cx-page .service-copy p,main.cx-page .method-grid p,main.cx-page .cx-faq details p{font-size:16px!important;line-height:1.85!important;max-width:62ch}
 main.cx-page .cx-hero nav{font-size:14px!important;gap:28px!important}
 main.cx-page .kicker{font-size:13px!important;letter-spacing:.08em}
@@ -25,3 +27,363 @@ main.cx-page.theme-amaala,main.cx-page.theme-amaala.ar{font-family:"IBM Plex San
 main.cx-page.theme-amaala.en,main.cx-page.theme-amaala.en *{font-family:"Manrope",sans-serif!important}
 main.cx-page.theme-amaala.ar *,main.cx-page.theme-amaala.ar .hero-copy h1{font-family:"IBM Plex Sans Arabic",sans-serif!important;letter-spacing:0!important}
 main.cx-page.theme-amaala.en .hero-copy h1{font-family:"Manrope",sans-serif!important;letter-spacing:-.045em!important;font-weight:600!important;line-height:1.08!important}
+
+/* ========================================================================
+   MASAR WORLD NETWORK THEME — V14 integration
+   ======================================================================== */
+main.cx-page.theme-masar{
+  --ice:#06132f!important;
+  --ink:#f4f9ff!important;
+  --blue:#57a8ff!important;
+  --blue2:#355cff!important;
+  --aqua:#59d9ff!important;
+  --mint:#7ee3d5!important;
+  --peach:#9edfff!important;
+  --line:rgba(186,220,255,.15)!important;
+  background:#06132f!important;
+  color:#f4f9ff!important;
+  padding:0!important;
+}
+main.cx-page.theme-masar.home-page{background:linear-gradient(180deg,#041026 0%,#071833 48%,#06132f 100%)!important}
+
+/* Hero frame */
+main.cx-page.theme-masar .cx-hero{
+  height:100svh!important;
+  min-height:720px!important;
+  border-radius:0!important;
+  background:#06132f!important;
+  border:0!important;
+  isolation:isolate;
+}
+main.cx-page.theme-masar .cx-hero::before,
+main.cx-page.theme-masar .cx-hero::after{
+  content:"";
+  position:absolute;
+  inset:-12%;
+  z-index:1;
+  pointer-events:none;
+  mix-blend-mode:screen;
+  will-change:transform,opacity;
+}
+main.cx-page.theme-masar .cx-hero::before{
+  opacity:.92;
+  filter:blur(22px);
+  background:
+    radial-gradient(29rem 9rem at 14% 67%,rgba(164,210,255,.22),transparent 72%),
+    radial-gradient(34rem 11rem at 36% 81%,rgba(191,222,255,.25),transparent 72%),
+    radial-gradient(24rem 8rem at 66% 68%,rgba(170,213,255,.20),transparent 73%),
+    radial-gradient(22rem 7rem at 82% 30%,rgba(210,231,255,.16),transparent 74%);
+  animation:masarCloudA 18s ease-in-out infinite alternate;
+}
+main.cx-page.theme-masar .cx-hero::after{
+  opacity:.74;
+  filter:blur(29px);
+  background:
+    radial-gradient(25rem 8rem at 5% 26%,rgba(229,240,255,.17),transparent 74%),
+    radial-gradient(29rem 9rem at 48% 56%,rgba(185,220,255,.16),transparent 74%),
+    radial-gradient(28rem 9rem at 88% 82%,rgba(180,218,255,.16),transparent 75%),
+    radial-gradient(22rem 7rem at 68% 15%,rgba(198,226,255,.14),transparent 74%);
+  animation:masarCloudB 25s ease-in-out infinite alternate;
+}
+
+/* Real world-at-night map: physically shifted left so Saudi Arabia stays visible. */
+main.cx-page.theme-masar .hero-art{
+  inset:0 auto 0 -18%!important;
+  width:128%!important;
+  height:100%!important;
+  background-image:
+    linear-gradient(90deg,rgba(2,10,29,.94) 0%,rgba(2,10,29,.72) 38%,rgba(2,10,29,.18) 70%,rgba(2,10,29,.52) 100%),
+    linear-gradient(180deg,rgba(3,12,34,.10),rgba(3,12,34,.72)),
+    url('https://svs.gsfc.nasa.gov/vis/a030000/a030000/a030003/dmsp_4096.png')!important;
+  background-size:cover,cover,86% auto!important;
+  background-repeat:no-repeat!important;
+  background-position:center,center,62% 53%!important;
+  filter:brightness(.90) saturate(1.08) contrast(1.08)!important;
+  transform:translate3d(clamp(-16px,calc(var(--px) / -45),16px),clamp(-9px,calc(var(--py) / -65),9px),0) scale(1.025)!important;
+  transform-origin:center!important;
+  transition:filter .25s ease,transform .16s ease-out!important;
+  will-change:transform,filter;
+  z-index:0!important;
+}
+main.cx-page.theme-masar .hero-art::after{
+  content:""!important;
+  position:absolute!important;
+  inset:0!important;
+  background:radial-gradient(32rem 24rem at 71% 46%,rgba(69,146,255,.12),transparent 70%)!important;
+  pointer-events:none!important;
+}
+
+/* Thin dashed global routes — intentionally restrained. */
+main.cx-page.theme-masar .hero-light{
+  position:absolute!important;
+  inset:0!important;
+  z-index:1!important;
+  pointer-events:none!important;
+  overflow:hidden!important;
+  background:none!important;
+  opacity:.72!important;
+}
+main.cx-page.theme-masar .hero-light::before,
+main.cx-page.theme-masar .hero-light::after{
+  content:"";
+  position:absolute;
+  right:-7%;
+  width:62vw;
+  min-width:650px;
+  height:32vh;
+  min-height:235px;
+  border-radius:50%;
+  border-top:.55px dashed rgba(112,222,255,.78);
+  border-right:.35px dashed rgba(84,166,255,.28);
+  filter:drop-shadow(0 0 4px rgba(74,189,255,.24));
+  will-change:transform;
+}
+main.cx-page.theme-masar .hero-light::before{
+  top:19%;
+  transform:rotate(-15deg) translate3d(0,0,0);
+  animation:masarRouteA 14s ease-in-out infinite alternate;
+}
+main.cx-page.theme-masar .hero-light::after{
+  top:36%;
+  width:70vw;
+  height:36vh;
+  opacity:.62;
+  transform:rotate(-7deg) translate3d(0,0,0);
+  animation:masarRouteB 19s ease-in-out infinite alternate;
+}
+main.cx-page.theme-masar .hero-dots{display:none!important}
+
+/* Header */
+main.cx-page.theme-masar .cx-hero header{
+  height:92px!important;
+  width:min(1320px,calc(100% - 52px))!important;
+  border-bottom:1px solid rgba(255,255,255,.12)!important;
+  background:linear-gradient(180deg,rgba(4,15,42,.25),rgba(4,15,42,.04))!important;
+  backdrop-filter:blur(14px) saturate(125%);
+  -webkit-backdrop-filter:blur(14px) saturate(125%);
+}
+main.cx-page.theme-masar .cx-hero nav a,
+main.cx-page.theme-masar .cx-actions button{color:rgba(246,251,255,.88)!important}
+main.cx-page.theme-masar .contact-chip{
+  background:rgba(255,255,255,.96)!important;
+  color:#101728!important;
+  border-radius:11px!important;
+  padding:13px 18px!important;
+  box-shadow:0 12px 34px rgba(0,0,0,.16)!important;
+}
+main.cx-page.theme-masar .nav-package-menu{
+  background:rgba(5,24,63,.90)!important;
+  border:1px solid rgba(133,214,255,.18)!important;
+  backdrop-filter:blur(18px)!important;
+}
+
+/* Hero content */
+main.cx-page.theme-masar .cx-time{
+  z-index:3!important;
+  top:18%!important;
+  color:rgba(228,241,255,.67)!important;
+}
+main.cx-page.theme-masar .hero-copy{
+  z-index:3!important;
+  top:24%!important;
+  max-width:760px!important;
+}
+main.cx-page.theme-masar .hero-copy h1{
+  color:#f8fbff!important;
+  text-shadow:0 10px 38px rgba(0,0,0,.20)!important;
+}
+main.cx-page.theme-masar .hero-copy h1 strong{
+  color:transparent!important;
+  background:linear-gradient(112deg,#60afff 0%,#54d9ff 35%,#91edff 45%,#ffffff 50%,#73e5ff 55%,#54d9ff 66%,#60afff 100%)!important;
+  background-size:260% 100%!important;
+  background-position:-140% 0!important;
+  -webkit-background-clip:text!important;
+  background-clip:text!important;
+  animation:masarTitleShine 4.4s ease-in-out infinite alternate!important;
+}
+main.cx-page.theme-masar .hero-copy p{
+  color:rgba(224,237,250,.82)!important;
+  border-top:1px solid rgba(255,255,255,.12)!important;
+  padding-top:22px!important;
+  margin-top:28px!important;
+}
+main.cx-page.theme-masar .cx-button{
+  border-radius:999px!important;
+  padding:14px 24px!important;
+  background:rgba(255,255,255,.97)!important;
+  color:#0d1830!important;
+  box-shadow:0 14px 36px rgba(0,0,0,.22)!important;
+}
+main.cx-page.theme-masar .cx-button:hover{background:white!important;transform:translateY(-2px)!important}
+
+/* Smaller, more transparent, floating glass data card. */
+main.cx-page.theme-masar .hero-card{
+  z-index:3!important;
+  top:calc(50% - 155px)!important;
+  width:min(310px,calc(100% - 44px))!important;
+  min-height:335px!important;
+  padding:28px 26px 24px!important;
+  border-radius:25px!important;
+  color:#f4f9ff!important;
+  background:linear-gradient(180deg,rgba(20,68,132,.055),rgba(8,28,68,.035))!important;
+  border:1px solid rgba(138,218,255,.22)!important;
+  box-shadow:0 20px 46px rgba(0,0,0,.17),0 0 0 1px rgba(255,255,255,.02) inset!important;
+  backdrop-filter:blur(17px) saturate(124%)!important;
+  -webkit-backdrop-filter:blur(17px) saturate(124%)!important;
+  animation:masarCardFloat 8s ease-in-out infinite!important;
+}
+main.cx-page.theme-masar .hero-card::before{
+  background:linear-gradient(145deg,rgba(84,196,255,.055),transparent 46%)!important;
+}
+main.cx-page.theme-masar .hero-slides{min-height:250px!important}
+main.cx-page.theme-masar .hero-slides article{
+  transform:translateY(34px) scale(.985)!important;
+  transition:opacity .72s ease,transform .72s cubic-bezier(.2,.8,.2,1)!important;
+}
+main.cx-page.theme-masar .hero-slides article.active{transform:translateY(0) scale(1)!important}
+main.cx-page.theme-masar .hero-slides strong{
+  color:#f8fbff!important;
+  font-size:64px!important;
+  text-shadow:0 0 26px rgba(93,203,255,.15)!important;
+}
+main.cx-page.theme-masar .hero-slides h3{color:#fff!important;font-size:18px!important;margin:18px 0 8px!important}
+main.cx-page.theme-masar .hero-slides p{color:rgba(220,234,249,.78)!important;font-size:13px!important;line-height:1.65!important}
+main.cx-page.theme-masar .hero-slides b{color:rgba(206,232,255,.58)!important;margin-top:25px!important;font-size:10px!important;letter-spacing:.12em!important}
+main.cx-page.theme-masar .hero-card-dots{left:26px!important;bottom:18px!important}
+main.cx-page.theme-masar .hero-card-dots button{background:rgba(255,255,255,.24)!important;height:7px!important;width:7px!important}
+main.cx-page.theme-masar .hero-card-dots button.active{background:#6fe4ff!important;width:28px!important;box-shadow:0 0 12px rgba(111,228,255,.45)!important}
+
+/* Remaining homepage inherits the same visual language, but calmer than the hero. */
+main.cx-page.theme-masar .cx-intro,
+main.cx-page.theme-masar .cx-roadmap,
+main.cx-page.theme-masar .cx-faq,
+main.cx-page.theme-masar footer{
+  background:transparent!important;
+  color:#eef6ff!important;
+}
+main.cx-page.theme-masar .cx-highlights,
+main.cx-page.theme-masar .cx-services,
+main.cx-page.theme-masar .cx-method{
+  background:rgba(8,28,62,.52)!important;
+  color:#eef6ff!important;
+  border-color:rgba(184,218,255,.12)!important;
+}
+main.cx-page.theme-masar .cx-highlights{
+  border:1px solid rgba(184,218,255,.13)!important;
+  border-radius:18px!important;
+  overflow:hidden!important;
+  backdrop-filter:blur(10px)!important;
+}
+main.cx-page.theme-masar .cx-highlights article+article{border-color:rgba(184,218,255,.12)!important}
+main.cx-page.theme-masar .cx-highlights h3,
+main.cx-page.theme-masar .service-copy h3,
+main.cx-page.theme-masar .method-grid h3,
+main.cx-page.theme-masar .roadmap-row span,
+main.cx-page.theme-masar .cx-faq summary{color:#f4f9ff!important}
+main.cx-page.theme-masar .cx-highlights p,
+main.cx-page.theme-masar .body-copy,
+main.cx-page.theme-masar .service-copy p,
+main.cx-page.theme-masar .method-grid p,
+main.cx-page.theme-masar .cx-statement p:not(.kicker),
+main.cx-page.theme-masar .cx-faq details p,
+main.cx-page.theme-masar footer{color:rgba(203,220,237,.72)!important}
+main.cx-page.theme-masar .kicker,
+main.cx-page.theme-masar .under-link,
+main.cx-page.theme-masar .service-copy a{color:#66d9ff!important}
+main.cx-page.theme-masar .kicker::before{color:#66d9ff!important}
+main.cx-page.theme-masar .cx-intro h2,
+main.cx-page.theme-masar .cx-intro h2 strong,
+main.cx-page.theme-masar .section-title h2 strong,
+main.cx-page.theme-masar .cx-statement h2 strong,
+main.cx-page.theme-masar .contact-content h2 strong{color:#62d9ff!important}
+main.cx-page.theme-masar .service-grid article{
+  background:linear-gradient(180deg,rgba(15,54,101,.48),rgba(7,29,66,.70))!important;
+  border:1px solid rgba(142,211,255,.14)!important;
+  border-radius:18px!important;
+  box-shadow:0 22px 48px rgba(0,0,0,.14)!important;
+  backdrop-filter:blur(10px)!important;
+}
+main.cx-page.theme-masar .service-grid article:hover{transform:translateY(-5px)!important;border-color:rgba(113,216,255,.30)!important}
+main.cx-page.theme-masar .service-visual img{filter:saturate(.84) brightness(.76) contrast(1.06)!important;transition:transform .55s ease,filter .45s ease!important}
+main.cx-page.theme-masar .service-grid article:hover .service-visual img{transform:scale(1.035)!important;filter:saturate(.98) brightness(.84) contrast(1.05)!important}
+main.cx-page.theme-masar .method-grid{border-color:rgba(184,218,255,.13)!important}
+main.cx-page.theme-masar .method-grid article{border-color:rgba(184,218,255,.13)!important;background:rgba(9,33,73,.22)!important}
+main.cx-page.theme-masar .method-grid b{background:linear-gradient(135deg,#4c7dff,#59d9ff)!important;color:white!important}
+main.cx-page.theme-masar .sector-note,
+main.cx-page.theme-masar .roadmap-row article,
+main.cx-page.theme-masar .cx-faq details{border-color:rgba(184,218,255,.14)!important}
+main.cx-page.theme-masar .roadmap-row b{color:#64dcff!important}
+main.cx-page.theme-masar .cx-statement{
+  color:#eef6ff!important;
+}
+main.cx-page.theme-masar .statement-art{
+  border:1px solid rgba(140,210,255,.14)!important;
+  box-shadow:0 28px 55px rgba(0,0,0,.18)!important;
+  overflow:hidden!important;
+}
+main.cx-page.theme-masar .statement-art::after{background:linear-gradient(135deg,rgba(5,20,52,.08),rgba(5,20,52,.58))!important}
+main.cx-page.theme-masar .cx-contact{
+  background:linear-gradient(135deg,#061736,#0b2d5a)!important;
+  border:1px solid rgba(135,213,255,.16)!important;
+  box-shadow:0 30px 70px rgba(0,0,0,.18)!important;
+}
+main.cx-page.theme-masar .contact-art{opacity:.42!important;filter:saturate(.78) brightness(.64)!important}
+main.cx-page.theme-masar .contact-content input,
+main.cx-page.theme-masar .contact-content textarea{background:rgba(255,255,255,.035)!important;border-color:rgba(255,255,255,.22)!important}
+main.cx-page.theme-masar footer .cx-logo{color:#eef6ff!important}
+main.cx-page.theme-masar footer>div:last-child{border-color:rgba(184,218,255,.13)!important}
+
+/* Inner pages keep the dark MASAR identity without the hero-heavy motion. */
+main.cx-page.theme-masar.packages-page{background:linear-gradient(180deg,#041026,#071833 55%,#06132f)!important;min-height:100vh!important}
+
+@keyframes masarCloudA{
+  0%{transform:translate3d(-5%,1%,0) scale(1);opacity:.84}
+  50%{transform:translate3d(1.5%,-1.5%,0) scale(1.04);opacity:1}
+  100%{transform:translate3d(6%,-3%,0) scale(1.08);opacity:.90}
+}
+@keyframes masarCloudB{
+  0%{transform:translate3d(6%,-1%,0) scale(1.02);opacity:.62}
+  50%{transform:translate3d(0%,1.5%,0) scale(1.06);opacity:.82}
+  100%{transform:translate3d(-7%,3%,0) scale(1.11);opacity:.70}
+}
+@keyframes masarRouteA{
+  0%{transform:rotate(-15deg) translate3d(-1.2%,0,0);opacity:.48}
+  50%{transform:rotate(-13deg) translate3d(1.1%,-3%,0);opacity:.82}
+  100%{transform:rotate(-16deg) translate3d(2.2%,-5%,0);opacity:.58}
+}
+@keyframes masarRouteB{
+  0%{transform:rotate(-7deg) translate3d(1.2%,1%,0);opacity:.34}
+  50%{transform:rotate(-9deg) translate3d(-1.2%,-2%,0);opacity:.64}
+  100%{transform:rotate(-6deg) translate3d(-2.3%,-4%,0);opacity:.42}
+}
+@keyframes masarCardFloat{
+  0%{transform:translate3d(-9px,0,0)}
+  25%{transform:translate3d(4px,-5px,0)}
+  50%{transform:translate3d(12px,0,0)}
+  75%{transform:translate3d(2px,6px,0)}
+  100%{transform:translate3d(-9px,0,0)}
+}
+@keyframes masarTitleShine{
+  0%,8%{background-position:-140% 0}
+  92%,100%{background-position:140% 0}
+}
+
+@media(max-width:1000px){
+  main.cx-page.theme-masar .hero-art{inset:0 auto 0 -11%!important;width:116%!important;background-size:cover,cover,92% auto!important;background-position:center,center,64% 52%!important;transform:none!important}
+  main.cx-page.theme-masar .hero-card{width:min(300px,calc(100% - 36px))!important}
+  main.cx-page.theme-masar .hero-light::before,main.cx-page.theme-masar .hero-light::after{right:-28%;width:90vw;min-width:560px}
+}
+@media(max-width:800px){
+  main.cx-page.theme-masar .cx-hero{min-height:920px!important;height:100svh!important}
+  main.cx-page.theme-masar .cx-hero header{width:calc(100% - 28px)!important;height:78px!important}
+  main.cx-page.theme-masar .hero-art{inset:0 auto 0 -8%!important;width:112%!important;background-size:cover,cover,100% auto!important;background-position:center,center,66% 50%!important}
+  main.cx-page.theme-masar .hero-copy{top:19%!important}
+  main.cx-page.theme-masar .hero-card{top:auto!important;bottom:72px!important;left:50%!important;right:auto!important;transform:translateX(-50%)!important;animation:none!important;width:min(330px,calc(100% - 34px))!important;min-height:300px!important}
+  main.cx-page.theme-masar .hero-light::before{top:24%!important;right:-45%!important}
+  main.cx-page.theme-masar .hero-light::after{top:42%!important;right:-52%!important}
+  main.cx-page.theme-masar .cx-highlights,main.cx-page.theme-masar .service-grid,main.cx-page.theme-masar .method-grid,main.cx-page.theme-masar .roadmap-row{border-radius:14px!important}
+}
+@media(prefers-reduced-motion:reduce){
+  main.cx-page.theme-masar .cx-hero::before,main.cx-page.theme-masar .cx-hero::after,main.cx-page.theme-masar .hero-light::before,main.cx-page.theme-masar .hero-light::after,main.cx-page.theme-masar .hero-card,main.cx-page.theme-masar .hero-copy h1 strong{animation:none!important}
+  main.cx-page.theme-masar .hero-art{transform:none!important}
+}
