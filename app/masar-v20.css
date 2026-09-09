@@ -1,0 +1,131 @@
+/* MASAR V20 — lower supporting copy, continuous white editorial block, refined service numerals */
+
+/* Keep headline tight, but move tagline + intro + CTA down toward the bottom of the hero. */
+main.cx-page.theme-masar .hero-copy{
+  top:18.1%!important;
+  max-width:720px!important;
+}
+main.cx-page.theme-masar .hero-copy h1{
+  margin-bottom:0!important;
+}
+main.cx-page.theme-masar .hero-copy>p{
+  position:absolute!important;
+  top:clamp(315px,43vh,405px)!important;
+  left:0;
+  right:auto;
+  width:min(600px,80vw)!important;
+  margin:0!important;
+}
+main.cx-page.theme-masar.ar .hero-copy>p{
+  right:0;
+  left:auto;
+}
+main.cx-page.theme-masar .hero-v16-tagline{
+  margin:0 0 10px!important;
+  font-size:clamp(15px,1.14vw,18px)!important;
+  line-height:1.35!important;
+}
+main.cx-page.theme-masar .hero-v16-intro{
+  padding-top:12px!important;
+  max-width:590px!important;
+  line-height:1.58!important;
+}
+main.cx-page.theme-masar .hero-copy .cx-button{
+  position:absolute!important;
+  top:clamp(435px,59vh,545px)!important;
+  left:0;
+  margin:0!important;
+}
+main.cx-page.theme-masar.ar .hero-copy .cx-button{
+  right:0;
+  left:auto;
+}
+
+/* Card remains centred against the overall hero rather than the text block. */
+main.cx-page.theme-masar .hero-card{
+  top:27%!important;
+}
+
+/* Make About + Highlights one continuous white editorial zone. */
+main.cx-page.theme-masar .clients-section,
+main.cx-page.theme-masar .cx-intro,
+main.cx-page.theme-masar .cx-highlights{
+  background:#ffffff!important;
+  box-shadow:0 0 0 100vmax #ffffff!important;
+  clip-path:inset(0 -100vmax)!important;
+}
+main.cx-page.theme-masar .cx-intro{
+  padding-top:78px!important;
+  padding-bottom:44px!important;
+}
+main.cx-page.theme-masar .cx-highlights{
+  margin-top:0!important;
+  margin-bottom:0!important;
+  border-radius:0!important;
+  border-inline:0!important;
+  border-top:1px solid #e2e9f2!important;
+  border-bottom:1px solid #e2e9f2!important;
+  box-shadow:none!important;
+}
+main.cx-page.theme-masar .cx-highlights article{
+  background:#fff!important;
+  min-height:150px!important;
+  padding:28px 26px!important;
+}
+main.cx-page.theme-masar .cx-highlights article+article{
+  border-color:#e2e9f2!important;
+}
+main.cx-page.theme-masar .cx-highlights span{
+  color:#0c67ef!important;
+}
+main.cx-page.theme-masar .cx-highlights h3{
+  color:#07152e!important;
+}
+main.cx-page.theme-masar .cx-highlights p{
+  color:#5f6f82!important;
+}
+
+/* Give the white block some clean breathing room before the dark services band. */
+main.cx-page.theme-masar .cx-services{
+  margin-top:0!important;
+  padding-top:96px!important;
+}
+
+/* Four service numbers: make them blue/cyan instead of white. */
+main.cx-page.theme-masar .service-visual>span{
+  color:#0a67f2!important;
+  background:rgba(238,247,255,.96)!important;
+  border:1px solid rgba(98,196,255,.28)!important;
+  box-shadow:0 8px 22px rgba(7,45,95,.15)!important;
+}
+main.cx-page.theme-masar .service-copy small{
+  color:#67dfff!important;
+}
+
+/* General polish pass */
+main.cx-page.theme-masar .service-grid article{border-radius:18px!important}
+main.cx-page.theme-masar .service-visual{border-radius:18px 18px 0 0!important}
+main.cx-page.theme-masar .service-copy{padding:25px 26px 27px!important}
+main.cx-page.theme-masar .method-grid article{padding-top:30px!important;padding-bottom:52px!important}
+main.cx-page.theme-masar .cx-faq summary{padding-top:21px!important;padding-bottom:21px!important}
+main.cx-page.theme-masar .cx-contact{margin-top:56px!important}
+
+@media(max-height:780px) and (min-width:801px){
+  main.cx-page.theme-masar .hero-copy>p{top:280px!important}
+  main.cx-page.theme-masar .hero-copy .cx-button{top:395px!important}
+  main.cx-page.theme-masar .hero-card{top:24%!important}
+}
+
+@media(max-width:800px){
+  main.cx-page.theme-masar .hero-copy>p{
+    position:static!important;
+    width:auto!important;
+    margin:18px 0 10px!important;
+  }
+  main.cx-page.theme-masar .hero-copy .cx-button{
+    position:static!important;
+    margin-top:0!important;
+  }
+  main.cx-page.theme-masar .hero-card{top:auto!important}
+  main.cx-page.theme-masar .cx-highlights{margin-bottom:0!important}
+}
