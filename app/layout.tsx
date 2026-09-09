@@ -20,16 +20,13 @@ import MasarV17Bridge from "./masar-v17-bridge";
 import MasarV22Bridge from "./masar-v22-bridge";
 import MasarMobileMenu from "./masar-mobile-menu";
 
-const masarIcon = "/images/masar-header-symbol.svg";
+const masarIcon = "/favicon.png";
 
 export const metadata: Metadata = {
   title: "MASAR Procurement Solutions | حلول مسار للمشتريات",
   description: "Integrated procurement consulting and sourcing solutions across MENA.",
   icons: {
-    icon: [
-      { url: masarIcon, type: "image/svg+xml" },
-      { url: masarIcon, type: "image/svg+xml", sizes: "any" },
-    ],
+    icon: [{ url: masarIcon, type: "image/png", sizes: "512x512" }],
     shortcut: masarIcon,
     apple: masarIcon,
     other: [{ rel: "mask-icon", url: masarIcon, color: "#328bff" }],
