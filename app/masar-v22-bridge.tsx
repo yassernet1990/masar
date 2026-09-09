@@ -93,12 +93,10 @@ function renderRoutes() {
   const hx = Math.max(0, Math.min(VIEWBOX_W, hub.x));
   const hy = Math.max(0, Math.min(VIEWBOX_H, hub.y));
 
-  // Exactly three routes:
-  // 1) upper-left rising route
-  // 2) upper-right rising route beside it
-  // 3) eastbound route raised clearly above the hub level
-  setPath(svg, ".route-up-left", `M ${hx} ${hy} C ${hx - 42} ${hy - 112}, ${hx - 112} ${hy - 225}, ${hx - 205} ${hy - 334}`);
-  setPath(svg, ".route-up-right", `M ${hx} ${hy} C ${hx + 6} ${hy - 120}, ${hx + 55} ${hy - 238}, ${hx + 122} ${hy - 342}`);
+  // Desktop composition: exactly three routes from Saudi Arabia.
+  // 1) northwest, 2) north, 3) east/right.
+  setPath(svg, ".route-up-left", `M ${hx} ${hy} C ${hx - 72} ${hy - 94}, ${hx - 205} ${hy - 220}, ${hx - 385} ${hy - 360}`);
+  setPath(svg, ".route-up-right", `M ${hx} ${hy} C ${hx - 12} ${hy - 120}, ${hx - 8} ${hy - 245}, ${hx + 8} ${hy - 365}`);
   setPath(svg, ".route-east", `M ${hx} ${hy} C ${hx + 172} ${hy - 78}, ${hx + 390} ${hy - 82}, 1518 ${hy - 52}`);
 
   const ring = svg.querySelector<SVGCircleElement>(".route-hub-ring");
