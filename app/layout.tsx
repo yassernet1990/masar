@@ -5,6 +5,7 @@ import "./amaala-overrides.css";
 import "./clients-widget.css";
 import "./refinement.css";
 import "./masar-v15.css";
+import "./masar-v16.css";
 import ThemeBridge from "./theme-bridge";
 
 export const metadata: Metadata = { title: "MASAR Procurement Solutions | حلول مسار للمشتريات", description: "Integrated procurement consulting and sourcing solutions across MENA.", icons: { icon: [{ url: "/favicon.png", type: "image/png", sizes: "512x512" }], shortcut: "/favicon.png", apple: "/favicon.png" } };
