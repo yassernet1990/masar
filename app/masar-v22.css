@@ -115,6 +115,17 @@ main.cx-page.theme-masar.packages-page .nav-package-wrap:focus-within .nav-packa
   }
 }
 
+/* Arabic hero only: separate the accent line and preserve full glyph descenders. */
+main.cx-page.theme-masar.ar .hero-copy h1{
+  overflow:visible!important;
+}
+main.cx-page.theme-masar.ar .hero-v16-accent{
+  margin-top:12px!important;
+  line-height:1.18!important;
+  padding:0 0 .18em!important;
+  overflow:visible!important;
+}
+
 @keyframes masarDashV22{to{stroke-dashoffset:-520}}
 @keyframes masarHubPulseV22{0%,100%{transform:scale(.86);opacity:.42}50%{transform:scale(1.42);opacity:1}}
 @media(prefers-reduced-motion:reduce){
