@@ -4,10 +4,11 @@ import "./amaala.css";
 import "./amaala-overrides.css";
 import "./clients-widget.css";
 import "./refinement.css";
+import "./masar-v15.css";
 import ThemeBridge from "./theme-bridge";
 
 export const metadata: Metadata = { title: "MASAR Procurement Solutions | حلول مسار للمشتريات", description: "Integrated procurement consulting and sourcing solutions across MENA.", icons: { icon: [{ url: "/favicon.png", type: "image/png", sizes: "512x512" }], shortcut: "/favicon.png", apple: "/favicon.png" } };
-export const viewport: Viewport = { width: "device-width", initialScale: 1, themeColor: "#f4f0e8" };
+export const viewport: Viewport = { width: "device-width", initialScale: 1, themeColor: "#06132f" };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
