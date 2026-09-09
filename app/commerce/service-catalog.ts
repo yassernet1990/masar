@@ -80,12 +80,13 @@ export const advisoryCatalogs: Record<ServiceKind, AdvisoryCatalog> = {
     eyebrow: { en: "PROCUREMENT, STRATEGIC SOURCING & VENDOR MANAGEMENT", ar: "المشتريات والتوريد الاستراتيجي وإدارة الموردين" },
     title: { en: "Build procurement that creates measurable business value.", ar: "ابنِ مشتريات تصنع قيمة أعمال قابلة للقياس." },
     intro: { en: "Choose the support you need and enter the fee already agreed with MASAR within the displayed range.", ar: "اختر الدعم المطلوب وأدخل الأتعاب المتفق عليها مسبقًا مع مسار ضمن النطاق الظاهر." },
-    journey: { en: "Design → Source → Govern → Optimize", ar: "صمّم ← ورّد ← اضبط ← حسّن" },
+    journey: { en: "Design → Source → Govern → Advise", ar: "صمّم ← ورّد ← اضبط ← استشر" },
     groups: [
       { id: "strategy", title: { en: "Strategy & Function Setup", ar: "الاستراتيجية وتأسيس الإدارة" }, description: { en: "Build the operating model, governance and strategic direction.", ar: "بناء نموذج التشغيل والحوكمة والتوجه الاستراتيجي." }, services: [
         service("procurement-department", "Procurement Department Setup", "تأسيس إدارة المشتريات", "Structure, workflow, authority matrix, forms, KPIs and roadmap.", "الهيكل ومسار العمل والصلاحيات والنماذج والمؤشرات وخارطة الطريق.", 10000, 25000),
         service("procurement-strategy", "Procurement Strategy", "استراتيجية المشتريات", "Category, sourcing and supplier strategies with a roadmap.", "استراتيجيات الفئات والتوريد والموردين مع خارطة طريق.", 8000, 15000),
         service("procurement-audit", "Procurement Health Check / Audit", "فحص وتدقيق المشتريات", "Gap assessment, governance review, risks and quick wins.", "تقييم الفجوات والحوكمة والمخاطر والمكاسب السريعة.", 5000, 10000),
+        service("procurement-cost-optimization", "Procurement Cost Optimization", "تحسين تكاليف المشتريات", "Spend review, benchmarking, savings opportunities and negotiation priorities.", "مراجعة الإنفاق والمقارنات وفرص التوفير وأولويات التفاوض.", 5000, 15000),
       ]},
       { id: "tender", title: { en: "Tendering & Award Support", ar: "دعم المناقصات والترسية" }, description: { en: "Prepare stronger competitions and documented award decisions.", ar: "إعداد منافسات أقوى وقرارات ترسية موثقة." }, services: [
         service("tender-rfp", "Tender & RFP Preparation", "إعداد المناقصة وطلب العروض", "Tender package, RFQ/RFP, requirements and evaluation criteria.", "حزمة المناقصة وطلبات التسعير والعروض والمتطلبات ومعايير التقييم.", 3500, 10000),
@@ -95,8 +96,12 @@ export const advisoryCatalogs: Record<ServiceKind, AdvisoryCatalog> = {
         service("supplier-prequalification", "Supplier Prequalification System", "نظام تأهيل الموردين", "Forms, criteria, weighted scoring, approvals and database structure.", "نماذج ومعايير وأوزان تقييم واعتمادات وهيكل قاعدة بيانات.", 5000, 8000),
         service("supplier-mapping", "Supplier Sourcing & Market Mapping", "البحث عن الموردين ورسم السوق", "Supplier mapping across Saudi Arabia, Türkiye, Syria, the Gulf and globally.", "حصر الموردين في السعودية وتركيا وسوريا والخليج والأسواق الدولية.", 3000, 8000),
       ]},
-      { id: "value", title: { en: "Cost & Value Optimization", ar: "تحسين التكلفة والقيمة" }, description: { en: "Identify savings and strengthen commercial outcomes.", ar: "تحديد فرص التوفير وتعزيز النتائج التجارية." }, services: [
-        service("procurement-cost-optimization", "Procurement Cost Optimization", "تحسين تكاليف المشتريات", "Spend review, benchmarking, savings opportunities and negotiation priorities.", "مراجعة الإنفاق والمقارنات وفرص التوفير وأولويات التفاوض.", 5000, 15000),
+      { id: "procurement-advisory", title: { en: "Executive Advisory", ar: "الاستشارات التنفيذية" }, description: { en: "Senior on-demand procurement support for leaders and management teams.", ar: "دعم تنفيذي متخصص في المشتريات عند الطلب للقيادات وفرق الإدارة." }, services: [
+        service("procurement-advisory-essential", "Procurement Executive Advisory — Essential", "الاستشارات التنفيذية للمشتريات — الأساسية", "10 advisory hours, two online meetings and a recommendation report.", "10 ساعات استشارية واجتماعان عن بُعد وتقرير توصيات.", 5000),
+        service("procurement-advisory-extended", "Procurement Executive Advisory — Extended", "الاستشارات التنفيذية للمشتريات — الممتدة", "20 advisory hours, four online meetings and one face-to-face session.", "20 ساعة استشارية و4 اجتماعات عن بُعد واجتماع حضوري واحد.", 10000),
+        service("procurement-retainer-10", "Monthly Procurement Advisory — 10 Hours", "استشارات مشتريات شهرية — 10 ساعات", "Ongoing support for sourcing decisions, suppliers, tenders and negotiations.", "دعم مستمر لقرارات التوريد والموردين والمناقصات والتفاوض.", 4500),
+        service("procurement-retainer-20", "Monthly Procurement Advisory — 20 Hours", "استشارات مشتريات شهرية — 20 ساعة", "Ongoing advisory and implementation support for procurement priorities.", "استشارات ودعم تنفيذي مستمر لأولويات المشتريات.", 8500),
+        service("procurement-retainer-40", "Monthly Procurement Advisory — 40 Hours", "استشارات مشتريات شهرية — 40 ساعة", "Extended advisory and hands-on implementation support.", "دعم استشاري وتنفيذي ممتد وتطبيقي.", 15000),
       ]},
     ],
   },
