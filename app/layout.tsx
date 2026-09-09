@@ -6,7 +6,9 @@ import "./clients-widget.css";
 import "./refinement.css";
 import "./masar-v15.css";
 import "./masar-v16.css";
+import "./masar-v17.css";
 import ThemeBridge from "./theme-bridge";
+import MasarV17Bridge from "./masar-v17-bridge";
 
 export const metadata: Metadata = { title: "MASAR Procurement Solutions | حلول مسار للمشتريات", description: "Integrated procurement consulting and sourcing solutions across MENA.", icons: { icon: [{ url: "/favicon.png", type: "image/png", sizes: "512x512" }], shortcut: "/favicon.png", apple: "/favicon.png" } };
 export const viewport: Viewport = { width: "device-width", initialScale: 1, themeColor: "#06132f" };
@@ -19,7 +21,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet" />
       </head>
-      <body><ThemeBridge />{children}</body>
+      <body><ThemeBridge /><MasarV17Bridge />{children}</body>
     </html>
   );
 }
