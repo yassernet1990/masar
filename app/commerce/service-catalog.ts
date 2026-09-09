@@ -77,7 +77,7 @@ export const advisoryCatalogs: Record<ServiceKind, AdvisoryCatalog> = {
   },
   procurement: {
     slug: "procurement",
-    eyebrow: { en: "PROCUREMENT ADVISORY & TRANSFORMATION", ar: "استشارات وتطوير المشتريات" },
+    eyebrow: { en: "PROCUREMENT, STRATEGIC SOURCING & VENDOR MANAGEMENT", ar: "المشتريات والتوريد الاستراتيجي وإدارة الموردين" },
     title: { en: "Build procurement that creates measurable business value.", ar: "ابنِ مشتريات تصنع قيمة أعمال قابلة للقياس." },
     intro: { en: "Choose the support you need and enter the fee already agreed with MASAR within the displayed range.", ar: "اختر الدعم المطلوب وأدخل الأتعاب المتفق عليها مسبقًا مع مسار ضمن النطاق الظاهر." },
     journey: { en: "Design → Source → Govern → Optimize", ar: "صمّم ← ورّد ← اضبط ← حسّن" },

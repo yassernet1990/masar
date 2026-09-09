@@ -36,9 +36,9 @@ const defaultMedia = {
   contact: "/images/delivery.webp",
   services: [
     "/images/sourcing.webp",
-    "https://images.pexels.com/photos/2804929/pexels-photo-2804929.jpeg?auto=compress&cs=tinysrgb&w=1200",
     "/images/operations-systems.webp",
     "/images/brand-presence.webp",
+    "/images/cx-method.png",
   ],
 };
 const themeMedia: Record<string, ThemeMedia> = {
@@ -163,7 +163,7 @@ const content = {
       </>
     ),
     introText:
-      "مسار لحلول المشتريات شركة متخصصة في الاستشارات، التوريد الاستراتيجي، إدارة الموردين، تأسيس الأعمال، بناء الأنظمة التشغيلية، وتطوير الهوية والحضور في السوق. نعمل كامتداد لفريقك لنحمي التكلفة والجودة والوقت.",
+      "مسار شريك متكامل في المشتريات والتوريد الاستراتيجي وإدارة الموردين، والاستشارات التجارية والتعاقدية، وتأسيس الأعمال، وتطوير الهوية والحضور في السوق. نعمل كامتداد لفريقك لنحمي التكلفة والجودة والوقت.",
     highlight: [
       ["01", "خبرة عملية", "قرارات شراء مبنية على السوق، لا على التخمين."],
       [
@@ -189,27 +189,27 @@ const content = {
     services: [
       [
         "01",
-        "استشارات وحلول المشتريات",
-        "تطوير الاستراتيجية والإجراءات، تحسين دورة الشراء، إدارة العقود، التدريب والدعم الرقمي.",
+        "المشتريات والتوريد الاستراتيجي وإدارة الموردين",
+        "استشارات المشتريات المتكاملة، تحليل السوق، تأهيل الموردين، إدارة RFQ/RFP، التفاوض، قياس الأداء وتحسين الإجراءات.",
         "/images/cx-about.png",
       ],
       [
         "02",
-        "التوريد الاستراتيجي وإدارة الموردين",
-        "تحليل السوق، تأهيل الموردين، إدارة RFQ/RFP، التفاوض ومتابعة الأداء.",
-        "/images/cx-sourcing.png",
-      ],
-      [
-        "03",
         "تأسيس الأعمال والأنظمة التشغيلية",
         "نموذج العمل، تصميم الخدمات، الهيكل التنظيمي، الوصف الوظيفي، السياسات والإجراءات والنماذج.",
         "/images/operations-systems.webp",
       ],
       [
-        "04",
+        "03",
         "الهوية والحضور في السوق",
         "الاسم والهوية البصرية، الملف التعريفي، الموقع، لينكدإن وأصول الإطلاق التسويقي.",
         "/images/brand-presence.webp",
+      ],
+      [
+        "04",
+        "الاستشارات التجارية والتعاقدية",
+        "مراجعة العقود والمخاطر، تقييم الأوامر التغييرية، استراتيجية المطالبات، والضبط التجاري.",
+        "/images/cx-method.png",
       ],
     ],
     whyK: "لماذا مسار؟",
@@ -323,7 +323,7 @@ const content = {
       </>
     ),
     introText:
-      "Masar Procurement Solutions specializes in consulting, strategic sourcing, vendor management, business setup, operational systems, and brand and market presence. We work as an extension of your team to protect cost, quality and time.",
+      "MASAR integrates procurement, strategic sourcing and vendor management with commercial and contracts advisory, business setup, operational systems, and brand and market presence. We work as an extension of your team to protect cost, quality and time.",
     highlight: [
       [
         "01",
@@ -353,27 +353,27 @@ const content = {
     services: [
       [
         "01",
-        "Procurement consulting & solutions",
-        "Strategy, process development, cycle optimization, contracts, training and digital support.",
+        "Procurement, strategic sourcing & vendor management",
+        "End-to-end procurement advisory, market analysis, supplier qualification, RFQ/RFP management, negotiation, performance and process optimization.",
         "/images/cx-about.png",
       ],
       [
         "02",
-        "Strategic sourcing & vendor management",
-        "Market analysis, supplier qualification, RFQ/RFP, negotiation and performance.",
-        "/images/cx-sourcing.png",
-      ],
-      [
-        "03",
         "Business setup & operational systems",
         "Business models, service design, organization structures, job descriptions, policies, procedures and templates.",
         "/images/operations-systems.webp",
       ],
       [
-        "04",
+        "03",
         "Brand identity & market presence",
         "Naming, visual identity, company profiles, websites, LinkedIn and launch-ready marketing assets.",
         "/images/brand-presence.webp",
+      ],
+      [
+        "04",
+        "Commercial & contracts advisory",
+        "Contract and risk reviews, variation assessments, claims strategy and commercial controls.",
+        "/images/cx-method.png",
       ],
     ],
     whyK: "Why Masar",
@@ -545,10 +545,7 @@ function sanitizeStoredConfig(config: unknown): unknown {
       savedLang.introText = defaults.introText;
 
     const defaultServices = defaults.services;
-    if (Array.isArray(savedLang.services) && Array.isArray(defaultServices)) {
-      savedLang.services[2] = defaultServices[2];
-      savedLang.services[3] = defaultServices[3];
-    }
+    if (Array.isArray(savedLang.services) && Array.isArray(defaultServices)) savedLang.services = defaultServices;
 
     const defaultFaqs = defaults.faqs;
     if (Array.isArray(savedLang.faqs) && Array.isArray(defaultFaqs)) {
@@ -1229,13 +1226,7 @@ export default function Home({ packagesOnly = false, servicePage }: { packagesOn
       : config.mediaByTheme?.[activeTheme] ||
         themeMedia[activeTheme] ||
         defaultMedia;
-  const serviceMedia = [...media.services];
-  if (
-    activeTheme === "masar" &&
-    serviceMedia[1] === "/images/network.webp"
-  ) {
-    serviceMedia[1] = "https://images.pexels.com/photos/2804929/pexels-photo-2804929.jpeg?auto=compress&cs=tinysrgb&w=1200";
-  }
+  const serviceMedia = [...(activeTheme === "masar" ? defaultMedia.services : media.services)];
   const go = (id: string) => {
     if (innerPage) { window.location.assign(`/?lang=${lang}#${id}`); return; }
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -1385,10 +1376,9 @@ export default function Home({ packagesOnly = false, servicePage }: { packagesOn
                   <a className="nav-packages" href={`/packages?lang=${lang}`}>{n}</a>
                   <span className="nav-package-menu" role="menu">
                     <a href={`/services/procurement?lang=${lang}`} role="menuitem">{t.services[0][1]}</a>
-                    <span role="menuitem" aria-disabled="true" title={lang === "ar" ? "سيتم تفعيل التسعير قريبًا" : "Pricing will be enabled soon"}>{t.services[1][1]} <small>{lang === "ar" ? "قريبًا" : "Soon"}</small></span>
-                    <a href={`/services/business-setup?lang=${lang}`} role="menuitem">{t.services[2][1]}</a>
-                    <a href={`/services/commercial-contracts?lang=${lang}`} role="menuitem">{lang === "ar" ? "الاستشارات التجارية والتعاقدية" : "Commercial & contracts advisory"}</a>
-                    <a href={`/packages?lang=${lang}`} role="menuitem">{t.services[3][1]}</a>
+                    <a href={`/services/business-setup?lang=${lang}`} role="menuitem">{t.services[1][1]}</a>
+                    <a href={`/packages?lang=${lang}`} role="menuitem">{t.services[2][1]}</a>
+                    <a href={`/services/commercial-contracts?lang=${lang}`} role="menuitem">{t.services[3][1]}</a>
                   </span>
                 </span>
               ) : (
@@ -1507,15 +1497,11 @@ export default function Home({ packagesOnly = false, servicePage }: { packagesOn
                 <p>{x[2]}</p>
                 {x[0] === "01" ? (
                   <a href={`/services/procurement?lang=${lang}`}>{t.serviceMore} ↗</a>
-                ) : x[0] === "03" ? (
+                ) : x[0] === "02" ? (
                   <a href={`/services/business-setup?lang=${lang}`}>{t.serviceMore} ↗</a>
-                ) : x[0] === "04" ? (
+                ) : x[0] === "03" ? (
                   <a href={`/packages?lang=${lang}`}>{t.serviceMore} ↗</a>
-                ) : (
-                  <span className="service-disabled" title={lang === "ar" ? "تسعير هذه الخدمة سيُعلن قريبًا." : "Pricing for this service is coming soon."} aria-disabled="true">
-                    {lang === "ar" ? "قريبًا" : "Coming soon"}
-                  </span>
-                )}
+                ) : <a href={`/services/commercial-contracts?lang=${lang}`}>{t.serviceMore} ↗</a>}
               </div>
             </article>
           ))}

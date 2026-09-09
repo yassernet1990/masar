@@ -11,19 +11,31 @@ const dataFile = () => path.join(dataDirectory(), "site-config.json");
 const currentServiceContent = {
   ar: {
     introText:
-      "مسار لحلول المشتريات شركة متخصصة في الاستشارات، التوريد الاستراتيجي، إدارة الموردين، تأسيس الأعمال، بناء الأنظمة التشغيلية، وتطوير الهوية والحضور في السوق. نعمل كامتداد لفريقك لنحمي التكلفة والجودة والوقت.",
+      "مسار شريك متكامل في المشتريات والتوريد الاستراتيجي وإدارة الموردين، والاستشارات التجارية والتعاقدية، وتأسيس الأعمال، وتطوير الهوية والحضور في السوق. نعمل كامتداد لفريقك لنحمي التكلفة والجودة والوقت.",
     services: [
       [
-        "03",
+        "01",
+        "المشتريات والتوريد الاستراتيجي وإدارة الموردين",
+        "استشارات المشتريات المتكاملة، تحليل السوق، تأهيل الموردين، إدارة RFQ/RFP، التفاوض، قياس الأداء وتحسين الإجراءات.",
+        "/images/sourcing.webp",
+      ],
+      [
+        "02",
         "تأسيس الأعمال والأنظمة التشغيلية",
         "نموذج العمل، تصميم الخدمات، الهيكل التنظيمي، الوصف الوظيفي، السياسات والإجراءات والنماذج.",
         "/images/operations-systems.webp",
       ],
       [
-        "04",
+        "03",
         "الهوية والحضور في السوق",
         "الاسم والهوية البصرية، الملف التعريفي، الموقع، لينكدإن وأصول الإطلاق التسويقي.",
         "/images/brand-presence.webp",
+      ],
+      [
+        "04",
+        "الاستشارات التجارية والتعاقدية",
+        "مراجعة العقود والمخاطر، تقييم الأوامر التغييرية، استراتيجية المطالبات، والضبط التجاري.",
+        "/images/cx-method.png",
       ],
     ],
     faqs: [
@@ -39,19 +51,31 @@ const currentServiceContent = {
   },
   en: {
     introText:
-      "Masar Procurement Solutions specializes in consulting, strategic sourcing, vendor management, business setup, operational systems, and brand and market presence. We work as an extension of your team to protect cost, quality and time.",
+      "MASAR integrates procurement, strategic sourcing and vendor management with commercial and contracts advisory, business setup, operational systems, and brand and market presence. We work as an extension of your team to protect cost, quality and time.",
     services: [
       [
-        "03",
+        "01",
+        "Procurement, strategic sourcing & vendor management",
+        "End-to-end procurement advisory, market analysis, supplier qualification, RFQ/RFP management, negotiation, performance and process optimization.",
+        "/images/sourcing.webp",
+      ],
+      [
+        "02",
         "Business setup & operational systems",
         "Business models, service design, organization structures, job descriptions, policies, procedures and templates.",
         "/images/operations-systems.webp",
       ],
       [
-        "04",
+        "03",
         "Brand identity & market presence",
         "Naming, visual identity, company profiles, websites, LinkedIn and launch-ready marketing assets.",
         "/images/brand-presence.webp",
+      ],
+      [
+        "04",
+        "Commercial & contracts advisory",
+        "Contract and risk reviews, variation assessments, claims strategy and commercial controls.",
+        "/images/cx-method.png",
       ],
     ],
     faqs: [
@@ -86,20 +110,7 @@ function sanitizeStoredConfig(config: unknown) {
   const content = next.content;
   const media = next.media;
 
-  if (isRecord(media) && Array.isArray(media.services)) {
-    if (
-      media.services[2] === "/images/trade.webp" ||
-      media.services[2] === "/images/cx-method.png"
-    ) {
-      media.services[2] = "/images/operations-systems.webp";
-    }
-    if (
-      media.services[3] === "/images/warehouse.webp" ||
-      media.services[3] === "/images/cx-network.png"
-    ) {
-      media.services[3] = "/images/brand-presence.webp";
-    }
-  }
+  if (isRecord(media) && Array.isArray(media.services)) media.services = currentServiceContent.en.services.map((service) => service[3]);
 
   if (!isRecord(content)) return next;
 
@@ -111,10 +122,7 @@ function sanitizeStoredConfig(config: unknown) {
     if (includesLegacyServiceText(savedLang.introText))
       savedLang.introText = current.introText;
 
-    if (Array.isArray(savedLang.services)) {
-      savedLang.services[2] = current.services[0];
-      savedLang.services[3] = current.services[1];
-    }
+    if (Array.isArray(savedLang.services)) savedLang.services = current.services;
 
     if (Array.isArray(savedLang.faqs)) {
       savedLang.faqs = savedLang.faqs.map((item, index) => {
