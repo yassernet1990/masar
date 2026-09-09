@@ -20,7 +20,21 @@ import MasarV17Bridge from "./masar-v17-bridge";
 import MasarV22Bridge from "./masar-v22-bridge";
 import MasarMobileMenu from "./masar-mobile-menu";
 
-export const metadata: Metadata = { title: "MASAR Procurement Solutions | حلول مسار للمشتريات", description: "Integrated procurement consulting and sourcing solutions across MENA.", icons: { icon: [{ url: "/favicon.png", type: "image/png", sizes: "512x512" }], shortcut: "/favicon.png", apple: "/favicon.png" } };
+const masarIcon = "/images/masar-header-symbol.svg";
+
+export const metadata: Metadata = {
+  title: "MASAR Procurement Solutions | حلول مسار للمشتريات",
+  description: "Integrated procurement consulting and sourcing solutions across MENA.",
+  icons: {
+    icon: [
+      { url: masarIcon, type: "image/svg+xml" },
+      { url: masarIcon, type: "image/svg+xml", sizes: "any" },
+    ],
+    shortcut: masarIcon,
+    apple: masarIcon,
+    other: [{ rel: "mask-icon", url: masarIcon, color: "#328bff" }],
+  },
+};
 export const viewport: Viewport = { width: "device-width", initialScale: 1, themeColor: "#06132f" };
 
 export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
