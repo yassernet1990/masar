@@ -50,17 +50,28 @@ main.cx-page .masar-routes-v22 .route-hub-label{
   stroke-width:2px;
 }
 
-/* Isolated Arabic hero fix: spacing + prevent glyph clipping. */
-main.cx-page.theme-masar.ar .hero-copy h1{
-  line-height:1.28!important;
-  overflow:visible!important;
-  padding-bottom:.12em!important;
+/* Service pages keep the exact homepage header; only Packages & Pricing shows the active state. */
+main.cx-page.theme-masar.packages-page .nav-packages{
+  position:relative;
+  color:#69dfff!important;
+  opacity:1!important;
+  text-shadow:0 0 14px rgba(105,223,255,.20);
 }
-main.cx-page.theme-masar.ar .hero-v16-accent{
-  margin-top:20px!important;
-  line-height:1.35!important;
-  padding-bottom:.16em!important;
-  overflow:visible!important;
+main.cx-page.theme-masar.packages-page .nav-packages::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:-9px;
+  height:1px;
+  border-radius:999px;
+  background:linear-gradient(90deg,transparent,#69dfff 18%,#69dfff 82%,transparent);
+  opacity:.78;
+  pointer-events:none;
+}
+main.cx-page.theme-masar.packages-page .nav-package-wrap:hover .nav-packages,
+main.cx-page.theme-masar.packages-page .nav-package-wrap:focus-within .nav-packages{
+  color:#8cecff!important;
 }
 
 @keyframes masarDashV22{to{stroke-dashoffset:-520}}
