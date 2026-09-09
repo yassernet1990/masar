@@ -1,113 +1,151 @@
-/* MASAR V17 — spacing refinement, stronger glass, Saudi route hub */
+/* MASAR V17 — final hero spacing refinement, stronger glass, precise Saudi route hub */
 
-/* Keep the original content width; refine spacing only. */
+/* Header: keep original width, refine density and blur only. */
 main.cx-page.theme-masar .cx-hero header{
   width:min(1280px,calc(100% - 44px))!important;
-  height:88px!important;
+  height:86px!important;
   padding:0!important;
-  background:linear-gradient(180deg,rgba(3,14,38,.55),rgba(3,14,38,.22))!important;
+  background:linear-gradient(180deg,rgba(3,14,38,.58),rgba(3,14,38,.20))!important;
   border-bottom:1px solid rgba(255,255,255,.13)!important;
-  backdrop-filter:blur(22px) saturate(145%)!important;
-  -webkit-backdrop-filter:blur(22px) saturate(145%)!important;
-  box-shadow:0 14px 38px rgba(0,0,0,.10)!important;
+  backdrop-filter:blur(24px) saturate(148%)!important;
+  -webkit-backdrop-filter:blur(24px) saturate(148%)!important;
+  box-shadow:0 14px 36px rgba(0,0,0,.10)!important;
 }
-main.cx-page.theme-masar .cx-hero nav{gap:27px!important}
+main.cx-page.theme-masar .cx-hero nav{gap:25px!important}
 main.cx-page.theme-masar .cx-actions{
-  gap:10px!important;
-  padding:5px!important;
+  gap:9px!important;
+  padding:4px!important;
   border-radius:14px!important;
-  background:rgba(4,18,48,.18)!important;
-  border:1px solid rgba(255,255,255,.055)!important;
-  backdrop-filter:blur(14px)!important;
-  -webkit-backdrop-filter:blur(14px)!important;
+  background:rgba(4,18,48,.22)!important;
+  border:1px solid rgba(255,255,255,.06)!important;
+  backdrop-filter:blur(16px)!important;
+  -webkit-backdrop-filter:blur(16px)!important;
 }
 main.cx-page.theme-masar .cx-actions button{padding:8px 9px!important;border-radius:9px!important}
-main.cx-page.theme-masar .contact-chip{padding:12px 17px!important;border-radius:10px!important}
+main.cx-page.theme-masar .contact-chip{padding:11px 16px!important;border-radius:10px!important}
 
-/* Tighten the hero vertically without changing its container width. */
-main.cx-page.theme-masar .cx-time{top:16.8%!important}
-main.cx-page.theme-masar .hero-copy{top:20.8%!important;max-width:740px!important}
-main.cx-page.theme-masar .hero-v16-eyebrow{margin-bottom:14px!important;padding:7px 10px!important}
-main.cx-page.theme-masar .hero-copy h1{
-  max-width:760px!important;
-  margin:0 0 13px!important;
-  font-size:clamp(50px,5.85vw,88px)!important;
-  line-height:.99!important;
+/* Hero rhythm: no container widening — only better composition and spacing. */
+main.cx-page.theme-masar .cx-time{top:15.7%!important}
+main.cx-page.theme-masar .hero-copy{
+  top:18.6%!important;
+  max-width:730px!important;
 }
-main.cx-page.theme-masar .hero-copy>p{margin:0 0 20px!important;max-width:620px!important}
-main.cx-page.theme-masar .hero-v16-tagline{margin-bottom:13px!important;font-size:clamp(15px,1.22vw,19px)!important}
-main.cx-page.theme-masar .hero-v16-intro{padding-top:16px!important;font-size:14px!important;line-height:1.65!important}
-main.cx-page.theme-masar .hero-copy .cx-button{padding:13px 21px!important}
+main.cx-page.theme-masar .hero-v16-eyebrow{
+  margin-bottom:11px!important;
+  padding:7px 10px!important;
+}
+main.cx-page.theme-masar .hero-copy h1{
+  max-width:750px!important;
+  margin:0 0 9px!important;
+  font-size:clamp(49px,5.65vw,85px)!important;
+  line-height:.985!important;
+}
+main.cx-page.theme-masar .hero-copy>p{
+  margin:0 0 16px!important;
+  max-width:610px!important;
+}
+main.cx-page.theme-masar .hero-v16-tagline{
+  margin-bottom:9px!important;
+  font-size:clamp(15px,1.16vw,18px)!important;
+  line-height:1.36!important;
+}
+main.cx-page.theme-masar .hero-v16-intro{
+  max-width:610px!important;
+  padding-top:13px!important;
+  font-size:13.7px!important;
+  line-height:1.57!important;
+}
+main.cx-page.theme-masar .hero-copy .cx-button{
+  margin-top:0!important;
+  padding:12px 20px!important;
+}
 
-/* Card sits more naturally with the text and keeps its frosted header. */
+/* Pull the floating card into a tighter visual relationship with the hero copy. */
 main.cx-page.theme-masar .hero-card{
-  top:calc(50% - 143px)!important;
-  width:min(376px,calc(100% - 44px))!important;
-  min-height:320px!important;
-  background:linear-gradient(180deg,rgba(9,33,74,.20),rgba(4,17,45,.12))!important;
-  backdrop-filter:blur(17px) saturate(128%)!important;
-  -webkit-backdrop-filter:blur(17px) saturate(128%)!important;
+  top:calc(50% - 135px)!important;
+  width:min(370px,calc(100% - 44px))!important;
+  min-height:312px!important;
+  background:linear-gradient(180deg,rgba(9,33,74,.22),rgba(4,17,45,.13))!important;
+  border-color:rgba(121,205,255,.27)!important;
+  backdrop-filter:blur(18px) saturate(130%)!important;
+  -webkit-backdrop-filter:blur(18px) saturate(130%)!important;
 }
 main.cx-page.theme-masar .hero-card::before{display:none!important}
-main.cx-page.theme-masar .hero-slides{min-height:320px!important;position:relative!important;isolation:isolate!important}
+main.cx-page.theme-masar .hero-slides{
+  min-height:312px!important;
+  position:relative!important;
+  isolation:isolate!important;
+}
 main.cx-page.theme-masar .hero-slides::before{
   content:"";
   position:absolute;
   inset:0 0 auto 0;
-  height:108px;
+  height:101px;
   z-index:0;
-  background:linear-gradient(180deg,rgba(14,43,88,.36),rgba(8,28,64,.16));
-  border-bottom:1px solid rgba(152,211,255,.11);
-  backdrop-filter:blur(21px) saturate(138%);
-  -webkit-backdrop-filter:blur(21px) saturate(138%);
+  background:linear-gradient(180deg,rgba(18,52,102,.42),rgba(7,27,62,.18));
+  border-bottom:1px solid rgba(152,211,255,.12);
+  backdrop-filter:blur(23px) saturate(140%);
+  -webkit-backdrop-filter:blur(23px) saturate(140%);
   box-shadow:0 10px 28px rgba(0,0,0,.06);
 }
-main.cx-page.theme-masar .hero-slides article{z-index:1!important;padding-top:24px!important}
-main.cx-page.theme-masar .hero-slides strong{font-size:52px!important}
-main.cx-page.theme-masar .hero-slides h3{margin-top:55px!important}
+main.cx-page.theme-masar .hero-slides article{
+  z-index:1!important;
+  padding-top:21px!important;
+}
+main.cx-page.theme-masar .hero-slides strong{font-size:50px!important}
+main.cx-page.theme-masar .hero-slides h3{margin-top:50px!important}
+main.cx-page.theme-masar .hero-slides p{line-height:1.56!important}
 
-/* Saudi Arabia becomes the visual route hub. */
+/* Saudi route hub — marker is dynamically projected to Riyadh by masar-v17-bridge.tsx. */
 main.cx-page.theme-masar .masar-routes-v16 .route-hub-ring{
   fill:rgba(104,222,255,.05);
-  stroke:rgba(109,225,255,.60);
-  stroke-width:.7;
+  stroke:rgba(109,225,255,.66);
+  stroke-width:.72;
   transform-box:fill-box;
   transform-origin:center;
   animation:masarHubPulse 2.8s ease-in-out infinite;
 }
 main.cx-page.theme-masar .masar-routes-v16 .route-hub-dot{
   fill:#78e7ff;
-  filter:drop-shadow(0 0 7px rgba(99,220,255,.95));
+  filter:drop-shadow(0 0 8px rgba(99,220,255,.98));
 }
 main.cx-page.theme-masar .masar-routes-v16 .route-hub-label{
-  fill:rgba(230,245,255,.78);
+  fill:rgba(232,247,255,.86);
   font-family:Manrope,Arial,sans-serif;
-  font-size:10px;
-  font-weight:600;
+  font-size:9.5px;
+  font-weight:650;
   letter-spacing:.01em;
   paint-order:stroke;
-  stroke:rgba(2,12,34,.62);
-  stroke-width:2px;
+  stroke:rgba(2,12,34,.70);
+  stroke-width:2.4px;
 }
 
-/* Highlights belong unmistakably to the white editorial area. */
+/* White editorial area: highlights sit clearly inside it, with perfect rhythm. */
+main.cx-page.theme-masar .clients-section{
+  padding-top:54px!important;
+  padding-bottom:44px!important;
+}
 main.cx-page.theme-masar .cx-intro{
-  padding-top:88px!important;
-  padding-bottom:58px!important;
+  padding-top:74px!important;
+  padding-bottom:42px!important;
   background:#f7f9fc!important;
   box-shadow:0 0 0 100vmax #f7f9fc!important;
 }
+main.cx-page.theme-masar .cx-intro>div:first-child .kicker{margin-bottom:16px!important}
+main.cx-page.theme-masar .cx-intro h2{margin-bottom:0!important}
+main.cx-page.theme-masar .body-copy{margin:27px 0 17px!important}
 main.cx-page.theme-masar .cx-highlights{
   margin-top:0!important;
-  margin-bottom:108px!important;
+  margin-bottom:78px!important;
   background:#fff!important;
   color:#07152e!important;
   border:1px solid #dce6f1!important;
-  box-shadow:0 22px 54px rgba(22,53,91,.075)!important;
+  border-radius:17px!important;
+  box-shadow:0 18px 48px rgba(22,53,91,.07)!important;
 }
 main.cx-page.theme-masar .cx-highlights article{
-  min-height:172px!important;
-  padding:32px 27px!important;
+  min-height:154px!important;
+  padding:27px 25px!important;
   align-content:start!important;
 }
 main.cx-page.theme-masar .cx-highlights article+article{border-color:#dce6f1!important}
@@ -119,15 +157,15 @@ main.cx-page.theme-masar .cx-highlights span{
 main.cx-page.theme-masar .cx-highlights h3{
   color:#07152e!important;
   font-size:17px!important;
-  margin:0 0 9px!important;
+  margin:0 0 7px!important;
 }
 main.cx-page.theme-masar .cx-highlights p{
   color:#637083!important;
   font-size:12.5px!important;
-  line-height:1.72!important;
+  line-height:1.62!important;
 }
 
-/* Make every light section use the same family of whites/blues. */
+/* Consistent light sections. */
 main.cx-page.theme-masar .clients-section,
 main.cx-page.theme-masar .cx-intro,
 main.cx-page.theme-masar .cx-statement,
@@ -142,28 +180,35 @@ main.cx-page.theme-masar .cx-faq{border-color:#dce6f1!important}
 main.cx-page.theme-masar .cx-faq details,
 main.cx-page.theme-masar .roadmap-row article{border-color:#dce6f1!important}
 
-/* Small global rhythm cleanup. */
-main.cx-page.theme-masar .cx-services{padding-top:102px!important;padding-bottom:110px!important}
-main.cx-page.theme-masar .cx-method{padding-top:108px!important}
-main.cx-page.theme-masar .cx-roadmap{padding-top:112px!important;padding-bottom:112px!important}
-main.cx-page.theme-masar .cx-faq{padding-top:92px!important;padding-bottom:102px!important}
-main.cx-page.theme-masar .section-title{margin-bottom:58px!important}
-main.cx-page.theme-masar .service-grid{gap:28px!important}
+/* Better section rhythm throughout the page. */
+main.cx-page.theme-masar .cx-services{padding-top:90px!important;padding-bottom:96px!important}
+main.cx-page.theme-masar .cx-method{padding-top:94px!important;padding-bottom:0!important}
+main.cx-page.theme-masar .cx-statement{padding-top:92px!important;padding-bottom:92px!important}
+main.cx-page.theme-masar .cx-roadmap{padding-top:92px!important;padding-bottom:96px!important}
+main.cx-page.theme-masar .cx-faq{padding-top:80px!important;padding-bottom:90px!important}
+main.cx-page.theme-masar .section-title{margin-bottom:48px!important}
+main.cx-page.theme-masar .service-grid{gap:24px!important}
+main.cx-page.theme-masar .service-copy{padding-top:19px!important}
+main.cx-page.theme-masar .method-grid h3{margin-top:28px!important}
+main.cx-page.theme-masar .sector-note{margin-top:74px!important;padding-top:30px!important;padding-bottom:30px!important}
+main.cx-page.theme-masar .roadmap-row{margin-top:52px!important}
 
 @keyframes masarHubPulse{
-  0%,100%{transform:scale(.86);opacity:.42}
-  50%{transform:scale(1.45);opacity:1}
+  0%,100%{transform:scale(.86);opacity:.44}
+  50%{transform:scale(1.48);opacity:1}
 }
 
 @media(max-width:800px){
   main.cx-page.theme-masar .cx-hero header{width:calc(100% - 28px)!important;height:78px!important}
-  main.cx-page.theme-masar .hero-copy{top:18.5%!important}
-  main.cx-page.theme-masar .hero-v16-eyebrow{margin-bottom:10px!important}
-  main.cx-page.theme-masar .hero-copy h1{margin-bottom:10px!important}
-  main.cx-page.theme-masar .hero-v16-tagline{margin-bottom:10px!important}
-  main.cx-page.theme-masar .hero-v16-intro{padding-top:13px!important}
+  main.cx-page.theme-masar .hero-copy{top:17.8%!important}
+  main.cx-page.theme-masar .hero-v16-eyebrow{margin-bottom:8px!important}
+  main.cx-page.theme-masar .hero-copy h1{margin-bottom:8px!important}
+  main.cx-page.theme-masar .hero-v16-tagline{margin-bottom:8px!important}
+  main.cx-page.theme-masar .hero-v16-intro{padding-top:11px!important}
   main.cx-page.theme-masar .hero-card{width:min(330px,calc(100% - 34px))!important}
-  main.cx-page.theme-masar .cx-highlights article{min-height:auto!important}
+  main.cx-page.theme-masar .cx-intro{padding-top:58px!important;padding-bottom:32px!important}
+  main.cx-page.theme-masar .cx-highlights{margin-bottom:58px!important}
+  main.cx-page.theme-masar .cx-highlights article{min-height:auto!important;padding:23px 20px!important}
 }
 
 @media(prefers-reduced-motion:reduce){
