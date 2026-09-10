@@ -1,95 +1,118 @@
-.yp-page .yp-map{
-  position:absolute!important;
-  inset:0!important;
-  overflow:hidden!important;
-  background:#020814!important;
-  transform:none!important;
-  filter:none!important;
-  isolation:isolate;
+.yp-page .yp-map {
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 0;
+  overflow: hidden !important;
+  background: #020814 !important;
+  filter: none !important;
+  opacity: 1 !important;
+  transform: none !important;
 }
-.yp-page .yp-map-image{
-  position:absolute;
-  top:50%;
-  right:0;
-  width:auto;
-  height:auto;
-  max-width:1916px;
-  max-height:821px;
-  object-fit:none;
-  object-position:right center;
-  transform:translateY(-50%);
-  z-index:0;
-  display:block;
+
+.yp-page .yp-map-image {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  display: block;
+  width: min(100%, 1916px);
+  height: auto;
+  max-width: 1916px;
+  max-height: 821px;
+  object-fit: contain;
+  object-position: right center;
+  transform: translateY(-50%);
 }
-.yp-page .yp-map:before,
-.yp-page .yp-map:after{
-  content:none!important;
-}
-.yp-page .yp-hero::before{content:none!important}
-.yp-page .yp-cloud-layer,
-.yp-page .yp-hero-veil{
-  position:absolute;
-  pointer-events:none;
-  display:block;
-}
-.yp-page .yp-cloud-layer{
-  z-index:1;
-  will-change:transform,opacity;
-  mix-blend-mode:screen;
-}
-.yp-page .yp-cloud-layer--far{
-  inset:-15% -24%;
+
+.yp-page .yp-map::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
   background:
-    radial-gradient(ellipse at 6% 35%,rgba(191,213,232,.42) 0 4%,rgba(121,153,181,.24) 11%,transparent 28%),
-    radial-gradient(ellipse at 25% 48%,rgba(177,204,226,.36) 0 6%,rgba(107,139,168,.20) 15%,transparent 32%),
-    radial-gradient(ellipse at 53% 37%,rgba(182,208,229,.30) 0 5%,rgba(105,136,166,.16) 15%,transparent 31%),
-    radial-gradient(ellipse at 82% 53%,rgba(181,206,226,.25) 0 5%,rgba(103,134,161,.14) 15%,transparent 31%);
-  filter:blur(30px);
-  opacity:.23;
-  animation:ypCloudDriftA 38s ease-in-out infinite alternate;
+    linear-gradient(90deg, rgba(2, 8, 20, .96) 0%, rgba(3, 15, 34, .74) 30%, rgba(3, 14, 31, .24) 62%, rgba(2, 8, 20, .05) 100%),
+    linear-gradient(180deg, rgba(2, 8, 20, .20) 0%, transparent 42%, rgba(2, 8, 20, .18) 100%);
 }
-.yp-page .yp-cloud-layer--near{
-  inset:-22% -30%;
-  background:
-    radial-gradient(ellipse at 18% 68%,rgba(206,224,238,.38) 0 4%,rgba(124,153,179,.20) 12%,transparent 29%),
-    radial-gradient(ellipse at 47% 62%,rgba(190,214,233,.31) 0 5%,rgba(111,143,171,.17) 14%,transparent 31%),
-    radial-gradient(ellipse at 75% 73%,rgba(201,219,234,.28) 0 5%,rgba(118,147,172,.15) 14%,transparent 30%);
-  filter:blur(38px);
-  opacity:.18;
-  animation:ypCloudDriftB 52s ease-in-out infinite alternate-reverse;
+
+.yp-page .yp-map::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(110deg, rgba(34, 112, 203, .08), transparent 55%);
+  mix-blend-mode: screen;
 }
-.yp-page .yp-hero-veil{
-  inset:0;
-  z-index:2;
-  background:
-    linear-gradient(90deg,rgba(2,8,20,.93) 0%,rgba(3,15,34,.76) 30%,rgba(3,16,35,.20) 61%,rgba(2,9,20,.06) 100%),
-    linear-gradient(180deg,rgba(2,8,20,.16),transparent 45%,rgba(2,8,20,.35));
+
+.yp-page .yp-clouds {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+  isolation: isolate;
 }
-@keyframes ypCloudDriftA{
-  0%{transform:translate3d(-7%,1%,0) scale(1)}
-  50%{transform:translate3d(0,-1.2%,0) scale(1.02)}
-  100%{transform:translate3d(7%,.5%,0) scale(1.01)}
+
+.yp-page .yp-cloud {
+  position: absolute;
+  left: 50%;
+  width: min(2172px, max(120%, 1100px));
+  height: 100%;
+  background: url('/images/yasser-clouds.webp?v=20260910') center bottom / 100% auto no-repeat;
+  mix-blend-mode: screen;
+  will-change: transform, opacity;
 }
-@keyframes ypCloudDriftB{
-  0%{transform:translate3d(8%,-1%,0) scale(1.01)}
-  50%{transform:translate3d(0,1.5%,0) scale(1.03)}
-  100%{transform:translate3d(-8%,-.5%,0) scale(1)}
+
+.yp-page .yp-cloud-one {
+  bottom: -4%;
+  opacity: .17;
+  animation: ypCloudFloatOne 34s ease-in-out infinite alternate;
 }
-@media(max-width:800px){
-  .yp-page .yp-map-image{
-    width:auto;
-    height:min(100%,821px);
-    max-height:821px;
-    max-width:none;
-    right:auto;
-    left:50%;
-    object-position:center;
-    transform:translate(-50%,-50%);
+
+.yp-page .yp-cloud-two {
+  top: -18%;
+  opacity: .08;
+  background-position: center top;
+  animation: ypCloudFloatTwo 47s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes ypCloudFloatOne {
+  0% { transform: translate3d(-54%, 1%, 0); opacity: .13; }
+  50% { transform: translate3d(-50%, -1%, 0); opacity: .19; }
+  100% { transform: translate3d(-46%, .5%, 0); opacity: .15; }
+}
+
+@keyframes ypCloudFloatTwo {
+  0% { transform: translate3d(-46%, -1%, 0); opacity: .06; }
+  50% { transform: translate3d(-51%, 1.5%, 0); opacity: .10; }
+  100% { transform: translate3d(-55%, 0, 0); opacity: .07; }
+}
+
+@media (max-width: 800px) {
+  .yp-page .yp-map-image {
+    top: 50%;
+    left: 72%;
+    right: auto;
+    width: auto;
+    height: min(100%, 821px);
+    max-width: none;
+    max-height: 821px;
+    object-position: center;
+    transform: translate(-72%, -50%);
   }
-  .yp-page .yp-cloud-layer--far{opacity:.18}
-  .yp-page .yp-cloud-layer--near{opacity:.13}
-  .yp-page .yp-hero-veil{background:linear-gradient(90deg,rgba(2,8,20,.88),rgba(3,15,34,.52) 55%,rgba(2,8,20,.18))}
+
+  .yp-page .yp-map::before {
+    background: linear-gradient(90deg, rgba(2, 8, 20, .90), rgba(3, 15, 34, .46) 70%, rgba(2, 8, 20, .20));
+  }
+
+  .yp-page .yp-cloud {
+    width: min(2172px, max(180%, 1100px));
+  }
+
+  .yp-page .yp-cloud-one { opacity: .13; }
+  .yp-page .yp-cloud-two { opacity: .06; }
 }
-@media(prefers-reduced-motion:reduce){
-  .yp-page .yp-cloud-layer{animation:none!important}
+
+@media (prefers-reduced-motion: reduce) {
+  .yp-page .yp-cloud { animation: none !important; }
 }
