@@ -105,7 +105,9 @@ export default async function YasserPage({ searchParams }: PageProps) {
   return (
     <main className={`cx-page theme-masar yp-page ${lang}`} dir={lang === "ar" ? "rtl" : "ltr"}>
       <section className="yp-hero">
-        <div className="yp-map" aria-hidden="true" />
+        <div className="yp-map" aria-hidden="true">
+          <img className="yp-map-image" src="/yasser/hero.webp?v=approved-1" width="1916" height="821" alt="" decoding="async" fetchPriority="high" />
+        </div>
         <header>
           <HeaderBrand href={`/?lang=${lang}`} />
           <nav aria-label={lang === "ar" ? "التنقل الرئيسي" : "Primary navigation"}>
