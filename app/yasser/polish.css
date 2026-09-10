@@ -1,4 +1,4 @@
-.yp-page .yp-map{background-image:linear-gradient(90deg,#06132ff0 0%,#06132f99 36%,#09255944 67%,#09255910 100%),url('/images/yasser-map-v2.svg');background-size:cover;background-position:center;filter:saturate(1.08) contrast(1.06);transform:scale(1.01)}
+.yp-page .yp-map{background-image:linear-gradient(90deg,#06132ff0 0%,#06132f99 36%,#09255944 67%,#09255910 100%),url('/images/yasser-map-v2.webp');background-size:cover;background-position:center;filter:saturate(1.08) contrast(1.06);transform:scale(1.01)}
 .yp-page .yp-map:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 76% 40%,#66d9ff18,transparent 22%),linear-gradient(135deg,#125dbe24,#0876bd08);mix-blend-mode:screen;pointer-events:none}
 .yp-page .yp-footer{max-width:1000px!important;width:auto!important;margin:auto!important;padding:65px 5vw 35px!important;background:transparent!important;display:grid!important;grid-template-columns:1fr 1fr!important;gap:25px!important;color:#b8cce0!important}
 .yp-page .yp-footer .footer-brand{display:flex;align-items:flex-start;justify-content:flex-start;min-width:0}
