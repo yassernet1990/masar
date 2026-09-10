@@ -114,6 +114,8 @@ export const advisoryCatalogs: Record<ServiceKind, AdvisoryCatalog> = {
     groups: [
       { id: "contracts", title: { en: "Contract Review", ar: "مراجعة العقود" }, description: { en: "Understand obligations, exposure and commercial risk before commitment.", ar: "افهم الالتزامات والمخاطر التجارية قبل التعاقد." }, services: [
         service("contract-review", "Contract Review", "مراجعة العقد", "Commercial review of clauses, obligations, payment, liabilities and change mechanisms.", "مراجعة تجارية للبنود والالتزامات والدفع والمسؤوليات وآليات التغيير.", 2500, 6000),
+        service("bilingual-short-contract", "Bilingual Short-Form Services Contract", "عقد خدمات مختصر ثنائي اللغة", "A 4–6 page Arabic–English contract for transactions up to USD 100,000, including one client version and a usage walkthrough.", "عقد عربي–إنجليزي من 4–6 صفحات للمعاملات حتى 100,000 دولار، يشمل نسخة لعميل واحد وشرح الاستخدام.", 3000),
+        service("bilingual-major-contract", "Bilingual Major Commercial Contract", "عقد تجاري رئيسي ثنائي اللغة", "A 16–25 page Arabic–English contract for transactions above USD 1 million, including one client version and a detailed usage walkthrough.", "عقد عربي–إنجليزي من 16–25 صفحة للصفقات فوق مليون دولار، يشمل نسخة لعميل واحد وشرحًا تفصيليًا للاستخدام.", 15000),
         service("contract-administration", "Contract Administration Setup", "إعداد نظام إدارة العقود", "Obligations register, notice templates and reporting workflow for one contract.", "سجل الالتزامات ونماذج الإشعارات وآلية التقارير لعقد واحد.", 4000, 8000),
         service("commercial-risk", "Commercial Risk Assessment", "تقييم المخاطر التجارية", "Structured assessment before contract award or signature.", "تقييم منظم قبل ترسية العقد أو توقيعه.", 3500, 7500),
       ]},
