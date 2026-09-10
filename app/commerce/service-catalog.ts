@@ -73,6 +73,9 @@ export const advisoryCatalogs: Record<ServiceKind, AdvisoryCatalog> = {
         service("retainer-20", "Monthly Retainer — 20 Hours", "استشارة شهرية — 20 ساعة", "Ongoing advisory and implementation support.", "استشارات ودعم مستمر للتنفيذ.", 8500),
         service("retainer-40", "Monthly Retainer — 40 Hours", "استشارة شهرية — 40 ساعة", "Extended advisory and implementation support.", "دعم استشاري وتنفيذي ممتد.", 15000),
       ]},
+      { id: "business-tailored", title: { en: "Tailored Engagement", ar: "خدمة مخصصة" }, description: { en: "A flexible scope built around your requirements.", ar: "نطاق مرن يُبنى وفق متطلباتك." }, services: [
+        service("tailored-business-engagement", "Tailored Business Advisory Engagement", "خدمة استشارات أعمال مخصصة", "A custom scope agreed with MASAR based on your requirements, deliverables and timeline.", "نطاق مخصص يتم الاتفاق عليه مع مسار وفق متطلباتك ومخرجاتك والمدة المطلوبة.", 2000, 100000),
+      ]},
     ],
   },
   procurement: {
@@ -103,6 +106,9 @@ export const advisoryCatalogs: Record<ServiceKind, AdvisoryCatalog> = {
         service("procurement-retainer-20", "Monthly Procurement Advisory — 20 Hours", "استشارات مشتريات شهرية — 20 ساعة", "Ongoing advisory and implementation support for procurement priorities.", "استشارات ودعم تنفيذي مستمر لأولويات المشتريات.", 8500),
         service("procurement-retainer-40", "Monthly Procurement Advisory — 40 Hours", "استشارات مشتريات شهرية — 40 ساعة", "Extended advisory and hands-on implementation support.", "دعم استشاري وتنفيذي ممتد وتطبيقي.", 15000),
       ]},
+      { id: "procurement-tailored", title: { en: "Tailored Engagement", ar: "خدمة مخصصة" }, description: { en: "A flexible scope built around your requirements.", ar: "نطاق مرن يُبنى وفق متطلباتك." }, services: [
+        service("tailored-procurement-engagement", "Tailored Procurement Engagement", "خدمة مشتريات مخصصة", "A custom scope agreed with MASAR based on your requirements, deliverables and timeline.", "نطاق مخصص يتم الاتفاق عليه مع مسار وفق متطلباتك ومخرجاتك والمدة المطلوبة.", 2000, 100000),
+      ]},
     ],
   },
   commercial: {
@@ -130,6 +136,9 @@ export const advisoryCatalogs: Record<ServiceKind, AdvisoryCatalog> = {
         service("final-account-review", "Final Account Review", "مراجعة الحساب الختامي", "Review one contract final account, approved variations, payments and outstanding balances.", "مراجعة الحساب الختامي لعقد واحد والتغييرات المعتمدة والمدفوعات والأرصدة المستحقة.", 5000, 12000),
         service("cost-control-setup", "Project Cost Control Setup", "إعداد نظام ضبط تكاليف المشروع", "Budget baseline, commitments register, forecast and cost report templates for one project.", "خط أساس للموازنة وسجل الالتزامات والتوقعات ونماذج تقارير التكاليف لمشروع واحد.", 5000, 10000),
         service("commercial-dashboard", "Commercial Dashboard Setup", "إعداد لوحة المتابعة التجارية", "Dashboard for contracts, payments, variations, claims, commitments and exposure.", "لوحة للعقود والمدفوعات والتغييرات والمطالبات والالتزامات والمخاطر المالية.", 5000, 10000),
+      ]},
+      { id: "commercial-tailored", title: { en: "Tailored Engagement", ar: "خدمة مخصصة" }, description: { en: "A flexible scope built around your requirements.", ar: "نطاق مرن يُبنى وفق متطلباتك." }, services: [
+        service("tailored-commercial-engagement", "Tailored Commercial & Contracts Engagement", "خدمة تجارية وتعاقدية مخصصة", "A custom scope agreed with MASAR based on your requirements, deliverables and timeline.", "نطاق مخصص يتم الاتفاق عليه مع مسار وفق متطلباتك ومخرجاتك والمدة المطلوبة.", 2000, 100000),
       ]},
     ],
   },
