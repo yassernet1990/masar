@@ -6,4 +6,4 @@ export function proxy(request: NextRequest) {
   requestHeaders.set("x-masar-language", request.nextUrl.searchParams.get("lang") === "ar" ? "ar" : "en");
   return NextResponse.next({ request: { headers: requestHeaders } });
 }
-export const config = { matcher: ["/", "/packages", "/services/procurement", "/services/business-setup", "/services/commercial-contracts"] };
+export const config = { matcher: ["/", "/yasser", "/packages", "/services/procurement", "/services/business-setup", "/services/commercial-contracts"] };
