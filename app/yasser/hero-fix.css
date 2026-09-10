@@ -11,11 +11,11 @@
   position:absolute;
   top:50%;
   right:0;
-  width:min(100%,1916px);
+  width:auto;
   height:auto;
   max-width:1916px;
   max-height:821px;
-  object-fit:contain;
+  object-fit:none;
   object-position:right center;
   transform:translateY(-50%);
   z-index:0;
@@ -23,51 +23,57 @@
 }
 .yp-page .yp-map:before,
 .yp-page .yp-map:after{
-  content:"";
+  content:none!important;
+}
+.yp-page .yp-hero::before{content:none!important}
+.yp-page .yp-cloud-layer,
+.yp-page .yp-hero-veil{
   position:absolute;
   pointer-events:none;
-  z-index:2;
-  will-change:transform,opacity;
+  display:block;
 }
-.yp-page .yp-map:before{
-  inset:-14% -20%;
-  background:
-    radial-gradient(ellipse at 12% 66%,rgba(160,175,192,.18) 0 9%,rgba(90,108,126,.10) 20%,transparent 42%),
-    radial-gradient(ellipse at 48% 76%,rgba(150,166,183,.14) 0 8%,rgba(76,96,118,.09) 22%,transparent 43%),
-    radial-gradient(ellipse at 82% 68%,rgba(150,168,186,.13) 0 8%,rgba(74,92,112,.08) 22%,transparent 42%);
-  filter:blur(32px);
-  opacity:.30;
-  animation:ypCloudDriftA 34s ease-in-out infinite alternate;
-}
-.yp-page .yp-map:after{
-  inset:0;
-  background:
-    linear-gradient(90deg,rgba(2,8,20,.96) 0%,rgba(3,17,39,.78) 30%,rgba(4,16,34,.30) 62%,rgba(4,16,34,.08) 100%),
-    radial-gradient(circle at 78% 28%,rgba(86,143,190,.10),transparent 22%);
-  opacity:1;
-}
-.yp-page .yp-hero::before{
-  content:"";
-  position:absolute;
-  inset:-18% -22%;
+.yp-page .yp-cloud-layer{
   z-index:1;
-  pointer-events:none;
+  will-change:transform,opacity;
+  mix-blend-mode:screen;
+}
+.yp-page .yp-cloud-layer--far{
+  inset:-15% -24%;
   background:
-    radial-gradient(ellipse at 28% 36%,rgba(180,190,202,.11) 0 8%,rgba(94,109,126,.07) 23%,transparent 44%),
-    radial-gradient(ellipse at 66% 42%,rgba(170,184,197,.10) 0 8%,rgba(88,103,120,.06) 23%,transparent 44%);
-  filter:blur(40px);
-  opacity:.24;
-  animation:ypCloudDriftB 46s ease-in-out infinite alternate-reverse;
+    radial-gradient(ellipse at 6% 35%,rgba(191,213,232,.42) 0 4%,rgba(121,153,181,.24) 11%,transparent 28%),
+    radial-gradient(ellipse at 25% 48%,rgba(177,204,226,.36) 0 6%,rgba(107,139,168,.20) 15%,transparent 32%),
+    radial-gradient(ellipse at 53% 37%,rgba(182,208,229,.30) 0 5%,rgba(105,136,166,.16) 15%,transparent 31%),
+    radial-gradient(ellipse at 82% 53%,rgba(181,206,226,.25) 0 5%,rgba(103,134,161,.14) 15%,transparent 31%);
+  filter:blur(30px);
+  opacity:.23;
+  animation:ypCloudDriftA 38s ease-in-out infinite alternate;
+}
+.yp-page .yp-cloud-layer--near{
+  inset:-22% -30%;
+  background:
+    radial-gradient(ellipse at 18% 68%,rgba(206,224,238,.38) 0 4%,rgba(124,153,179,.20) 12%,transparent 29%),
+    radial-gradient(ellipse at 47% 62%,rgba(190,214,233,.31) 0 5%,rgba(111,143,171,.17) 14%,transparent 31%),
+    radial-gradient(ellipse at 75% 73%,rgba(201,219,234,.28) 0 5%,rgba(118,147,172,.15) 14%,transparent 30%);
+  filter:blur(38px);
+  opacity:.18;
+  animation:ypCloudDriftB 52s ease-in-out infinite alternate-reverse;
+}
+.yp-page .yp-hero-veil{
+  inset:0;
+  z-index:2;
+  background:
+    linear-gradient(90deg,rgba(2,8,20,.93) 0%,rgba(3,15,34,.76) 30%,rgba(3,16,35,.20) 61%,rgba(2,9,20,.06) 100%),
+    linear-gradient(180deg,rgba(2,8,20,.16),transparent 45%,rgba(2,8,20,.35));
 }
 @keyframes ypCloudDriftA{
-  0%{transform:translate3d(-4%,1%,0)}
-  50%{transform:translate3d(2%,-1%,0)}
-  100%{transform:translate3d(6%,.5%,0)}
+  0%{transform:translate3d(-7%,1%,0) scale(1)}
+  50%{transform:translate3d(0,-1.2%,0) scale(1.02)}
+  100%{transform:translate3d(7%,.5%,0) scale(1.01)}
 }
 @keyframes ypCloudDriftB{
-  0%{transform:translate3d(5%,-1%,0)}
-  50%{transform:translate3d(-1%,1.5%,0)}
-  100%{transform:translate3d(-6%,-.5%,0)}
+  0%{transform:translate3d(8%,-1%,0) scale(1.01)}
+  50%{transform:translate3d(0,1.5%,0) scale(1.03)}
+  100%{transform:translate3d(-8%,-.5%,0) scale(1)}
 }
 @media(max-width:800px){
   .yp-page .yp-map-image{
@@ -80,10 +86,10 @@
     object-position:center;
     transform:translate(-50%,-50%);
   }
-  .yp-page .yp-map:before{opacity:.22}
-  .yp-page .yp-hero::before{opacity:.16}
+  .yp-page .yp-cloud-layer--far{opacity:.18}
+  .yp-page .yp-cloud-layer--near{opacity:.13}
+  .yp-page .yp-hero-veil{background:linear-gradient(90deg,rgba(2,8,20,.88),rgba(3,15,34,.52) 55%,rgba(2,8,20,.18))}
 }
 @media(prefers-reduced-motion:reduce){
-  .yp-page .yp-map:before,
-  .yp-page .yp-hero::before{animation:none!important}
+  .yp-page .yp-cloud-layer{animation:none!important}
 }
