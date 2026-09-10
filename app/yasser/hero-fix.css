@@ -1,25 +1,89 @@
 .yp-page .yp-map{
-  background-color:#020814!important;
-  background-image:linear-gradient(90deg,rgba(2,8,20,.96) 0%,rgba(3,17,39,.80) 30%,rgba(6,26,52,.24) 66%,rgba(7,29,56,.06) 100%),url('/yasser/hero.webp')!important;
-  background-repeat:no-repeat,no-repeat!important;
-  background-size:cover,min(100%,1916px) auto!important;
-  background-position:center,right center!important;
+  position:absolute!important;
+  inset:0!important;
+  overflow:hidden!important;
+  background:#020814!important;
   transform:none!important;
   filter:none!important;
+  isolation:isolate;
+}
+.yp-page .yp-map-image{
+  position:absolute;
+  top:50%;
+  right:0;
+  width:min(100%,1916px);
+  height:auto;
+  max-width:1916px;
+  max-height:821px;
+  object-fit:contain;
+  object-position:right center;
+  transform:translateY(-50%);
+  z-index:0;
+  display:block;
+}
+.yp-page .yp-map:before,
+.yp-page .yp-map:after{
+  content:"";
+  position:absolute;
+  pointer-events:none;
+  z-index:2;
+  will-change:transform,opacity;
 }
 .yp-page .yp-map:before{
-  opacity:.36!important;
-  animation:ypCloudDriftA 32s ease-in-out infinite alternate!important;
+  inset:-14% -20%;
+  background:
+    radial-gradient(ellipse at 12% 66%,rgba(160,175,192,.18) 0 9%,rgba(90,108,126,.10) 20%,transparent 42%),
+    radial-gradient(ellipse at 48% 76%,rgba(150,166,183,.14) 0 8%,rgba(76,96,118,.09) 22%,transparent 43%),
+    radial-gradient(ellipse at 82% 68%,rgba(150,168,186,.13) 0 8%,rgba(74,92,112,.08) 22%,transparent 42%);
+  filter:blur(32px);
+  opacity:.30;
+  animation:ypCloudDriftA 34s ease-in-out infinite alternate;
 }
 .yp-page .yp-map:after{
-  opacity:.24!important;
-  animation:ypCloudDriftB 44s ease-in-out infinite alternate-reverse!important;
+  inset:0;
+  background:
+    linear-gradient(90deg,rgba(2,8,20,.96) 0%,rgba(3,17,39,.78) 30%,rgba(4,16,34,.30) 62%,rgba(4,16,34,.08) 100%),
+    radial-gradient(circle at 78% 28%,rgba(86,143,190,.10),transparent 22%);
+  opacity:1;
+}
+.yp-page .yp-hero::before{
+  content:"";
+  position:absolute;
+  inset:-18% -22%;
+  z-index:1;
+  pointer-events:none;
+  background:
+    radial-gradient(ellipse at 28% 36%,rgba(180,190,202,.11) 0 8%,rgba(94,109,126,.07) 23%,transparent 44%),
+    radial-gradient(ellipse at 66% 42%,rgba(170,184,197,.10) 0 8%,rgba(88,103,120,.06) 23%,transparent 44%);
+  filter:blur(40px);
+  opacity:.24;
+  animation:ypCloudDriftB 46s ease-in-out infinite alternate-reverse;
+}
+@keyframes ypCloudDriftA{
+  0%{transform:translate3d(-4%,1%,0)}
+  50%{transform:translate3d(2%,-1%,0)}
+  100%{transform:translate3d(6%,.5%,0)}
+}
+@keyframes ypCloudDriftB{
+  0%{transform:translate3d(5%,-1%,0)}
+  50%{transform:translate3d(-1%,1.5%,0)}
+  100%{transform:translate3d(-6%,-.5%,0)}
 }
 @media(max-width:800px){
-  .yp-page .yp-map{background-size:cover,auto min(821px,100%)!important;background-position:center,72% center!important}
-  .yp-page .yp-map:before{opacity:.27!important}
-  .yp-page .yp-map:after{opacity:.18!important}
+  .yp-page .yp-map-image{
+    width:auto;
+    height:min(100%,821px);
+    max-height:821px;
+    max-width:none;
+    right:auto;
+    left:50%;
+    object-position:center;
+    transform:translate(-50%,-50%);
+  }
+  .yp-page .yp-map:before{opacity:.22}
+  .yp-page .yp-hero::before{opacity:.16}
 }
 @media(prefers-reduced-motion:reduce){
-  .yp-page .yp-map:before,.yp-page .yp-map:after{animation:none!important}
+  .yp-page .yp-map:before,
+  .yp-page .yp-hero::before{animation:none!important}
 }
