@@ -38,19 +38,25 @@ const service = (
 export const advisoryCatalogs: Record<ServiceKind, AdvisoryCatalog> = {
   business: {
     slug: "business",
-    eyebrow: { en: "BUSINESS ADVISORY & OPERATIONAL SETUP", ar: "استشارات الأعمال والتأسيس التشغيلي" },
-    title: { en: "From idea to operations — build a stronger business.", ar: "من الفكرة إلى التشغيل — ابنِ عملًا أقوى." },
-    intro: { en: "Select the services you need, enter the agreed amount where a range applies, and pay securely online.", ar: "اختر الخدمات التي تحتاجها، وأدخل المبلغ المتفق عليه للخدمات ذات النطاق، ثم ادفع إلكترونيًا بأمان." },
-    journey: { en: "Plan → Build → Improve → Advise", ar: "خطّط ← ابنِ ← حسّن ← استشر" },
+    eyebrow: { en: "BUSINESS, INVESTMENT & DEVELOPMENT ADVISORY", ar: "استشارات الأعمال والاستثمار والتطوير" },
+    title: { en: "From opportunity to execution — build, enter and grow with confidence.", ar: "من الفرصة إلى التنفيذ — ابنِ وادخل السوق وانمُ بثقة." },
+    intro: { en: "Advisory services for businesses, investors and developers focused on Saudi Arabia and Syria. Select the support you need and enter the agreed fee where a range applies.", ar: "خدمات استشارية للشركات والمستثمرين والمطورين مع تركيز على السعودية وسوريا. اختر الدعم المطلوب وأدخل الأتعاب المتفق عليها للخدمات ذات النطاق." },
+    journey: { en: "Assess → Develop → Build → Improve → Advise", ar: "قيّم ← طوّر ← ابنِ ← حسّن ← استشر" },
     groups: [
-      { id: "planning", title: { en: "Business Planning", ar: "تخطيط الأعمال" }, description: { en: "Turn an idea into a commercially viable and executable plan.", ar: "حوّل الفكرة إلى خطة قابلة للتنفيذ ومجدية تجاريًا." }, services: [
-        service("feasibility-study", "Feasibility Study", "دراسة الجدوى", "Up to 20 pages plus a financial Excel model.", "حتى 20 صفحة مع نموذج مالي على Excel.", 8000),
-        service("business-plan", "Business Plan & Financial Model", "خطة العمل والنموذج المالي", "Market, operations, financials and a three-year plan.", "السوق والتشغيل والماليات وخطة لثلاث سنوات.", 8000, 12000),
-        service("market-entry", "Market Entry Study", "دراسة دخول السوق", "Market, competitors, risks and a practical entry plan.", "السوق والمنافسون والمخاطر وخطة دخول عملية.", 8000, 12000),
+      { id: "planning", title: { en: "Investment & Business Planning", ar: "تخطيط الاستثمار والأعمال" }, description: { en: "Assess opportunities and turn them into commercially viable, financially informed and executable plans.", ar: "قيّم الفرص وحوّلها إلى خطط قابلة للتنفيذ ومدروسة تجاريًا وماليًا." }, services: [
+        service("feasibility-study", "Investment & Development Feasibility", "دراسة جدوى الاستثمار والتطوير", "Market assessment, development assumptions, CAPEX/OPEX, financial model, ROI/IRR, sensitivity analysis and recommendation.", "تقييم السوق وافتراضات التطوير والتكاليف الرأسمالية والتشغيلية والنموذج المالي والعائد وتحليل الحساسية والتوصية.", 8000, 20000),
+        service("business-plan", "Business Plan & Financial Model", "خطة العمل والنموذج المالي", "Market, operating model, financial projections and implementation roadmap.", "السوق ونموذج التشغيل والتوقعات المالية وخارطة طريق التنفيذ.", 8000, 12000),
+        service("market-entry", "Market Entry & Opportunity Assessment — Saudi Arabia & Syria", "تقييم دخول السوق والفرص — السعودية وسوريا", "Market potential, competitors, commercial environment, risks, partner landscape and an actionable entry roadmap.", "إمكانات السوق والمنافسون والبيئة التجارية والمخاطر وخريطة الشركاء وخارطة طريق عملية للدخول.", 8000, 15000),
         service("business-proposal", "Business & Service Proposal", "مقترح الأعمال والخدمات", "Up to 20 pages plus a supporting Excel sheet.", "حتى 20 صفحة مع ملف Excel داعم.", 8000),
         service("pricing-revenue", "Pricing & Revenue Model", "نموذج التسعير والإيرادات", "Pricing structure, packages, margins and revenue logic.", "هيكل الأسعار والباقات والهوامش ومنطق الإيرادات.", 4000, 6000),
       ]},
-      { id: "operations", title: { en: "Operational Setup", ar: "التأسيس التشغيلي" }, description: { en: "Build the systems, structure and controls required to operate professionally.", ar: "ابنِ الأنظمة والهيكل والضوابط اللازمة للتشغيل المهني." }, services: [
+      { id: "development", title: { en: "Development Advisory", ar: "استشارات التطوير" }, description: { en: "Shape development decisions early — from concept and commercial strategy to procurement and delivery setup.", ar: "صياغة قرارات التطوير مبكرًا من الفكرة والاستراتيجية التجارية إلى المشتريات وتجهيز التنفيذ." }, services: [
+        service("development-strategy", "Development Strategy & Concept Advisory", "استراتيجية التطوير والاستشارة المفاهيمية", "Development options, positioning, phasing, delivery priorities and commercial approach.", "خيارات التطوير والتموضع والمراحل وأولويات التنفيذ والمنهج التجاري.", 10000, 30000),
+        service("built-to-suit", "Built-to-Suit Development Advisory", "استشارات التطوير حسب احتياج العميل", "Requirements definition, preliminary budget, consultant and contractor procurement strategy, tendering and commercial support.", "تحديد المتطلبات والميزانية الأولية واستراتيجية طرح الاستشاريين والمقاولين والمناقصات والدعم التجاري.", 10000, 50000),
+        service("development-procurement", "Development Procurement Strategy", "استراتيجية مشتريات التطوير", "Package strategy, procurement routes, tender sequencing, sourcing approach and procurement roadmap.", "استراتيجية الحزم ومسارات الشراء وتسلسل المناقصات ومنهج التوريد وخارطة طريق المشتريات.", 10000, 30000),
+        service("development-commercial", "Commercial & Cost Strategy", "الاستراتيجية التجارية واستراتيجية التكلفة", "Early-stage cost planning, commercial structure, contracting approach, benchmarks and key cost risks.", "تخطيط التكلفة المبكر والهيكل التجاري ومنهج التعاقد والمقارنات ومخاطر التكلفة الرئيسية.", 10000, 30000),
+      ]},
+      { id: "operations", title: { en: "Business & Operational Setup", ar: "تأسيس الأعمال والتشغيل" }, description: { en: "Build the systems, structure and controls required to operate professionally.", ar: "ابنِ الأنظمة والهيكل والضوابط اللازمة للتشغيل المهني." }, services: [
         service("org-manpower", "Organization Structure & Manpower Plan", "الهيكل التنظيمي وخطة القوى العاملة", "Structure, roles, headcount and hiring plan.", "الهيكل والأدوار والعدد وخطة التوظيف.", 5000, 8000),
         service("policies-procedures", "Policies & Procedures Setup", "إعداد السياسات والإجراءات", "Core policies, procedures and management guidelines.", "السياسات والإجراءات والأدلة الإدارية الأساسية.", 8000, 15000),
         service("authority-matrix", "Delegation of Authority Matrix", "مصفوفة تفويض الصلاحيات", "Financial, administrative and operational approval levels.", "مستويات الصلاحيات المالية والإدارية والتشغيلية.", 3000, 5000),
@@ -66,7 +72,7 @@ export const advisoryCatalogs: Record<ServiceKind, AdvisoryCatalog> = {
         service("process-improvement", "Process Improvement Study", "دراسة تحسين العمليات", "Redesign a key process or workflow.", "إعادة تصميم عملية أو مسار عمل رئيسي.", 4000, 8000),
         service("management-dashboard", "Management Dashboard Setup", "إعداد لوحة متابعة إدارية", "KPIs, reporting and management visibility.", "مؤشرات وتقارير تمنح الإدارة رؤية أوضح.", 4000, 7500),
       ]},
-      { id: "advisory", title: { en: "Executive Advisory", ar: "الاستشارات التنفيذية" }, description: { en: "Senior on-demand support for founders and management teams.", ar: "دعم استشاري تنفيذي عند الطلب للمؤسسين والإدارات." }, services: [
+      { id: "advisory", title: { en: "Executive Advisory", ar: "الاستشارات التنفيذية" }, description: { en: "Senior on-demand support for founders, investors and management teams.", ar: "دعم استشاري تنفيذي عند الطلب للمؤسسين والمستثمرين والإدارات." }, services: [
         service("advisory-essential", "Executive Advisory — Essential", "الاستشارات التنفيذية — الأساسية", "10 hours, two online meetings and a recommendation report.", "10 ساعات واجتماعان عن بُعد وتقرير توصيات.", 5000),
         service("advisory-extended", "Executive Advisory — Extended", "الاستشارات التنفيذية — الممتدة", "20 hours, four online meetings and one face-to-face session.", "20 ساعة و4 اجتماعات عن بُعد واجتماع حضوري واحد.", 10000),
         service("retainer-10", "Monthly Retainer — 10 Hours", "استشارة شهرية — 10 ساعات", "Ongoing advisory support and guidance.", "دعم واستشارات مستمرة.", 4500),
@@ -74,7 +80,7 @@ export const advisoryCatalogs: Record<ServiceKind, AdvisoryCatalog> = {
         service("retainer-40", "Monthly Retainer — 40 Hours", "استشارة شهرية — 40 ساعة", "Extended advisory and implementation support.", "دعم استشاري وتنفيذي ممتد.", 15000),
       ]},
       { id: "business-tailored", title: { en: "Tailored Engagement", ar: "خدمة مخصصة" }, description: { en: "A flexible scope built around your requirements.", ar: "نطاق مرن يُبنى وفق متطلباتك." }, services: [
-        service("tailored-business-engagement", "Tailored Business Advisory Engagement", "خدمة استشارات أعمال مخصصة", "A custom scope agreed with MASAR based on your requirements, deliverables and timeline.", "نطاق مخصص يتم الاتفاق عليه مع مسار وفق متطلباتك ومخرجاتك والمدة المطلوبة.", 2000, 100000),
+        service("tailored-business-engagement", "Tailored Business, Investment & Development Engagement", "خدمة مخصصة للأعمال والاستثمار والتطوير", "A custom scope agreed with MASAR based on your requirements, deliverables and timeline.", "نطاق مخصص يتم الاتفاق عليه مع مسار وفق متطلباتك ومخرجاتك والمدة المطلوبة.", 2000, 100000),
       ]},
     ],
   },
@@ -148,4 +154,4 @@ export const advisoryServices = Object.values(advisoryCatalogs).flatMap((catalog
   catalog.groups.flatMap((group) => group.services.map((item) => ({ ...item, catalog: catalog.slug }))),
 );
 
-export const advisoryPolicyVersion = "2026-09-09";
+export const advisoryPolicyVersion = "2026-09-11";
