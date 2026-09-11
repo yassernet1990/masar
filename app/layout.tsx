@@ -20,6 +20,7 @@ import MasarV17Bridge from "./masar-v17-bridge";
 import MasarV22Bridge from "./masar-v22-bridge";
 import MasarMobileMenu from "./masar-mobile-menu";
 import ServiceTaxonomySync from "./service-taxonomy-sync";
+import BusinessServiceImageBridge from "./business-service-image-bridge";
 
 export const metadata: Metadata = {
   title: "MASAR Procurement Solutions | حلول مسار للمشتريات",
@@ -51,7 +52,7 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet" />
       </head>
-      <body><ThemeBridge /><MasarV17Bridge /><MasarV22Bridge /><MasarMobileMenu /><ServiceTaxonomySync />{children}</body>
+      <body><ThemeBridge /><MasarV17Bridge /><MasarV22Bridge /><MasarMobileMenu /><ServiceTaxonomySync /><BusinessServiceImageBridge />{children}</body>
     </html>
   );
 }
