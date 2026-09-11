@@ -1,0 +1,141 @@
+/* Match the Yasser footer to the main MASAR homepage footer.
+   Keep only the MASAR wordmark in the brand column. */
+.yp-page .yp-footer{
+  position:relative!important;
+  isolation:isolate;
+  max-width:1000px!important;
+  width:auto!important;
+  margin:0 auto!important;
+  padding:65px 5vw 35px!important;
+  display:grid!important;
+  grid-template-columns:1fr 1fr!important;
+  gap:25px!important;
+  background:transparent!important;
+  color:#5b6b73!important;
+}
+
+/* Full-bleed homepage-style light footer canvas behind the centered footer content. */
+.yp-page .yp-footer:before{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  top:0;
+  bottom:0;
+  left:50%;
+  width:100vw;
+  transform:translateX(-50%);
+  background:#dcecf3;
+}
+
+.yp-page .yp-footer .footer-brand{
+  min-width:0;
+  display:block!important;
+  align-self:start;
+}
+
+/* Remove the header symbol, divider, descriptor and the UK / Wise / Stripe stack. */
+.yp-page .yp-footer .footer-brand>a>*{
+  display:none!important;
+}
+.yp-page .yp-footer .uk-company-stack{
+  display:none!important;
+}
+
+/* Rebuild the homepage footer wordmark as real text: MASAR only. */
+.yp-page .yp-footer .footer-brand>a{
+  display:inline-flex!important;
+  width:auto!important;
+  min-width:0!important;
+  height:auto!important;
+  margin:0!important;
+  padding:0!important;
+  color:#101827!important;
+  text-decoration:none!important;
+  transform:none!important;
+}
+.yp-page .yp-footer .footer-brand>a:after{
+  content:"MASAR";
+  display:block;
+  font:700 20px/1 "DM Sans",Arial,sans-serif;
+  letter-spacing:.04em;
+  color:#101827;
+}
+
+.yp-page .yp-footer .footer-company{
+  min-width:0;
+  margin:0!important;
+}
+.yp-page .yp-footer .footer-company p{
+  max-width:340px!important;
+  margin:0!important;
+  color:#5b6b73!important;
+  font-size:12px!important;
+  line-height:1.8!important;
+}
+.yp-page .yp-footer address{
+  margin-top:24px!important;
+  color:#5b6b73!important;
+  font-style:normal!important;
+  font-size:12px!important;
+  line-height:1.85!important;
+}
+.yp-page .yp-footer address strong{
+  display:block;
+  margin-bottom:4px;
+  color:#334a5c!important;
+  font-weight:600!important;
+}
+
+.yp-page .yp-footer .footer-bottom{
+  position:relative;
+  grid-column:1/-1!important;
+  display:flex!important;
+  align-items:center!important;
+  gap:24px!important;
+  margin-top:14px!important;
+  padding-top:20px!important;
+  border-top:1px solid #a7b9c2!important;
+  color:#5b6b73!important;
+  font-size:11px!important;
+}
+.yp-page .yp-footer .footer-bottom a{
+  color:#5b6b73!important;
+  text-decoration:none!important;
+}
+.yp-page .yp-footer .footer-bottom a:hover{
+  color:#071bda!important;
+}
+.yp-page .yp-footer .footer-bottom>span{
+  margin-inline-start:auto!important;
+}
+
+/* Preserve the same subtle animated footer light used across MASAR. */
+.yp-page .yp-footer .footer-light{
+  position:absolute;
+  top:-6px;
+  inset-inline:0;
+  height:12px;
+  overflow:hidden;
+  pointer-events:none;
+}
+
+@media(max-width:700px){
+  .yp-page .yp-footer{
+    grid-template-columns:1fr!important;
+    width:calc(100% - 44px)!important;
+    padding:55px 0 28px!important;
+    gap:0!important;
+  }
+  .yp-page .yp-footer .footer-company{
+    margin:26px 0!important;
+  }
+  .yp-page .yp-footer .footer-bottom{
+    grid-column:auto!important;
+    flex-wrap:wrap!important;
+    gap:12px 18px!important;
+  }
+  .yp-page .yp-footer .footer-bottom>span{
+    width:100%;
+    margin:0!important;
+  }
+}
