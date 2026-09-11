@@ -1,5 +1,6 @@
 import "./section-rhythm.css";
 import "./icons.css";
+import "./sections-23-premium.css";
 import "./footer-match.css";
 
 export default function YasserLayout({ children }: { children: React.ReactNode }) {
