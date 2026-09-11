@@ -3,12 +3,17 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   async rewrites() {
-    return [
-      { source: "/images/sourcing.webp", destination: "/images/service-procurement-20260911.avif" },
-      { source: "/images/cx-method.png", destination: "/images/service-contracts-20260911.avif" },
-      { source: "/images/operations-systems.webp", destination: "/images/service-business-20260911.avif" },
-      { source: "/images/brand-presence.webp", destination: "/images/service-brand-20260911.avif" },
-    ];
+    return {
+      beforeFiles: [
+        { source: "/images/cx-about.png", destination: "/images/service-procurement-20260911.avif" },
+        { source: "/images/sourcing.webp", destination: "/images/service-procurement-20260911.avif" },
+        { source: "/images/cx-method.png", destination: "/images/service-contracts-20260911.avif" },
+        { source: "/images/operations-systems.webp", destination: "/images/service-business-20260911.avif" },
+        { source: "/images/brand-presence.webp", destination: "/images/service-brand-20260911.avif" },
+      ],
+      afterFiles: [],
+      fallback: [],
+    };
   },
   async headers() {
     return [{
