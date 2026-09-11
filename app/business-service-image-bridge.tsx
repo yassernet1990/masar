@@ -2,13 +2,13 @@
 
 import { useEffect } from "react";
 
-const NEW_SRC = "/api/business-advisory-image?v=20260911-2";
+const NEW_SRC = "/images/business-advisory-20260911.svg?v=3";
 
 export default function BusinessServiceImageBridge() {
   useEffect(() => {
     const apply = () => {
       document
-        .querySelectorAll<HTMLImageElement>('img[src*="/images/operations-systems.webp"], img[src*="/service-business-image.webp"], img[src*="/api/business-advisory-image"]')
+        .querySelectorAll<HTMLImageElement>('img[src*="/images/operations-systems.webp"], img[src*="/service-business-image.webp"], img[src*="/api/business-advisory-image"], img[src*="business-advisory-20260911"]')
         .forEach((img) => {
           const src = img.getAttribute("src") || "";
           if (src !== NEW_SRC) img.setAttribute("src", NEW_SRC);
