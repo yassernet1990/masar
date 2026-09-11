@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 
-const NEW_SRC = "/images/business-advisory-20260911.webp?v=4";
+const NEW_SRC = "/images/operations-systems.webp?v=20260911-verified";
 
 export default function BusinessServiceImageBridge() {
   useEffect(() => {
