@@ -8,6 +8,7 @@ const nextConfig: NextConfig = {
         { source: "/images/cx-about.png", destination: "/images/service-procurement-20260911.avif" },
         { source: "/images/sourcing.webp", destination: "/images/service-procurement-20260911.avif" },
         { source: "/images/cx-method.png", destination: "/images/service-contracts-20260911.avif" },
+        { source: "/images/operations-systems.webp", destination: "/images/business-development-card-20260911.webp" },
         { source: "/images/brand-presence.webp", destination: "/images/service-brand-20260911.avif" },
       ],
       afterFiles: [],
