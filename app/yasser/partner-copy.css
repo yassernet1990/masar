@@ -50,6 +50,30 @@
   font-family:"Cairo",Arial,sans-serif;
 }
 
+/* Replace the third proof with global sourcing experience. */
+.yp-page #founder .yp-proof article:nth-child(3) strong,
+.yp-page #founder .yp-proof article:nth-child(3) span{font-size:0}
+.yp-page #founder .yp-proof article:nth-child(3) strong:after{
+  content:"GLOBAL SOURCING";
+  font:700 22px/1.08 "DM Sans",Arial,sans-serif;
+  letter-spacing:-.035em;
+}
+.yp-page #founder .yp-proof article:nth-child(3) span:after{
+  content:"Supplier experience across Türkiye, Europe, Asia & the U.S.";
+  display:block;
+  margin-top:9px;
+  font-size:11px;
+  line-height:1.55;
+}
+.yp-page.ar #founder .yp-proof article:nth-child(3) strong:after{
+  content:"التوريد العالمي";
+  font:700 21px/1.2 "Cairo",Arial,sans-serif;
+}
+.yp-page.ar #founder .yp-proof article:nth-child(3) span:after{
+  content:"خبرة في التعامل مع الموردين في تركيا وأوروبا وآسيا والولايات المتحدة";
+  font-family:"Cairo",Arial,sans-serif;
+}
+
 .yp-page #founder .yp-model .yp-eyebrow:after{content:"MASAR GROWTH MODEL"}
 .yp-page.ar #founder .yp-model .yp-eyebrow:after{content:"نموذج نمو مسار"}
 
