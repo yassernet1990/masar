@@ -26,6 +26,24 @@
   background-clip:text;
 }
 
+/* Yasser portrait: monochrome by default, original color on hover. */
+.yp-page #founder .yp-portrait img{
+  filter:grayscale(100%) contrast(1.03);
+  transition:filter .65s ease, transform .7s cubic-bezier(.2,.7,.2,1)!important;
+}
+
+@media(hover:hover) and (pointer:fine){
+  .yp-page #founder .yp-portrait:hover img{
+    filter:grayscale(0%) contrast(1);
+  }
+}
+
+@media(hover:none), (pointer:coarse){
+  .yp-page #founder .yp-portrait img{
+    filter:grayscale(0%) contrast(1);
+  }
+}
+
 @media(max-width:900px){
   .yp-page #founder .yp-bio:before,
   .yp-page.ar #founder .yp-bio:before{
