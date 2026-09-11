@@ -1,0 +1,44 @@
+/* Tiny Section 02 typography refinement only. */
+
+.yp-page #founder .yp-bio h2{
+  font-weight:700!important;
+}
+
+.yp-page #founder .yp-bio:before{
+  content:"Experience that shapes direction.\A Partnerships that expand capability.\A A business built to grow.";
+  font-size:clamp(27px,2.25vw,32px)!important;
+  line-height:1.09!important;
+  letter-spacing:-.035em!important;
+  color:transparent!important;
+  background:linear-gradient(to bottom,#102846 0 65.5%,#7c8999 65.5% 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+}
+
+.yp-page.ar #founder .yp-bio:before{
+  content:"خبرة ترسم الاتجاه.\A شراكات توسّع القدرات.\A ونموذج عمل قابل للنمو.";
+  font-size:clamp(27px,2.2vw,32px)!important;
+  line-height:1.28!important;
+  letter-spacing:-.01em!important;
+  color:transparent!important;
+  background:linear-gradient(to bottom,#102846 0 65.5%,#7c8999 65.5% 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+}
+
+@media(max-width:900px){
+  .yp-page #founder .yp-bio:before,
+  .yp-page.ar #founder .yp-bio:before{
+    font-size:clamp(27px,5.1vw,32px)!important;
+  }
+}
+
+@media(max-width:640px){
+  .yp-page #founder .yp-bio:before,
+  .yp-page.ar #founder .yp-bio:before{
+    color:#102846!important;
+    background:none!important;
+    -webkit-background-clip:initial;
+    background-clip:initial;
+  }
+}
