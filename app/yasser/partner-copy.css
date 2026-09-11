@@ -26,6 +26,30 @@
   content:"قابلية للتوسع\A قدرات تنمو مع الفرص";
 }
 
+/* Broaden market experience from KSA to MENA. */
+.yp-page #founder .yp-proof article:nth-child(2) strong,
+.yp-page #founder .yp-proof article:nth-child(2) span{font-size:0}
+.yp-page #founder .yp-proof article:nth-child(2) strong:after{
+  content:"MENA";
+  font:700 28px/1 "DM Sans",Arial,sans-serif;
+  letter-spacing:-.04em;
+}
+.yp-page #founder .yp-proof article:nth-child(2) span:after{
+  content:"Middle East & North Africa market experience";
+  display:block;
+  margin-top:9px;
+  font-size:11px;
+  line-height:1.55;
+}
+.yp-page.ar #founder .yp-proof article:nth-child(2) strong:after{
+  content:"MENA";
+  font-family:"Cairo",Arial,sans-serif;
+}
+.yp-page.ar #founder .yp-proof article:nth-child(2) span:after{
+  content:"خبرة في أسواق الشرق الأوسط وشمال أفريقيا";
+  font-family:"Cairo",Arial,sans-serif;
+}
+
 .yp-page #founder .yp-model .yp-eyebrow:after{content:"MASAR GROWTH MODEL"}
 .yp-page.ar #founder .yp-model .yp-eyebrow:after{content:"نموذج نمو مسار"}
 
