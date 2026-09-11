@@ -61,6 +61,16 @@
   backdrop-filter:none!important;
 }
 .yp-page #founder .yp-proof:after{display:none!important;content:none!important}
+
+/* Use the real four proof items; suppress older visual replacement copy. */
+.yp-page #founder .yp-proof article:nth-child(2) strong:after,
+.yp-page #founder .yp-proof article:nth-child(2) span:after,
+.yp-page #founder .yp-proof article:nth-child(3) strong:after,
+.yp-page #founder .yp-proof article:nth-child(3) span:after{
+  content:none!important;
+  display:none!important;
+}
+
 .yp-page #founder .yp-proof article{
   min-width:0;
   min-height:148px!important;
