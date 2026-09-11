@@ -1,0 +1,42 @@
+/* Specialist network transparent service icons */
+.yp-page .yp-network .yp-expertise i{
+  display:block!important;
+  flex:0 0 auto;
+  width:92px!important;
+  height:92px!important;
+  margin:24px 0 auto!important;
+  border:0!important;
+  border-radius:0!important;
+  background-color:transparent!important;
+  background-repeat:no-repeat!important;
+  background-position:center!important;
+  background-size:contain!important;
+  opacity:.88;
+  filter:drop-shadow(0 10px 24px rgba(86,181,255,.14));
+  transform:translateZ(0);
+  transition:transform .28s ease,opacity .28s ease,filter .28s ease;
+}
+.yp-page .yp-network .yp-expertise i:after{
+  content:none!important;
+  display:none!important;
+}
+.yp-page .yp-network .yp-expertise article:nth-child(1) i{background-image:url('/images/yasser-icons/procurement.png')!important}
+.yp-page .yp-network .yp-expertise article:nth-child(2) i{background-image:url('/images/yasser-icons/contracts.png')!important}
+.yp-page .yp-network .yp-expertise article:nth-child(3) i{background-image:url('/images/yasser-icons/operations.png')!important}
+.yp-page .yp-network .yp-expertise article:nth-child(4) i{background-image:url('/images/yasser-icons/brand.png')!important}
+.yp-page .yp-network .yp-expertise article:nth-child(5) i{background-image:url('/images/yasser-icons/project-controls.png')!important}
+.yp-page .yp-network .yp-expertise article:hover i{
+  opacity:1;
+  transform:translateY(-3px) scale(1.045);
+  filter:drop-shadow(0 14px 32px rgba(103,204,255,.24));
+}
+@media(max-width:1120px){
+  .yp-page .yp-network .yp-expertise i{width:86px!important;height:86px!important;margin-top:20px!important}
+}
+@media(max-width:900px){
+  .yp-page .yp-network .yp-expertise i{width:82px!important;height:82px!important;margin:18px 0 20px!important}
+}
+@media(prefers-reduced-motion:reduce){
+  .yp-page .yp-network .yp-expertise i{transition:none!important}
+  .yp-page .yp-network .yp-expertise article:hover i{transform:none!important}
+}
