@@ -1,0 +1,164 @@
+/* Section 02 metrics strip — rebuilt to match the approved editorial reference.
+   Scoped to /yasser founder section only. */
+
+.yp-page #founder .yp-lead-grid{
+  display:grid;
+  grid-template-columns:minmax(360px,.9fr) minmax(480px,1.15fr);
+  grid-template-areas:
+    "portrait bio"
+    "metrics metrics"
+    "model model";
+  column-gap:clamp(52px,6vw,100px);
+  row-gap:0;
+  align-items:start;
+}
+
+.yp-page #founder .yp-portrait{grid-area:portrait}
+.yp-page #founder .yp-bio{grid-area:bio}
+.yp-page #founder .yp-proof{grid-area:metrics}
+.yp-page #founder .yp-model{grid-area:model}
+
+/* LinkedIn remains part of the profile content, after the quote and before metrics. */
+.yp-page #founder .yp-linkedin{
+  order:7;
+  align-self:flex-start;
+  width:max-content;
+  margin:18px 0 0!important;
+  padding:0 0 8px!important;
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  border:0!important;
+  border-bottom:1px solid #b9ccda!important;
+  color:#155bda!important;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.01em;
+}
+.yp-page #founder .yp-linkedin>span{
+  width:28px;
+  height:28px;
+  display:grid;
+  place-items:center;
+  border-radius:7px;
+  background:#2867b2;
+  color:#fff;
+  font:700 13px/1 Arial,sans-serif;
+}
+.yp-page #founder .yp-linkedin-arrow{font-size:10px;opacity:.72}
+
+/* Editorial full-width metrics band: no cards, no blur, only rules and separators. */
+.yp-page #founder .yp-proof{
+  width:100%;
+  display:grid!important;
+  grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  gap:0!important;
+  margin:48px 0 0!important;
+  border-top:1px solid #b8cbd8!important;
+  border-bottom:1px solid #b8cbd8!important;
+  background:transparent!important;
+  -webkit-backdrop-filter:none!important;
+  backdrop-filter:none!important;
+}
+.yp-page #founder .yp-proof:after{display:none!important;content:none!important}
+.yp-page #founder .yp-proof article{
+  min-width:0;
+  min-height:148px!important;
+  padding:27px 27px 25px!important;
+  display:flex!important;
+  flex-direction:column;
+  justify-content:flex-start;
+  border:0!important;
+  border-inline-end:1px solid #c4d4df!important;
+  border-radius:0!important;
+  background:transparent!important;
+}
+.yp-page #founder .yp-proof article:last-child{border-inline-end:0!important}
+.yp-page #founder .yp-proof strong{
+  display:block;
+  max-width:190px;
+  margin:0!important;
+  color:#2d59d6!important;
+  font:700 clamp(24px,2vw,29px)/1.04 "DM Sans",Arial,sans-serif!important;
+  letter-spacing:-.045em!important;
+}
+.yp-page #founder .yp-proof article:nth-child(3) strong{
+  max-width:175px;
+  font-size:clamp(20px,1.65vw,24px)!important;
+  line-height:1.05!important;
+  letter-spacing:-.03em!important;
+}
+.yp-page #founder .yp-proof article:nth-child(4) strong{
+  font-size:clamp(21px,1.8vw,26px)!important;
+}
+.yp-page #founder .yp-proof span{
+  display:block;
+  max-width:215px;
+  margin-top:11px!important;
+  color:#60758a!important;
+  font:500 11.5px/1.58 "DM Sans",Arial,sans-serif!important;
+  letter-spacing:0!important;
+}
+.yp-page.ar #founder .yp-proof strong{
+  font-family:"Cairo",Arial,sans-serif!important;
+  letter-spacing:0!important;
+  line-height:1.2!important;
+}
+.yp-page.ar #founder .yp-proof article:nth-child(3) strong{
+  font-size:21px!important;
+  line-height:1.28!important;
+}
+.yp-page.ar #founder .yp-proof span{
+  font-family:"Cairo",Arial,sans-serif!important;
+  line-height:1.72!important;
+}
+
+/* No empty band beneath the metrics. */
+.yp-page #founder .yp-model{
+  margin-top:0!important;
+  border-top:0!important;
+  padding-top:34px!important;
+}
+
+@media(max-width:1120px){
+  .yp-page #founder .yp-lead-grid{
+    grid-template-columns:minmax(320px,.9fr) minmax(400px,1.1fr);
+  }
+  .yp-page #founder .yp-proof{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  }
+  .yp-page #founder .yp-proof article:nth-child(2){border-inline-end:0!important}
+  .yp-page #founder .yp-proof article:nth-child(3),
+  .yp-page #founder .yp-proof article:nth-child(4){border-top:1px solid #c4d4df!important}
+}
+
+@media(max-width:900px){
+  .yp-page #founder .yp-lead-grid{
+    grid-template-columns:1fr!important;
+    grid-template-areas:
+      "portrait"
+      "bio"
+      "metrics"
+      "model";
+  }
+  .yp-page #founder .yp-bio{margin-top:40px}
+  .yp-page #founder .yp-proof{margin-top:36px!important}
+}
+
+@media(max-width:640px){
+  .yp-page #founder .yp-bio{margin-top:32px}
+  .yp-page #founder .yp-linkedin{margin-top:16px!important}
+  .yp-page #founder .yp-proof{
+    grid-template-columns:1fr!important;
+    margin-top:30px!important;
+  }
+  .yp-page #founder .yp-proof article{
+    min-height:auto!important;
+    padding:20px 18px!important;
+    border-inline-end:0!important;
+    border-top:1px solid #c4d4df!important;
+  }
+  .yp-page #founder .yp-proof article:first-child{border-top:0!important}
+  .yp-page #founder .yp-proof strong{font-size:25px!important}
+  .yp-page #founder .yp-proof article:nth-child(3) strong{font-size:20px!important}
+}
