@@ -1,40 +1,65 @@
-/* Copy-only overrides for the Yasser founder/partnership story. No layout changes. */
+/* Copy-only overrides for the Yasser institutional vision and partnership story. */
 
-.yp-page #founder .yp-portrait>span:before{content:"FOUNDER VISION"}
+.yp-page #founder .yp-portrait>span:before{content:"THE VISION"}
 .yp-page #founder .yp-portrait>span:after{content:"Build with the right partners."}
-.yp-page.ar #founder .yp-portrait>span:before{content:"رؤية المؤسس"}
-.yp-page.ar #founder .yp-portrait>span:after{content:"نمو أقوى بالشركاء المناسبين."}
+.yp-page.ar #founder .yp-portrait>span:before{content:"الرؤية"}
+.yp-page.ar #founder .yp-portrait>span:after{content:"نبني مع الشركاء المناسبين."}
 
 .yp-page #founder .yp-bio:before{
-  content:"Founder-led today.\A Designed for partnership.\A Built for a wider future.";
+  content:"Experience that provides direction.\A Partnerships that extend capability.\A A business designed to grow.";
 }
 .yp-page.ar #founder .yp-bio:before{
-  content:"تنطلق بقيادة المؤسس.\A وتتوسع بقوة الشراكات.\A وتبني قدراتها للمستقبل.";
+  content:"خبرة ترسم الاتجاه.\A وشراكات توسّع القدرات.\A ونموذج عمل مصمم للنمو.";
 }
 
 .yp-page #founder .yp-bio:after{
-  content:"“MASAR’s future is not about growing alone. It is about growing with the right partners, capabilities and shared ambition.”";
+  content:"“Strong advisory businesses are built around capability, trust and the right partnerships.”";
 }
 .yp-page.ar #founder .yp-bio:after{
-  content:"«أؤمن أن نمو مسار الحقيقي لن يكون بالعمل منفردين، بل ببناء شراكات قوية تجمع الخبرة والثقة والطموح المشترك.»";
+  content:"«تُبنى الشركات الاستشارية القوية على الكفاءة والثقة والشراكات الصحيحة.»";
 }
 
 .yp-page #founder .yp-proof:after{
-  content:"BUILT FOR PARTNERSHIP\A Designed to expand through collaboration";
+  content:"SCALABLE\A Capabilities designed to expand";
 }
 .yp-page.ar #founder .yp-proof:after{
-  content:"مصممة للشراكات\A قدرات تتوسع من خلال التعاون";
+  content:"قابلية للتوسع\A قدرات تنمو مع الفرص";
 }
 
-.yp-page #founder .yp-model .yp-eyebrow:after{content:"MASAR growth model"}
+.yp-page #founder .yp-model .yp-eyebrow:after{content:"MASAR GROWTH MODEL"}
 .yp-page.ar #founder .yp-model .yp-eyebrow:after{content:"نموذج نمو مسار"}
 
 .yp-page #founder .yp-model h3:after{
-  content:"Founder-led.  Built for partnership.  Designed to scale.";
+  content:"Built to expand through partnership.";
 }
 .yp-page.ar #founder .yp-model h3:after{
-  content:"بقيادة المؤسس.  تتوسع بالشراكات.  وتبني قدراتها مع النمو.";
+  content:"قدرات تتوسع بالشراكات.";
 }
 
-.yp-page section.yp-network .yp-section-head .yp-eyebrow:after{content:"Partners & Expertise"}
+/* Replace the decorative pseudo-button with a real working anchor. */
+.yp-page #founder .yp-model:after{content:none!important}
+.yp-page #founder .yp-model-jump{
+  width:48px;
+  height:48px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:#1f57ff;
+  color:#fff;
+  font:500 20px/1 "DM Sans",Arial,sans-serif;
+  transition:transform .22s ease,background .22s ease;
+}
+.yp-page #founder .yp-model-jump:hover{transform:translateY(3px);background:#1547dc}
+.yp-page #partners-expertise{scroll-margin-top:20px}
+
+.yp-page section.yp-network .yp-section-head .yp-eyebrow:after{content:"PARTNERS & EXPERTISE"}
 .yp-page.ar section.yp-network .yp-section-head .yp-eyebrow:after{content:"الشركاء والخبرات"}
+
+@media(max-width:640px){
+  .yp-page #founder .yp-model-jump{margin-top:4px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .yp-page #founder .yp-model-jump{transition:none}
+  .yp-page #founder .yp-model-jump:hover{transform:none}
+}
