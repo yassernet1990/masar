@@ -1,0 +1,136 @@
+/* Yasser page section rhythm: dark -> light -> dark -> light -> mountain dark */
+
+/* 01 Founder: light editorial canvas */
+.yp-page .yp-founder{
+  background:
+    radial-gradient(circle at 84% 12%,rgba(31,87,255,.07),transparent 26%),
+    linear-gradient(180deg,#f5faff 0%,#edf6fb 100%)!important;
+}
+
+/* 02 Specialist network: dark signature section */
+.yp-page .yp-network{
+  position:relative;
+  background:
+    radial-gradient(circle at 16% 18%,rgba(120,220,255,.11),transparent 25%),
+    radial-gradient(circle at 86% 72%,rgba(31,87,255,.16),transparent 30%),
+    linear-gradient(145deg,#06132f 0%,#08204d 54%,#0a2c69 100%)!important;
+  color:#eef6ff!important;
+  overflow:hidden;
+}
+.yp-page .yp-network:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background-image:linear-gradient(#ffffff08 1px,transparent 1px),linear-gradient(90deg,#ffffff08 1px,transparent 1px);
+  background-size:88px 88px;
+  mask-image:linear-gradient(135deg,#0008,transparent 72%);
+}
+.yp-page .yp-network .yp-content-grid{position:relative;z-index:1}
+.yp-page .yp-network .yp-section-no.dark,
+.yp-page .yp-network .yp-eyebrow{color:#78dcff!important}
+.yp-page .yp-network .yp-section-head{
+  color:#9fb6cc!important;
+  border-color:#ffffff1c!important;
+}
+.yp-page .yp-network .yp-network-intro h2{color:#fff!important}
+.yp-page .yp-network .yp-network-intro h2 em{color:#78dcff!important}
+.yp-page .yp-network .yp-network-intro p{color:#bfd0e2!important}
+.yp-page .yp-network .yp-expertise{
+  background:#ffffff08!important;
+  border-color:#ffffff20!important;
+  box-shadow:0 28px 80px rgba(0,0,0,.16);
+}
+.yp-page .yp-network .yp-expertise article{
+  background:transparent!important;
+  border-color:#ffffff1d!important;
+  color:#eef6ff!important;
+}
+.yp-page .yp-network .yp-expertise article:hover{
+  background:#ffffff0d!important;
+  transform:translateY(-4px);
+}
+.yp-page .yp-network .yp-expertise article>span{color:#8ea9c2!important}
+.yp-page .yp-network .yp-expertise i{border-color:#78dcff55!important}
+.yp-page .yp-network .yp-expertise i:after{color:#78dcff!important}
+.yp-page .yp-network .yp-expertise h3{color:#f5f9ff!important}
+
+/* 03 Bridge: return to a bright, calm section so dark sections never stack */
+.yp-page .yp-bridge{
+  position:relative;
+  background:
+    radial-gradient(circle at 78% 20%,rgba(31,87,255,.075),transparent 25%),
+    linear-gradient(180deg,#f8fbfe 0%,#edf6fb 100%)!important;
+  color:#102846!important;
+  border-top:1px solid rgba(16,40,70,.06);
+  border-bottom:1px solid rgba(16,40,70,.07);
+}
+.yp-page .yp-bridge h2{color:#102846!important}
+.yp-page .yp-bridge h2 em{color:#1f57ff!important}
+.yp-page .yp-bridge .yp-section-no{color:#1f57ff!important}
+.yp-page .yp-bridge-grid>div:last-child p{
+  color:#4f6780!important;
+  border-color:#c7d7e3!important;
+}
+.yp-page .yp-bridge-grid>div:last-child b{color:#1f57ff!important}
+
+/* 04 CTA: restore the original mountain image, with a controlled MASAR overlay */
+.yp-page .yp-cta{
+  position:relative;
+  min-height:520px;
+  padding:112px 0!important;
+  background:
+    linear-gradient(90deg,rgba(3,11,29,.95) 0%,rgba(5,18,47,.88) 38%,rgba(7,35,82,.58) 68%,rgba(5,23,55,.42) 100%),
+    url('/images/yasser-mountains.webp') center 58%/cover no-repeat!important;
+  color:#fff!important;
+  overflow:hidden;
+}
+.yp-page .yp-cta:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:linear-gradient(180deg,rgba(255,255,255,.025),transparent 35%,rgba(0,0,0,.18));
+}
+.yp-page .yp-cta:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:radial-gradient(circle at 72% 34%,rgba(120,220,255,.12),transparent 25%);
+}
+.yp-page .yp-cta-grid{position:relative;z-index:2}
+.yp-page .yp-cta h2{max-width:820px;text-shadow:0 2px 24px rgba(0,0,0,.22)}
+.yp-page .yp-cta h2 em{color:#78dcff!important}
+.yp-page .yp-cta p{color:#d7e4f1!important}
+.yp-page .yp-cta-actions>a:first-child{
+  background:#fff!important;
+  color:#0b2446!important;
+  box-shadow:0 10px 32px rgba(0,0,0,.18);
+}
+.yp-page .yp-cta .yp-cta-secondary{
+  background:rgba(255,255,255,.08)!important;
+  color:#fff!important;
+  border-color:rgba(255,255,255,.26)!important;
+  backdrop-filter:blur(8px);
+}
+
+/* Make the transitions between sections intentional, not abrupt */
+.yp-page .yp-founder,
+.yp-page .yp-network,
+.yp-page .yp-bridge,
+.yp-page .yp-cta{isolation:isolate}
+
+@media(max-width:900px){
+  .yp-page .yp-network .yp-expertise article{border-top-color:#ffffff1d!important}
+  .yp-page .yp-cta{min-height:560px;padding:84px 0!important;background-position:64% center!important}
+}
+
+@media(max-width:600px){
+  .yp-page .yp-cta{min-height:600px;background-position:68% center!important}
+  .yp-page .yp-network:before{background-size:64px 64px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .yp-page .yp-network .yp-expertise article{transition:none!important}
+}
