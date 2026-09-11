@@ -1,0 +1,479 @@
+/* Executive refinement layer for the private founder page.
+   Loaded last so the visual system can evolve without rewriting the base theme. */
+
+.yp-page {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "kern" 1, "liga" 1;
+}
+
+.yp-page.en {
+  font-family: "DM Sans", "DejaVu Sans", Arial, sans-serif;
+}
+
+.yp-page.ar {
+  font-family: "Cairo", "DejaVu Sans", Arial, sans-serif;
+}
+
+/* Header + navigation */
+.yp-page .yp-hero header {
+  height: 82px;
+}
+
+.yp-page .yp-hero nav {
+  gap: clamp(20px, 2.4vw, 34px);
+  font-size: 12.5px;
+  font-weight: 500;
+}
+
+.yp-page .nav-package-menu {
+  min-width: 350px;
+  padding: 11px;
+}
+
+.yp-page .nav-package-menu a {
+  white-space: normal;
+  line-height: 1.45;
+}
+
+.yp-page.ar .nav-package-menu {
+  text-align: right;
+}
+
+.yp-page a:focus-visible,
+.yp-page button:focus-visible {
+  outline: 2px solid #66d9ff;
+  outline-offset: 4px;
+}
+
+/* Hero: less oversized, more executive, better reading rhythm. */
+.yp-page .yp-hero-grid {
+  grid-template-columns: 92px minmax(0, 1.34fr) minmax(320px, .66fr);
+  gap: clamp(30px, 4.2vw, 64px);
+}
+
+.yp-page .yp-hero-copy h1 {
+  font-size: clamp(58px, 6.45vw, 98px);
+  line-height: .94;
+  letter-spacing: -.052em;
+  margin: 26px 0 30px;
+  max-width: 850px;
+}
+
+.yp-page.ar .yp-hero-copy h1 {
+  font-size: clamp(52px, 5.7vw, 86px);
+  line-height: 1.08;
+  letter-spacing: 0;
+}
+
+.yp-page .yp-eyebrow {
+  font-size: 11.5px;
+  letter-spacing: .18em;
+}
+
+.yp-page.ar .yp-eyebrow,
+.yp-page.ar .yp-hero-tag,
+.yp-page.ar .yp-section-head {
+  letter-spacing: .04em;
+  text-transform: none;
+}
+
+.yp-page .yp-hero-tag {
+  max-width: 720px;
+  font-size: 11.5px;
+  line-height: 1.65;
+  letter-spacing: .085em;
+}
+
+.yp-page .yp-hero-side {
+  padding-inline-start: 30px;
+}
+
+.yp-page .yp-hero-side strong {
+  font-size: 21px;
+  line-height: 1.48;
+  letter-spacing: -.015em;
+}
+
+.yp-page.ar .yp-hero-side strong {
+  line-height: 1.65;
+  letter-spacing: 0;
+}
+
+.yp-page .yp-hero-side p {
+  font-size: 14.5px;
+  line-height: 1.8;
+  margin: 22px 0 31px;
+}
+
+.yp-page .yp-status {
+  font-size: 10.5px;
+  letter-spacing: .095em;
+}
+
+.yp-page.ar .yp-status {
+  letter-spacing: .025em;
+  text-transform: none;
+}
+
+/* Founder section: the person becomes the visual anchor. */
+.yp-page .yp-founder {
+  padding-top: 118px;
+  padding-bottom: 124px;
+}
+
+.yp-page .yp-lead-grid {
+  grid-template-columns: minmax(340px, 1.12fr) minmax(320px, 1.08fr) minmax(285px, .9fr);
+  gap: clamp(28px, 3.2vw, 48px);
+  margin-top: 50px;
+}
+
+.yp-page .yp-portrait {
+  aspect-ratio: 4 / 5;
+  min-height: 0;
+  border-radius: 6px;
+  box-shadow: 0 24px 58px rgba(9, 38, 78, .16);
+}
+
+.yp-page .yp-portrait img {
+  object-position: center 10%;
+  transform: scale(1.015);
+  transition: transform .55s ease;
+}
+
+.yp-page .yp-portrait:hover img {
+  transform: scale(1.045);
+}
+
+.yp-page .yp-bio h2 {
+  font-size: clamp(40px, 3.5vw, 53px);
+  line-height: 1.03;
+  letter-spacing: -.045em;
+  margin-bottom: 10px;
+}
+
+.yp-page.ar .yp-bio h2 {
+  line-height: 1.22;
+  letter-spacing: 0;
+}
+
+.yp-page .yp-role {
+  font-size: 15px !important;
+  margin-bottom: 24px !important;
+}
+
+.yp-page .yp-bio > p:not(.yp-role) {
+  max-width: 620px;
+  font-size: 16.5px;
+  line-height: 1.82;
+  color: #496378;
+}
+
+.yp-page.ar .yp-bio > p:not(.yp-role) {
+  line-height: 1.95;
+}
+
+.yp-page .yp-proof {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 27px 0 30px;
+  border-top: 1px solid #b6cad8;
+  border-bottom: 1px solid #b6cad8;
+}
+
+.yp-page .yp-proof article {
+  min-width: 0;
+  padding: 17px 14px 18px 0;
+}
+
+.yp-page.ar .yp-proof article {
+  padding: 17px 0 18px 14px;
+}
+
+.yp-page .yp-proof article + article {
+  border-inline-start: 1px solid #b6cad8;
+  padding-inline-start: 15px;
+}
+
+.yp-page .yp-proof strong {
+  display: block;
+  color: #174f98;
+  font: 700 20px/1.1 "DM Sans", Arial, sans-serif;
+  letter-spacing: -.03em;
+  margin-bottom: 7px;
+}
+
+.yp-page.ar .yp-proof strong {
+  font-family: "Cairo", "DejaVu Sans", Arial, sans-serif;
+  letter-spacing: 0;
+}
+
+.yp-page .yp-proof span {
+  display: block;
+  color: #60798d;
+  font-size: 10.5px;
+  line-height: 1.45;
+}
+
+.yp-page .yp-focus {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
+}
+
+.yp-page .yp-focus b {
+  font-size: 11.5px;
+}
+
+.yp-page .yp-focus ul {
+  gap: 10px;
+  margin: 16px 0 28px;
+}
+
+.yp-page .yp-focus li {
+  font-size: 13.5px;
+  line-height: 1.55;
+}
+
+.yp-page .yp-linkedin {
+  gap: 10px;
+  width: fit-content;
+  direction: ltr;
+  font-size: 12.5px;
+}
+
+.yp-page .yp-linkedin .yp-linkedin-arrow {
+  color: #0d55a4;
+}
+
+.yp-page .yp-model {
+  padding: 34px 32px;
+  border-radius: 6px;
+}
+
+.yp-page .yp-model h3 {
+  font-size: 28px;
+  line-height: 1.16;
+  margin: 19px 0;
+}
+
+.yp-page.ar .yp-model h3 {
+  line-height: 1.45;
+}
+
+.yp-page .yp-model > p:not(.yp-eyebrow) {
+  font-size: 13.5px;
+  line-height: 1.82;
+}
+
+.yp-page.ar .yp-model > p:not(.yp-eyebrow) {
+  line-height: 1.95;
+}
+
+.yp-page .yp-model article {
+  padding: 17px 0;
+}
+
+/* Specialist network: clearer editorial hierarchy. */
+.yp-page .yp-network-intro {
+  padding: 58px 0 61px;
+  gap: clamp(50px, 7vw, 100px);
+}
+
+.yp-page .yp-network-intro h2,
+.yp-page .yp-bridge h2,
+.yp-page .yp-cta h2 {
+  font-size: clamp(42px, 4.65vw, 67px);
+  letter-spacing: -.05em;
+}
+
+.yp-page.ar .yp-network-intro h2,
+.yp-page.ar .yp-bridge h2,
+.yp-page.ar .yp-cta h2 {
+  line-height: 1.28;
+  letter-spacing: 0;
+}
+
+.yp-page .yp-network-intro p {
+  max-width: 520px;
+  font-size: 15.5px;
+  line-height: 1.85;
+}
+
+.yp-page .yp-expertise article {
+  min-height: 245px;
+}
+
+.yp-page .yp-expertise h3 {
+  font-size: 15.5px;
+}
+
+/* CTA: one primary action plus a low-pressure exploration route. */
+.yp-page .yp-cta-grid {
+  grid-template-columns: 70px minmax(0, 1.55fr) minmax(220px, .65fr);
+  gap: 40px;
+}
+
+.yp-page .yp-cta-actions {
+  grid-column: 2;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 2px;
+}
+
+.yp-page .yp-cta-actions a {
+  grid-column: auto;
+  justify-self: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 48px;
+  padding: 15px 20px;
+}
+
+.yp-page .yp-cta-actions .yp-cta-secondary {
+  background: rgba(5, 21, 52, .28);
+  border: 1px solid rgba(255, 255, 255, .42);
+  color: #fff;
+  backdrop-filter: blur(8px);
+}
+
+.yp-page .yp-cta-actions .yp-cta-secondary:hover {
+  background: rgba(102, 217, 255, .16);
+  color: #fff;
+}
+
+/* Better medium-width behavior before the mobile stack. */
+@media (max-width: 1120px) {
+  .yp-page .yp-lead-grid {
+    grid-template-columns: minmax(315px, .88fr) minmax(360px, 1.12fr);
+  }
+
+  .yp-page .yp-model {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 800px) {
+  .yp-page .yp-hero {
+    min-height: 860px;
+  }
+
+  .yp-page .yp-hero-grid,
+  .yp-page .yp-content-grid,
+  .yp-page .yp-bridge-grid,
+  .yp-page .yp-cta-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .yp-page .yp-hero-grid {
+    padding-top: 66px;
+  }
+
+  .yp-page .yp-hero-copy h1,
+  .yp-page.ar .yp-hero-copy h1 {
+    font-size: clamp(48px, 13vw, 68px);
+    margin: 20px 0 23px;
+  }
+
+  .yp-page.ar .yp-hero-copy h1 {
+    font-size: clamp(43px, 11.5vw, 59px);
+    line-height: 1.13;
+  }
+
+  .yp-page .yp-hero-side {
+    padding-top: 25px;
+  }
+
+  .yp-page .yp-founder {
+    padding-top: 82px;
+    padding-bottom: 88px;
+  }
+
+  .yp-page .yp-lead-grid {
+    grid-template-columns: 1fr;
+    gap: 31px;
+    margin-top: 34px;
+  }
+
+  .yp-page .yp-portrait {
+    width: min(100%, 520px);
+    aspect-ratio: 4 / 5;
+    max-height: 520px;
+  }
+
+  .yp-page .yp-bio h2 {
+    font-size: clamp(38px, 10vw, 46px);
+  }
+
+  .yp-page .yp-model {
+    grid-column: auto;
+  }
+
+  .yp-page .yp-network-intro {
+    padding: 45px 0;
+  }
+
+  .yp-page .yp-network-intro h2,
+  .yp-page .yp-bridge h2,
+  .yp-page .yp-cta h2 {
+    font-size: clamp(38px, 10vw, 48px);
+  }
+
+  .yp-page .yp-cta-actions {
+    grid-column: auto;
+  }
+}
+
+@media (max-width: 520px) {
+  .yp-page .yp-portrait {
+    max-height: 470px;
+  }
+
+  .yp-page .yp-proof {
+    grid-template-columns: 1fr;
+  }
+
+  .yp-page .yp-proof article {
+    padding: 13px 0;
+  }
+
+  .yp-page .yp-proof article + article {
+    border-inline-start: 0;
+    border-top: 1px solid #b6cad8;
+    padding-inline-start: 0;
+  }
+
+  .yp-page .yp-proof strong {
+    display: inline-block;
+    min-width: 48px;
+    margin: 0 9px 0 0;
+  }
+
+  .yp-page.ar .yp-proof strong {
+    margin: 0 0 0 9px;
+  }
+
+  .yp-page .yp-proof span {
+    display: inline;
+  }
+
+  .yp-page .yp-cta-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .yp-page .yp-cta-actions a {
+    justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .yp-page .yp-portrait img,
+  .yp-page .yp-portrait:hover img {
+    transform: none;
+    transition: none;
+  }
+}
