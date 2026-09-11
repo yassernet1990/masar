@@ -1,0 +1,40 @@
+/* Copy-only overrides for the Yasser founder/partnership story. No layout changes. */
+
+.yp-page #founder .yp-portrait>span:before{content:"FOUNDER VISION"}
+.yp-page #founder .yp-portrait>span:after{content:"Build with the right partners."}
+.yp-page.ar #founder .yp-portrait>span:before{content:"رؤية المؤسس"}
+.yp-page.ar #founder .yp-portrait>span:after{content:"نمو أقوى بالشركاء المناسبين."}
+
+.yp-page #founder .yp-bio:before{
+  content:"Founder-led today.\A Designed for partnership.\A Built for a wider future.";
+}
+.yp-page.ar #founder .yp-bio:before{
+  content:"تنطلق بقيادة المؤسس.\A وتتوسع بقوة الشراكات.\A وتبني قدراتها للمستقبل.";
+}
+
+.yp-page #founder .yp-bio:after{
+  content:"“MASAR’s future is not about growing alone. It is about growing with the right partners, capabilities and shared ambition.”";
+}
+.yp-page.ar #founder .yp-bio:after{
+  content:"«أؤمن أن نمو مسار الحقيقي لن يكون بالعمل منفردين، بل ببناء شراكات قوية تجمع الخبرة والثقة والطموح المشترك.»";
+}
+
+.yp-page #founder .yp-proof:after{
+  content:"BUILT FOR PARTNERSHIP\A Designed to expand through collaboration";
+}
+.yp-page.ar #founder .yp-proof:after{
+  content:"مصممة للشراكات\A قدرات تتوسع من خلال التعاون";
+}
+
+.yp-page #founder .yp-model .yp-eyebrow:after{content:"MASAR growth model"}
+.yp-page.ar #founder .yp-model .yp-eyebrow:after{content:"نموذج نمو مسار"}
+
+.yp-page #founder .yp-model h3:after{
+  content:"Founder-led.  Built for partnership.  Designed to scale.";
+}
+.yp-page.ar #founder .yp-model h3:after{
+  content:"بقيادة المؤسس.  تتوسع بالشراكات.  وتبني قدراتها مع النمو.";
+}
+
+.yp-page section.yp-network .yp-section-head .yp-eyebrow:after{content:"Partners & Expertise"}
+.yp-page.ar section.yp-network .yp-section-head .yp-eyebrow:after{content:"الشركاء والخبرات"}
