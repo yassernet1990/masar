@@ -39,7 +39,7 @@ const copy = {
     name: "Yasser Abdulkadir",
     role: "Founder & Managing Director",
     bio: "MASAR was established by Yasser Abdulkadir following more than 13 years of practical experience in Saudi Arabia across procurement, strategic sourcing, commercial management and business advisory. The business is being developed around a clear principle: maintain direct accountability and a focused operating model, while expanding MASAR’s capabilities through the right professionals, specialist firms and strategic partners as opportunities evolve.",
-    proofs: [["13+", "Years of practical experience"], ["KSA", "Saudi market experience"], ["DIRECT", "Clear accountability"]],
+    proofs: [["13+", "Years of practical experience"], ["MENA", "Middle East & North Africa market experience"], ["GLOBAL SOURCING", "Supplier experience across Türkiye, Europe, Asia & the U.S."], ["SCALABLE", "Capabilities designed to expand"]],
     focus: "Capability areas",
     focusItems: ["Procurement, strategic sourcing & vendor management", "Commercial & contracts advisory", "Business setup & operational systems", "Brand identity & market presence", "Project controls & quantity surveying"],
     serviceNav: [["Procurement, strategic sourcing & vendor management", "/services/procurement"], ["Commercial & contracts advisory", "/services/commercial-contracts"], ["Business setup & operational systems", "/services/business-setup"], ["Brand identity & market presence", "/packages"]],
@@ -80,7 +80,7 @@ const copy = {
     name: "ياسر عبد القادر",
     role: "المؤسس والمدير العام",
     bio: "تأسست مسار على يد ياسر عبد القادر بعد أكثر من 13 عاماً من الخبرة العملية في السوق السعودي، شملت المشتريات، والتوريد الاستراتيجي، والإدارة التجارية، واستشارات الأعمال. ويقوم توجه الشركة على مبدأ واضح: الحفاظ على مسؤولية مباشرة ونموذج عمل مركّز، مع تطوير قدرات مسار تدريجياً من خلال استقطاب الخبرات المناسبة، والتعاون مع الشركات المتخصصة، وبناء شراكات استراتيجية كلما تطلبت الفرص ذلك.",
-    proofs: [["+13 سنة", "من الخبرة العملية"], ["السعودية", "خبرة في السوق السعودي"], ["مسؤولية واضحة", "إدارة مباشرة للعمل"]],
+    proofs: [["+13 سنة", "من الخبرة العملية"], ["MENA", "خبرة في أسواق الشرق الأوسط وشمال أفريقيا"], ["التوريد العالمي", "خبرة في التعامل مع الموردين في تركيا وأوروبا وآسيا والولايات المتحدة"], ["قابلية للتوسع", "قدرات تنمو مع الفرص"]],
     focus: "مجالات القدرات",
     focusItems: ["المشتريات والتوريد الاستراتيجي وإدارة الموردين", "الاستشارات التجارية والتعاقدية", "تأسيس الأعمال والأنظمة التشغيلية", "الهوية والحضور في السوق", "ضبط المشاريع وحصر الكميات"],
     serviceNav: [["المشتريات والتوريد الاستراتيجي وإدارة الموردين", "/services/procurement"], ["الاستشارات التجارية والتعاقدية", "/services/commercial-contracts"], ["تأسيس الأعمال والأنظمة التشغيلية", "/services/business-setup"], ["الهوية والحضور في السوق", "/packages"]],
@@ -170,12 +170,12 @@ export default async function YasserPage({ searchParams }: PageProps) {
                 <h2>{t.name}</h2>
                 <p className="yp-role">{t.role}</p>
                 <p>{t.bio}</p>
-                <div className="yp-proof" aria-label={lang === "ar" ? "ملخص الخبرة" : "Experience highlights"}>
-                  {t.proofs.map(([value, label]) => <article key={label}><strong>{value}</strong><span>{label}</span></article>)}
-                </div>
                 <div className="yp-focus"><b>{t.focus}</b><ul>{t.focusItems.map(item => <li key={item}>{item}</li>)}</ul></div>
                 <a className="yp-linkedin" href="https://sa.linkedin.com/in/yasser-abdulkader" target="_blank" rel="noopener noreferrer" aria-label={lang === "ar" ? "فتح ملف ياسر عبد القادر على LinkedIn" : "Open Yasser Abdulkadir on LinkedIn"}><span aria-hidden="true">in</span>{t.linkedin}<b className="yp-linkedin-arrow" aria-hidden="true">↗</b></a>
               </article>
+              <div className="yp-proof" aria-label={lang === "ar" ? "ملخص الخبرة" : "Experience highlights"}>
+                {t.proofs.map(([value, label]) => <article key={label}><strong>{value}</strong><span>{label}</span></article>)}
+              </div>
               <aside className="yp-model">
                 <p className="yp-eyebrow">{t.how}</p><h3>{t.modelTitle}</h3><p>{t.modelBody}</p>
                 <div>{t.steps.map(([title, body], index) => <article key={title}><b>{String(index + 1).padStart(2, "0")}</b><span><strong>{title}</strong><small>{body}</small></span></article>)}</div>
