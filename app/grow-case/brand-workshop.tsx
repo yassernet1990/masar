@@ -9,9 +9,9 @@ const palettes = [
 ];
 function SacMark() { return <svg className="gc-sac-mark" viewBox="0 0 420 320" width="82" height="64" aria-hidden="true"><path fill="var(--brand-accent)" d="M24 103 132 12h264l-75 58H158l-33 31 119 27-71 61z"/><path fill="var(--brand-secondary)" d="m296 126 82 18-194 164-41-45z"/></svg>; }
 const fontPairs = [
-  { name: ["Modern & clear", "حديث وواضح"], en: '"DM Sans", Arial, sans-serif', ar: '"Cairo", Arial, sans-serif', names: "DM Sans + Cairo" },
-  { name: ["Editorial & formal", "تحريري ورسمي"], en: 'Georgia, serif', ar: '"Noto Serif Arabic", serif', names: "Georgia + Noto Serif Arabic" },
-  { name: ["Practical & direct", "عملي ومباشر"], en: 'Arial, sans-serif', ar: 'Tahoma, Arial, sans-serif', names: "Arial + Tahoma" },
+  { name: ["Contemporary & refined", "عصري وراقي"], en: '"Manrope", Arial, sans-serif', ar: '"Alexandria", sans-serif', names: "Manrope + Alexandria" },
+  { name: ["Editorial & elegant", "تحريري وأنيق"], en: '"Cormorant Garamond", Georgia, serif', ar: '"Noto Naskh Arabic", serif', names: "Cormorant Garamond + Noto Naskh Arabic" },
+  { name: ["Distinctive & modern", "مميز وحديث"], en: '"Space Grotesk", Arial, sans-serif', ar: '"IBM Plex Sans Arabic", sans-serif', names: "Space Grotesk + IBM Plex Sans Arabic" },
 ];
 export default function BrandWorkshop({ ar }: { ar: boolean }) {
   const [palette, setPalette] = useState(0);
