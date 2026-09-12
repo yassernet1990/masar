@@ -204,6 +204,10 @@ export default function Packages({ lang, backgroundImage }: { lang: Lang; backgr
           </article>
         ))}
       </div>
+      <a className="mp-grow-story" href={`/grow-case?lang=${lang}`} aria-label={t("Explore the Grow case study", "استكشف دراسة حالة Grow")}>
+        <div className="mp-story-art" aria-hidden="true"><img src="/images/grow-case/preview-3.webp" width="1360" height="940" alt="" loading="lazy" /><span>GROW / CASE STUDY</span></div>
+        <div className="mp-story-copy"><span className="mp-story-eyebrow">{t("BEFORE YOU CHOOSE · SEE THE EXPERIENCE", "قبل أن تختار · شاهد التجربة")}</span><h2>{t("What happens after you choose Grow?", "ماذا يحدث بعد اختيار Grow؟")}</h2><p>{t("Try the colours and type, explore real design examples and follow your project from the first logo to final handover.", "جرّب الألوان والخطوط، واستعرض نماذج فعلية، وتابع مشروعك من أول فكرة للشعار إلى التسليم النهائي.")}</p><div className="mp-story-steps">{[t("Identity", "الهوية"),t("Website", "الموقع"),t("Profile", "البروفايل"),t("Handover", "التسليم")].map((label,i)=><span key={label}><b>0{i+1}</b>{label}</span>)}</div><strong className="mp-story-cta">{t("Explore the full journey", "اكتشف الرحلة كاملة")} <span aria-hidden="true">↗</span></strong></div>
+      </a>
       <section className="mp-comparison" aria-labelledby="comparison-title">
         <p className="mp-eyebrow">{t("COMPARE PACKAGES", "قارن الباقات")}</p>
         <h2 id="comparison-title">{t("See the difference at a glance.", "شاهد الفرق بين الباقات بسرعة.")}</h2>
