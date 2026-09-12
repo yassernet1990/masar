@@ -40,3 +40,28 @@
  .yp-page .yp-hero-copy > *,.yp-page .yp-hero-side > *,.yp-page .yp-progress-label { animation:none!important }
  .yp-page .yp-cta-actions a,.yp-page .yp-linkedin,.yp-page .yp-hero-side a,.yp-page .yp-model-jump,.yp-page .contact-chip,.yp-page .yp-button-arrow,.yp-page .yp-linkedin-arrow,.yp-page .yp-hero-side a > span,.yp-page .yp-progress-stops a { transition:none!important; transform:none!important }
 }
+
+/* Short, solid section accents aligned with each language's reading direction. */
+.yp-page .yp-hero-copy h1::after,
+.yp-page .yp-bio h2::after,
+.yp-page .yp-network-intro h2::after,
+.yp-page .yp-bridge h2::after,
+.yp-page .yp-cta h2::after {
+  content:"";
+  display:block;
+  width:48px;
+  height:2px;
+  margin-block-start:22px;
+  background:var(--blue);
+  pointer-events:none;
+}
+@media(max-width:700px) {
+  .yp-page .yp-hero-copy h1::after,
+  .yp-page .yp-bio h2::after,
+  .yp-page .yp-network-intro h2::after,
+  .yp-page .yp-bridge h2::after,
+  .yp-page .yp-cta h2::after {
+    width:36px;
+    margin-block-start:16px;
+  }
+}
