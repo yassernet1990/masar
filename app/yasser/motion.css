@@ -16,9 +16,7 @@
 .yp-page .yp-progress-stops a[aria-current] { background:var(--blue); color:white }
 .yp-page .yp-progress-label { position:absolute; top:50%; inset-inline-start:31px; writing-mode:vertical-rl; transform:translateY(-50%); font-size:10px; letter-spacing:.06em; padding:9px 5px; color:#eaf4ff; background:#07162f; border-radius:10px; animation:ypLabel .25s ease both; pointer-events:none }
 .yp-page.ar .yp-progress-label { letter-spacing:0 }
-.yp-page .yp-section-fade { height:38px; pointer-events:none }
-.yp-page .yp-section-fade.to-light { background:linear-gradient(180deg,#07162f 0%,#526c89 48%,#f5faff 100%) }
-.yp-page .yp-section-fade.to-dark { background:linear-gradient(180deg,#eef6fb 0%,#526c89 52%,#06132f 100%) }
+.yp-page .yp-section-fade { display:none }
 .yp-page .yp-cta-actions a,.yp-page .yp-linkedin,.yp-page .yp-hero-side a,.yp-page .yp-model-jump,.yp-page .contact-chip { transition:background-color .22s ease,color .22s ease,box-shadow .22s ease; gap:12px }
 .yp-page .yp-linkedin { padding:7px 12px 7px 7px; border-radius:12px }
 .yp-page .yp-button-arrow,.yp-page .yp-linkedin-arrow,.yp-page .yp-hero-side a > span { display:inline-block; transition:transform .22s ease }
@@ -37,7 +35,6 @@
  .yp-page .yp-progress-track > span { transform:scaleX(var(--yp-progress)); transform-origin:left }
  .yp-page.ar .yp-progress-track > span { transform-origin:right }
  .yp-page .yp-progress-stops,.yp-page .yp-progress-label { display:none }
- .yp-page .yp-section-fade { height:24px }
 }
 @media(prefers-reduced-motion:reduce) {
  .yp-page .yp-hero-copy > *,.yp-page .yp-hero-side > *,.yp-page .yp-progress-label { animation:none!important }
