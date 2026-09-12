@@ -49,3 +49,5 @@ main.cx-page.gc-page .masar-footer .footer-company p,main.cx-page.gc-page .masar
 main.cx-page.gc-page .masar-footer .footer-bottom{border-color:#bfd0dd!important}
 main.cx-page.gc-page .masar-footer .uk-company-text b{background:none!important;-webkit-text-fill-color:#102846!important;color:#102846!important}
 main.cx-page.gc-page .masar-footer .wise-logo{color:#176345}.gc-page .masar-footer .stripe-logo{color:#635bce}
+/* Extend the light footer surface to both page edges, keeping content centered. */
+main.cx-page.gc-page .masar-footer{border-radius:0;box-shadow:0 0 0 100vmax #eef6fb;clip-path:inset(0 -100vmax)}
