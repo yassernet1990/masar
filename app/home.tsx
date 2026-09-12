@@ -8,6 +8,8 @@ import Packages from "./commerce/packages";
 import ServiceSelector from "./commerce/service-selector";
 import type { ServiceKind } from "./commerce/service-catalog";
 import ClientsWidget from "./clients-widget";
+import HomeProgress from "./home-progress";
+import "./home-progress.css";
 
 type Lang = "ar" | "en";
 type ThemeMedia = {
@@ -1360,6 +1362,7 @@ export default function Home({ packagesOnly = false, servicePage, initialLang = 
         } as CSSProperties
       }
     >
+      {!innerPage && <HomeProgress lang={lang} />}
       <section
         className="cx-hero"
         onPointerMove={move}

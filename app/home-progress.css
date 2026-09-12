@@ -1,0 +1,22 @@
+
+.home-page .hp-progress-nav{--hp-progress:0;position:fixed;z-index:30;inset-inline-start:12px;top:50%;transform:translateY(-50%);width:24px;height:248px;padding:10px 0;border:1px solid #78dcff30;border-radius:18px;background:#07162ff2;color:#d8eaff}
+.home-page .hp-progress-track{position:absolute;inset-inline-start:11px;top:21px;bottom:21px;width:2px;background:#78dcff30;pointer-events:none}
+.home-page .hp-progress-track>span{display:block;width:100%;height:100%;background:#1f57ff;transform:scaleY(var(--hp-progress));transform-origin:top}
+.home-page .hp-progress-stops{position:relative;display:flex;flex-direction:column;justify-content:space-between;height:100%}
+.home-page .hp-progress-stops a{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;font:600 9px/1 Arial,sans-serif;text-decoration:none;color:#bad0e8;background:#07162f;transition:background .2s,color .2s}
+.home-page .hp-progress-stops a[aria-current]{background:#1f57ff;color:#fff}
+.home-page .hp-progress-stops a:focus-visible{outline:2px solid #78dcff;outline-offset:3px}
+.home-page .hp-progress-label{position:absolute;top:50%;inset-inline-start:28px;writing-mode:vertical-rl;transform:translateY(-50%);font-size:10px;letter-spacing:.04em;padding:8px 4px;border-radius:8px;background:#07162f;color:#eaf4ff;pointer-events:none;animation:hpLabel .2s ease}
+.home-page.ar .hp-progress-label{letter-spacing:0}
+@keyframes hpLabel{from{opacity:0}to{opacity:1}}
+@media(max-width:1200px){
+.home-page .hp-progress-nav{top:0;inset-inline:0;width:100%;height:3px;transform:none;padding:0;border:0;border-radius:0;background:#1f57ff18;pointer-events:none}
+.home-page .hp-progress-track{inset:0;width:100%;height:3px;background:transparent}
+.home-page .hp-progress-track>span{transform:scaleX(var(--hp-progress));transform-origin:left}
+.home-page.ar .hp-progress-track>span{transform-origin:right}
+.home-page .hp-progress-label,.home-page .hp-progress-stops{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+.home-page .hp-progress-label{animation:none}
+.home-page .hp-progress-stops a{transition:none}
+}
