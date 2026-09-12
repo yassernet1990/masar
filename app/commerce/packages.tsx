@@ -204,10 +204,15 @@ export default function Packages({ lang, backgroundImage }: { lang: Lang; backgr
           </article>
         ))}
       </div>
-      <a className="mp-grow-story" href={`/grow-case?lang=${lang}`} aria-label={t("Explore the Grow case study", "استكشف دراسة حالة Grow")}>
-        <div className="mp-story-art" aria-hidden="true"><img src="/images/grow-case/preview-3.webp" width="1360" height="940" alt="" loading="lazy" /><span>GROW / CASE STUDY</span></div>
-        <div className="mp-story-copy"><span className="mp-story-eyebrow">{t("BEFORE YOU CHOOSE · SEE THE EXPERIENCE", "قبل أن تختار · شاهد التجربة")}</span><h2>{t("What happens after you choose Grow?", "ماذا يحدث بعد اختيار Grow؟")}</h2><p>{t("Try the colours and type, explore real design examples and follow your project from the first logo to final handover.", "جرّب الألوان والخطوط، واستعرض نماذج فعلية، وتابع مشروعك من أول فكرة للشعار إلى التسليم النهائي.")}</p><div className="mp-story-steps">{[t("Identity", "الهوية"),t("Website", "الموقع"),t("Profile", "البروفايل"),t("Handover", "التسليم")].map((label,i)=><span key={label}><b>0{i+1}</b>{label}</span>)}</div><strong className="mp-story-cta">{t("Explore the full journey", "اكتشف الرحلة كاملة")} <span aria-hidden="true">↗</span></strong></div>
-      </a>
+      <section className="mp-grow-story" aria-labelledby="grow-story-title">
+        <div className="mp-story-copy"><span className="mp-story-eyebrow">GROW <span aria-hidden="true">/</span> {t("CASE STUDY", "رحلة التصميم")}</span><h2 id="grow-story-title">{t("See how your brand", "شاهد كيف نبني")}<br /><em>{t("comes to life.", "حضور شركتك.")}</em></h2><p>{t("Explore the choices, the designs and the delivery journey. Know what to expect before you begin.", "اكتشف خيارات التصميم ومراحل التنفيذ، واعرف ماذا ستستلم قبل أن تبدأ.")}</p><a className="mp-story-cta" href={`/grow-case?lang=${lang}`} aria-label={t("Explore the Grow case study", "استكشف دراسة حالة Grow")}>{t("Explore the Grow experience", "اكتشف تجربة Grow")} <span aria-hidden="true">↗</span></a></div>
+        <div className="mp-story-stages">{[
+          [t("Your identity", "هويتك"),t("Try colours & typography", "جرّب الألوان والخطوط")],
+          [t("Your website", "موقعك"),t("Explore 3 design directions", "استعرض 3 توجهات تصميم")],
+          [t("Your company profile", "بروفايلك"),t("See real design examples", "شاهد نماذج فعلية")],
+          [t("Your handover", "تسليم مشروعك"),t("A clear timeline & deliverables", "جدول زمني ومخرجات واضحة")],
+        ].map(([title,body],i)=><div key={title} className="mp-story-stage"><span className="mp-stage-number">0{i+1}</span><div><h3>{title}</h3><p>{body}</p></div></div>)}<span className="mp-story-footnote">{t("ONE IDENTITY. EVERY TOUCHPOINT.", "هوية واحدة. في كل التفاصيل.")}</span></div>
+      </section>
       <section className="mp-comparison" aria-labelledby="comparison-title">
         <p className="mp-eyebrow">{t("COMPARE PACKAGES", "قارن الباقات")}</p>
         <h2 id="comparison-title">{t("See the difference at a glance.", "شاهد الفرق بين الباقات بسرعة.")}</h2>
