@@ -64,3 +64,12 @@ main.cx-page.gc-page .masar-footer{border-radius:0;box-shadow:0 0 0 100vmax #eef
 @media(max-width:500px){.gc-result-book-title{font-size:20px}.gc-result-card-name{font-size:24px}.gc-result-brand{gap:5px}.gc-result-brand>span{font-size:14px}.gc-result-brand svg{width:18px}.gc-result-book-footer{font-size:4px}.gc-result-card-name>span{font-size:5px}.gc-result-card-copy{font-size:5px}}
 /* Keep the active section name above the numbered rail in both directions. */
 main.gc-page nav.gc-rail .gc-rail-label{top:auto!important;bottom:calc(100% + 12px)!important;inset-inline-start:0!important;inset-inline-end:auto!important;transform:none!important;writing-mode:horizontal-tb!important;text-orientation:mixed!important;width:max-content;max-width:130px;white-space:nowrap;padding:8px 12px;line-height:1.5;text-align:center;border:1px solid #4776a460;border-radius:8px;z-index:2}
+
+/* Vertical current-section label, centered above the numbered rail in either language. */
+main.gc-page nav.gc-rail .gc-rail-label{inset:auto!important;left:50%!important;bottom:calc(100% + 14px)!important;transform:translateX(-50%)!important;writing-mode:vertical-rl!important;text-orientation:mixed!important;width:30px!important;height:max-content!important;max-width:none!important;max-height:160px;white-space:nowrap;padding:12px 6px!important;line-height:1.4;text-align:center;letter-spacing:0;border:1px solid #4776a460;border-radius:8px;background:#07162f;color:#eaf4ff;z-index:2}
+
+/* Spread the new palette behind the preview content without duplicating it. */
+.gc-page .gc-brand-preview{background:var(--brand-previous,var(--brand-base));isolation:isolate;overflow:hidden;transition:color .2s}
+.gc-brand-preview>.gc-palette-wave{position:absolute;inset:0;z-index:-1;background:var(--brand-base);pointer-events:none;animation:gcPaletteSpread .65s cubic-bezier(.22,1,.36,1) both;border-radius:inherit}
+@keyframes gcPaletteSpread{from{clip-path:circle(0% at 85% 12%)}to{clip-path:circle(145% at 85% 12%)}}
+@media(prefers-reduced-motion:reduce){.gc-brand-preview>.gc-palette-wave{animation:none!important;clip-path:none}.gc-page .gc-brand-preview{transition:none}}

@@ -65,3 +65,6 @@
     margin-block-start:16px;
   }
 }
+
+/* Vertical current-section label, centered above the numbered rail in either language. */
+main.yp-page nav.yp-progress-nav .yp-progress-label{inset:auto!important;left:50%!important;bottom:calc(100% + 14px)!important;transform:translateX(-50%)!important;writing-mode:vertical-rl!important;text-orientation:mixed!important;width:30px!important;height:max-content!important;max-width:none!important;max-height:160px;white-space:nowrap;padding:12px 6px!important;line-height:1.4;text-align:center;letter-spacing:0;border:1px solid #4776a460;border-radius:8px;background:#07162f;color:#eaf4ff;z-index:2}
