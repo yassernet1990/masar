@@ -43,3 +43,9 @@ main.cx-page.gc-page .gc-result-stage *{font-family:Arial,sans-serif!important}
 main.cx-page.gc-page .gc-site-header>header{width:calc(100% - 100px)!important;max-width:1200px!important;margin:0 auto!important;padding:0!important}
 .gc-page .masar-footer{max-width:1000px!important;width:calc(100% - 80px)!important;margin:0 auto!important;padding:65px 5% 35px!important}
 @media(max-width:800px){main.cx-page.gc-page .gc-site-header>header{width:calc(100% - 44px)!important;padding:0!important}.gc-page .masar-footer{width:100%!important;padding:48px 24px 28px!important}}
+/* Light footer with the page's ice-blue surface and navy typography. */
+main.cx-page.gc-page .masar-footer{background:#eef6fb!important;color:#102846!important;border-radius:14px 14px 0 0}
+main.cx-page.gc-page .masar-footer .footer-company p,main.cx-page.gc-page .masar-footer .cx-logo,main.cx-page.gc-page .masar-footer a,main.cx-page.gc-page .masar-footer address,main.cx-page.gc-page .masar-footer .footer-bottom{color:#102846!important}
+main.cx-page.gc-page .masar-footer .footer-bottom{border-color:#bfd0dd!important}
+main.cx-page.gc-page .masar-footer .uk-company-text b{background:none!important;-webkit-text-fill-color:#102846!important;color:#102846!important}
+main.cx-page.gc-page .masar-footer .wise-logo{color:#176345}.gc-page .masar-footer .stripe-logo{color:#635bce}
