@@ -1,0 +1,45 @@
+/* Scoped to the founder page; no animation dependencies. */
+@keyframes ypEnter { from { opacity:0; transform:translateY(14px) } to { opacity:1; transform:translateY(0) } }
+@keyframes ypLabel { from { opacity:0 } to { opacity:1 } }
+.yp-page .yp-hero-copy > *, .yp-page .yp-hero-side > * { animation:ypEnter .6s cubic-bezier(.22,1,.36,1) both }
+.yp-page .yp-hero-copy .yp-eyebrow { animation-delay:0s }
+.yp-page .yp-hero-copy h1 { animation-delay:.08s }
+.yp-page .yp-hero-copy .yp-hero-tag { animation-delay:.2s }
+.yp-page .yp-hero-side strong { animation-delay:.2s }
+.yp-page .yp-hero-side p { animation-delay:.3s }
+.yp-page .yp-hero-side a { animation-delay:.4s }
+.yp-page .yp-progress-nav { --yp-progress:0; position:fixed; z-index:30; inset-inline-start:17px; top:50%; transform:translateY(-50%); width:26px; height:224px; color:#d8eaff; background:#07162feF; border:1px solid #78dcff30; border-radius:20px; padding:12px 0; box-shadow:0 3px 18px #07162f14 }
+.yp-page .yp-progress-track { position:absolute; top:21px; bottom:21px; inset-inline-start:12px; width:2px; background:#78dcff30; pointer-events:none }
+.yp-page .yp-progress-track > span { display:block; width:100%; height:100%; background:var(--blue); transform:scaleY(var(--yp-progress)); transform-origin:top }
+.yp-page .yp-progress-stops { position:relative; height:100%; display:flex; flex-direction:column; justify-content:space-between }
+.yp-page .yp-progress-stops a { display:grid; place-items:center; width:24px; height:24px; color:#bad0e8; background:#07162f; border-radius:50%; font:600 9px/1 Arial,sans-serif; transition:background .2s,color .2s }
+.yp-page .yp-progress-stops a[aria-current] { background:var(--blue); color:white }
+.yp-page .yp-progress-label { position:absolute; top:50%; inset-inline-start:31px; writing-mode:vertical-rl; transform:translateY(-50%); font-size:10px; letter-spacing:.06em; padding:9px 5px; color:#eaf4ff; background:#07162f; border-radius:10px; animation:ypLabel .25s ease both; pointer-events:none }
+.yp-page.ar .yp-progress-label { letter-spacing:0 }
+.yp-page .yp-section-fade { height:38px; pointer-events:none }
+.yp-page .yp-section-fade.to-light { background:linear-gradient(180deg,#07162f 0%,#526c89 48%,#f5faff 100%) }
+.yp-page .yp-section-fade.to-dark { background:linear-gradient(180deg,#eef6fb 0%,#526c89 52%,#06132f 100%) }
+.yp-page .yp-cta-actions a,.yp-page .yp-linkedin,.yp-page .yp-hero-side a,.yp-page .yp-model-jump,.yp-page .contact-chip { transition:background-color .22s ease,color .22s ease,box-shadow .22s ease; gap:12px }
+.yp-page .yp-linkedin { padding:7px 12px 7px 7px; border-radius:12px }
+.yp-page .yp-button-arrow,.yp-page .yp-linkedin-arrow,.yp-page .yp-hero-side a > span { display:inline-block; transition:transform .22s ease }
+.yp-page .yp-cta-actions a:focus-visible,.yp-page .yp-hero .contact-chip:focus-visible { background:var(--blue); color:#fff; box-shadow:0 4px 16px #1f57ff25 }
+@media(hover:hover) {
+ .yp-page .yp-cta-actions a:hover,.yp-page .yp-hero .contact-chip:hover { background:var(--blue); color:#fff; transform:none; box-shadow:0 4px 16px #1f57ff25 }
+ .yp-page .yp-linkedin:hover { background:#1f57ff10 }
+ .yp-page .yp-hero-side a:hover { color:var(--cyan) }
+ .yp-page .yp-cta-actions a:hover .yp-button-arrow,.yp-page .yp-linkedin:hover .yp-linkedin-arrow { transform:translate(3px,-2px) }
+ .yp-page .yp-hero-side a:hover > span { transform:translateY(3px) }
+}
+.yp-page .yp-cta-actions a:active,.yp-page .yp-linkedin:active,.yp-page .contact-chip:active { box-shadow:inset 0 0 0 2px #78dcff80 }
+@media(max-width:1100px) {
+ .yp-page .yp-progress-nav { top:0; inset-inline:0; transform:none; width:100%; height:3px; padding:0; border:0; border-radius:0; background:#1f57ff18; box-shadow:none; pointer-events:none }
+ .yp-page .yp-progress-track { inset:0; width:100%; height:3px; background:transparent }
+ .yp-page .yp-progress-track > span { transform:scaleX(var(--yp-progress)); transform-origin:left }
+ .yp-page.ar .yp-progress-track > span { transform-origin:right }
+ .yp-page .yp-progress-stops,.yp-page .yp-progress-label { display:none }
+ .yp-page .yp-section-fade { height:24px }
+}
+@media(prefers-reduced-motion:reduce) {
+ .yp-page .yp-hero-copy > *,.yp-page .yp-hero-side > *,.yp-page .yp-progress-label { animation:none!important }
+ .yp-page .yp-cta-actions a,.yp-page .yp-linkedin,.yp-page .yp-hero-side a,.yp-page .yp-model-jump,.yp-page .contact-chip,.yp-page .yp-button-arrow,.yp-page .yp-linkedin-arrow,.yp-page .yp-hero-side a > span,.yp-page .yp-progress-stops a { transition:none!important; transform:none!important }
+}

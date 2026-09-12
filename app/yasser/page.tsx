@@ -4,6 +4,8 @@ import HeaderBrand from "../header-brand";
 import UKCompanyBadge from "../uk-company-badge";
 import "../footer-identity.css";
 import "./yasser.css";
+import YasserMotion from "./yasser-motion";
+import "./motion.css";
 
 type Lang = "en" | "ar";
 type PageProps = { searchParams: Promise<Record<string, string | string[] | undefined>> };
@@ -114,7 +116,8 @@ export default async function YasserPage({ searchParams }: PageProps) {
 
   return (
     <main className={`cx-page theme-masar yp-page ${lang}`} dir={lang === "ar" ? "rtl" : "ltr"}>
-      <section className="yp-hero">
+      <YasserMotion lang={lang} />
+      <section className="yp-hero" id="vision">
         <div className="yp-map" aria-hidden="true">
           <img className="yp-map-image" src="/images/yasser-hero-global.webp?v=20260910b" width="1916" height="821" alt="" decoding="async" fetchPriority="high" />
         </div>
@@ -156,6 +159,7 @@ export default async function YasserPage({ searchParams }: PageProps) {
         <div className="yp-status"><span>MASAR · PROCUREMENT / SOLUTIONS</span><span className="yp-live">{t.status}</span><span>{t.locations}</span></div>
       </section>
 
+      <div className="yp-section-fade to-light" aria-hidden="true" />
       <section className="yp-section yp-founder" id="founder">
         <div className="yp-content-grid">
           <div className="yp-section-no dark">02<span /></div>
@@ -186,6 +190,7 @@ export default async function YasserPage({ searchParams }: PageProps) {
         </div>
       </section>
 
+      <div className="yp-section-fade to-dark" aria-hidden="true" />
       <section className="yp-section yp-network" id="partners-expertise">
         <div className="yp-content-grid">
           <div className="yp-section-no dark">03<span /></div>
@@ -197,6 +202,7 @@ export default async function YasserPage({ searchParams }: PageProps) {
         </div>
       </section>
 
+      <div className="yp-section-fade to-light" aria-hidden="true" />
       <section className="yp-bridge">
         <div className="yp-bridge-grid">
           <div className="yp-section-no">360°<span /></div>
@@ -205,14 +211,15 @@ export default async function YasserPage({ searchParams }: PageProps) {
         </div>
       </section>
 
-      <section className="yp-cta">
+      <div className="yp-section-fade to-dark" aria-hidden="true" />
+      <section className="yp-cta" id="connect">
         <div className="yp-cta-grid">
           <div className="yp-section-no">04<span /></div>
           <h2>{t.cta}</h2>
           <p>{t.ctaCopy}</p>
           <div className="yp-cta-actions">
-            <a href="mailto:info@masarps.com">{t.start} ↗</a>
-            <a className="yp-cta-secondary" href={homeSection("services")}>{t.explore} →</a>
+            <a href="mailto:info@masarps.com">{t.start} <span className="yp-button-arrow" aria-hidden="true">↗</span></a>
+            <a className="yp-cta-secondary" href={homeSection("services")}>{t.explore} <span className="yp-button-arrow" aria-hidden="true">→</span></a>
           </div>
         </div>
       </section>
