@@ -10,6 +10,7 @@ import ServiceSelector from "./commerce/service-selector";
 import type { ServiceKind } from "./commerce/service-catalog";
 import ClientsWidget from "./clients-widget";
 import { ServiceShowcase, RoadmapTravel } from "./home-motion";
+import { taxonomy } from "./service-taxonomy-sync";
 import HomeProgress from "./home-progress";
 import "./home-progress.css";
 
@@ -1206,9 +1207,11 @@ export default function Home({ packagesOnly = false, servicePage, initialLang = 
     media: defaultMedia,
   });
   const t = siteContent[lang];
-  // Preserve service IDs/media while presenting the approved commercial priority.
-  const orderedServices = [t.services[0], t.services[3], t.services[1], t.services[2]];
   const servicePaths: Record<string, string> = { "01": "/services/procurement", "02": "/services/business-setup", "03": "/packages", "04": "/services/commercial-contracts" };
+  const orderedServices = taxonomy.map((item) => {
+    const service = t.services.find((value) => servicePaths[value[0]] === item.path)!;
+    return [service[0], item[lang], lang === "ar" ? item.descriptionAr : item.descriptionEn, service[3]];
+  });
   const sectionHref = (id: string) => `/?lang=${lang}#${id}`;
   const switchLanguage = () => {
     const url = new URL(window.location.href);

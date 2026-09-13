@@ -13,7 +13,7 @@ type TaxonomyItem = {
   descriptionAr: string;
 };
 
-const taxonomy: TaxonomyItem[] = [
+export const taxonomy: TaxonomyItem[] = [
   {
     order: 1,
     path: "/services/procurement",

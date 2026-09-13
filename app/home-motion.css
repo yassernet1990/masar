@@ -19,7 +19,7 @@
 .motion-service-copy a{display:inline-flex;gap:18px;align-items:center;border-bottom:1px solid currentColor;padding-bottom:8px;font-size:13px;font-weight:700;color:var(--blue)}
 .motion-playback{display:grid;place-items:center;width:36px;height:36px;border:1px solid var(--line);border-radius:50%;background:transparent;color:inherit;margin-top:18px}
 .motion-services button:focus-visible,.motion-roadmap button:focus-visible,.motion-services a:focus-visible{outline:2px solid var(--blue);outline-offset:5px}
-.motion-roadmap{margin-top:65px;color:var(--ink)}
+.motion-roadmap{margin-top:65px;color:inherit;--blue:#165ac9;--line:color-mix(in srgb,currentColor 22%,transparent)}
 .motion-roadmap-years{display:grid;grid-template-columns:repeat(var(--stops),minmax(0,1fr));position:relative;padding-top:34px}
 .motion-roadmap-line{position:absolute;top:0;inset-inline:calc(100% / var(--stops) / 2);height:1px;background:var(--line)}
 .motion-roadmap-line span{position:absolute;inset-inline-start:0;top:0;height:2px;width:var(--progress);background:var(--blue);transition:width .6s ease}
