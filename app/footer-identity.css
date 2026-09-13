@@ -55,3 +55,11 @@
   .masar-footer .uk-company-text b { animation: none; background: none; -webkit-text-fill-color: currentColor; }
   .masar-footer .footer-contact-action { transition: none; }
 }
+
+/* Homepage contact preview: icons inherit the number's active text color. */
+.home-page .masar-footer .footer-phone-row { display: flex; align-items: center; gap: 10px; width: max-content; max-width: 100%; color: inherit; }
+.home-page .masar-footer .footer-phone-row .footer-contact-value { white-space: nowrap; }
+.home-page .masar-footer .footer-care-actions { display: inline-flex; gap: 4px; margin: 0; color: inherit; }
+.home-page .masar-footer .footer-care-actions .footer-contact-action { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; color: inherit !important; opacity: 1; }
+.home-page .masar-footer .footer-contact-action svg { width: 18px; height: 18px; flex: none; }
+.home-page .masar-footer .footer-contact-action:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
