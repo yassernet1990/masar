@@ -57,7 +57,7 @@
 }
 
 /* Approved homepage contact layout. */
-.home-page .masar-footer .footer-contact-strip { display: flex; flex-wrap: wrap; gap: 26px 42px; align-items: flex-start; }
+.home-page .masar-footer .footer-contact-strip { display: flex; flex-wrap: wrap; gap: 30px 64px; align-items: flex-start; justify-content: flex-start; }
 .home-page .masar-footer .footer-contact-item { gap: 12px; }
 .home-page .masar-footer .footer-contact-heading { font-size: 13px; line-height: 1.4; font-weight: 600; letter-spacing: 0; text-transform: none; opacity: .78; }
 .home-page .masar-footer [data-footer-label]::after { content: " :"; }
@@ -69,3 +69,11 @@
 .home-page .masar-footer .footer-contact-icon { color: inherit !important; }
 .home-page .masar-footer .footer-contact-icon svg { width: 17px; height: 17px; flex: none; }
 .home-page .masar-footer .footer-contact-action:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+
+/* Keep English headings aligned with the first icon, overriding legacy footer span spacing. */
+.home-page.en .masar-footer .footer-contact-item { justify-items: start; text-align: left; }
+.home-page.en .masar-footer .footer-contact-heading { justify-content: flex-start; margin: 0; padding: 0; }
+.home-page.en .masar-footer .footer-contact-strip span { margin-inline-start: 0; width: auto; }
+.home-page.en .masar-footer .footer-contact-strip .footer-contact-icon { width: 17px; }
+.home-page.en .masar-footer .footer-phone-row,
+.home-page.en .masar-footer .footer-mail-row { justify-content: flex-start; }
