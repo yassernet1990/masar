@@ -58,6 +58,11 @@ const taxonomy: TaxonomyItem[] = [
 
 const footerPhoneHref = "tel:+447452347280";
 const footerPhoneLabel = "+44 7452 347280";
+const footerWhatsAppHref = "https://wa.me/447452347280";
+
+const mailIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5h16v13H4z"/><path d="m5 7 7 5 7-5"/></svg>';
+const phoneIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.2 4.5 10 8l-2.1 2.1a14.2 14.2 0 0 0 6 6L16 14l3.5 2.8-.7 2.8c-.2.8-.9 1.4-1.8 1.4C9.3 21 3 14.7 3 7c0-.9.6-1.6 1.4-1.8z"/></svg>';
+const whatsappIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 11.7a8.2 8.2 0 0 1-12 7.2L4 20l1.1-4A8.2 8.2 0 1 1 20.2 11.7Z"/><path d="M9 8.3c.2-.4.4-.4.7-.4h.3c.2 0 .4.1.5.4l.8 1.8c.1.3.1.5-.1.7l-.6.8c-.2.2-.1.4 0 .6.6 1.1 1.6 2 2.7 2.5.2.1.4.1.6-.1l.7-.9c.2-.2.4-.3.7-.2l1.8.8c.3.1.4.3.4.5 0 .3-.1 1.2-.8 1.7-.6.5-1.4.8-2.2.6-1.2-.2-2.9-.9-4.5-2.4-1.3-1.2-2.2-2.7-2.5-3.9-.3-1 0-1.7.5-2.3.3-.4.6-.6 1-.7Z"/></svg>';
 
 function currentLang(): Lang {
   const page = document.querySelector<HTMLElement>(".cx-page");
@@ -138,11 +143,43 @@ function syncHomepageCards(lang: Lang) {
     .forEach((card) => grid.appendChild(card));
 }
 
-function syncFooterPhone() {
-  document.querySelectorAll<HTMLAnchorElement>(".masar-footer a[href^='tel:']").forEach((link) => {
-    link.href = footerPhoneHref;
-    link.textContent = footerPhoneLabel;
-    link.dir = "ltr";
+function syncFooterContacts(lang: Lang) {
+  document.querySelectorAll<HTMLElement>(".masar-footer .footer-bottom").forEach((bottom) => {
+    const mail = bottom.querySelector<HTMLAnchorElement>('a[href^="mailto:"]');
+    const phone = bottom.querySelector<HTMLAnchorElement>('a[href^="tel:"]');
+    if (!mail || !phone) return;
+
+    phone.href = footerPhoneHref;
+    phone.textContent = footerPhoneLabel;
+    phone.dir = "ltr";
+
+    const existing = bottom.querySelector<HTMLElement>(".footer-contact-strip");
+    if (existing) {
+      const mailLabel = existing.querySelector<HTMLElement>('[data-footer-label="mail"]');
+      const careLabel = existing.querySelector<HTMLElement>('[data-footer-label="care"]');
+      if (mailLabel) mailLabel.textContent = lang === "ar" ? "الاستفسارات العامة" : "General Inquiries";
+      if (careLabel) careLabel.textContent = lang === "ar" ? "خدمة العملاء" : "Customer Care";
+      return;
+    }
+
+    const strip = document.createElement("div");
+    strip.className = "footer-contact-strip";
+
+    const mailItem = document.createElement("div");
+    mailItem.className = "footer-contact-item";
+    mailItem.innerHTML = `<div class="footer-contact-heading"><span class="footer-contact-icon">${mailIcon}</span><span data-footer-label="mail">${lang === "ar" ? "الاستفسارات العامة" : "General Inquiries"}</span></div>`;
+    mail.classList.add("footer-contact-value");
+    mailItem.appendChild(mail);
+
+    const careItem = document.createElement("div");
+    careItem.className = "footer-contact-item";
+    careItem.innerHTML = `<div class="footer-contact-heading"><span data-footer-label="care">${lang === "ar" ? "خدمة العملاء" : "Customer Care"}</span><span class="footer-care-actions"><a class="footer-contact-icon footer-contact-action" href="${footerPhoneHref}" aria-label="${lang === "ar" ? "اتصال" : "Call"}">${phoneIcon}</a><a class="footer-contact-icon footer-contact-action footer-whatsapp" href="${footerWhatsAppHref}" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">${whatsappIcon}</a></span></div>`;
+    phone.classList.add("footer-contact-value");
+    careItem.appendChild(phone);
+
+    strip.append(mailItem, careItem);
+    const copyright = Array.from(bottom.children).find((el) => el.tagName === "SPAN");
+    bottom.insertBefore(strip, copyright || null);
   });
 }
 
@@ -150,7 +187,7 @@ function syncAll() {
   const lang = currentLang();
   syncDropdown(lang);
   syncHomepageCards(lang);
-  syncFooterPhone();
+  syncFooterContacts(lang);
 }
 
 export default function ServiceTaxonomySync() {
