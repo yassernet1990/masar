@@ -27,7 +27,7 @@ function escapeHtml(value: string) {
     .replaceAll("'", "&#039;");
 }
 
-async function sendContactEmail(inquiry: Omit<Inquiry, "id">) {
+async function sendContactEmail(inquiry: Inquiry) {
   const host = process.env.SMTP_HOST || "smtp.hostinger.com";
   const port = Number(process.env.SMTP_PORT || 465);
   const secure = (process.env.SMTP_SECURE || "true").toLowerCase() === "true";
@@ -48,10 +48,11 @@ async function sendContactEmail(inquiry: Omit<Inquiry, "id">) {
     from: `"MASAR Website" <${user}>`,
     to: recipient,
     replyTo: { name: safeName, address: inquiry.email },
-    subject: `New MASAR website inquiry from ${safeName}`,
-    text: `${rows.map(([label, value]) => `${label}: ${value}`).join("\n")}\n\nMessage:\n${inquiry.message}`,
+    subject: `[MASAR-${inquiry.id.slice(0, 8).toUpperCase()}] New website inquiry from ${safeName}`,
+    text: `Reference: ${inquiry.id}\n${rows.map(([label, value]) => `${label}: ${value}`).join("\n")}\n\nMessage:\n${inquiry.message}`,
     html: `<div style="font-family:Arial,sans-serif;color:#101827;line-height:1.6;max-width:640px">
       <h2 style="color:#071bda">New website inquiry</h2>
+      <p><strong>Reference:</strong> ${inquiry.id}</p>
       <table style="width:100%;border-collapse:collapse">${rows.map(([label, value]) =>
         `<tr><td style="padding:8px 12px;border-bottom:1px solid #dce3e8;font-weight:700">${label}</td><td style="padding:8px 12px;border-bottom:1px solid #dce3e8">${escapeHtml(value)}</td></tr>`
       ).join("")}</table>
@@ -75,8 +76,13 @@ async function sendContactEmail(inquiry: Omit<Inquiry, "id">) {
       socketTimeout: 15_000,
     });
     try {
-      await transporter.sendMail(message);
-      return;
+      const result = await transporter.sendMail(message);
+      const accepted = Array.isArray(result.accepted) ? result.accepted.map(String) : [];
+      if (!accepted.some((address) => address.toLowerCase().includes(recipient.toLowerCase()))) {
+        throw Object.assign(new Error("SMTP did not accept the recipient"), { code: "ERECIPIENT" });
+      }
+      console.info("Contact email accepted", { reference: inquiry.id, messageId: result.messageId });
+      return result.messageId;
     } catch (error) {
       lastError = error;
       const smtpError = error as { code?: string; command?: string; responseCode?: number };
@@ -157,17 +163,17 @@ export async function POST(request: Request) {
   }
 
   try {
-    const createdAt = new Date().toISOString();
-    await sendContactEmail({ company, name, email, message, createdAt });
+    const inquiry = { id: crypto.randomUUID(), company, name, email, message, createdAt: new Date().toISOString() };
+    await sendContactEmail(inquiry);
     try {
       const inquiries = await loadInquiries();
-      inquiries.push({ id: crypto.randomUUID(), company, name, email, message, createdAt });
+      inquiries.push(inquiry);
       await saveInquiries(inquiries.slice(-500));
     } catch {
       // Email delivery is authoritative; local inquiry storage is best-effort on serverless hosting.
     }
     recentSubmissions.set(client, Date.now());
-    return Response.json({ ok: true }, { status: 201 });
+    return Response.json({ ok: true, reference: inquiry.id.slice(0, 8).toUpperCase() }, { status: 201 });
   } catch {
     return Response.json({ ok: false, message: "تعذر إرسال الطلب حاليًا" }, { status: 500 });
   }
