@@ -47,7 +47,9 @@ async function sendContactEmail(inquiry: Inquiry) {
   const message = {
     from: `"MASAR Website" <${user}>`,
     to: recipient,
-    replyTo: { name: safeName, address: inquiry.email },
+    // Keep all email routing on the authenticated mailbox. Visitor email is content only.
+    replyTo: user,
+    envelope: { from: user, to: [recipient] },
     subject: `[MASAR-${inquiry.id.slice(0, 8).toUpperCase()}] New website inquiry from ${safeName}`,
     text: `Reference: ${inquiry.id}\n${rows.map(([label, value]) => `${label}: ${value}`).join("\n")}\n\nMessage:\n${inquiry.message}`,
     html: `<div style="font-family:Arial,sans-serif;color:#101827;line-height:1.6;max-width:640px">
