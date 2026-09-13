@@ -139,8 +139,8 @@ export async function GET(request: Request) {
 }
 
 export async function POST(request: Request) {
-  const body = await request.json().catch(() => null) as Partial<Inquiry> & { website?: string } | null;
-  if (!body || body.website) return Response.json({ ok: true });
+  const body = await request.json().catch(() => null) as Partial<Inquiry> | null;
+  if (!body) return Response.json({ ok: false, message: "طلب غير صالح" }, { status: 400 });
 
   const company = String(body.company || "").trim().slice(0, 120);
   const name = String(body.name || "").trim().slice(0, 120);
