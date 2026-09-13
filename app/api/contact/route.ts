@@ -12,6 +12,8 @@ type Inquiry = {
   email: string;
   message: string;
   createdAt: string;
+  service?: string;
+  phone?: string;
 };
 
 const dataDirectory = () => process.env.MASAR_DATA_DIR || path.join(process.cwd(), "data");
@@ -41,6 +43,8 @@ async function sendContactEmail(inquiry: Inquiry) {
     ["Name", inquiry.name],
     ["Company", inquiry.company || "Not provided"],
     ["Email", inquiry.email],
+    ["Service", inquiry.service || "Not specified"],
+    ["Contact number", inquiry.phone || "Not provided"],
     ["Submitted", new Date(inquiry.createdAt).toLocaleString("en-GB", { timeZone: "Asia/Riyadh" })],
   ];
 
@@ -147,13 +151,22 @@ export async function GET(request: Request) {
 }
 
 export async function POST(request: Request) {
-  const body = await request.json().catch(() => null) as Partial<Inquiry> | null;
+  const body = await request.json().catch(() => null) as (Partial<Inquiry> & { countryCode?: string }) | null;
   if (!body) return Response.json({ ok: false, message: "طلب غير صالح" }, { status: 400 });
 
   const company = String(body.company || "").trim().slice(0, 120);
   const name = String(body.name || "").trim().slice(0, 120);
   const email = String(body.email || "").trim().toLowerCase().slice(0, 180);
   const message = String(body.message || "").trim().slice(0, 3000);
+  const services: Record<string, string> = { "01": "Procurement, strategic sourcing & vendor management", "02": "Business setup & operational systems", "03": "Brand identity & market presence", "04": "Commercial & contracts advisory", unsure: "Help choosing a service" };
+  const serviceKey = String(body.service || "");
+  const nationalPhone = String(body.phone || "").trim();
+  const countryCode = String(body.countryCode || "").trim();
+  if ((serviceKey && !services[serviceKey]) || (nationalPhone && (!/^\+\d{1,3}$/.test(countryCode) || !/^[\d\s().-]{4,24}$/.test(nationalPhone) || (countryCode + nationalPhone).replace(/\D/g, "").length > 15))) {
+    return Response.json({ ok: false, message: "يرجى التحقق من الخدمة ورقم التواصل مع مفتاح الدولة / Please check the service and phone number with country code" }, { status: 400 });
+  }
+  const service = services[serviceKey] || "Not specified";
+  const phone = nationalPhone ? `${countryCode} ${nationalPhone}` : "";
   if (!name || !message || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return Response.json({ ok: false, message: "يرجى إدخال الاسم والبريد والطلب بشكل صحيح" }, { status: 400 });
   }
@@ -165,7 +178,7 @@ export async function POST(request: Request) {
   }
 
   try {
-    const inquiry = { id: crypto.randomUUID(), company, name, email, message, createdAt: new Date().toISOString() };
+    const inquiry = { id: crypto.randomUUID(), company, name, email, message, service, phone, createdAt: new Date().toISOString() };
     await sendContactEmail(inquiry);
     try {
       const inquiries = await loadInquiries();

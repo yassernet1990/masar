@@ -1,0 +1,19 @@
+main.cx-page.theme-masar #contact.contact-wide{display:block!important;max-width:1320px!important;width:calc(100% - 48px);min-height:0!important;height:auto!important;margin:32px auto 24px!important;padding:32px clamp(24px,3vw,48px)!important;scroll-margin-top:24px;}
+main.cx-page.theme-masar #contact .contact-content{display:grid!important;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);align-items:center;gap:clamp(24px,4vw,60px);max-width:none!important;width:100%;}
+main.cx-page.theme-masar #contact .contact-intro h2{font-size:clamp(30px,3.1vw,46px)!important;line-height:1.18!important;margin:12px 0 18px!important;}
+main.cx-page.theme-masar #contact .contact-intro>p:not(.kicker){font-size:14px;line-height:1.7;color:#c5d4e5;max-width:38ch;}
+main.cx-page.theme-masar #contact form.contact-fields{width:100%;max-width:none!important;margin:0!important;padding:22px!important;gap:12px 16px!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;}
+main.cx-page.theme-masar #contact form::before,main.cx-page.theme-masar #contact form::after{display:none!important;}
+main.cx-page.theme-masar #contact .contact-field{display:grid;gap:6px;min-width:0;font-size:12px;color:#d8e5f2;line-height:1.5;}
+main.cx-page.theme-masar #contact .contact-full{grid-column:1/-1!important;}
+main.cx-page.theme-masar #contact .contact-phone{border:0;padding:0;margin:0;min-width:0;}
+main.cx-page.theme-masar #contact .contact-phone legend{font:inherit;font-size:12px;color:#d8e5f2;margin-bottom:6px;padding:0;}
+main.cx-page.theme-masar #contact .contact-phone-row{display:grid;grid-template-columns:90px minmax(0,1fr);gap:10px;}
+main.cx-page.theme-masar #contact :is(input,select,textarea){box-sizing:border-box;width:100%;min-width:0;min-height:44px!important;height:44px;padding:10px 12px!important;border:1px solid #ffffff38!important;border-radius:9px!important;background:#0b2039!important;color:#f5faff!important;font:inherit;font-size:14px!important;line-height:1.5;outline:none;color-scheme:dark;}
+main.cx-page.theme-masar #contact select{text-overflow:ellipsis;}
+main.cx-page.theme-masar #contact textarea{height:80px!important;min-height:80px!important;resize:vertical!important;}
+main.cx-page.theme-masar #contact :is(input,select,textarea):focus-visible{border-color:#7ecbf5!important;box-shadow:0 0 0 3px #7ecbf51f!important;}
+main.cx-page.theme-masar #contact form>.cx-button{width:100%;min-height:44px;margin:0!important;padding:12px 20px!important;}
+main.cx-page.theme-masar #contact .success{margin:0!important;}
+@media(max-width:900px){main.cx-page.theme-masar #contact.contact-wide{width:calc(100% - 28px);padding:24px!important;}main.cx-page.theme-masar #contact .contact-content{grid-template-columns:1fr;gap:20px;}main.cx-page.theme-masar #contact .contact-intro h2{font-size:28px!important;margin:8px 0!important;}main.cx-page.theme-masar #contact .contact-intro h2 br{display:none;}main.cx-page.theme-masar #contact .contact-intro>p:not(.kicker){max-width:none;margin-bottom:0;}main.cx-page.theme-masar #contact .contact-intro .kicker{margin:0;}}
+@media(max-width:520px){main.cx-page.theme-masar #contact.contact-wide{padding:20px 14px!important;}main.cx-page.theme-masar #contact form.contact-fields{padding:16px!important;grid-template-columns:minmax(0,1fr)!important;gap:10px!important;}main.cx-page.theme-masar #contact :is(input,select,textarea){font-size:16px!important;}}

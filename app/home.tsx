@@ -12,6 +12,7 @@ import ClientsWidget from "./clients-widget";
 import "./home-polish.css";
 import HomeProgress from "./home-progress";
 import "./home-progress.css";
+import "./contact-layout.css";
 import { heroConfig } from "./hero-config";
 import type { HeroV16 } from "./hero-config";
 
@@ -1219,7 +1220,8 @@ export default function Home({ packagesOnly = false, servicePage, initialLang = 
     if (sending) return;
     setSending(true);
     setContactError("");
-    const form = new FormData(e.currentTarget);
+    const formElement = e.currentTarget;
+    const form = new FormData(formElement);
     try {
       const r = await fetch("/api/contact", {
         method: "POST",
@@ -1227,10 +1229,10 @@ export default function Home({ packagesOnly = false, servicePage, initialLang = 
         body: JSON.stringify(Object.fromEntries(form.entries())),
       });
       const result = await r.json().catch(() => null);
-      if (!r.ok) throw new Error(result?.message || "تعذر إرسال الطلب");
+      if (!r.ok || result?.ok !== true || !result?.reference) throw new Error(result?.message || (lang === "ar" ? "تعذر إرسال الطلب" : "Unable to send your request"));
       setSentReference(String(result?.reference || ""));
+      formElement.reset();
       setSent(true);
-      e.currentTarget.reset();
     } catch (error) {
       setContactError(
         error instanceof Error
@@ -1557,15 +1559,17 @@ export default function Home({ packagesOnly = false, servicePage, initialLang = 
           ))}
         </div>
       </section>
-      <section id="contact" className="cx-contact reveal">
+      <section id="contact" className="cx-contact contact-wide reveal">
         <div
           className="cx-art contact-art"
           style={{ backgroundImage: `url(${media.contact})` }}
         />
         <div className="contact-content">
+          <div className="contact-intro">
           <p className="kicker">{t.formK}</p>
           <h2>{t.formTitle}</h2>
           <p>{t.formText}</p>
+          </div>
           {sent ? (
             <div className="success">
               ✓<p>{t.sent}</p>
@@ -1575,35 +1579,54 @@ export default function Home({ packagesOnly = false, servicePage, initialLang = 
               </button>
             </div>
           ) : (
-            <form onSubmit={submit}>
+            <form onSubmit={submit} className="contact-fields">
+              <label className="contact-field"><span>{t.name}</span>
+              <input name="name" autoComplete="name" placeholder={t.name} required maxLength={120} />
+              </label>
+              <label className="contact-field"><span>{lang === "ar" ? "اسم الشركة (اختياري)" : "Company name (optional)"}</span>
               <input
                 name="company"
                 autoComplete="organization"
                 aria-label={t.company}
                 placeholder={t.company}
+                maxLength={120}
               />
-              <input
-                name="name"
-                autoComplete="name"
-                aria-label={t.name}
-                placeholder={t.name}
-                required
-              />
+              </label>
+              <label className="contact-field"><span>{lang === "ar" ? "البريد الإلكتروني" : "Email address"}</span>
               <input
                 name="email"
                 type="email"
                 autoComplete="email"
-                aria-label={t.email}
-                placeholder={t.email}
+                placeholder="name@example.com"
+                maxLength={180}
                 required
               />
+              </label>
+              <label className="contact-field"><span>{lang === "ar" ? "نوع الخدمة المطلوبة" : "Service required"}</span>
+                <select name="service" required defaultValue="">
+                  <option value="" disabled>{lang === "ar" ? "اختر الخدمة" : "Select a service"}</option>
+                  {orderedServices.map((service) => <option key={service[0]} value={service[0]}>{service[1]}</option>)}
+                  <option value="unsure">{lang === "ar" ? "أحتاج توجيهًا لاختيار الخدمة" : "Help me choose"}</option>
+                </select>
+              </label>
+              <fieldset className="contact-phone contact-full">
+                <legend>{lang === "ar" ? "رقم التواصل (اختياري)" : "Contact number (optional)"}</legend>
+                <div className="contact-phone-row" dir="ltr">
+                  <input name="countryCode" type="tel" autoComplete="tel-country-code" defaultValue="+966" aria-label={lang === "ar" ? "مفتاح الدولة" : "Country calling code"} maxLength={4} />
+                  <input name="phone" type="tel" autoComplete="tel-national" placeholder="50 123 4567" aria-label={lang === "ar" ? "رقم التواصل" : "Contact number"} maxLength={24} />
+                </div>
+              </fieldset>
+              <label className="contact-field contact-full"><span>{t.message}</span>
               <textarea
                 name="message"
                 aria-label={t.message}
                 placeholder={t.message}
                 minLength={10}
+                maxLength={3000}
+                rows={3}
                 required
               />
+              </label>
               {contactError && (
                 <div className="contact-error" role="alert">
                   {contactError}
