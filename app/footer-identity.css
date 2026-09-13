@@ -83,3 +83,11 @@
 .cx-page .masar-footer .footer-contact-strip .footer-contact-icon { width: 17px !important; }
 .cx-page .masar-footer .footer-care-actions .footer-contact-action { color: inherit !important; }
 .cx-page .masar-footer .footer-contact-strip { color: inherit; }
+
+/* Registration follows each footer's foreground, including bold text and legacy paragraph overrides. */
+main.cx-page footer.masar-footer .footer-company,
+main.cx-page footer.masar-footer .footer-company .footer-registration,
+main.cx-page footer.masar-footer .footer-company .footer-registration :is(strong, p, span) {
+  color: inherit !important;
+  -webkit-text-fill-color: currentColor;
+}
