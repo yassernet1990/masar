@@ -170,7 +170,17 @@ function syncFooterContacts(lang: Lang) {
     mailItem.className = "footer-contact-item";
     mailItem.innerHTML = `<div class="footer-contact-heading"><span class="footer-contact-icon">${mailIcon}</span><span data-footer-label="mail">${lang === "ar" ? "الاستفسارات العامة" : "General Inquiries"}</span></div>`;
     mail.classList.add("footer-contact-value");
-    mailItem.appendChild(mail);
+    if (isHome) {
+      const mailRow = document.createElement("div");
+      mailRow.className = "footer-mail-row";
+      mailRow.dir = "ltr";
+      const icon = mailItem.querySelector<HTMLElement>(".footer-contact-icon");
+      if (icon) mailRow.appendChild(icon);
+      mailRow.appendChild(mail);
+      mailItem.appendChild(mailRow);
+    } else {
+      mailItem.appendChild(mail);
+    }
 
     const careItem = document.createElement("div");
     careItem.className = "footer-contact-item";
@@ -181,8 +191,8 @@ function syncFooterContacts(lang: Lang) {
       row.className = "footer-phone-row";
       row.dir = "ltr";
       const actions = careItem.querySelector<HTMLElement>(".footer-care-actions");
-      row.appendChild(phone);
       if (actions) row.appendChild(actions);
+      row.appendChild(phone);
       careItem.appendChild(row);
     } else {
       careItem.appendChild(phone);
