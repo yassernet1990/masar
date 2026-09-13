@@ -9,6 +9,7 @@ import Packages from "./commerce/packages";
 import ServiceSelector from "./commerce/service-selector";
 import type { ServiceKind } from "./commerce/service-catalog";
 import ClientsWidget from "./clients-widget";
+import "./home-polish.css";
 import HomeProgress from "./home-progress";
 import "./home-progress.css";
 
@@ -1506,12 +1507,12 @@ export default function Home({ packagesOnly = false, servicePage, initialLang = 
                 <h3>{x[1]}</h3>
                 <p>{x[2]}</p>
                 {x[0] === "01" ? (
-                  <a href={`/services/procurement?lang=${lang}`}>{t.serviceMore} ↗</a>
+                  <a href={`/services/procurement?lang=${lang}`}>{t.serviceMore} <span className="service-link-arrow" aria-hidden="true"><span>↗</span></span></a>
                 ) : x[0] === "02" ? (
-                  <a href={`/services/business-setup?lang=${lang}`}>{t.serviceMore} ↗</a>
+                  <a href={`/services/business-setup?lang=${lang}`}>{t.serviceMore} <span className="service-link-arrow" aria-hidden="true"><span>↗</span></span></a>
                 ) : x[0] === "03" ? (
-                  <a href={`/packages?lang=${lang}`}>{t.serviceMore} ↗</a>
-                ) : <a href={`/services/commercial-contracts?lang=${lang}`}>{t.serviceMore} ↗</a>}
+                  <a href={`/packages?lang=${lang}`}>{t.serviceMore} <span className="service-link-arrow" aria-hidden="true"><span>↗</span></span></a>
+                ) : <a href={`/services/commercial-contracts?lang=${lang}`}>{t.serviceMore} <span className="service-link-arrow" aria-hidden="true"><span>↗</span></span></a>}
               </div>
             </article>
           ))}
