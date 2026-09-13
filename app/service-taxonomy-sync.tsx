@@ -56,6 +56,9 @@ const taxonomy: TaxonomyItem[] = [
   },
 ];
 
+const footerPhoneHref = "tel:+447452347280";
+const footerPhoneLabel = "+44 7452 347280";
+
 function currentLang(): Lang {
   const page = document.querySelector<HTMLElement>(".cx-page");
   if (page?.dir === "rtl" || page?.classList.contains("ar")) return "ar";
@@ -135,10 +138,19 @@ function syncHomepageCards(lang: Lang) {
     .forEach((card) => grid.appendChild(card));
 }
 
+function syncFooterPhone() {
+  document.querySelectorAll<HTMLAnchorElement>(".masar-footer a[href^='tel:']").forEach((link) => {
+    link.href = footerPhoneHref;
+    link.textContent = footerPhoneLabel;
+    link.dir = "ltr";
+  });
+}
+
 function syncAll() {
   const lang = currentLang();
   syncDropdown(lang);
   syncHomepageCards(lang);
+  syncFooterPhone();
 }
 
 export default function ServiceTaxonomySync() {
