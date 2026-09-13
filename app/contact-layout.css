@@ -11,7 +11,7 @@ main.cx-page.theme-masar #contact .contact-phone legend{font:inherit;font-size:1
 main.cx-page.theme-masar #contact .contact-phone-row{display:grid;grid-template-columns:90px minmax(0,1fr);gap:10px;}
 main.cx-page.theme-masar #contact :is(input,select,textarea){box-sizing:border-box;width:100%;min-width:0;min-height:44px!important;height:44px;padding:10px 12px!important;border:1px solid #ffffff38!important;border-radius:9px!important;background:#0b2039!important;color:#f5faff!important;font:inherit;font-size:14px!important;line-height:1.5;outline:none;color-scheme:dark;}
 main.cx-page.theme-masar #contact select{text-overflow:ellipsis;}
-main.cx-page.theme-masar #contact textarea{height:80px!important;min-height:80px!important;resize:vertical!important;}
+main.cx-page.theme-masar #contact textarea{height:160px;min-height:160px!important;max-height:none!important;overflow:auto!important;resize:vertical!important;}
 main.cx-page.theme-masar #contact :is(input,select,textarea):focus-visible{border-color:#7ecbf5!important;box-shadow:0 0 0 3px #7ecbf51f!important;}
 main.cx-page.theme-masar #contact form>.cx-button{width:100%;min-height:44px;margin:0!important;padding:12px 20px!important;}
 main.cx-page.theme-masar #contact .success{margin:0!important;}

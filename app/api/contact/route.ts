@@ -158,7 +158,7 @@ export async function POST(request: Request) {
   const name = String(body.name || "").trim().slice(0, 120);
   const email = String(body.email || "").trim().toLowerCase().slice(0, 180);
   const message = String(body.message || "").trim().slice(0, 3000);
-  const services: Record<string, string> = { "01": "Procurement, strategic sourcing & vendor management", "02": "Business setup & operational systems", "03": "Brand identity & market presence", "04": "Commercial & contracts advisory", unsure: "Help choosing a service" };
+  const services: Record<string, string> = { "01": "Procurement, strategic sourcing & vendor management", "02": "Business setup & operational systems", "03": "Brand identity & market presence", "04": "Commercial & contracts advisory", other: "Other", unsure: "Other" };
   const serviceKey = String(body.service || "");
   const nationalPhone = String(body.phone || "").trim();
   const countryCode = String(body.countryCode || "").trim();

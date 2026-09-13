@@ -1603,10 +1603,9 @@ export default function Home({ packagesOnly = false, servicePage, initialLang = 
               />
               </label>
               <label className="contact-field"><span>{lang === "ar" ? "نوع الخدمة المطلوبة" : "Service required"}</span>
-                <select name="service" required defaultValue="">
-                  <option value="" disabled>{lang === "ar" ? "اختر الخدمة" : "Select a service"}</option>
+                <select name="service" required defaultValue="other">
                   {orderedServices.map((service) => <option key={service[0]} value={service[0]}>{service[1]}</option>)}
-                  <option value="unsure">{lang === "ar" ? "أحتاج توجيهًا لاختيار الخدمة" : "Help me choose"}</option>
+                  <option value="other">{lang === "ar" ? "أخرى" : "Other"}</option>
                 </select>
               </label>
               <fieldset className="contact-phone contact-full">
@@ -1623,7 +1622,7 @@ export default function Home({ packagesOnly = false, servicePage, initialLang = 
                 placeholder={t.message}
                 minLength={10}
                 maxLength={3000}
-                rows={3}
+                rows={6}
                 required
               />
               </label>
