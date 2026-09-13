@@ -107,6 +107,7 @@ function includesLegacyServiceText(value: unknown) {
 function sanitizeStoredConfig(config: unknown) {
   if (!isRecord(config)) return config;
   const next = structuredClone(config);
+  next.theme = "masar";
   const content = next.content;
   const media = next.media;
 
@@ -184,7 +185,7 @@ export async function PUT(request: Request) {
     const target = dataFile();
     const temporary = `${target}.${process.pid}.tmp`;
     await mkdir(directory, { recursive: true });
-    await writeFile(temporary, JSON.stringify({ config: body.config, updatedAt }), "utf8");
+    await writeFile(temporary, JSON.stringify({ config: sanitizeStoredConfig(body.config), updatedAt }), "utf8");
     await rename(temporary, target);
     return Response.json({ ok: true, updatedAt });
   } catch {

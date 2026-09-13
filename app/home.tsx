@@ -12,6 +12,8 @@ import ClientsWidget from "./clients-widget";
 import "./home-polish.css";
 import HomeProgress from "./home-progress";
 import "./home-progress.css";
+import { heroConfig } from "./hero-config";
+import type { HeroV16 } from "./hero-config";
 
 type Lang = "ar" | "en";
 type ThemeMedia = {
@@ -25,6 +27,7 @@ type SiteConfig = {
   theme: string;
   media: ThemeMedia;
   mediaByTheme?: Record<string, ThemeMedia>;
+  heroV16?: HeroV16;
 };
 type Inquiry = {
   id: string;
@@ -576,9 +579,6 @@ const contentSections: ContentSection[] = [
       "lang",
       "contact",
       "place",
-      "heroTitle",
-      "heroText",
-      "heroCta",
       "stat",
       "statText",
       "statSource",
@@ -592,7 +592,7 @@ const contentSections: ContentSection[] = [
   {
     id: "services",
     label: "الخدمات",
-    keys: ["serviceK", "serviceTitle", "serviceMore", "services"],
+    keys: ["serviceK", "serviceTitle", "serviceMore"],
   },
   {
     id: "why",
@@ -849,7 +849,7 @@ function AdminPanel({
         const nextConfig = sanitizeStoredConfig(c.config) as SiteConfig;
         const merged = mergeEditable(content, nextConfig.content || {});
         setSiteContent(merged as typeof content);
-        setConfig({ ...config, ...nextConfig });
+        setConfig({ ...config, ...nextConfig, theme: "masar" });
         setDraft(editableContent(merged));
       }
       setLogged(true);
@@ -864,7 +864,7 @@ function AdminPanel({
     setSaving(true);
     try {
       const merged = mergeEditable(content, draft);
-      const next = { ...config, content: draft };
+      const next = { ...config, theme: "masar", content: draft };
       const r = await fetch("/api/site-config", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
@@ -914,7 +914,7 @@ function AdminPanel({
           </button>
           <span className="admin-eyebrow">MASAR CONTROL CENTER</span>
           <h2>تسجيل الدخول</h2>
-          <p>لوحة إدارة الموقع والمحتوى والثيمات.</p>
+          <p>لوحة إدارة محتوى وصور الصفحة الرئيسية.</p>
           <form onSubmit={login}>
             <label>
               البريد الإلكتروني
@@ -944,7 +944,7 @@ function AdminPanel({
   const selectedSection =
     contentSections.find((section) => section.id === contentSection) ||
     contentSections[0];
-  const activeThemeKey = themeNames[config.theme] ? config.theme : "masar";
+  const activeThemeKey = "masar";
   const activeThemeMedia =
     activeThemeKey === "masar"
       ? config.media || defaultMedia
@@ -982,12 +982,6 @@ function AdminPanel({
             الصور
           </button>
           <button
-            className={tab === "themes" ? "active" : ""}
-            onClick={() => setTab("themes")}
-          >
-            الثيمات
-          </button>
-          <button
             className={tab === "inquiries" ? "active" : ""}
             onClick={openInquiries}
           >
@@ -1006,9 +1000,7 @@ function AdminPanel({
                   ? "إدارة المحتوى"
                   : tab === "visuals"
                     ? "إدارة الصور"
-                    : tab === "themes"
-                      ? "اختيار الثيم"
-                      : "طلبات التواصل"}
+                    : "طلبات التواصل"}
               </h2>
             </div>
             {tab !== "inquiries" && (
@@ -1125,30 +1117,6 @@ function AdminPanel({
               ))}
             </div>
           )}
-          {tab === "themes" && (
-            <div className="theme-grid">
-              {Object.entries(themeNames).map(([key, item]) => (
-                <button
-                  key={key}
-                  className={`theme-option ${config.theme === key ? "selected" : ""}`}
-                  onClick={() => setConfig({ ...config, theme: key })}
-                >
-                  <span
-                    className={`theme-preview preview-${key}`}
-                    style={item.vars as CSSProperties}
-                  >
-                    <i />
-                    <i />
-                    <i />
-                  </span>
-                  <b>{item.name}</b>
-                  <span className="theme-identity">{item.identity}</span>
-                  <small>{item.note}</small>
-                  {config.theme === key && <em>مفعّل</em>}
-                </button>
-              ))}
-            </div>
-          )}
           {tab === "inquiries" && (
             <div className="inquiry-list">
               {loadingInquiries ? (
@@ -1232,7 +1200,7 @@ export default function Home({ packagesOnly = false, servicePage, initialLang = 
           ["24/7", "Active follow-up", "Continuous coordination across suppliers, shipping and delivery."],
           ["4", "Core service pillars", "Procurement, contracts, business setup and market presence."],
         ];
-  const activeTheme = themeNames[config.theme] ? config.theme : "masar";
+  const activeTheme = "masar";
   const media =
     activeTheme === "masar"
       ? config.media || defaultMedia
@@ -1240,6 +1208,7 @@ export default function Home({ packagesOnly = false, servicePage, initialLang = 
         themeMedia[activeTheme] ||
         defaultMedia;
   const serviceMedia = [...(activeTheme === "masar" ? defaultMedia.services : media.services)];
+  const hero = heroConfig(config, lang);
   const go = (id: string) => {
     if (innerPage) { window.location.assign(`/?lang=${lang}#${id}`); return; }
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -1279,6 +1248,7 @@ export default function Home({ packagesOnly = false, servicePage, initialLang = 
     return () => window.removeEventListener("popstate", syncAdminRoute);
   }, []);
   useEffect(() => {
+    if (innerPage) return;
     fetch("/api/site-config")
       .then((r) => (r.ok ? r.json() : null))
       .then((c) => {
@@ -1290,13 +1260,14 @@ export default function Home({ packagesOnly = false, servicePage, initialLang = 
           setConfig((old) => ({
             ...old,
             ...nextConfig,
+            theme: "masar",
             content: nextConfig.content || old.content,
             media: nextConfig.media || old.media,
           }));
         }
       })
       .catch(() => {});
-  }, []);
+  }, [innerPage]);
   useEffect(() => {
     const update = () =>
       setClock(
@@ -1414,10 +1385,14 @@ export default function Home({ packagesOnly = false, servicePage, initialLang = 
           <b>{t.place}</b>
         </div>
         <div className="hero-copy">
-          <h1>{t.heroTitle}</h1>
-          <p>{t.heroText}</p>
+          <div className="hero-v16-eyebrow">{hero.eyebrow}</div>
+          <h1>
+            <span className="hero-v16-title-top">{hero.titleTop}</span>
+            <strong className="hero-v16-accent" data-text={hero.titleAccent}>{hero.titleAccent}</strong>
+          </h1>
+          <p><span className="hero-v16-tagline">{hero.tagline}</span><span className="hero-v16-intro">{hero.intro}</span></p>
           <button className="cx-button" onClick={() => go("contact")}>
-            {t.heroCta} ↓
+            {hero.cta} →
           </button>
         </div>
         <div className="hero-card">

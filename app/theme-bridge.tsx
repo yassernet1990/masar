@@ -1,51 +1,15 @@
 "use client";
 
 import { useEffect } from "react";
-
-const THEME_KEY = "amaala";
-
-type HeroCopy = {
-  eyebrow: string;
-  titleTop: string;
-  titleAccent: string;
-  tagline: string;
-  intro: string;
-  cta: string;
-};
-
-type HeroV16 = { en: HeroCopy; ar: HeroCopy };
+import { heroConfig, heroDefaults } from "./hero-config";
+import type { HeroCopy, HeroV16 } from "./hero-config";
 
 type SiteConfigLike = Record<string, unknown> & {
   theme?: string;
   heroV16?: HeroV16;
 };
 
-const heroDefaults: HeroV16 = {
-  en: {
-    eyebrow: "Integrated procurement intelligence",
-    titleTop: "Procurement that",
-    titleAccent: "moves business forward.",
-    tagline: "Strategy. Sourcing. Contracts. Systems.",
-    intro:
-      "MASAR transforms procurement into structure, clarity, and measurable business advantage — connecting demand to the right market, suppliers and commercial decisions.",
-    cta: "Discover MASAR",
-  },
-  ar: {
-    eyebrow: "ذكاء متكامل في المشتريات",
-    titleTop: "مشتريات تدفع",
-    titleAccent: "الأعمال إلى الأمام.",
-    tagline: "الاستراتيجية. التوريد. العقود. الأنظمة.",
-    intro:
-      "تحوّل مسار المشتريات إلى هيكل واضح وقرارات تجارية قابلة للقياس، وتربط الاحتياج بالسوق والموردين والفرص الصحيحة.",
-    cta: "اكتشف مسار",
-  },
-};
-
 let currentConfig: SiteConfigLike = {};
-
-function heroConfig(config: SiteConfigLike, lang: "en" | "ar") {
-  return config.heroV16?.[lang] || heroDefaults[lang];
-}
 
 function pageLang(): "en" | "ar" {
   const page = document.querySelector<HTMLElement>(".cx-page");
@@ -54,11 +18,12 @@ function pageLang(): "en" | "ar" {
 }
 
 function applyTheme(theme?: string) {
-  const enabled = theme === THEME_KEY;
-  document.body.dataset.masarTheme = enabled ? THEME_KEY : theme || "masar";
+  void theme;
+  document.body.dataset.masarTheme = "masar";
   const page = document.querySelector<HTMLElement>(".cx-page");
   if (!page) return;
-  page.classList.toggle("theme-amaala", enabled);
+  page.classList.remove("theme-amaala", "theme-midnight", "theme-sand", "theme-emerald", "theme-obsidian");
+  page.classList.add("theme-masar");
 }
 
 async function readConfig() {
@@ -77,39 +42,8 @@ async function writeConfig(config: SiteConfigLike) {
   return response.json().catch(() => ({}));
 }
 
-async function activateAmaala() {
-  const result = await readConfig();
-  const config = { ...(result.config || {}), theme: THEME_KEY };
-  await writeConfig(config);
-  applyTheme(THEME_KEY);
-  window.location.reload();
-}
-
 function injectAdminOption() {
-  const grid = document.querySelector<HTMLElement>(".theme-grid");
-  if (!grid || grid.querySelector('[data-theme-option="amaala"]')) return;
-
-  const button = document.createElement("button");
-  button.type = "button";
-  button.className = `theme-option ${document.body.dataset.masarTheme === THEME_KEY ? "selected" : ""}`;
-  button.dataset.themeOption = THEME_KEY;
-  button.innerHTML = `
-    <span class="theme-preview preview-amaala"><i></i><i></i><i></i></span>
-    <b>Amaala Light</b>
-    <span class="theme-identity">Coastal Editorial</span>
-    <small>هوية فاتحة هادئة مستوحاة من الفخامة الساحلية والتحريرية</small>
-    ${document.body.dataset.masarTheme === THEME_KEY ? "<em>مفعّل</em>" : ""}
-  `;
-  button.addEventListener("click", async () => {
-    button.setAttribute("disabled", "true");
-    try {
-      await activateAmaala();
-    } catch {
-      button.removeAttribute("disabled");
-      window.alert("تعذر حفظ الثيم. تأكد من تسجيل الدخول ثم حاول مجددًا.");
-    }
-  });
-  grid.appendChild(button);
+  document.querySelector('[data-theme-option="amaala"]')?.remove();
 }
 
 function ensureHeroAtmosphere() {
@@ -291,7 +225,7 @@ function injectHeroAdminEditor() {
       await writeConfig(next);
       currentConfig = next;
       if (status) status.textContent = lang === "ar" ? "✓ تم الحفظ والنشر" : "✓ Saved and published";
-      applyHeroCopy();
+      window.location.reload();
     } catch {
       if (status) status.textContent = lang === "ar" ? "تعذر الحفظ" : "Unable to save";
     } finally {
@@ -330,7 +264,7 @@ export default function ThemeBridge() {
       requestAnimationFrame(() => {
         scheduled = false;
         injectAdminOption();
-        if (document.body.dataset.masarTheme === THEME_KEY) applyTheme(THEME_KEY);
+        applyTheme("masar");
         enhanceMasar();
       });
     });
