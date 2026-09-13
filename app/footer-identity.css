@@ -91,3 +91,12 @@ main.cx-page footer.masar-footer .footer-company .footer-registration :is(strong
   color: inherit !important;
   -webkit-text-fill-color: currentColor;
 }
+
+/* Match the registered-office heading on the light Yasser footer. */
+main.cx-page.yp-page footer.masar-footer.yp-footer .footer-company .footer-registration {
+  color: #334a5c !important;
+}
+/* Grow Case uses the same navy as its registered-office address. */
+main.cx-page.gc-page footer.masar-footer .footer-company .footer-registration {
+  color: #102846 !important;
+}
