@@ -1601,13 +1601,6 @@ export default function Home({ packagesOnly = false, servicePage, initialLang = 
                 minLength={10}
                 required
               />
-              <input
-                className="contact-trap"
-                name="website"
-                tabIndex={-1}
-                autoComplete="off"
-                aria-hidden="true"
-              />
               {contactError && (
                 <div className="contact-error" role="alert">
                   {contactError}
