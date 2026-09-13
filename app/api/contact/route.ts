@@ -36,15 +36,6 @@ async function sendContactEmail(inquiry: Omit<Inquiry, "id">) {
   const recipient = process.env.CONTACT_TO || "info@masarps.com";
   if (!user || !password) throw new Error("SMTP is not configured");
 
-  const transporter = nodemailer.createTransport({
-    host,
-    port,
-    secure,
-    auth: { user, pass: password },
-    connectionTimeout: 10_000,
-    greetingTimeout: 10_000,
-    socketTimeout: 15_000,
-  });
   const safeName = inquiry.name.replace(/[\r\n]+/g, " ");
   const rows = [
     ["Name", inquiry.name],
@@ -53,7 +44,7 @@ async function sendContactEmail(inquiry: Omit<Inquiry, "id">) {
     ["Submitted", new Date(inquiry.createdAt).toLocaleString("en-GB", { timeZone: "Asia/Riyadh" })],
   ];
 
-  await transporter.sendMail({
+  const message = {
     from: `"MASAR Website" <${user}>`,
     to: recipient,
     replyTo: { name: safeName, address: inquiry.email },
@@ -67,7 +58,38 @@ async function sendContactEmail(inquiry: Omit<Inquiry, "id">) {
       <h3 style="margin-top:24px">Message</h3>
       <p style="white-space:pre-wrap;background:#f4f7f9;padding:16px">${escapeHtml(inquiry.message)}</p>
     </div>`,
-  });
+  };
+  const attempts = [{ port, secure }];
+  if (host === "smtp.hostinger.com" && port !== 587) attempts.push({ port: 587, secure: false });
+
+  let lastError: unknown;
+  for (const attempt of attempts) {
+    const transporter = nodemailer.createTransport({
+      host,
+      port: attempt.port,
+      secure: attempt.secure,
+      requireTLS: !attempt.secure,
+      auth: { user, pass: password },
+      connectionTimeout: 10_000,
+      greetingTimeout: 10_000,
+      socketTimeout: 15_000,
+    });
+    try {
+      await transporter.sendMail(message);
+      return;
+    } catch (error) {
+      lastError = error;
+      const smtpError = error as { code?: string; command?: string; responseCode?: number };
+      console.error("Contact SMTP attempt failed", {
+        port: attempt.port,
+        secure: attempt.secure,
+        code: smtpError.code,
+        command: smtpError.command,
+        responseCode: smtpError.responseCode,
+      });
+    }
+  }
+  throw lastError;
 }
 
 async function verifySignature(message: string, value: string, secret: string) {
