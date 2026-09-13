@@ -19,11 +19,16 @@ function pageLang(): "en" | "ar" {
 
 function applyTheme(theme?: string) {
   void theme;
-  document.body.dataset.masarTheme = "masar";
+  if (document.body.dataset.masarTheme !== "masar") {
+    document.body.dataset.masarTheme = "masar";
+  }
   const page = document.querySelector<HTMLElement>(".cx-page");
   if (!page) return;
-  page.classList.remove("theme-amaala", "theme-midnight", "theme-sand", "theme-emerald", "theme-obsidian");
-  page.classList.add("theme-masar");
+  // No-op class writes also trigger observers and keep cancelling the route renderer.
+  const obsolete = ["theme-amaala", "theme-midnight", "theme-sand", "theme-emerald", "theme-obsidian"]
+    .filter((name) => page.classList.contains(name));
+  if (obsolete.length) page.classList.remove(...obsolete);
+  if (!page.classList.contains("theme-masar")) page.classList.add("theme-masar");
 }
 
 async function readConfig() {
