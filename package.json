@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "next": "16.2.6",
+    "nodemailer": "^10.0.9",
     "react": "19.2.6",
     "react-dom": "19.2.6",
     "stripe": "^22.4.0"
@@ -21,6 +22,7 @@
   "devDependencies": {
     "@tailwindcss/postcss": "4.2.1",
     "@types/node": "22.19.19",
+    "@types/nodemailer": "^8.0.1",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
     "eslint": "9.39.4",

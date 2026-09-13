@@ -1,5 +1,6 @@
 import { mkdir, readFile, rename, writeFile } from "node:fs/promises";
 import path from "node:path";
+import nodemailer from "nodemailer";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -16,6 +17,58 @@ type Inquiry = {
 const dataDirectory = () => process.env.MASAR_DATA_DIR || path.join(process.cwd(), "data");
 const inquiriesFile = () => path.join(dataDirectory(), "contact-submissions.json");
 const recentSubmissions = new Map<string, number>();
+
+function escapeHtml(value: string) {
+  return value
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+async function sendContactEmail(inquiry: Omit<Inquiry, "id">) {
+  const host = process.env.SMTP_HOST || "smtp.hostinger.com";
+  const port = Number(process.env.SMTP_PORT || 465);
+  const secure = (process.env.SMTP_SECURE || "true").toLowerCase() === "true";
+  const user = process.env.SMTP_USER;
+  const password = process.env.SMTP_PASSWORD;
+  const recipient = process.env.CONTACT_TO || "info@masarps.com";
+  if (!user || !password) throw new Error("SMTP is not configured");
+
+  const transporter = nodemailer.createTransport({
+    host,
+    port,
+    secure,
+    auth: { user, pass: password },
+    connectionTimeout: 10_000,
+    greetingTimeout: 10_000,
+    socketTimeout: 15_000,
+  });
+  const safeName = inquiry.name.replace(/[\r\n]+/g, " ");
+  const rows = [
+    ["Name", inquiry.name],
+    ["Company", inquiry.company || "Not provided"],
+    ["Email", inquiry.email],
+    ["Submitted", new Date(inquiry.createdAt).toLocaleString("en-GB", { timeZone: "Asia/Riyadh" })],
+  ];
+
+  await transporter.sendMail({
+    from: `"MASAR Website" <${user}>`,
+    to: recipient,
+    replyTo: { name: safeName, address: inquiry.email },
+    subject: `New MASAR website inquiry from ${safeName}`,
+    text: `${rows.map(([label, value]) => `${label}: ${value}`).join("\n")}\n\nMessage:\n${inquiry.message}`,
+    html: `<div style="font-family:Arial,sans-serif;color:#101827;line-height:1.6;max-width:640px">
+      <h2 style="color:#071bda">New website inquiry</h2>
+      <table style="width:100%;border-collapse:collapse">${rows.map(([label, value]) =>
+        `<tr><td style="padding:8px 12px;border-bottom:1px solid #dce3e8;font-weight:700">${label}</td><td style="padding:8px 12px;border-bottom:1px solid #dce3e8">${escapeHtml(value)}</td></tr>`
+      ).join("")}</table>
+      <h3 style="margin-top:24px">Message</h3>
+      <p style="white-space:pre-wrap;background:#f4f7f9;padding:16px">${escapeHtml(inquiry.message)}</p>
+    </div>`,
+  });
+}
 
 async function verifySignature(message: string, value: string, secret: string) {
   const encoder = new TextEncoder();
@@ -82,9 +135,15 @@ export async function POST(request: Request) {
   }
 
   try {
-    const inquiries = await loadInquiries();
-    inquiries.push({ id: crypto.randomUUID(), company, name, email, message, createdAt: new Date().toISOString() });
-    await saveInquiries(inquiries.slice(-500));
+    const createdAt = new Date().toISOString();
+    await sendContactEmail({ company, name, email, message, createdAt });
+    try {
+      const inquiries = await loadInquiries();
+      inquiries.push({ id: crypto.randomUUID(), company, name, email, message, createdAt });
+      await saveInquiries(inquiries.slice(-500));
+    } catch {
+      // Email delivery is authoritative; local inquiry storage is best-effort on serverless hosting.
+    }
     recentSubmissions.set(client, Date.now());
     return Response.json({ ok: true }, { status: 201 });
   } catch {
