@@ -1161,6 +1161,7 @@ export default function Home({ packagesOnly = false, servicePage, initialLang = 
     return () => window.clearTimeout(timer);
   }, [innerPage, initialLang]);
   const [sent, setSent] = useState(false);
+  const [sentReference, setSentReference] = useState("");
   const [sending, setSending] = useState(false);
   const [contactError, setContactError] = useState("");
   const [clock, setClock] = useState("");
@@ -1227,6 +1228,7 @@ export default function Home({ packagesOnly = false, servicePage, initialLang = 
       });
       const result = await r.json().catch(() => null);
       if (!r.ok) throw new Error(result?.message || "تعذر إرسال الطلب");
+      setSentReference(String(result?.reference || ""));
       setSent(true);
       e.currentTarget.reset();
     } catch (error) {
@@ -1567,6 +1569,7 @@ export default function Home({ packagesOnly = false, servicePage, initialLang = 
           {sent ? (
             <div className="success">
               ✓<p>{t.sent}</p>
+              {sentReference && <small>{lang === "ar" ? "رقم الطلب" : "Reference"}: {sentReference}</small>}
               <button type="button" onClick={() => setSent(false)}>
                 {lang === "ar" ? "إرسال طلب آخر" : "Send another request"}
               </button>
