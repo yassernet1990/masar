@@ -22,16 +22,36 @@
 .masar-footer .footer-bottom { position: relative; margin-top: 14px; }
 .masar-footer .footer-light { position: absolute; top: -6px; inset-inline: 0; height: 12px; overflow: hidden; pointer-events: none; }
 .masar-footer .footer-light::after { content: ""; position: absolute; top: 4px; left: 0; width: 24%; height: 3px; border-radius: 100%; background: linear-gradient(90deg, transparent, #8e79dc, #f0dcff, #8e79dc, transparent); box-shadow: 0 0 9px #a285e566; animation: masarFooterLight 7s ease-in-out infinite; }
+.masar-footer .footer-contact-strip { display: flex; align-items: flex-start; gap: 30px; flex: 1 1 auto; min-width: 0; }
+.masar-footer .footer-contact-item { display: grid; gap: 4px; min-width: 0; }
+.masar-footer .footer-contact-heading { display: flex; align-items: center; gap: 7px; font-size: 10px; line-height: 1.2; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; opacity: .74; }
+.masar-footer .footer-contact-icon { width: 17px; height: 17px; display: inline-grid; place-items: center; flex: 0 0 auto; color: currentColor; }
+.masar-footer .footer-contact-icon svg { width: 100%; height: 100%; fill: none; stroke: currentColor; stroke-width: 1.65; stroke-linecap: round; stroke-linejoin: round; }
+.masar-footer .footer-contact-value { font-size: 12px; font-weight: 600; letter-spacing: .01em; color: inherit; text-decoration: none; }
+.masar-footer .footer-care-actions { display: inline-flex; align-items: center; gap: 6px; margin-inline-start: 1px; }
+.masar-footer .footer-contact-action { width: 18px; height: 18px; border-radius: 50%; transition: transform .2s ease, opacity .2s ease; opacity: .86; }
+.masar-footer .footer-whatsapp { color: #25d366; }
 @media (hover: hover) {
   .masar-footer .uk-company-badge:hover { transform: translateY(-2px) scale(1.03); }
   .masar-footer .uk-company-badge:hover .uk-company-flag { filter: drop-shadow(0 2px 6px #06264c42); }
+  .masar-footer .footer-contact-action:hover { transform: translateY(-1px) scale(1.08); opacity: 1; }
+  .masar-footer .footer-contact-value:hover { text-decoration: underline; text-underline-offset: 3px; }
 }
 @keyframes masarUKShine { 0%, 3% { background-position: 150% 0; } 22%, 100% { background-position: -50% 0; } }
 @keyframes masarFooterLight { 0% { transform: translateX(-110%); opacity: 0; } 5% { opacity: 1; } 38%, 100% { transform: translateX(425%); opacity: 0; } }
-@media (max-width: 700px) { .masar-footer .footer-company { margin-block: 26px; } }
+@media (max-width: 700px) {
+  .masar-footer .footer-company { margin-block: 26px; }
+  .masar-footer .footer-contact-strip { width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 18px 24px; }
+  .masar-footer .footer-contact-heading { font-size: 9px; }
+  .masar-footer .footer-contact-value { font-size: 11px; }
+}
+@media (max-width: 460px) {
+  .masar-footer .footer-contact-strip { grid-template-columns: 1fr; gap: 15px; }
+}
 @media (prefers-reduced-motion: reduce) {
   .masar-footer .uk-company-badge, .masar-footer .uk-company-flag { transition: none; }
   .masar-footer .uk-company-badge:hover { transform: none; }
   .masar-footer .uk-company-flag::after, .masar-footer .footer-light::after { display: none; animation: none; }
   .masar-footer .uk-company-text b { animation: none; background: none; -webkit-text-fill-color: currentColor; }
+  .masar-footer .footer-contact-action { transition: none; }
 }
