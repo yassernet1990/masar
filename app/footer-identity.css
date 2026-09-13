@@ -56,24 +56,30 @@
   .masar-footer .footer-contact-action { transition: none; }
 }
 
-/* Approved homepage contact layout. */
-.home-page .masar-footer .footer-contact-strip { display: flex; flex-wrap: wrap; gap: 30px 64px; align-items: flex-start; justify-content: flex-start; }
-.home-page .masar-footer .footer-contact-item { gap: 12px; }
-.home-page .masar-footer .footer-contact-heading { font-size: 13px; line-height: 1.4; font-weight: 600; letter-spacing: 0; text-transform: none; opacity: .78; }
-.home-page .masar-footer [data-footer-label]::after { content: " :"; }
-.home-page .masar-footer .footer-phone-row,
-.home-page .masar-footer .footer-mail-row { display: flex; align-items: center; gap: 9px; width: max-content; max-width: 100%; min-height: 28px; color: inherit; }
-.home-page .masar-footer .footer-contact-value { white-space: nowrap; font-size: 13px; line-height: 1.5; font-style: normal; font-weight: 500; color: inherit !important; }
-.home-page .masar-footer .footer-care-actions { display: inline-flex; gap: 7px; margin: 0; color: inherit; }
-.home-page .masar-footer .footer-care-actions .footer-contact-action { display: inline-flex; align-items: center; justify-content: center; width: 18px; height: 28px; color: inherit !important; opacity: 1; }
-.home-page .masar-footer .footer-contact-icon { color: inherit !important; }
-.home-page .masar-footer .footer-contact-icon svg { width: 17px; height: 17px; flex: none; }
-.home-page .masar-footer .footer-contact-action:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+/* Shared approved contact layout. */
+.cx-page .masar-footer .footer-contact-strip { display: flex; flex-wrap: wrap; gap: 30px 64px; align-items: flex-start; justify-content: flex-start; }
+.cx-page .masar-footer .footer-contact-item { gap: 12px; }
+.cx-page .masar-footer .footer-contact-heading { font-size: 13px; line-height: 1.4; font-weight: 600; letter-spacing: 0; text-transform: none; opacity: .78; }
+.cx-page .masar-footer [data-footer-label]::after { content: " :"; }
+.cx-page .masar-footer .footer-phone-row,
+.cx-page .masar-footer .footer-mail-row { display: flex; align-items: center; gap: 9px; width: max-content; max-width: 100%; min-height: 28px; color: inherit; }
+.cx-page .masar-footer .footer-contact-value { white-space: nowrap; font-size: 13px; line-height: 1.5; font-style: normal; font-weight: 500; color: inherit !important; }
+.cx-page .masar-footer .footer-care-actions { display: inline-flex; gap: 7px; margin: 0; color: inherit; }
+.cx-page .masar-footer .footer-care-actions .footer-contact-action { display: inline-flex; align-items: center; justify-content: center; width: 18px; height: 28px; color: inherit !important; opacity: 1; }
+.cx-page .masar-footer .footer-contact-icon { color: inherit !important; }
+.cx-page .masar-footer .footer-contact-icon svg { width: 17px; height: 17px; flex: none; }
+.cx-page .masar-footer .footer-contact-action:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
 
 /* Keep English headings aligned with the first icon, overriding legacy footer span spacing. */
-.home-page.en .masar-footer .footer-contact-item { justify-items: start; text-align: left; }
-.home-page.en .masar-footer .footer-contact-heading { justify-content: flex-start; margin: 0; padding: 0; }
-.home-page.en .masar-footer .footer-contact-strip span { margin-inline-start: 0; width: auto; }
-.home-page.en .masar-footer .footer-contact-strip .footer-contact-icon { width: 17px; }
-.home-page.en .masar-footer .footer-phone-row,
-.home-page.en .masar-footer .footer-mail-row { justify-content: flex-start; }
+.cx-page.en .masar-footer .footer-contact-item { justify-items: start; text-align: left; }
+.cx-page.en .masar-footer .footer-contact-heading { justify-content: flex-start; margin: 0; padding: 0; }
+.cx-page.en .masar-footer .footer-contact-strip span { margin-inline-start: 0; width: auto; }
+.cx-page.en .masar-footer .footer-contact-strip .footer-contact-icon { width: 17px; }
+.cx-page.en .masar-footer .footer-phone-row,
+.cx-page.en .masar-footer .footer-mail-row { justify-content: flex-start; }
+
+/* Override older page-specific span styles inside contact rows only. */
+.cx-page .masar-footer .footer-contact-strip span { margin-inline-start: 0 !important; width: auto !important; color: inherit !important; }
+.cx-page .masar-footer .footer-contact-strip .footer-contact-icon { width: 17px !important; }
+.cx-page .masar-footer .footer-care-actions .footer-contact-action { color: inherit !important; }
+.cx-page .masar-footer .footer-contact-strip { color: inherit; }

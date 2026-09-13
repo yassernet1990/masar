@@ -146,8 +146,7 @@ function syncHomepageCards(lang: Lang) {
 function syncFooterContacts(lang: Lang) {
   document.querySelectorAll<HTMLElement>(".masar-footer .footer-bottom").forEach((bottom) => {
     const mail = bottom.querySelector<HTMLAnchorElement>('a[href^="mailto:"]');
-    const isHome = Boolean(bottom.closest(".home-page"));
-    const phone = bottom.querySelector<HTMLAnchorElement>(isHome ? 'a[href^="tel:"]:not(.footer-contact-action)' : 'a[href^="tel:"]');
+    const phone = bottom.querySelector<HTMLAnchorElement>('a[href^="tel:"]:not(.footer-contact-action)');
     if (!mail || !phone) return;
 
     phone.href = footerPhoneHref;
@@ -170,7 +169,7 @@ function syncFooterContacts(lang: Lang) {
     mailItem.className = "footer-contact-item";
     mailItem.innerHTML = `<div class="footer-contact-heading"><span class="footer-contact-icon">${mailIcon}</span><span data-footer-label="mail">${lang === "ar" ? "الاستفسارات العامة" : "General Inquiries"}</span></div>`;
     mail.classList.add("footer-contact-value");
-    if (isHome) {
+    {
       const mailRow = document.createElement("div");
       mailRow.className = "footer-mail-row";
       mailRow.dir = "ltr";
@@ -178,15 +177,13 @@ function syncFooterContacts(lang: Lang) {
       if (icon) mailRow.appendChild(icon);
       mailRow.appendChild(mail);
       mailItem.appendChild(mailRow);
-    } else {
-      mailItem.appendChild(mail);
     }
 
     const careItem = document.createElement("div");
     careItem.className = "footer-contact-item";
     careItem.innerHTML = `<div class="footer-contact-heading"><span data-footer-label="care">${lang === "ar" ? "خدمة العملاء" : "Customer Care"}</span><span class="footer-care-actions"><a class="footer-contact-icon footer-contact-action" href="${footerPhoneHref}" aria-label="${lang === "ar" ? "اتصال" : "Call"}">${phoneIcon}</a><a class="footer-contact-icon footer-contact-action footer-whatsapp" href="${footerWhatsAppHref}" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">${whatsappIcon}</a></span></div>`;
     phone.classList.add("footer-contact-value");
-    if (isHome) {
+    {
       const row = document.createElement("div");
       row.className = "footer-phone-row";
       row.dir = "ltr";
@@ -194,8 +191,6 @@ function syncFooterContacts(lang: Lang) {
       if (actions) row.appendChild(actions);
       row.appendChild(phone);
       careItem.appendChild(row);
-    } else {
-      careItem.appendChild(phone);
     }
 
     strip.append(mailItem, careItem);

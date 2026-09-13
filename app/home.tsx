@@ -1,4 +1,5 @@
 "use client";
+import FooterRegistration from "./footer-registration";
 import { FormEvent, useEffect, useState } from "react";
 import type { CSSProperties, PointerEvent } from "react";
 import UKCompanyBadge from "./uk-company-badge";
@@ -1654,16 +1655,7 @@ export default function Home({ packagesOnly = false, servicePage, initialLang = 
           <UKCompanyBadge />
         </div>
         <div className="footer-company">
-          {innerPage ? <p>{t.footer}</p> : (
-            <div className="footer-registration" dir="ltr" style={{ display: "grid", gap: "8px", textAlign: "left", color: "inherit" }}>
-              <strong style={{ fontSize: "14px", lineHeight: 1.6, fontWeight: 700, letterSpacing: ".015em" }}>
-                MASAR PROCUREMENT &amp; SOLUTIONS LTD
-              </strong>
-              <p style={{ fontSize: "12px", lineHeight: 1.8, maxWidth: "none", margin: 0 }}>
-                Registered in England &amp; Wales · <span style={{ whiteSpace: "nowrap" }}>Company No. <strong>17408434</strong></span>
-              </p>
-            </div>
-          )}
+          <FooterRegistration />
           <address>
             <strong>{lang === "ar" ? "عنوان المكتب المسجّل" : "Registered Office Address"}</strong>
             <span dir="ltr">71-75, Shelton Street, Covent Garden<br />London, WC2H 9JQ, United Kingdom</span>
@@ -1672,7 +1664,7 @@ export default function Home({ packagesOnly = false, servicePage, initialLang = 
         <div className="footer-bottom">
           <i className="footer-light" aria-hidden="true" />
           <a href="mailto:info@masarps.com">info@masarps.com</a>
-          <a href="tel:+966505476689">+966 50 547 6689</a>
+          <a href="tel:+447452347280">+44 7452 347280</a>
           <span>© 2026 MASAR. {t.rights}</span>
         </div>
       </footer>

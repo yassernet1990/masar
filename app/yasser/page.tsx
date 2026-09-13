@@ -1,3 +1,4 @@
+import FooterRegistration from "../footer-registration";
 import type { Metadata } from "next";
 import Image from "next/image";
 import HeaderBrand from "../header-brand";
@@ -226,8 +227,8 @@ export default async function YasserPage({ searchParams }: PageProps) {
 
       <footer className="masar-footer yp-footer">
         <div className="footer-brand"><HeaderBrand href={`/?lang=${lang}`} /><UKCompanyBadge /></div>
-        <div className="footer-company"><p>{t.footer}</p><address><strong>{t.address}</strong><span dir="ltr">71-75, Shelton Street, Covent Garden<br />London, WC2H 9JQ, United Kingdom</span></address></div>
-        <div className="footer-bottom"><i className="footer-light" aria-hidden="true" /><a href="mailto:info@masarps.com">info@masarps.com</a><a href="tel:+966505476689">+966 50 547 6689</a><span>© 2026 MASAR. {t.rights}</span></div>
+        <div className="footer-company"><FooterRegistration /><address><strong>{t.address}</strong><span dir="ltr">71-75, Shelton Street, Covent Garden<br />London, WC2H 9JQ, United Kingdom</span></address></div>
+        <div className="footer-bottom"><i className="footer-light" aria-hidden="true" /><a href="mailto:info@masarps.com">info@masarps.com</a><a href="tel:+447452347280">+44 7452 347280</a><span>© 2026 MASAR. {t.rights}</span></div>
       </footer>
     </main>
   );
