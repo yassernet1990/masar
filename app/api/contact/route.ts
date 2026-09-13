@@ -162,11 +162,13 @@ export async function POST(request: Request) {
   const serviceKey = String(body.service || "");
   const nationalPhone = String(body.phone || "").trim();
   const countryCode = String(body.countryCode || "").trim();
-  if ((serviceKey && !services[serviceKey]) || (nationalPhone && (!/^\+\d{1,3}$/.test(countryCode) || !/^[\d\s().-]{4,24}$/.test(nationalPhone) || (countryCode + nationalPhone).replace(/\D/g, "").length > 15))) {
-    return Response.json({ ok: false, message: "يرجى التحقق من الخدمة ورقم التواصل مع مفتاح الدولة / Please check the service and phone number with country code" }, { status: 400 });
-  }
-  const service = services[serviceKey] || "Not specified";
-  const phone = nationalPhone ? `${countryCode} ${nationalPhone}` : "";
+  const service = Object.hasOwn(services, serviceKey) ? services[serviceKey] : "Other";
+  // Contact details are optional free text, never a reason to reject an inquiry.
+  const phone = nationalPhone
+    ? (nationalPhone.startsWith("+") || nationalPhone.startsWith("00")
+      ? nationalPhone
+      : [countryCode, nationalPhone].filter(Boolean).join(" "))
+    : "";
   if (!name || !message || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return Response.json({ ok: false, message: "يرجى إدخال الاسم والبريد والطلب بشكل صحيح" }, { status: 400 });
   }
