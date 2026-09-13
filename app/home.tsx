@@ -9,6 +9,7 @@ import Packages from "./commerce/packages";
 import ServiceSelector from "./commerce/service-selector";
 import type { ServiceKind } from "./commerce/service-catalog";
 import ClientsWidget from "./clients-widget";
+import { ServiceShowcase, RoadmapTravel } from "./home-motion";
 import HomeProgress from "./home-progress";
 import "./home-progress.css";
 
@@ -1195,7 +1196,6 @@ export default function Home({ packagesOnly = false, servicePage, initialLang = 
   const [sending, setSending] = useState(false);
   const [contactError, setContactError] = useState("");
   const [clock, setClock] = useState("");
-  const [activeService, setActiveService] = useState("01");
   const [activeHeroSlide, setActiveHeroSlide] = useState(0);
   const [pointer, setPointer] = useState({ x: 0, y: 0 });
   const [admin, setAdmin] = useState(false);
@@ -1487,37 +1487,7 @@ export default function Home({ packagesOnly = false, servicePage, initialLang = 
           <h2>{t.serviceTitle}</h2>
           <span className="outline-number">04</span>
         </div>
-        <div className="service-grid">
-          {orderedServices.map((x, index) => (
-            <article
-              key={x[0]}
-              className={activeService === x[0] ? "active" : ""}
-              onMouseEnter={() => setActiveService(x[0])}
-              onFocus={() => setActiveService(x[0])}
-              tabIndex={0}
-            >
-              <div className="service-visual">
-                <img src={serviceMedia[Number(x[0]) - 1]} alt="" loading="lazy" decoding="async" />
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                <div className="service-orb">↗</div>
-              </div>
-              <div className="service-copy">
-                <small>{String(index + 1).padStart(2, "0")} / 04</small>
-                <h3>{x[1]}</h3>
-                <p>{x[2]}</p>
-                {x[0] === "01" ? (
-                  <a href={`/services/procurement?lang=${lang}`}>{t.serviceMore} ↗</a>
-                ) : x[0] === "02" ? (
-                  <a href={`/services/business-setup?lang=${lang}`}>{t.serviceMore} ↗</a>
-                ) : x[0] === "03" ? (
-                  <a href={`/packages?lang=${lang}`}>{t.serviceMore} ↗</a>
-                ) : <a href={`/services/commercial-contracts?lang=${lang}`}>{t.serviceMore} ↗</a>}
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-      <section className="cx-statement reveal">
+        <ServiceShowcase services={orderedServices} media={serviceMedia} paths={servicePaths} more={t.serviceMore} lang={lang} />
         <div
           className="cx-art statement-art"
           style={{ backgroundImage: `url(${media.statement})` }}
@@ -1552,14 +1522,7 @@ export default function Home({ packagesOnly = false, servicePage, initialLang = 
       <section className="cx-roadmap reveal">
         <p className="kicker">{t.roadmapK}</p>
         <h2>{t.roadmapTitle}</h2>
-        <div className="roadmap-row">
-          {t.years.map((x) => (
-            <article key={x[0]}>
-              <b>{x[0]}</b>
-              <span>{x[1]}</span>
-            </article>
-          ))}
-        </div>
+        <RoadmapTravel years={t.years} lang={lang} />
       </section>
       <section id="faq" className="cx-faq reveal">
         <div>
