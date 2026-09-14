@@ -1,0 +1,137 @@
+/* Homepage only: content flows naturally; the metric card starts after the opening screen. */
+@media (max-width:800px) {
+  main.cx-page.theme-masar.home-page {
+    --mobile-gutter:clamp(18px,5vw,28px);
+    --opening-height:100vh;
+  }
+  @supports (height:100svh) {
+    main.cx-page.theme-masar.home-page {--opening-height:100svh;}
+  }
+  main.cx-page.theme-masar.home-page .cx-hero {
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr)!important;
+    grid-template-rows:68px 36px auto auto!important;
+    height:auto!important;min-height:0!important;padding:0!important;
+  }
+  main.cx-page.theme-masar.home-page .cx-hero>header {
+    position:relative!important;inset:auto!important;grid-row:1;
+    width:calc(100% - 32px)!important;height:68px!important;margin:0 16px!important;
+  }
+  main.cx-page.theme-masar.home-page .cx-time {
+    position:relative!important;inset:auto!important;grid-row:2;
+    margin:0 var(--mobile-gutter)!important;align-self:center;justify-self:start;
+    width:auto!important;font-size:10px!important;
+  }
+  main.cx-page.theme-masar.home-page .hero-copy {
+    position:relative!important;inset:auto!important;grid-row:3;
+    box-sizing:border-box;width:100%!important;max-width:none!important;
+    min-height:calc(var(--opening-height) - 104px)!important;
+    margin:0!important;padding:24px var(--mobile-gutter) 36px!important;
+    display:flex!important;flex-direction:column;justify-content:center;align-items:flex-start;
+    gap:18px;pointer-events:auto!important;
+  }
+  main.cx-page.theme-masar.home-page .hero-v16-eyebrow {
+    margin:0!important;font-size:10px!important;line-height:1.5!important;
+  }
+  main.cx-page.theme-masar.home-page .hero-copy h1 {
+    margin:0!important;font-size:clamp(36px,10.6vw,54px)!important;
+    line-height:1.08!important;letter-spacing:-.04em!important;overflow-wrap:break-word;
+  }
+  main.cx-page.theme-masar.home-page.ar .hero-copy h1 {
+    font-size:clamp(34px,10vw,50px)!important;line-height:1.3!important;letter-spacing:0!important;
+  }
+  main.cx-page.theme-masar.home-page .hero-v16-title-top,
+  main.cx-page.theme-masar.home-page .hero-v16-accent {line-height:1.08!important;}
+  main.cx-page.theme-masar.home-page .hero-v16-accent {margin-top:6px!important;}
+  main.cx-page.theme-masar.home-page.ar .hero-v16-title-top,
+  main.cx-page.theme-masar.home-page.ar .hero-v16-accent {line-height:1.3!important;}
+  main.cx-page.theme-masar.home-page .hero-copy>p {
+    position:static!important;inset:auto!important;width:100%!important;
+    max-width:none!important;margin:0!important;font-size:14px!important;line-height:1.65!important;
+  }
+  main.cx-page.theme-masar.home-page .hero-v16-tagline {font-size:14px!important;line-height:1.5!important;margin-bottom:8px!important;}
+  main.cx-page.theme-masar.home-page .hero-v16-intro {font-size:14px!important;line-height:1.65!important;padding-top:8px!important;}
+  main.cx-page.theme-masar.home-page .hero-copy .cx-button {
+    position:static!important;inset:auto!important;margin:0!important;
+    min-height:44px!important;padding:12px 20px!important;font-size:14px!important;flex-shrink:0;
+  }
+  main.cx-page.theme-masar.home-page .hero-card {
+    position:relative!important;inset:auto!important;grid-row:4;
+    width:calc(100% - 2 * var(--mobile-gutter))!important;max-width:460px!important;
+    height:auto!important;min-height:0!important;margin:16px auto 32px!important;
+    padding:0!important;transform:none!important;align-self:start;break-inside:avoid;
+  }
+  main.cx-page.theme-masar.home-page .hero-slides {
+    display:grid!important;grid-template-columns:minmax(0,1fr);
+    height:auto!important;min-height:0!important;
+  }
+  main.cx-page.theme-masar.home-page .hero-slides article {
+    position:relative!important;inset:auto!important;grid-area:1/1;
+    min-width:0;min-height:264px;padding:20px 20px 58px!important;
+    visibility:hidden;transform:none!important;
+  }
+  main.cx-page.theme-masar.home-page .hero-slides article.active {visibility:visible;}
+  main.cx-page.theme-masar.home-page .hero-slides h3 {font-size:18px!important;line-height:1.35!important;}
+  main.cx-page.theme-masar.home-page .hero-slides p {font-size:14px!important;line-height:1.6!important;max-width:none!important;}
+  main.cx-page.theme-masar.home-page .hero-card-dots {bottom:6px!important;gap:0!important;}
+  main.cx-page.theme-masar.home-page .hero-card-dots button {
+    width:32px!important;height:36px!important;padding:0!important;border:12px solid transparent!important;
+    border-radius:50%!important;background-clip:content-box!important;transform:none!important;
+  }
+
+  /* Compact section rhythm, with natural growth for Arabic and larger text settings. */
+  main.cx-page.theme-masar.home-page :is(.cx-intro,.cx-services,.cx-statement,.cx-method,.cx-roadmap,.cx-faq) {
+    padding:40px var(--mobile-gutter)!important;height:auto!important;min-height:0!important;
+    scroll-margin-top:20px;
+  }
+  main.cx-page.theme-masar.home-page .clients-section {padding:30px var(--mobile-gutter)!important;margin:0!important;}
+  main.cx-page.theme-masar.home-page :is(.clients-heading,.section-title) {margin-bottom:24px!important;padding-bottom:0!important;}
+  main.cx-page.theme-masar.home-page :is(.cx-intro h2,.section-title h2,.cx-statement h2,.cx-roadmap h2,.cx-faq h2) {
+    font-size:clamp(28px,7.6vw,36px)!important;line-height:1.25!important;
+    margin-block:10px 18px!important;overflow-wrap:break-word;
+  }
+  main.cx-page.theme-masar.home-page .outline-number {font-size:64px!important;top:-8px!important;}
+  main.cx-page.theme-masar.home-page :is(.body-copy,.service-copy p,.cx-statement p:not(.kicker),.method-grid p,.cx-faq details p) {
+    font-size:15px!important;line-height:1.65!important;
+  }
+  main.cx-page.theme-masar.home-page .cx-intro>div+div {margin-top:18px!important;}
+  main.cx-page.theme-masar.home-page .body-copy {margin-top:0!important;}
+  main.cx-page.theme-masar.home-page .cx-highlights {margin-bottom:32px!important;}
+  main.cx-page.theme-masar.home-page .cx-highlights article {padding:20px var(--mobile-gutter)!important;min-height:0!important;}
+  main.cx-page.theme-masar.home-page .cx-services::before {top:-32px!important;height:32px!important;}
+  main.cx-page.theme-masar.home-page .service-grid {gap:24px!important;}
+  main.cx-page.theme-masar.home-page .service-grid article {min-height:0!important;break-inside:avoid;}
+  main.cx-page.theme-masar.home-page .service-visual {height:180px!important;height:clamp(140px,24svh,210px)!important;}
+  main.cx-page.theme-masar.home-page .service-copy {padding:18px!important;}
+  main.cx-page.theme-masar.home-page .service-copy h3 {font-size:23px!important;line-height:1.3!important;margin:8px 0!important;}
+  main.cx-page.theme-masar.home-page .service-copy p {margin:10px 0!important;}
+  main.cx-page.theme-masar.home-page .service-copy a {min-height:44px;}
+  main.cx-page.theme-masar.home-page .statement-art {height:180px!important;height:clamp(140px,24svh,210px)!important;margin-bottom:24px!important;}
+  main.cx-page.theme-masar.home-page .method-grid article {
+    display:grid;grid-template-columns:36px minmax(0,1fr);column-gap:12px;row-gap:6px;
+    padding:18px 14px!important;min-height:0!important;
+  }
+  main.cx-page.theme-masar.home-page .method-grid b {grid-row:1/3;width:34px!important;height:34px!important;}
+  main.cx-page.theme-masar.home-page .method-grid h3 {margin:0!important;font-size:21px!important;line-height:1.35!important;}
+  main.cx-page.theme-masar.home-page .method-grid p {grid-column:2;margin:0!important;}
+  main.cx-page.theme-masar.home-page .sector-note {margin-top:24px!important;padding-block:18px!important;font-size:14px!important;}
+  main.cx-page.theme-masar.home-page .roadmap-row {margin-top:24px!important;gap:18px!important;}
+  main.cx-page.theme-masar.home-page .roadmap-row article {display:grid;grid-template-columns:85px minmax(0,1fr);align-items:center;gap:14px;padding:16px 0!important;}
+  main.cx-page.theme-masar.home-page .roadmap-row b {font-size:32px!important;}
+  main.cx-page.theme-masar.home-page .roadmap-row span {margin:0!important;font-size:15px!important;}
+  main.cx-page.theme-masar.home-page .cx-faq>div+div {margin-top:24px!important;}
+  main.cx-page.theme-masar.home-page .cx-faq summary {padding-block:18px!important;min-height:48px;font-size:16px!important;}
+  main.cx-page.theme-masar.home-page .cx-faq details p {padding-inline-start:0!important;margin-bottom:18px!important;}
+
+  main.cx-page.theme-masar.home-page #contact.contact-wide {width:calc(100% - 24px)!important;margin:24px auto!important;padding:24px 16px!important;}
+  main.cx-page.theme-masar.home-page #contact .contact-content {gap:18px!important;}
+  main.cx-page.theme-masar.home-page #contact .contact-intro h2 {font-size:28px!important;line-height:1.25!important;}
+  main.cx-page.theme-masar.home-page #contact form.contact-fields {grid-template-columns:repeat(2,minmax(0,1fr))!important;padding:16px!important;gap:12px!important;}
+  main.cx-page.theme-masar.home-page #contact .contact-field:nth-child(3),
+  main.cx-page.theme-masar.home-page #contact .contact-field:nth-child(4) {grid-column:1/-1!important;}
+  main.cx-page.theme-masar.home-page #contact input[name="email"] {grid-column:auto!important;}
+  main.cx-page.theme-masar.home-page .masar-footer {padding:32px var(--mobile-gutter)!important;}
+}
+@media(max-width:350px) {
+  main.cx-page.theme-masar.home-page #contact form.contact-fields {grid-template-columns:minmax(0,1fr)!important;}
+}

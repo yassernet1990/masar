@@ -15,6 +15,7 @@ import "./masar-v20.css";
 import "./masar-v21.css";
 import "./masar-v22.css";
 import "./masar-v23-mobile.css";
+import "./home-mobile-layout.css";
 import ThemeBridge from "./theme-bridge";
 import MasarV17Bridge from "./masar-v17-bridge";
 import MasarV22Bridge from "./masar-v22-bridge";
