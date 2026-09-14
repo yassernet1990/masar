@@ -85,6 +85,13 @@
 .cx-page .masar-footer .footer-contact-strip { color: inherit; }
 
 /* Registration follows each footer's foreground, including bold text and legacy paragraph overrides. */
+.home-page .footer-linkedin-symbol { font-family: Arial, sans-serif; font-size: 16px; line-height: 17px; font-weight: 700; letter-spacing: -.5px; }
+@media (max-width: 900px) {
+  .cx-page.home-page .masar-footer .footer-contact-strip { column-gap: 28px; }
+  .cx-page.home-page .masar-footer .footer-bottom { flex-wrap: wrap; }
+}
+
+/* Registration follows each footer's foreground, including bold text and legacy paragraph overrides. */
 main.cx-page footer.masar-footer .footer-company,
 main.cx-page footer.masar-footer .footer-company .footer-registration,
 main.cx-page footer.masar-footer .footer-company .footer-registration :is(strong, p, span) {

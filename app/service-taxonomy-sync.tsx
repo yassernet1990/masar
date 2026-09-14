@@ -143,6 +143,19 @@ function syncHomepageCards(lang: Lang) {
     .forEach((card) => grid.appendChild(card));
 }
 
+function syncHomepageLinkedIn(strip: HTMLElement, lang: Lang) {
+  if (!strip.closest(".home-page")) return;
+  let item = strip.querySelector<HTMLElement>(".footer-linkedin-item");
+  if (!item) {
+    item = document.createElement("div");
+    item.className = "footer-contact-item footer-linkedin-item";
+    item.innerHTML = '<div class="footer-contact-heading"><span data-footer-label="linkedin"></span></div><div class="footer-mail-row" dir="ltr"><span class="footer-contact-icon" aria-hidden="true"><b class="footer-linkedin-symbol">in</b></span><a class="footer-contact-value" href="https://www.linkedin.com/company/masarpro" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></div>';
+    strip.appendChild(item);
+  }
+  const label = item.querySelector<HTMLElement>('[data-footer-label="linkedin"]');
+  if (label) label.textContent = lang === "ar" ? "تابع مسار" : "Follow MASAR";
+}
+
 function syncFooterContacts(lang: Lang) {
   document.querySelectorAll<HTMLElement>(".masar-footer .footer-bottom").forEach((bottom) => {
     const mail = bottom.querySelector<HTMLAnchorElement>('a[href^="mailto:"]');
@@ -159,6 +172,7 @@ function syncFooterContacts(lang: Lang) {
       const careLabel = existing.querySelector<HTMLElement>('[data-footer-label="care"]');
       if (mailLabel) mailLabel.textContent = lang === "ar" ? "الاستفسارات العامة" : "General Inquiries";
       if (careLabel) careLabel.textContent = lang === "ar" ? "خدمة العملاء" : "Customer Care";
+      syncHomepageLinkedIn(existing, lang);
       return;
     }
 
@@ -196,6 +210,7 @@ function syncFooterContacts(lang: Lang) {
     strip.append(mailItem, careItem);
     const copyright = Array.from(bottom.children).find((el) => el.tagName === "SPAN");
     bottom.insertBefore(strip, copyright || null);
+    syncHomepageLinkedIn(strip, lang);
   });
 }
 
