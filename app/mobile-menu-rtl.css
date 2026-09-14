@@ -1,20 +1,26 @@
-/* Arabic mobile navigation mirrors the English right-side menu. */
+/* Arabic mobile navigation: force trigger and drawer to the left on mobile. */
 @media (max-width:800px) {
-  .masar-mobile-rail[data-lang="ar"] {
-    left:11px;
-    right:auto;
+  .masar-mobile-rail[data-lang="ar"],
+  .masar-mobile-rail.is-ar,
+  body:has(main.cx-page.ar) .masar-mobile-rail {
+    left:11px!important;
+    right:auto!important;
   }
 
-  .masar-mobile-drawer[data-lang="ar"] {
-    left:0;
-    right:auto;
-    border-left:0;
-    border-right:1px solid rgba(123,207,255,.14);
-    box-shadow:28px 0 70px rgba(0,0,0,.34);
-    transform:translateX(-104%);
+  .masar-mobile-drawer[data-lang="ar"],
+  .masar-mobile-drawer.is-ar,
+  body:has(main.cx-page.ar) .masar-mobile-drawer {
+    left:0!important;
+    right:auto!important;
+    border-left:0!important;
+    border-right:1px solid rgba(123,207,255,.14)!important;
+    box-shadow:28px 0 70px rgba(0,0,0,.34)!important;
+    transform:translateX(-104%)!important;
   }
 
-  .masar-mobile-drawer[data-lang="ar"].is-open {
-    transform:translateX(0);
+  .masar-mobile-drawer[data-lang="ar"].is-open,
+  .masar-mobile-drawer.is-ar.is-open,
+  body:has(main.cx-page.ar) .masar-mobile-drawer.is-open {
+    transform:translateX(0)!important;
   }
 }
