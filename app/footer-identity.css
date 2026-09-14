@@ -85,10 +85,10 @@
 .cx-page .masar-footer .footer-contact-strip { color: inherit; }
 
 /* Registration follows each footer's foreground, including bold text and legacy paragraph overrides. */
-.home-page .footer-linkedin-symbol { font-family: Arial, sans-serif; font-size: 16px; line-height: 17px; font-weight: 700; letter-spacing: -.5px; }
+.masar-footer .footer-linkedin-symbol { font-family: Arial, sans-serif; font-size: 16px; line-height: 17px; font-weight: 700; letter-spacing: -.5px; }
 @media (max-width: 900px) {
-  .cx-page.home-page .masar-footer .footer-contact-strip { column-gap: 28px; }
-  .cx-page.home-page .masar-footer .footer-bottom { flex-wrap: wrap; }
+  .cx-page .masar-footer .footer-contact-strip { column-gap: 28px; }
+  .cx-page .masar-footer .footer-bottom { flex-wrap: wrap; }
 }
 
 /* Registration follows each footer's foreground, including bold text and legacy paragraph overrides. */

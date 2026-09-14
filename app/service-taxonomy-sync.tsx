@@ -143,8 +143,7 @@ function syncHomepageCards(lang: Lang) {
     .forEach((card) => grid.appendChild(card));
 }
 
-function syncHomepageLinkedIn(strip: HTMLElement, lang: Lang) {
-  if (!strip.closest(".home-page")) return;
+function syncFooterLinkedIn(strip: HTMLElement, lang: Lang) {
   let item = strip.querySelector<HTMLElement>(".footer-linkedin-item");
   if (!item) {
     item = document.createElement("div");
@@ -172,7 +171,7 @@ function syncFooterContacts(lang: Lang) {
       const careLabel = existing.querySelector<HTMLElement>('[data-footer-label="care"]');
       if (mailLabel) mailLabel.textContent = lang === "ar" ? "الاستفسارات العامة" : "General Inquiries";
       if (careLabel) careLabel.textContent = lang === "ar" ? "خدمة العملاء" : "Customer Care";
-      syncHomepageLinkedIn(existing, lang);
+      syncFooterLinkedIn(existing, lang);
       return;
     }
 
@@ -210,7 +209,7 @@ function syncFooterContacts(lang: Lang) {
     strip.append(mailItem, careItem);
     const copyright = Array.from(bottom.children).find((el) => el.tagName === "SPAN");
     bottom.insertBefore(strip, copyright || null);
-    syncHomepageLinkedIn(strip, lang);
+    syncFooterLinkedIn(strip, lang);
   });
 }
 
