@@ -7,24 +7,24 @@
       linear-gradient(90deg,rgba(3,11,31,.92) 0%,rgba(3,11,31,.70) 40%,rgba(3,11,31,.16) 72%,rgba(3,11,31,.48) 100%),
       linear-gradient(180deg,rgba(4,14,38,.08),rgba(4,14,38,.74)),
       linear-gradient(transparent,transparent)!important;
-    background-size:cover,cover,188% auto!important;
+    background-size:cover,cover,230% auto!important;
     background-repeat:no-repeat,no-repeat,no-repeat!important;
-    background-position:center,center,62% 53%!important;
+    background-position:center,center,62% 43%!important;
   }
 
   main.cx-page.theme-masar.home-page .hero-art::before {
     content:"";
     position:absolute;
     left:62%;
-    top:53%;
-    width:188%;
+    top:43%;
+    width:230%;
     aspect-ratio:2 / 1;
-    transform:translate(-62%,-53%);
+    transform:translate(-62%,-43%);
     background:url('https://svs.gsfc.nasa.gov/vis/a030000/a030000/a030003/dmsp_4096.png') center/100% 100% no-repeat;
     pointer-events:none;
     opacity:.98;
-    -webkit-mask-image:radial-gradient(ellipse 53% 56% at 50% 50%,#000 0%,#000 60%,rgba(0,0,0,.90) 72%,rgba(0,0,0,.50) 86%,transparent 100%);
-    mask-image:radial-gradient(ellipse 53% 56% at 50% 50%,#000 0%,#000 60%,rgba(0,0,0,.90) 72%,rgba(0,0,0,.50) 86%,transparent 100%);
+    -webkit-mask-image:radial-gradient(ellipse 52% 55% at 50% 50%,#000 0%,#000 59%,rgba(0,0,0,.90) 71%,rgba(0,0,0,.48) 85%,transparent 100%);
+    mask-image:radial-gradient(ellipse 52% 55% at 50% 50%,#000 0%,#000 59%,rgba(0,0,0,.90) 71%,rgba(0,0,0,.48) 85%,transparent 100%);
     -webkit-mask-repeat:no-repeat;
     mask-repeat:no-repeat;
   }
