@@ -1,0 +1,20 @@
+/* Arabic mobile navigation mirrors the English right-side menu. */
+@media (max-width:800px) {
+  .masar-mobile-rail[data-lang="ar"] {
+    left:11px;
+    right:auto;
+  }
+
+  .masar-mobile-drawer[data-lang="ar"] {
+    left:0;
+    right:auto;
+    border-left:0;
+    border-right:1px solid rgba(123,207,255,.14);
+    box-shadow:28px 0 70px rgba(0,0,0,.34);
+    transform:translateX(-104%);
+  }
+
+  .masar-mobile-drawer[data-lang="ar"].is-open {
+    transform:translateX(0);
+  }
+}
