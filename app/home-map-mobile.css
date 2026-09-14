@@ -20,7 +20,9 @@
     width:230%;
     aspect-ratio:2 / 1;
     transform:translate(-62%,-43%);
-    background:url('https://svs.gsfc.nasa.gov/vis/a030000/a030000/a030003/dmsp_4096.png') center/100% 100% no-repeat;
+    background:
+      linear-gradient(180deg,rgba(3,11,31,.20) 0%,rgba(3,11,31,.28) 58%,rgba(3,11,31,.34) 100%),
+      url('https://svs.gsfc.nasa.gov/vis/a030000/a030000/a030003/dmsp_4096.png') center/100% 100% no-repeat;
     pointer-events:none;
     opacity:.98;
     -webkit-mask-image:radial-gradient(ellipse 52% 55% at 50% 50%,#000 0%,#000 59%,rgba(0,0,0,.90) 71%,rgba(0,0,0,.48) 85%,transparent 100%);
