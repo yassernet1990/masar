@@ -28,12 +28,35 @@ export default function MasarMobileMenu() {
   useEffect(() => {
     const sync = () => {
       const page = document.querySelector<HTMLElement>(".cx-page");
-      setLang(page?.classList.contains("ar") || page?.dir === "rtl" ? "ar" : "en");
+      const urlLang = new URLSearchParams(window.location.search).get("lang");
+      const isArabic =
+        page?.classList.contains("ar") ||
+        page?.dir === "rtl" ||
+        document.documentElement.dir === "rtl" ||
+        urlLang === "ar";
+      setLang(isArabic ? "ar" : "en");
     };
+
     sync();
-    const observer = new MutationObserver(sync);
-    observer.observe(document.body, { subtree: true, attributes: true, attributeFilter: ["class", "dir"] });
-    return () => observer.disconnect();
+    const bodyObserver = new MutationObserver(sync);
+    bodyObserver.observe(document.body, {
+      subtree: true,
+      childList: true,
+      attributes: true,
+      attributeFilter: ["class", "dir"],
+    });
+    const htmlObserver = new MutationObserver(sync);
+    htmlObserver.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class", "dir", "lang"],
+    });
+    window.addEventListener("popstate", sync);
+
+    return () => {
+      bodyObserver.disconnect();
+      htmlObserver.disconnect();
+      window.removeEventListener("popstate", sync);
+    };
   }, []);
 
   useEffect(() => {
@@ -71,15 +94,18 @@ export default function MasarMobileMenu() {
     });
   };
 
+  const rtl = lang === "ar";
+
   return (
     <>
       <button
         ref={trigger}
         type="button"
         aria-controls="masar-mobile-navigation"
-        className={`masar-mobile-rail ${open ? "is-open" : ""}`}
+        className={`masar-mobile-rail ${rtl ? "is-ar" : "is-en"} ${open ? "is-open" : ""}`}
         data-lang={lang}
-        aria-label={lang === "ar" ? "فتح قائمة التنقل" : "Open navigation menu"}
+        style={rtl ? { left: 11, right: "auto" } : undefined}
+        aria-label={rtl ? "فتح قائمة التنقل" : "Open navigation menu"}
         aria-expanded={open}
         onClick={() => setOpen((value) => !value)}
       >
@@ -99,18 +125,26 @@ export default function MasarMobileMenu() {
         id="masar-mobile-navigation"
         role="dialog"
         aria-modal={open ? true : undefined}
-        aria-label={lang === "ar" ? "قائمة التنقل" : "Navigation menu"}
+        aria-label={rtl ? "قائمة التنقل" : "Navigation menu"}
         inert={!open}
-        className={`masar-mobile-drawer ${open ? "is-open" : ""}`}
+        className={`masar-mobile-drawer ${rtl ? "is-ar" : "is-en"} ${open ? "is-open" : ""}`}
         data-lang={lang}
+        style={rtl ? {
+          left: 0,
+          right: "auto",
+          borderLeft: 0,
+          borderRight: "1px solid rgba(123,207,255,.14)",
+          boxShadow: "28px 0 70px rgba(0,0,0,.34)",
+          transform: open ? "translateX(0)" : "translateX(-104%)",
+        } : undefined}
         aria-hidden={!open}
-        dir={lang === "ar" ? "rtl" : "ltr"}
+        dir={rtl ? "rtl" : "ltr"}
       >
         <div className="masar-mobile-drawer-head">
           <span>MASAR</span>
-          <button type="button" onClick={() => setOpen(false)} aria-label={lang === "ar" ? "إغلاق القائمة" : "Close menu"}>×</button>
+          <button type="button" onClick={() => setOpen(false)} aria-label={rtl ? "إغلاق القائمة" : "Close menu"}>×</button>
         </div>
-        <nav aria-label={lang === "ar" ? "تنقل الجوال" : "Mobile navigation"}>
+        <nav aria-label={rtl ? "تنقل الجوال" : "Mobile navigation"}>
           {items[lang].map(([label, id], index) => (
             <button key={`${label}-${index}`} type="button" onClick={() => navigate(id)}>
               <span>{String(index + 1).padStart(2, "0")}</span>
