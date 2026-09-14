@@ -72,9 +72,11 @@ function createOverlay(hero: HTMLElement) {
     <path class="route route-up-right" />
     <path class="route route-east" />
     <path class="route route-europe" />
-    <circle class="route-hub-ring" r="12" />
-    <circle class="route-hub-dot" r="3" />
-    <text class="route-hub-label">Saudi Arabia</text>
+    <g class="route-hub-marker">
+      <circle class="route-hub-ring" r="12" />
+      <circle class="route-hub-dot" r="3" />
+      <text class="route-hub-label">Saudi Arabia</text>
+    </g>
   `;
   hero.appendChild(svg);
   return svg;
@@ -105,12 +107,21 @@ function renderRoutes() {
   const ring = svg.querySelector<SVGCircleElement>(".route-hub-ring");
   const dot = svg.querySelector<SVGCircleElement>(".route-hub-dot");
   const label = svg.querySelector<SVGTextElement>(".route-hub-label");
-  ring?.setAttribute("cx", String(hx));
-  ring?.setAttribute("cy", String(hy));
-  dot?.setAttribute("cx", String(hx));
-  dot?.setAttribute("cy", String(hy));
-  label?.setAttribute("x", String(hx + 14));
-  label?.setAttribute("y", String(hy - 8));
+  const marker = svg.querySelector<SVGGElement>(".route-hub-marker");
+  const bounds = svg.getBoundingClientRect();
+  const mobile = window.matchMedia("(max-width:800px)").matches;
+  // Counteract the SVG's non-uniform stretching on portrait screens. Keep paths on the map.
+  const sx = mobile && bounds.width > 0 ? VIEWBOX_W / bounds.width : 1;
+  const sy = mobile && bounds.height > 0 ? VIEWBOX_H / bounds.height : 1;
+  marker?.setAttribute("transform", `translate(${hx} ${hy}) scale(${sx} ${sy})`);
+  ring?.setAttribute("cx", "0");
+  ring?.setAttribute("cy", "0");
+  ring?.setAttribute("r", mobile ? "7" : "12");
+  dot?.setAttribute("cx", "0");
+  dot?.setAttribute("cy", "0");
+  dot?.setAttribute("r", mobile ? "2.5" : "3");
+  label?.setAttribute("x", mobile ? "12" : "14");
+  label?.setAttribute("y", "-8");
 }
 
 export default function MasarV22Bridge() {

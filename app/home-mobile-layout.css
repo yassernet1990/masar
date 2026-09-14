@@ -30,10 +30,11 @@
     position:relative!important;inset:auto!important;grid-row:3;
     box-sizing:border-box;width:100%!important;max-width:none!important;
     min-height:calc(var(--opening-height) - 104px)!important;
-    margin:0!important;padding:24px var(--mobile-gutter) 36px!important;
-    display:flex!important;flex-direction:column;justify-content:center;align-items:flex-start;
+    margin:0!important;padding:12px var(--mobile-gutter) 28px!important;
+    display:flex!important;flex-direction:column;justify-content:flex-start;align-items:flex-start;
     gap:18px;pointer-events:auto!important;
   }
+  main.cx-page.theme-masar.home-page .hero-copy>* {flex-shrink:0;}
   main.cx-page.theme-masar.home-page .hero-v16-eyebrow {
     margin:0!important;font-size:10px!important;line-height:1.5!important;
   }
@@ -51,8 +52,9 @@
   main.cx-page.theme-masar.home-page.ar .hero-v16-accent {line-height:1.3!important;}
   main.cx-page.theme-masar.home-page .hero-copy>p {
     position:static!important;inset:auto!important;width:100%!important;
-    max-width:none!important;margin:0!important;font-size:14px!important;line-height:1.65!important;
+    max-width:none!important;margin:auto 0 0!important;font-size:14px!important;line-height:1.65!important;
   }
+  main.cx-page.theme-masar.home-page .masar-routes-v22 .route-hub-label {font-size:10px!important;opacity:.85!important;}
   main.cx-page.theme-masar.home-page .hero-v16-tagline {font-size:14px!important;line-height:1.5!important;margin-bottom:8px!important;}
   main.cx-page.theme-masar.home-page .hero-v16-intro {font-size:14px!important;line-height:1.65!important;padding-top:8px!important;}
   main.cx-page.theme-masar.home-page .hero-copy .cx-button {
