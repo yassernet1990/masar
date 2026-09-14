@@ -78,6 +78,7 @@ export default function MasarMobileMenu() {
         type="button"
         aria-controls="masar-mobile-navigation"
         className={`masar-mobile-rail ${open ? "is-open" : ""}`}
+        data-lang={lang}
         aria-label={lang === "ar" ? "فتح قائمة التنقل" : "Open navigation menu"}
         aria-expanded={open}
         onClick={() => setOpen((value) => !value)}
@@ -101,6 +102,7 @@ export default function MasarMobileMenu() {
         aria-label={lang === "ar" ? "قائمة التنقل" : "Navigation menu"}
         inert={!open}
         className={`masar-mobile-drawer ${open ? "is-open" : ""}`}
+        data-lang={lang}
         aria-hidden={!open}
         dir={lang === "ar" ? "rtl" : "ltr"}
       >
