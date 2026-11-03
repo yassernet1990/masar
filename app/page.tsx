@@ -7,5 +7,8 @@ export async function generateMetadata({ searchParams }: PublicPageProps) {
 }
 export default async function Page({ searchParams }: PublicPageProps) {
   const lang = pageLanguage(await searchParams);
-  return <><SeoJsonLd pageKey="home" lang={lang} /><Home initialLang={lang} /></>;
+  return <>
+    <link rel="preload" as="image" href="/images/world-night-mobile-20261103.webp" media="(max-width: 800px)" fetchPriority="high" />
+    <link rel="preload" as="image" href="/images/world-night-desktop-20261103.webp" media="(width > 800px)" fetchPriority="high" />
+    <SeoJsonLd pageKey="home" lang={lang} /><Home initialLang={lang} /></>;
 }

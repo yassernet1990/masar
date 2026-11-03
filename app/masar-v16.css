@@ -24,7 +24,7 @@ main.cx-page.theme-masar .hero-art{
   background-image:
     linear-gradient(90deg,rgba(3,11,31,.92) 0%,rgba(3,11,31,.70) 40%,rgba(3,11,31,.16) 72%,rgba(3,11,31,.48) 100%),
     linear-gradient(180deg,rgba(4,14,38,.08),rgba(4,14,38,.74)),
-    url('https://svs.gsfc.nasa.gov/vis/a030000/a030000/a030003/dmsp_4096.png')!important;
+    var(--masar-world-night-image)!important;
   background-size:cover,cover,86% auto!important;
   background-repeat:no-repeat,no-repeat,no-repeat!important;
   background-position:center,center,62% 53%!important;
