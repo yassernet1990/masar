@@ -1,3 +1,3 @@
-deploy: 2026-09-11T17:45:00+03:00
-source_commit: 88563b19cab783c8f0cfeec4452c27d1e4c7ffb9
-reason: use-verified-business-advisory-image-directly
+deploy: 2026-11-03T16:21:29+03:00
+source_commit: 07adbafc30abcb6e39f0143fa91244bdb708fa06
+reason: user-requested-deployment-retry-after-lockfile-repair
